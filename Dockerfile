@@ -7,7 +7,7 @@ WORKDIR /var/www/html
 RUN apk add --no-cache \
     curl \
     nginx \
-    npm \
+    nodejs \
     php83 \
     php83-bcmath \
     php83-ctype \
