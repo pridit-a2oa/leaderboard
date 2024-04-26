@@ -12,7 +12,8 @@ class HomeController extends Controller
     //
     public function index(): Response
     {
-        $characters = Character::orderByDesc('score')
+        $characters = Character::rankable()
+            ->orderByDesc('score')
             ->paginate(50)
             ->through(fn ($item) => [
                 'id' => $item->id,
