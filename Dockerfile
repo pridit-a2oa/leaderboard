@@ -60,6 +60,9 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 # Run composer install to install the dependencies
 RUN composer install --optimize-autoloader --no-interaction --no-progress
 
+# Clear npm cache
+RUN npm cache clean --force
+
 # Run npm install to install node dependencies
 RUN npm install
 
