@@ -8,6 +8,7 @@ RUN apk add --no-cache \
     curl \
     nginx \
     nodejs \
+    npm \
     php83 \
     php83-bcmath \
     php83-ctype \
