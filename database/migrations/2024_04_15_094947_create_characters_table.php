@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('uid')->nullable(); // getPlayerUID
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('uid')->nullable();
             $table->string('name');
             $table->bigInteger('score')->default(0);
+            $table->boolean('is_linkable')->default(0);
             $table->timestamps();
             $table->softDeletesTz('deleted_at', precision: 0);
 

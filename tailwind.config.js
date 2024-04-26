@@ -1,5 +1,4 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -18,5 +17,18 @@ export default {
         },
     },
 
-    plugins: [forms],
+    daisyui: {
+      themes: [
+        {
+          default: {
+              "primary": "#0084ff",
+              "base-100": "#262626",
+          },
+        },
+      ],
+    },
+
+    plugins: [
+        require("daisyui")
+    ],
 };
