@@ -2,33 +2,37 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-        './resources/js/**/*.vue',
-    ],
+  content: [
+    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+    './storage/framework/views/*.php',
+    './resources/views/**/*.blade.php',
+    './resources/js/**/*.vue'
+  ],
 
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-        },
-    },
+  theme: {
+    extend: {
+      colors: {
+        bronze: '#7c2d12',
+        gold: '#d4af37',
+        silver: '#c0c0c0'
+      },
 
-    daisyui: {
-      themes: [
-        {
-          default: {
-              "primary": "#0084ff",
-              "base-100": "#262626",
-          },
-        },
-      ],
-    },
+      fontFamily: {
+        sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+      }
+    }
+  },
 
-    plugins: [
-        require("daisyui")
-    ],
+  daisyui: {
+    themes: [
+      {
+        default: {
+          primary: '#0084ff',
+          'base-100': '#262626'
+        }
+      }
+    ]
+  },
+
+  plugins: [require('daisyui')]
 };

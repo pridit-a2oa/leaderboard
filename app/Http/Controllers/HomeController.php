@@ -17,8 +17,10 @@ class HomeController extends Controller
             ->paginate(50)
             ->through(fn ($item) => [
                 'id' => $item->id,
+                'uid' => $item->uid,
                 'name' => $item->name,
-                'score' => $item->score
+                'score' => $item->score,
+                'last_seen' => $item->updated_at->diffForHumans()
             ]);
 
         return Inertia::render('Home', [

@@ -22,7 +22,7 @@ export default {
                 />
 
                 <Link v-else class="join-item btn"
-                    :class="{ 'bg-white': link.active }"
+                    :class="{ 'bg-zinc-700': link.active }"
                     :href="link.url"
                     v-html="link.label"
                     preserve-scroll
