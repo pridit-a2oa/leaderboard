@@ -21,9 +21,14 @@ defineProps({
         <div class="mt-6 flex justify-center">
             <a
                 href="https://dsc.gg/pridit"
-                class="btn no-animation mr-2"
+                class="btn no-animation mr-3"
                 target="_blank"
             >
+                <font-awesome-icon
+                    :icon="['brands', 'discord']"
+                    class="text-[#7289da]"
+                    size="sm"
+                />
                 Discord
                 <font-awesome-icon
                     :icon="['fas', 'arrow-up-right-from-square']"
@@ -33,9 +38,14 @@ defineProps({
 
             <a
                 href="https://feedback.pridit.co.uk"
-                class="btn no-animation mr-2"
+                class="btn no-animation mr-3"
                 target="_blank"
             >
+                <font-awesome-icon
+                    :icon="['fas', 'bullhorn']"
+                    class="text-yellow-600"
+                    size="sm"
+                />
                 Feedback
                 <font-awesome-icon
                     :icon="['fas', 'arrow-up-right-from-square']"
@@ -48,6 +58,11 @@ defineProps({
                 class="btn no-animation"
                 target="_blank"
             >
+                <font-awesome-icon
+                    :icon="['fas', 'heart']"
+                    class="text-[#ff5c5a]"
+                    size="sm"
+                />
                 Ko-fi
                 <font-awesome-icon
                     :icon="['fas', 'arrow-up-right-from-square']"
@@ -122,7 +137,7 @@ defineProps({
                                 {{ character.name }}
 
                                 <font-awesome-icon
-                                    class="ml-0.5 !align-middle text-neutral-500"
+                                    class="ml-0.5 !align-middle"
                                     :icon="[
                                         'fas',
                                         'arrow-up-right-from-square',
