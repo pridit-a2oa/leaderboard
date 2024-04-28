@@ -12,7 +12,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        bronze: '#7c2d12',
+        bronze: '#cd7f32',
         gold: '#d4af37',
         silver: '#c0c0c0'
       },
