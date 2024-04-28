@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('uid')->nullable();
+            $table->string('uid')->nullable();
             $table->string('name');
             $table->bigInteger('score')->default(0);
             $table->boolean('is_linkable')->default(0);

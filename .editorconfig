@@ -14,5 +14,8 @@ trim_trailing_whitespace = false
 [*.{js,yml,yaml}]
 indent_size = 2
 
+[.prettierrc]
+indent_size = 2
+
 [docker-compose.yml]
 indent_size = 4
