@@ -18,7 +18,7 @@ defineProps({
 
         <Navigation />
 
-        <div class="mb-2 mt-6 flex justify-center">
+        <div class="mt-6 flex justify-center">
             <a
                 href="https://dsc.gg/pridit"
                 class="btn no-animation mr-2"
@@ -58,9 +58,9 @@ defineProps({
 
         <div
             v-if="characters.data.length > 0"
-            class="overflow-x-auto pb-10 font-bold"
+            class="mt-4 overflow-x-auto font-bold"
         >
-            <table class="table border-separate">
+            <table class="table border-separate border-spacing-y-0.5">
                 <thead>
                     <tr class="bg-base-100">
                         <th class="w-0">Rank</th>
@@ -70,7 +70,7 @@ defineProps({
                     </tr>
                 </thead>
 
-                <tbody class="rounded-full bg-base-300">
+                <tbody class="bg-base-300">
                     <tr
                         v-for="(character, key) in characters.data"
                         :key="character.id"

@@ -2,26 +2,29 @@
 import { Link } from '@inertiajs/vue3';
 
 export default {
-  components: {
-    Link,
-  },
-  props: {
-    links: Array,
-  }
-}
+    components: {
+        Link,
+    },
+    props: {
+        links: Array,
+    },
+};
 </script>
 
 <template>
-    <div v-if="links.length > 3" class="flex justify-center">
-        <div class="join pb-10">
+    <div v-if="links.length > 3" class="my-8 flex justify-center">
+        <div class="join">
             <template v-for="(link, key) in links">
-                <div v-if="link.url === null"
+                <div
+                    v-if="link.url === null"
                     :key="key"
-                    class="join-item btn disabled"
+                    class="btn disabled join-item"
                     v-html="link.label"
                 />
 
-                <Link v-else class="join-item btn"
+                <Link
+                    v-else
+                    class="btn join-item"
                     :class="{ 'bg-zinc-700': link.active }"
                     :href="link.url"
                     v-html="link.label"

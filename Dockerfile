@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM node:22.0.0-alpine3.19
 
 # Setup document root
 WORKDIR /var/www/html
@@ -6,8 +6,9 @@ WORKDIR /var/www/html
 # Install packages and remove default server definition
 RUN apk add --no-cache \
     curl \
-    nginx \
+    nodejs-current \
     npm \
+    nginx \
     php83 \
     php83-bcmath \
     php83-ctype \
@@ -32,9 +33,6 @@ RUN apk add --no-cache \
     php83-zip \
     supervisor
 
-# Create symlink so programs depending on `php` still function
-RUN ln -s /usr/bin/php83 /usr/bin/php
-
 # Configure nginx
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
@@ -48,8 +46,8 @@ COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN chown -R nobody.nobody /var/www/html /run /var/lib/nginx /var/log/nginx
 
-# Switch to use a non-root user from here on
-USER nobody
+# Create symlink for php
+RUN ln -s /usr/bin/php83 /usr/bin/php
 
 # Add application
 COPY --chown=nobody . /var/www/html/
@@ -63,8 +61,11 @@ RUN composer install --optimize-autoloader --no-interaction --no-progress
 # Run npm install to install node dependencies
 RUN npm install
 
-# Build
+# Build app
 RUN npm run build
+
+# Switch to non-root user
+USER nobody
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
