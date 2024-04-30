@@ -14,6 +14,7 @@ class HomeController extends Controller
     {
         $characters = Character::rankable()
             ->orderByDesc('score')
+            ->orderBy('updated_at')
             ->paginate(50)
             ->through(fn ($item) => [
                 'id' => $item->id,
