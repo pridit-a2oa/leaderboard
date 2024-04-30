@@ -73,7 +73,7 @@ defineProps({
 
         <div
             v-if="characters.data.length > 0"
-            class="mt-4 overflow-x-auto font-bold"
+            class="mb-8 mt-4 overflow-x-auto font-bold"
         >
             <table class="table border-separate border-spacing-y-0.5">
                 <thead>

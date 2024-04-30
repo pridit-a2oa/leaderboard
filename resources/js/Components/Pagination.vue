@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <div v-if="links.length > 3" class="my-8 flex justify-center">
+    <div v-if="links.length > 3" class="mb-8 flex justify-center">
         <div class="join">
             <template v-for="(link, key) in links">
                 <div
