@@ -15,7 +15,7 @@ export default {
     <div v-if="links.length > 3" class="join mb-8 flex justify-center">
         <template v-for="(link, key) in links">
             <Link
-                class="btn no-animation first:mr-auto last:ml-auto"
+                class="btn no-animation first:mr-auto last:ml-auto [&:not(:first-child):not(:last-child)]:hidden md:[&:not(:first-child):not(:last-child)]:inline-flex"
                 :class="{
                     hidden: link.label === '...',
                     'btn-disabled invisible': link.url === null,
