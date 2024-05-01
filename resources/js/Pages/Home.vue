@@ -52,7 +52,7 @@ defineProps({
                         <th class="w-0">Rank</th>
                         <th>Name</th>
                         <th class="w-0">Score</th>
-                        <th class="hidden w-0 md:table-cell">Last Seen</th>
+                        <th class="hidden w-0 md:table-cell">Last Updated</th>
                     </tr>
                 </thead>
 
