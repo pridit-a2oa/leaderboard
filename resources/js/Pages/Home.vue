@@ -14,7 +14,7 @@ defineProps({
 <template>
     <main class="container mx-auto text-neutral-400">
         <Head title="Leaderboard">
-            <Link rel="icon" href="/images/logo.png" />
+            <link rel="icon" href="/images/logo.png" />
         </Head>
 
         <Navigation />
