@@ -16,6 +16,7 @@ class HomeController extends Controller
             ->orderByDesc('score')
             ->orderBy('updated_at')
             ->paginate(50)
+            ->onEachSide(1)
             ->through(fn ($item) => [
                 'id' => $item->id,
                 'uid' => $item->uid,

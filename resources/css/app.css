@@ -7,6 +7,16 @@
     min-width: 320px;
 }
 
+.btn {
+    @apply border-0;
+}
+
 .fa-arrow-up-right-from-square {
     @apply text-neutral-500;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 387px;
+    }
 }

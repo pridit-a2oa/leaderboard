@@ -12,25 +12,20 @@ export default {
 </script>
 
 <template>
-    <div v-if="links.length > 3" class="mb-8 flex justify-center">
-        <div class="join">
-            <template v-for="(link, key) in links">
-                <div
-                    v-if="link.url === null"
-                    :key="key"
-                    class="btn disabled join-item"
-                    v-html="link.label"
-                />
-
-                <Link
-                    v-else
-                    class="btn join-item"
-                    :class="{ 'bg-zinc-700': link.active }"
-                    :href="link.url"
-                    v-html="link.label"
-                    preserve-scroll
-                />
-            </template>
-        </div>
+    <div v-if="links.length > 3" class="join mb-8 flex justify-center">
+        <template v-for="(link, key) in links">
+            <Link
+                class="btn no-animation first:mr-auto last:ml-auto"
+                :class="{
+                    hidden: link.label === '...',
+                    'btn-disabled invisible': link.url === null,
+                    'bg-neutral-700 hover:bg-neutral-700': link.active,
+                    'join-item': !!/\d/.test(link.label),
+                }"
+                :href="link.url"
+                v-html="link.label"
+                preserve-scroll
+            />
+        </template>
     </div>
 </template>

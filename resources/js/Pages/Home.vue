@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import AnchorExternal from '@/Components/AnchorExternal.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 
@@ -13,62 +14,32 @@ defineProps({
 <template>
     <main class="container mx-auto text-neutral-400">
         <Head title="Leaderboard">
-            <link rel="icon" href="/images/logo.png" />
+            <Link rel="icon" href="/images/logo.png" />
         </Head>
 
         <Navigation />
 
         <div class="mt-6 flex justify-center">
-            <a
+            <AnchorExternal
                 href="https://dsc.gg/pridit"
-                class="btn no-animation mr-3"
-                target="_blank"
+                class="text-[#7289da]"
+                :icon="['brands', 'discord']"
+                >Discord</AnchorExternal
             >
-                <font-awesome-icon
-                    :icon="['brands', 'discord']"
-                    class="text-[#7289da]"
-                    size="sm"
-                />
-                Discord
-                <font-awesome-icon
-                    :icon="['fas', 'arrow-up-right-from-square']"
-                    size="xs"
-                />
-            </a>
 
-            <a
+            <AnchorExternal
+                class="text-yellow-600"
                 href="https://feedback.pridit.co.uk"
-                class="btn no-animation mr-3"
-                target="_blank"
+                :icon="['fas', 'bullhorn']"
+                >Feedback</AnchorExternal
             >
-                <font-awesome-icon
-                    :icon="['fas', 'bullhorn']"
-                    class="text-yellow-600"
-                    size="sm"
-                />
-                Feedback
-                <font-awesome-icon
-                    :icon="['fas', 'arrow-up-right-from-square']"
-                    size="xs"
-                />
-            </a>
 
-            <a
+            <AnchorExternal
+                class="text-[#ff5c5a]"
                 href="https://ko-fi.com/pridit"
-                class="btn no-animation"
-                target="_blank"
+                :icon="['fas', 'heart']"
+                >Ko-fi</AnchorExternal
             >
-                <font-awesome-icon
-                    :icon="['fas', 'heart']"
-                    class="text-[#ff5c5a]"
-                    size="sm"
-                />
-                Ko-fi
-                <font-awesome-icon
-                    :icon="['fas', 'arrow-up-right-from-square']"
-                    size="xs"
-                />
-            </a>
         </div>
 
         <div
@@ -81,7 +52,7 @@ defineProps({
                         <th class="w-0">Rank</th>
                         <th>Name</th>
                         <th class="w-0">Score</th>
-                        <th class="hidden w-0 sm:table-cell">Last Seen</th>
+                        <th class="hidden w-0 md:table-cell">Last Seen</th>
                     </tr>
                 </thead>
 
@@ -153,7 +124,7 @@ defineProps({
                         </td>
 
                         <td
-                            class="hidden whitespace-nowrap text-neutral-500 sm:table-cell"
+                            class="hidden whitespace-nowrap text-neutral-500 md:table-cell"
                         >
                             {{ character.last_seen }}
                         </td>
@@ -162,7 +133,7 @@ defineProps({
             </table>
         </div>
 
-        <div v-else class="flex w-full flex-col">
+        <div v-else class="mt-8 flex w-full flex-col">
             <div class="divider">No records found</div>
         </div>
 
