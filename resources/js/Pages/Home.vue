@@ -1,6 +1,5 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import AnchorExternal from '@/Components/AnchorExternal.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 
@@ -18,29 +17,6 @@ defineProps({
         </Head>
 
         <Navigation />
-
-        <div class="mt-6 flex justify-center">
-            <AnchorExternal
-                href="https://dsc.gg/pridit"
-                class="text-[#7289da]"
-                :icon="['brands', 'discord']"
-                >Discord</AnchorExternal
-            >
-
-            <AnchorExternal
-                class="text-yellow-600"
-                href="https://feedback.pridit.co.uk"
-                :icon="['fas', 'bullhorn']"
-                >Feedback</AnchorExternal
-            >
-
-            <AnchorExternal
-                class="text-[#ff5c5a]"
-                href="https://ko-fi.com/pridit"
-                :icon="['fas', 'heart']"
-                >Ko-fi</AnchorExternal
-            >
-        </div>
 
         <div
             v-if="characters.data.length > 0"
