@@ -51,4 +51,12 @@ class Character extends Model
     {
         $query->where('score', '>=', 1);
     }
+
+    /**
+     * Scope a query to only include linkable characters.
+     */
+    public function scopeLinkable(Builder $query): void
+    {
+        $query->whereNull('user_id');
+    }
 }

@@ -1,14 +1,14 @@
-<script>
+<script setup>
 import { Link } from '@inertiajs/vue3';
 
-export default {
-    components: {
-        Link,
+defineProps({
+    links: {
+        type: Array,
     },
-    props: {
-        links: Array,
+    currentPage: {
+        type: Number,
     },
-};
+});
 </script>
 
 <template>
@@ -17,10 +17,13 @@ export default {
             <Link
                 class="btn no-animation first:mr-auto last:ml-auto [&:not(:first-child):not(:last-child)]:hidden md:[&:not(:first-child):not(:last-child)]:inline-flex"
                 :class="{
-                    hidden: link.label === '...',
+                    '!hidden': link.label === '...',
                     'btn-disabled invisible': link.url === null,
                     'bg-neutral-700 hover:bg-neutral-700': link.active,
                     'join-item': !!/\d/.test(link.label),
+                    '!text-neutral-600':
+                        parseInt(link.label) > currentPage + 1 ||
+                        parseInt(link.label) < currentPage - 1,
                 }"
                 :href="link.url"
                 v-html="link.label"

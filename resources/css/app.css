@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .container {
-    max-width: 768px;
+    max-width: 640px;
     min-width: 320px;
 }
 
@@ -15,7 +15,11 @@
     @apply text-neutral-500;
 }
 
-@media (max-width: 767px) {
+a.underlined-link {
+    @apply text-sky-500 opacity-90 hover:underline hover:underline-offset-4;
+}
+
+@media (width <= 767px) {
     .container {
         max-width: 387px;
     }

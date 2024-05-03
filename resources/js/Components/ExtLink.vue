@@ -16,11 +16,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <a
-        :href="href"
-        class="btn no-animation [&:not(:last-child)]:mr-3"
-        target="_blank"
-    >
+    <a :href="href" class="btn no-animation" target="_blank">
         <font-awesome-icon :icon="icon" :class="class" size="sm" />
         <slot />
         <font-awesome-icon

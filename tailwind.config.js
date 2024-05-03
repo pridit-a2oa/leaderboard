@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -20,6 +21,15 @@ export default {
       fontFamily: {
         sans: ['Figtree', ...defaultTheme.fontFamily.sans]
       }
+    },
+
+    screens: {
+      'xs': '386px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px'
     }
   },
 
@@ -28,11 +38,12 @@ export default {
       {
         default: {
           primary: '#0084ff',
-          'base-100': '#262626'
+          'base-100': '#262626',
+          accent: '#ca8a04'
         }
       }
     ]
   },
 
-  plugins: [require('daisyui')]
+  plugins: [forms, require('daisyui')]
 };

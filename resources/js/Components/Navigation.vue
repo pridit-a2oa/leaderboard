@@ -1,36 +1,32 @@
 <script setup>
-import AppLogo from '@/Components/ApplicationLogo.vue';
-import AnchorExternal from '@/Components/AnchorExternal.vue';
+import { Link } from '@inertiajs/vue3';
+import ExtLink from '@/Components/ExtLink.vue';
+import Login from '@/Components/Modal/Login.vue';
 </script>
 
 <template>
-    <div class="navbar mt-4 justify-center bg-neutral text-neutral-300">
-        <h1 class="text-xl">
-            <AppLogo />
-            Pridit's Domination Takistan
-        </h1>
-    </div>
-
-    <div class="mt-6 flex justify-center">
-        <AnchorExternal
+    <div class="xs:flex-row mt-8 flex flex-col justify-between gap-3">
+        <ExtLink
             class="text-[#7289da]"
             href="https://dsc.gg/pridit"
             :icon="['brands', 'discord']"
-            >Discord</AnchorExternal
+            >Discord</ExtLink
         >
 
-        <AnchorExternal
+        <ExtLink
             class="text-yellow-600"
             href="https://feedback.pridit.co.uk"
             :icon="['fas', 'bullhorn']"
-            >Feedback</AnchorExternal
+            >Feedback</ExtLink
         >
 
-        <AnchorExternal
+        <ExtLink
             class="text-[#ff5c5a]"
             href="https://ko-fi.com/pridit"
             :icon="['fas', 'heart']"
-            >Ko-fi</AnchorExternal
+            >Ko-fi</ExtLink
         >
+
+        <Login />
     </div>
 </template>
