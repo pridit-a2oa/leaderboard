@@ -34,4 +34,9 @@ class HomeController extends Controller
     {
         return Inertia::render('Privacy');
     }
+
+    public function settings(): Response
+    {
+        return Inertia::render('Profile/Settings');
+    }
 }

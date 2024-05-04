@@ -27,6 +27,37 @@ import Login from '@/Components/Modal/Login.vue';
             >Ko-fi</ExtLink
         >
 
-        <Login />
+        <div
+            v-if="$page.props.auth.user"
+            class="dropdown dropdown-bottom ml-auto hidden md:inline-flex"
+        >
+            <div tabindex="0" role="button" class="btn no-animation">
+                <font-awesome-icon :icon="['fas', 'user']" size="sm" />
+                {{ $page.props.auth.user.name }}
+            </div>
+            <ul
+                tabindex="0"
+                class="menu dropdown-content z-[1] mt-1 w-32 rounded-box bg-base-200 p-2 shadow"
+            >
+                <li>
+                    <Link :href="route('settings')"
+                        ><font-awesome-icon
+                            :icon="['fas', 'cog']"
+                            size="md"
+                        />Settings
+                    </Link>
+                </li>
+                <li>
+                    <Link :href="route('logout')" method="post" as="button"
+                        ><font-awesome-icon
+                            :icon="['fas', 'right-from-bracket']"
+                            size="md"
+                        />Log out</Link
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <Login v-else />
     </div>
 </template>
