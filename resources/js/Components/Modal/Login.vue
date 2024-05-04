@@ -27,6 +27,20 @@ function onClickOutside() {
             class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
         >
             <h3 class="text-lg font-bold">Sign in</h3>
+
+            <form method="dialog">
+                <button
+                    class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+                    @click="
+                        () => {
+                            showModal = false;
+                        }
+                    "
+                >
+                    &#x2715;
+                </button>
+            </form>
+
             <div class="form-control">
                 <label
                     class="input input-bordered mt-4 flex items-center gap-2"
