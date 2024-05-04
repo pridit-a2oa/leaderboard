@@ -107,11 +107,11 @@ defineProps({
                                     >LINK</Link
                                 > -->
 
-                                <span
+                                <!-- <span
                                     class="badge badge-primary badge-outline badge-sm select-none font-light opacity-80"
                                     href="#"
                                     >YOU</span
-                                >
+                                > -->
                             </td>
 
                             <td class="text-center font-bold">
