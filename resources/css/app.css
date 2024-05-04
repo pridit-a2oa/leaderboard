@@ -16,7 +16,11 @@
 }
 
 a.underlined-link {
-    @apply text-sky-500 opacity-90 hover:underline hover:underline-offset-4;
+    @apply text-neutral-400 opacity-90 hover:underline hover:underline-offset-4;
+}
+
+*:focus {
+    @apply !shadow-none !border-transparent !ring-transparent;
 }
 
 @media (width <= 767px) {
