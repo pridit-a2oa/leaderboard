@@ -19,7 +19,7 @@ a.underlined-link {
     @apply text-neutral-400 opacity-90 hover:underline hover:underline-offset-4;
 }
 
-*:focus {
+input[type="text"]:focus, input[type="password"] {
     @apply !shadow-none !border-transparent !ring-transparent;
 }
 
