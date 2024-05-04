@@ -530,8 +530,8 @@ import { Head, Link } from '@inertiajs/vue3';
                     By email:
                     <a
                         class="underlined-link"
-                        href="mailto:webmaster@pridit.co.uk"
-                        >webmaster@pridit.co.uk</a
+                        href="mailto:privacy@pridit.co.uk"
+                        >privacy@pridit.co.uk</a
                     >
                 </li>
             </ul>

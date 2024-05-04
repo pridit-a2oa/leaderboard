@@ -55,8 +55,7 @@ defineProps({
                                         'text-silver': key === 1,
                                         'text-bronze': key === 2,
                                     }"
-                                    :icon="['fas', 'medal']"
-                                    size="lg"
+                                    :icon="['fas', 'trophy']"
                                     fixed-width
                                 />
                             </td>

@@ -14,9 +14,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* import specific icons */
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { faRightFromBracket, faGear, faUser, faRightToBracket, faMedal, faHeart, faBullhorn, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket, faGear, faUser, faRightToBracket, faTrophy, faHeart, faBullhorn, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faRightFromBracket, faGear, faUser, faRightToBracket, faDiscord, faMedal, faHeart, faBullhorn, faArrowUpRightFromSquare);
+library.add(faRightFromBracket, faGear, faUser, faRightToBracket, faDiscord, faTrophy, faHeart, faBullhorn, faArrowUpRightFromSquare);
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
