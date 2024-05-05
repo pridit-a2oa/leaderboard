@@ -159,7 +159,7 @@ function toggle(id) {
                             >
                                 <tr
                                     v-for="statistic in character.statistics"
-                                    class="text-xs text-neutral-500"
+                                    class="bg-base-200 text-xs text-neutral-500"
                                 >
                                     <td>
                                         <!-- <span
