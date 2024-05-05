@@ -17,7 +17,7 @@ defineProps({
 const open = ref(null);
 
 function toggle(id) {
-    this.open = this.open === id ? null : id;
+    open.value = open.value === id ? null : id;
 }
 </script>
 
@@ -135,7 +135,6 @@ function toggle(id) {
                                         <font-awesome-icon
                                             class="align-middle"
                                             :icon="['brands', 'steam']"
-                                            size="md"
                                             fixed-width
                                         />
                                     </a>
