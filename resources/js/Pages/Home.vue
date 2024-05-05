@@ -1,5 +1,6 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
+import { ref } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
@@ -8,7 +9,16 @@ defineProps({
     characters: {
         type: Object,
     },
+    statistics: {
+        type: Object,
+    },
 });
+
+const open = ref(null);
+
+function toggle(id) {
+    this.open = this.open === id ? null : id;
+}
 </script>
 
 <template>
@@ -24,7 +34,7 @@ defineProps({
                 v-if="characters.data.length > 0"
                 class="mb-8 mt-4 overflow-x-auto font-bold"
             >
-                <table class="table border-separate border-spacing-y-0.5">
+                <table class="table border-collapse">
                     <thead>
                         <tr class="bg-base-100">
                             <th class="w-0">Rank</th>
@@ -38,40 +48,43 @@ defineProps({
                     </thead>
 
                     <tbody class="bg-base-300">
-                        <tr
+                        <template
                             v-for="(character, key) in characters.data"
                             :key="character.id"
                         >
-                            <td
-                                v-if="
-                                    characters.current_page === 1 &&
-                                    key in [0, 1, 2]
-                                "
-                                class="text-center"
-                            >
-                                <font-awesome-icon
-                                    :class="{
-                                        'text-gold': key === 0,
-                                        'text-silver': key === 1,
-                                        'text-bronze': key === 2,
-                                    }"
-                                    :icon="['fas', 'trophy']"
-                                    fixed-width
-                                />
-                            </td>
+                            <tr class="!border-t-2 border-base-100">
+                                <td
+                                    v-if="
+                                        characters.current_page === 1 &&
+                                        key in [0, 1, 2]
+                                    "
+                                    class="text-center"
+                                >
+                                    <font-awesome-icon
+                                        class="align-middle"
+                                        :class="{
+                                            'text-gold': key === 0,
+                                            'text-silver': key === 1,
+                                            'text-bronze': key === 2,
+                                        }"
+                                        :icon="['fas', 'trophy']"
+                                        fixed-width
+                                    />
+                                </td>
 
-                            <td v-else class="flex justify-center font-bold">
-                                {{
-                                    key +
-                                    (characters.current_page - 1) *
-                                        characters.per_page +
-                                    1
-                                }}
-                            </td>
+                                <td
+                                    v-else
+                                    class="flex justify-center font-bold"
+                                >
+                                    {{
+                                        key +
+                                        (characters.current_page - 1) *
+                                            characters.per_page +
+                                        1
+                                    }}
+                                </td>
 
-                            <td>
-                                <a
-                                    :href="`https://steamcommunity.com/profiles/${character.uid}`"
+                                <td
                                     :class="{
                                         '!text-gold':
                                             characters.current_page === 1 &&
@@ -82,47 +95,88 @@ defineProps({
                                         '!text-bronze':
                                             characters.current_page === 1 &&
                                             key === 2,
+                                        'cursor-pointer':
+                                            character.statistics.length > 0,
                                     }"
-                                    target="_blank"
+                                    @click="toggle(key)"
                                 >
-                                    {{ character.name }}
-
-                                    <font-awesome-icon
-                                        class="ml-0.5 !align-middle"
+                                    {{ character.name
+                                    }}<font-awesome-icon
+                                        v-if="character.statistics.length > 0"
+                                        class="ml-0.5 !align-middle text-neutral-500"
                                         :icon="[
                                             'fas',
-                                            'arrow-up-right-from-square',
+                                            key === open
+                                                ? 'caret-up'
+                                                : 'caret-down',
                                         ]"
-                                        size="2xs"
+                                        size="sm"
                                         fixed-width
                                     />
-                                </a>
-                            </td>
+                                </td>
 
-                            <td class="hidden md:table-cell">
-                                <!-- <Link
-                                    class="badge badge-accent badge-outline badge-sm select-none font-light"
-                                    href="#"
-                                    >LINK</Link
-                                > -->
+                                <td class="hidden md:table-cell">
+                                    <!-- <Link
+                                        class="badge badge-accent badge-outline badge-sm select-none font-light"
+                                        href="#"
+                                        >LINK</Link
+                                    > -->
 
-                                <!-- <span
-                                    class="badge badge-primary badge-outline badge-sm select-none font-light opacity-80"
-                                    href="#"
-                                    >YOU</span
-                                > -->
-                            </td>
+                                    <!-- <span
+                                        class="badge badge-primary badge-outline badge-sm select-none font-light opacity-80"
+                                        href="#"
+                                        >YOU</span
+                                    > -->
 
-                            <td class="text-center font-bold">
-                                {{ character.score }}
-                            </td>
+                                    <a
+                                        :href="`https://steamcommunity.com/profiles/${character.uid}`"
+                                        target="_blank"
+                                    >
+                                        <font-awesome-icon
+                                            class="align-middle"
+                                            :icon="['brands', 'steam']"
+                                            size="md"
+                                            fixed-width
+                                        />
+                                    </a>
+                                </td>
 
-                            <td
-                                class="hidden whitespace-nowrap text-neutral-500 md:table-cell"
+                                <td class="text-center font-bold">
+                                    {{ character.score }}
+                                </td>
+
+                                <td
+                                    class="hidden whitespace-nowrap text-neutral-500 md:table-cell"
+                                >
+                                    {{ character.updated_at }}
+                                </td>
+                            </tr>
+
+                            <template
+                                v-if="
+                                    key === open &&
+                                    character.statistics.length > 0
+                                "
                             >
-                                {{ character.last_seen }}
-                            </td>
-                        </tr>
+                                <tr
+                                    v-for="statistic in character.statistics"
+                                    class="text-xs text-neutral-500"
+                                >
+                                    <td>
+                                        <!-- <span
+                                            class="bg-supporter badge badge-sm select-none"
+                                            >Supporter</span
+                                        > -->
+                                    </td>
+                                    <td>{{ statistic.statistic.name }}</td>
+                                    <td class="hidden md:table-cell"></td>
+                                    <td class="text-center">
+                                        {{ statistic.value }}
+                                    </td>
+                                    <td class="hidden md:table-cell"></td>
+                                </tr>
+                            </template>
+                        </template>
                     </tbody>
                 </table>
             </div>

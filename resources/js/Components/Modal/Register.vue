@@ -3,10 +3,6 @@ import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
 
 const showModal = ref(false);
-
-function onClickOutside() {
-    console.log('Outside');
-}
 </script>
 
 <template>

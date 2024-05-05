@@ -13,7 +13,7 @@ defineProps({
 
 <template>
     <div v-if="links.length > 3" class="join mb-8 flex justify-center">
-        <template v-for="(link, key) in links">
+        <template v-for="link in links">
             <Link
                 class="btn no-animation first:mr-auto last:ml-auto [&:not(:first-child):not(:last-child)]:hidden md:[&:not(:first-child):not(:last-child)]:inline-flex"
                 :class="{

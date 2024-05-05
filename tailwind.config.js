@@ -15,7 +15,8 @@ export default {
       colors: {
         bronze: '#cd7f32',
         gold: '#d4af37',
-        silver: '#c0c0c0'
+        silver: '#c0c0c0',
+        supporter: '#026bbe'
       },
 
       fontFamily: {

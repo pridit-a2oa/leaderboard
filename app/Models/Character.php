@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use App\Models\Statistic;
+use App\Models\CharacterStatistic;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Character extends Model
 {
@@ -42,6 +46,24 @@ class Character extends Model
         return Attribute::make(
             get: fn (int $value) => number_format($value, 0, ',')
         );
+    }
+
+    /**
+     * Interact with the character's updated at.
+     */
+    protected function updatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value) => Carbon::parse($value)->diffForHumans()
+        );
+    }
+
+    /**
+     * Get the statistics for the character.
+     */
+    public function statistics(): HasMany
+    {
+        return $this->hasMany(CharacterStatistic::class);
     }
 
     /**
