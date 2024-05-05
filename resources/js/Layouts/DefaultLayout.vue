@@ -16,12 +16,12 @@ import AppLogo from '@/Components/ApplicationLogo.vue';
         </div>
 
         <footer class="footer bg-base-200">
-            <div class="container mx-auto flex justify-center py-6 text-sm">
+            <div class="container mx-auto flex justify-center py-6">
                 <Link class="underlined-link" :href="route('privacy')"
                     >Privacy policy</Link
                 >
 
-                <div class="ml-auto">
+                <div class="ml-auto self-center text-sm">
                     <span>&copy; {{ new Date().getFullYear() }}&nbsp;</span>
                     <a
                         class="underlined-link"
