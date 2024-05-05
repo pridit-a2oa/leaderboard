@@ -21,7 +21,7 @@ import AppLogo from '@/Components/ApplicationLogo.vue';
                     >Privacy policy</Link
                 >
 
-                <div class="ml-auto self-center text-sm">
+                <div class="ml-auto self-center text-xs">
                     <span>&copy; {{ new Date().getFullYear() }}&nbsp;</span>
                     <a
                         class="underlined-link"
