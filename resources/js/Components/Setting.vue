@@ -23,7 +23,7 @@ const settings = ref([
                     <Link
                         class="pl-2"
                         :class="{
-                            active: this.$page.component
+                            active: $page.component
                                 .toLowerCase()
                                 .includes(setting.type),
                         }"
@@ -41,7 +41,7 @@ const settings = ref([
                     <Link
                         class="pl-2"
                         :class="{
-                            active: this.$page.component.includes('Delete'),
+                            active: $page.component.includes('Delete'),
                         }"
                         href="/settings/delete"
                         ><font-awesome-icon
