@@ -1,0 +1,71 @@
+<script setup>
+import { ref } from 'vue';
+import { Link } from '@inertiajs/vue3';
+
+defineProps({ title: String });
+
+const settings = ref([
+    { type: 'account', icon: 'cog' },
+    { type: 'characters', icon: 'user' },
+    { type: 'connections', icon: 'plug' },
+    { type: 'features', icon: 'bars' },
+]);
+</script>
+
+<template>
+    <div class="mt-8 flex w-full">
+        <div class="font-semibold">
+            <ul class="menu w-44 rounded-md bg-base-200">
+                <li
+                    v-for="setting in settings"
+                    class="capitalize [&:not(:last-child)]:mb-1"
+                >
+                    <Link
+                        class="pl-2"
+                        :class="{
+                            active: this.$page.component
+                                .toLowerCase()
+                                .includes(setting.type),
+                        }"
+                        :href="`/settings/${setting.type}`"
+                        ><font-awesome-icon
+                            :icon="['fas', setting.icon]"
+                            fixed-width
+                        />{{ setting.type }}</Link
+                    >
+                </li>
+            </ul>
+
+            <ul class="menu mt-4 w-44 rounded-md bg-base-200">
+                <li class="text-red-500">
+                    <Link
+                        class="pl-2"
+                        :class="{
+                            active: this.$page.component.includes('Delete'),
+                        }"
+                        href="/settings/delete"
+                        ><font-awesome-icon
+                            :icon="['fas', 'ban']"
+                            fixed-width
+                        />Delete Account</Link
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <div class="ml-8 flex-col text-neutral-300">
+            <h2>{{ title }}</h2>
+            <slot />
+        </div>
+    </div>
+</template>
+
+<style scoped>
+h2 {
+    @apply mb-6 text-xl font-semibold;
+}
+
+a.active {
+    @apply !bg-[#333333];
+}
+</style>

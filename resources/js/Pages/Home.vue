@@ -117,8 +117,15 @@ function toggle(id) {
 
                                 <td class="hidden md:table-cell">
                                     <!-- <Link
+                                        v-if="$page.props.auth.user"
+                                        :href="route('link')"
                                         class="badge badge-accent badge-outline badge-sm select-none font-light"
-                                        href="#"
+                                        method="post"
+                                        as="button"
+                                        :data="{
+                                            id: character.id,
+                                            uid: character.uid,
+                                        }"
                                         >LINK</Link
                                     > -->
 

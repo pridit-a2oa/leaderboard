@@ -5,10 +5,26 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CharacterController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
-Route::get('/settings', [HomeController::class, 'settings'])->name('settings');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
+Route::get('/privacy', [HomeController::class, 'privacy'])
+    ->name('privacy');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/settings', [HomeController::class, 'settings'])
+        ->name('settings');
+
+    Route::post('link', [CharacterController::class, 'link'])
+        ->name('link');
+});
+
+Route::middleware('auth')->prefix('settings')->group(function () {
+    Route::get('/{type}', function ($type) {
+        return Inertia::render(sprintf('Settings/%s', ucfirst($type)));
+    })->whereIn('type', ['account', 'characters', 'connections', 'features', 'delete']);
+});
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [

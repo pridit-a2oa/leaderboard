@@ -5,7 +5,7 @@ import Login from '@/Components/Modal/Login.vue';
 </script>
 
 <template>
-    <div class="xs:flex-row mt-8 flex flex-col justify-between gap-3">
+    <div class="mt-8 flex flex-col justify-between gap-3 xs:flex-row">
         <ExtLink
             class="text-[#7289da]"
             href="https://dsc.gg/pridit"
@@ -40,18 +40,14 @@ import Login from '@/Components/Modal/Login.vue';
                 class="menu dropdown-content z-[1] mt-1 w-32 rounded-box bg-base-200 p-2 shadow"
             >
                 <li>
-                    <Link :href="route('settings')"
-                        ><font-awesome-icon
-                            :icon="['fas', 'cog']"
-                            size="md"
-                        />Settings
+                    <Link href="/settings/account"
+                        ><font-awesome-icon :icon="['fas', 'cog']" />Settings
                     </Link>
                 </li>
                 <li>
                     <Link :href="route('logout')" method="post" as="button"
                         ><font-awesome-icon
                             :icon="['fas', 'right-from-bracket']"
-                            size="md"
                         />Log out</Link
                     >
                 </li>
