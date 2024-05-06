@@ -27,7 +27,7 @@ import Setting from '@/Components/Setting.vue';
             >
                 <li>Your email address can be re-used</li>
                 <li>Any linked characters will be unlinked</li>
-                <li>Any active connection will be severed (e.g. Steam)</li>
+                <li>Any connections will be severed (e.g. Steam)</li>
                 <li>Ko-fi contribution will be unassociated (if associated)</li>
             </ul>
 
