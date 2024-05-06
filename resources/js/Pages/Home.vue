@@ -24,9 +24,7 @@ function toggle(id) {
 <template>
     <DefaultLayout>
         <main class="container mx-auto text-neutral-400">
-            <Head title="Leaderboard">
-                <link rel="icon" href="/images/logo.png" />
-            </Head>
+            <Head title="Leaderboard" />
 
             <Navigation />
 
