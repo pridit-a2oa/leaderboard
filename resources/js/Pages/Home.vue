@@ -40,8 +40,8 @@ function toggle(id) {
                             <th class="w-0">Rank</th>
                             <th>Name</th>
                             <th class="hidden w-0 md:table-cell"></th>
-                            <th class="w-0">Score</th>
-                            <th class="hidden w-0 md:table-cell">
+                            <th class="w-0 text-center">Score</th>
+                            <th class="hidden w-0 text-right md:table-cell">
                                 Last Updated
                             </th>
                         </tr>
@@ -103,12 +103,12 @@ function toggle(id) {
                                     {{ character.name
                                     }}<font-awesome-icon
                                         v-if="character.statistics.length > 0"
-                                        class="ml-0.5 !align-middle text-neutral-500"
+                                        class="ml-1 !align-middle text-neutral-400"
                                         :icon="[
                                             'fas',
                                             key === open
-                                                ? 'caret-up'
-                                                : 'caret-down',
+                                                ? 'angle-up'
+                                                : 'angle-down',
                                         ]"
                                         size="sm"
                                         fixed-width
@@ -145,7 +145,7 @@ function toggle(id) {
                                 </td>
 
                                 <td
-                                    class="hidden whitespace-nowrap text-neutral-500 md:table-cell"
+                                    class="hidden whitespace-nowrap text-right text-neutral-500 md:table-cell"
                                 >
                                     {{ character.updated_at }}
                                 </td>
