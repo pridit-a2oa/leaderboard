@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
+import Breadcrumb from '@/Components/Breadcrumb.vue';
 
 defineProps({ title: String });
 
@@ -13,7 +14,7 @@ const settings = ref([
 </script>
 
 <template>
-    <div class="mt-8 flex w-full">
+    <div class="flex w-full">
         <div class="font-semibold">
             <ul class="menu w-44 rounded-md bg-base-200">
                 <li

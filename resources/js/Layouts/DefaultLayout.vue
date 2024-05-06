@@ -1,6 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import AppLogo from '@/Components/ApplicationLogo.vue';
+import Breadcrumb from '@/Components/Breadcrumb.vue';
 </script>
 
 <template>
@@ -9,8 +10,10 @@ import AppLogo from '@/Components/ApplicationLogo.vue';
             <AppLogo />
         </div>
 
+        <Breadcrumb />
+
         <div class="container mx-auto flex-grow text-neutral-400">
-            <main>
+            <main class="my-6">
                 <slot />
             </main>
         </div>

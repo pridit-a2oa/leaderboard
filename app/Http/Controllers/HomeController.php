@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function privacy(): Response
     {
-        return Inertia::render('Privacy');
+        return Inertia::render('Privacy', ['name' => 'Privacy Policy', 'icon' => 'file']);
     }
 
     public function settings(): Response

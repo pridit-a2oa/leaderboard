@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('settings')->group(function () {
     Route::get('/{type}', function ($type) {
-        return Inertia::render(sprintf('Settings/%s', ucfirst($type)));
+        return Inertia::render(sprintf('Settings/%s', ucfirst($type)), ['name' => 'Settings', 'icon' => 'cog']);
     })->whereIn('type', ['account', 'characters', 'connections', 'features', 'delete']);
 });
 

@@ -7,7 +7,7 @@ import { Head, Link } from '@inertiajs/vue3';
     <DefaultLayout>
         <Head title="Privacy Policy" />
 
-        <div class="gap- my-8 flex flex-col gap-6">
+        <div class="mb-8 flex flex-col gap-6">
             <h1>Privacy Policy</h1>
             <p>Last updated: May 03, 2024</p>
             <p>
@@ -563,7 +563,7 @@ h4 {
 }
 
 ul {
-    @apply flex list-inside list-decimal flex-col gap-4 rounded-md bg-base-200 px-3 py-3;
+    @apply flex list-outside list-decimal flex-col gap-4 rounded-md bg-base-200 px-3 py-3 pl-10;
 
     li {
         @apply flex-1;
