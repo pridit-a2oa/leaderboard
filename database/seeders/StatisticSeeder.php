@@ -14,16 +14,16 @@ class StatisticSeeder extends Seeder
     public function run(): void
     {
         Statistic::insert([
-            ['name' => 'Airdrops Requested'],
-            ['name' => 'Camps Captured'],
-            ['name' => 'IEDs Disarmed'],
-            ['name' => 'Intelligence Found'],
-            ['name' => 'Suicide Bombers Killed'],
-            ['name' => 'Gestures Performed'],
-            ['name' => 'Revived Players'],
-            ['name' => 'Vehicles Deconstructed'],
-            ['name' => 'Wrecks Collected'],
-            ['name' => 'Wrecks Rebuilt']
+            ['name' => 'Airdrop Requests'],
+            ['name' => 'Camp Captures'],
+            ['name' => 'HALO Jumps'],
+            ['name' => 'IED Defusals'],
+            ['name' => 'Incapacitations'],
+            ['name' => 'Intelligence Retrievals'],
+            ['name' => 'Suicide Bomber Kills'],
+            ['name' => 'Player Revivals'],
+            ['name' => 'Vehicle Deconstructions'],
+            ['name' => 'Wreck Collections']
         ]);
     }
 }

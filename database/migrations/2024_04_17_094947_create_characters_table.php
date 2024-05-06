@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('uid')->nullable();
             $table->string('name');
             $table->bigInteger('score')->default(0);
-            $table->boolean('is_linkable')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletesTz('deleted_at', precision: 0);

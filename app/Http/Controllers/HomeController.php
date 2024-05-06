@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index(): Response
     {
         $characters = Character::rankable()
-            ->with('statistics.statistic')
+            ->with('statistics')
             ->orderByDesc('score')
             ->orderBy('updated_at')
             ->paginate(50)

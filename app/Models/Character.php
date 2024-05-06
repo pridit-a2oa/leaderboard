@@ -27,18 +27,6 @@ class Character extends Model
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'is_linkable' => 'boolean',
-        ];
-    }
-
-    /**
      * Interact with the character's score.
      */
     protected function score(): Attribute

@@ -18,10 +18,8 @@ class PermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $permissions = collect([
-            'links',
-            'vanity',
             'enhanced',
-            'visibility',
+            'links',
             'reset'
         ]);
 

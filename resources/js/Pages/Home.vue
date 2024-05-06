@@ -158,16 +158,13 @@ function toggle(id) {
                                 "
                             >
                                 <tr
-                                    v-for="statistic in character.statistics"
+                                    v-for="statistic in character.statistics.sort(
+                                        (a, b) => (a.name > b.name ? 1 : -1),
+                                    )"
                                     class="bg-base-200 text-xs text-neutral-500"
                                 >
-                                    <td>
-                                        <!-- <span
-                                            class="bg-supporter badge badge-sm select-none"
-                                            >Supporter</span
-                                        > -->
-                                    </td>
-                                    <td>{{ statistic.statistic.name }}</td>
+                                    <td></td>
+                                    <td>{{ statistic.name }}</td>
                                     <td class="hidden md:table-cell"></td>
                                     <td class="text-center">
                                         {{ statistic.value }}
