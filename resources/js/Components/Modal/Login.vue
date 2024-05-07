@@ -75,7 +75,6 @@ const submit = () => {
                             placeholder="Email"
                             v-model="form.email"
                             required
-                            autofocus
                             autocomplete="username"
                         />
                     </label>
