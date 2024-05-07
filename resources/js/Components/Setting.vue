@@ -54,7 +54,7 @@ const settings = ref([
             </ul>
         </div>
 
-        <div class="ml-8 flex-col text-neutral-300">
+        <div class="ml-6 w-full text-neutral-300">
             <h2>{{ title }}</h2>
             <slot />
         </div>

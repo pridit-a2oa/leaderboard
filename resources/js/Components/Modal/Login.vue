@@ -21,7 +21,7 @@ const submit = () => {
 </script>
 
 <template>
-    <span
+    <button
         class="btn no-animation ml-auto hidden md:inline-flex"
         @click="
             () => {
@@ -30,8 +30,8 @@ const submit = () => {
         "
     >
         <font-awesome-icon :icon="['fas', 'right-to-bracket']" size="sm" />Log
-        in</span
-    >
+        in
+    </button>
 
     <div class="modal" :class="{ 'modal-open': showModal }" role="dialog">
         <div

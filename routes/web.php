@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CharacterController;
 
@@ -22,8 +23,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('settings')->group(function () {
     Route::get('/{type}', function ($type) {
-        return Inertia::render(sprintf('Settings/%s', ucfirst($type)), ['name' => 'Settings', 'icon' => 'cog']);
+        return Inertia::render(sprintf('Setting/%s', ucfirst($type)), ['name' => 'Settings', 'icon' => 'cog']);
     })->whereIn('type', ['account', 'characters', 'connections', 'features', 'delete']);
+
+    Route::post('delete', [UserController::class, 'delete'])
+        ->name('user.delete');
 });
 
 // Route::get('/', function () {
