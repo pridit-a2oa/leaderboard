@@ -113,27 +113,46 @@ function toggle(id) {
                                     />
                                 </td>
 
-                                <td class="hidden md:table-cell">
-                                    <!-- <Link
-                                        v-if="$page.props.auth.user"
-                                        :href="route('link')"
-                                        class="badge badge-accent badge-outline badge-sm select-none font-light"
-                                        method="post"
-                                        as="button"
-                                        :data="{
-                                            id: character.id,
-                                            uid: character.uid,
-                                        }"
-                                        >LINK</Link
-                                    > -->
+                                <td class="hidden text-right md:table-cell">
+                                    <template
+                                        v-if="
+                                            $page.props.auth &&
+                                            $page.props.auth.user.connections.some(
+                                                (e) =>
+                                                    e.pivot.identifier ===
+                                                    character.uid,
+                                            )
+                                        "
+                                    >
+                                        <span
+                                            v-if="
+                                                $page.props.auth.user.characters.some(
+                                                    (e) =>
+                                                        e.pivot.character_id ===
+                                                        character.id,
+                                                )
+                                            "
+                                            class="badge badge-primary badge-outline badge-sm select-none font-light uppercase opacity-80"
+                                            href="#"
+                                            >You</span
+                                        >
 
-                                    <!-- <span
-                                        class="badge badge-primary badge-outline badge-sm select-none font-light opacity-80"
-                                        href="#"
-                                        >YOU</span
-                                    > -->
+                                        <Link
+                                            v-else
+                                            :href="route('character.link')"
+                                            method="post"
+                                            :data="{
+                                                character_id: character.id,
+                                            }"
+                                            class="badge badge-accent badge-outline badge-sm select-none font-light uppercase"
+                                            preserveScroll
+                                        >
+                                            Link
+                                        </Link>
+                                    </template>
 
                                     <a
+                                        v-else
                                         :href="`https://steamcommunity.com/profiles/${character.uid}`"
                                         target="_blank"
                                     >
