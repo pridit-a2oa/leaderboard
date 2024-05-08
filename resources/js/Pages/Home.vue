@@ -14,16 +14,6 @@ defineProps({
     },
 });
 
-const userCharacters =
-    usePage().props.auth.user !== null
-        ? usePage().props.auth.user.characters
-        : [];
-
-const userConnections =
-    usePage().props.auth.user !== null
-        ? usePage().props.auth.user.connections
-        : [];
-
 const open = ref(null);
 
 function toggle(id) {
@@ -126,7 +116,8 @@ function toggle(id) {
                                 <td class="hidden text-right md:table-cell">
                                     <template
                                         v-if="
-                                            userConnections.some(
+                                            $page.props.auth.user !== null &&
+                                            $page.props.auth.user.connections.some(
                                                 (e) =>
                                                     e.pivot.identifier ===
                                                     character.uid,
@@ -135,7 +126,9 @@ function toggle(id) {
                                     >
                                         <span
                                             v-if="
-                                                userCharacters.some(
+                                                $page.props.auth.user !==
+                                                    null &&
+                                                $page.props.auth.user.characters.some(
                                                     (e) =>
                                                         e.pivot.character_id ===
                                                         character.id,
@@ -150,6 +143,7 @@ function toggle(id) {
                                             v-else
                                             :href="route('character.link')"
                                             method="post"
+                                            as="button"
                                             :data="{
                                                 character_id: character.id,
                                             }"

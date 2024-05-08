@@ -15,7 +15,7 @@ defineProps({
 
     <DefaultLayout>
         <Setting title="Connections">
-            <table class="table border-collapse">
+            <table class="table border-collapse rounded-md bg-base-200">
                 <tbody>
                     <tr
                         v-for="connection in connections.sort((a, b) =>
@@ -23,7 +23,7 @@ defineProps({
                         )"
                         :key="connection.id"
                     >
-                        <td class="w-0 pl-0 text-center">
+                        <td class="w-0 text-center">
                             <font-awesome-icon
                                 :icon="['brands', connection.name]"
                                 size="2xl"
@@ -33,6 +33,20 @@ defineProps({
 
                         <td class="p-0 font-semibold capitalize">
                             {{ connection.name }}
+                            <span
+                                class="block text-sm font-normal text-neutral-500"
+                            >
+                                {{
+                                    $page.props.auth.user.connections
+                                        .filter(
+                                            (e) =>
+                                                e.pivot.connection_id ===
+                                                connection.id,
+                                        )
+                                        .map((e) => e.pivot.identifier)
+                                        .toString()
+                                }}</span
+                            >
                         </td>
 
                         <td class="text-right">

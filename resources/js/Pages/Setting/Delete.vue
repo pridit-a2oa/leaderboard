@@ -16,7 +16,10 @@ import Setting from '@/Components/Setting.vue';
                 :message="$page.props.flash.message"
             />
 
-            <template v-if="!$page.props.flash.message">
+            <div
+                v-if="!$page.props.flash.message"
+                class="rounded-md bg-base-200 p-4"
+            >
                 <p>
                     Please note that this action is
                     <span class="font-bold underline">irreversible</span>
@@ -57,7 +60,7 @@ import Setting from '@/Components/Setting.vue';
                     ><font-awesome-icon :icon="['fas', 'trash']" size="sm" />
                     Delete my account</Link
                 >
-            </template>
+            </div>
         </Setting>
     </DefaultLayout>
 </template>

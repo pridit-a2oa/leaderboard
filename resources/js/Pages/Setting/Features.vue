@@ -35,26 +35,35 @@ const features = ref([
                 />
             </a>
 
-            <ul v-for="feature in features">
-                <li v-if="is('member') || feature.supporter" class="mb-2">
-                    <font-awesome-icon
-                        class="text-red-500"
-                        :class="{
-                            '!text-green-500':
-                                is('admin | supporter') || !feature.supporter,
-                        }"
-                        :icon="[
-                            'fas',
-                            is('admin | supporter') || !feature.supporter
-                                ? 'check'
-                                : 'xmark',
-                        ]"
-                        fixed-width
-                    />
+            <div class="rounded-md bg-base-200 p-4">
+                <ul>
+                    <template v-for="feature in features">
+                        <li
+                            v-if="is('member') || feature.supporter"
+                            class="[&:not(:last-child)]:mb-2"
+                        >
+                            <font-awesome-icon
+                                class="text-red-500"
+                                :class="{
+                                    '!text-green-500':
+                                        is('admin | supporter') ||
+                                        !feature.supporter,
+                                }"
+                                :icon="[
+                                    'fas',
+                                    is('admin | supporter') ||
+                                    !feature.supporter
+                                        ? 'check'
+                                        : 'xmark',
+                                ]"
+                                fixed-width
+                            />
 
-                    {{ feature.type }}
-                </li>
-            </ul>
+                            {{ feature.type }}
+                        </li>
+                    </template>
+                </ul>
+            </div>
 
             <p></p>
         </Setting>
