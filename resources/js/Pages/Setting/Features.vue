@@ -64,8 +64,6 @@ const features = ref([
                     </template>
                 </ul>
             </div>
-
-            <p></p>
         </Setting>
     </DefaultLayout>
 </template>
