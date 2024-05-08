@@ -20,14 +20,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [UserController::class, 'settings'])
         ->name('settings');
 
-    Route::post('link', [CharacterController::class, 'link'])
-        ->name('link');
-
     Route::get('/connect', SteamController::class)
         ->name('connect');
 
     Route::post('delete', [UserController::class, 'delete'])
         ->name('user.delete');
+
+    Route::post('link', [CharacterController::class, 'link'])
+        ->name('character.link');
 
     Route::post('disconnect', [UserController::class, 'disconnect'])
         ->name('user.disconnect');

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Character;
 use App\Models\Connection;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -14,9 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, SoftDeletes, LaravelPermissionToVueJS;
-
-    protected $with = ['connections'];
+    use HasFactory, Notifiable, SoftDeletes, HasRoles, LaravelPermissionToVueJS;
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +39,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array<string>
+     */
+    protected $with = [
+        'characters',
+        'connections'
+    ];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -53,10 +62,18 @@ class User extends Authenticatable
     }
 
     /**
+     * The characters that belong to the user.
+     */
+    public function characters(): BelongsToMany
+    {
+        return $this->belongsToMany(Character::class);
+    }
+
+    /**
      * The connections that belong to the user.
      */
     public function connections(): BelongsToMany
     {
-        return $this->belongsToMany(Connection::class);
+        return $this->belongsToMany(Connection::class)->withPivot('identifier');
     }
 }

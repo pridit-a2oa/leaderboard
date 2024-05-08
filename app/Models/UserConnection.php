@@ -15,7 +15,9 @@ class UserConnection extends Pivot
      *
      * @var array
      */
-    protected $appends = ['name'];
+    protected $appends = [
+        'name'
+    ];
 
     /**
      * Determine the name of the connection.
