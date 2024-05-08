@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\StatisticSeeder;
+use Database\Seeders\ConnectionSeeder;
 use Database\Seeders\PermissionSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            ConnectionSeeder::class,
             PermissionSeeder::class,
             StatisticSeeder::class,
         ]);

@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    /**
+     * Show the home page.
+     */
     public function index(): Response
     {
         $characters = Character::rankable()
@@ -25,13 +27,14 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Show the privacy policy page.
+     */
     public function privacy(): Response
     {
-        return Inertia::render('Privacy', ['name' => 'Privacy Policy', 'icon' => 'file']);
-    }
-
-    public function settings(): Response
-    {
-        return Inertia::render('Profile/Settings');
+        return Inertia::render('Privacy', [
+            'name' => 'Privacy Policy',
+            'icon' => 'file'
+        ]);
     }
 }

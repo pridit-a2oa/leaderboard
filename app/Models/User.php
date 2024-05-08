@@ -3,16 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\UserConnection;
 use Spatie\Permission\Traits\HasRoles;
-use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles, SoftDeletes, LaravelPermissionToVueJS;
+
+    protected $with = ['connections'];
 
     /**
      * The attributes that are mass assignable.
@@ -46,5 +50,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the connections for the character.
+     */
+    public function connections(): HasMany
+    {
+        return $this->hasMany(UserConnection::class);
     }
 }

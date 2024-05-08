@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
     /**
+     * Show the settings page.
+     */
+    public function settings(): Response
+    {
+        return Inertia::render('Profile/Settings');
+    }
+
+    /**
      * Delete the user's account.
      */
     public function delete(Request $request): RedirectResponse
