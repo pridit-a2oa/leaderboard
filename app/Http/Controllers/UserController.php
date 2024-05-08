@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
     /**
-     * Show the settings page.
+     * Show the user's settings page.
      */
     public function settings(): Response
     {
@@ -22,13 +22,17 @@ class UserController extends Controller
      */
     public function delete(Request $request): RedirectResponse
     {
-        $request->session()->flash('message', 'Please check your email for a confirmation link');
+        $request->session()
+            ->flash(
+                'message',
+                'Please check your email for a confirmation link'
+            );
 
         return Redirect::to('/settings/delete');
     }
 
     /**
-     * Disconnect a user connection.
+     * Disconnect a user's connection.
      */
     public function disconnect(Request $request): RedirectResponse
     {
@@ -38,6 +42,10 @@ class UserController extends Controller
 
         $user = Auth::user();
 
+        // Detach all associated characters.
+        $user->characters()->detach();
+
+        // Detach the connection.
         $user->connections()->detach($request->connection_id);
 
         return Redirect::to('/settings/connections');
