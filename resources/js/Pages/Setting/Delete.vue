@@ -53,7 +53,7 @@ import Setting from '@/Components/Setting.vue';
                 <br />
 
                 <Link
-                    class="btn btn-error btn-sm text-black"
+                    class="btn btn-error no-animation btn-sm text-black"
                     :href="route('user.delete')"
                     method="post"
                     as="button"
