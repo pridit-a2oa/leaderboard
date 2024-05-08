@@ -44,8 +44,7 @@ final class SteamController
 
         $steamUser = $steamAuthenticator->getSteamUser();
 
-        $user = Auth::user()->connections()->create([
-            'connection_id' => 1,
+        Auth::user()->connections()->attach(1, [
             'identifier' => $steamUser->getSteamId()
         ]);
 

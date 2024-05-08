@@ -3,14 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\UserConnection;
+use App\Models\Connection;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -53,10 +53,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the connections for the character.
+     * The connections that belong to the user.
      */
-    public function connections(): HasMany
+    public function connections(): BelongsToMany
     {
-        return $this->hasMany(UserConnection::class);
+        return $this->belongsToMany(Connection::class);
     }
 }

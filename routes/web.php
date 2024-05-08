@@ -25,25 +25,28 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/connect', SteamController::class)
         ->name('connect');
-});
-
-Route::middleware('auth')->prefix('settings')->group(function () {
-    Route::get('/{type}', function ($type) {
-        return Inertia::render(sprintf('Setting/%s', ucfirst($type)), [
-            'name' => 'Settings',
-            'icon' => 'cog',
-            'connections' => Connection::get()
-        ]);
-    })->whereIn('type', [
-        'account',
-        'characters',
-        'connections',
-        'features',
-        'delete'
-    ]);
 
     Route::post('delete', [UserController::class, 'delete'])
         ->name('user.delete');
+
+    Route::post('disconnect', [UserController::class, 'disconnect'])
+        ->name('user.disconnect');
+
+    Route::prefix('settings')->group(function () {
+        Route::get('/{type}', function ($type) {
+            return Inertia::render(sprintf('Setting/%s', ucfirst($type)), [
+                'name' => 'Settings',
+                'icon' => 'cog',
+                'connections' => Connection::get()
+            ]);
+        })->whereIn('type', [
+            'account',
+            'characters',
+            'connections',
+            'features',
+            'delete'
+        ]);
+    });
 });
 
 // Route::get('/', function () {

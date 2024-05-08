@@ -36,16 +36,23 @@ defineProps({
                         </td>
 
                         <td class="text-right">
-                            <button
+                            <Link
                                 v-if="
                                     $page.props.auth.user.connections.some(
-                                        (e) => e.name === connection.name,
+                                        (e) =>
+                                            e.pivot.connection_id ===
+                                            connection.id,
                                     )
                                 "
+                                :href="route('user.disconnect')"
+                                method="post"
+                                :data="{
+                                    connection_id: connection.id,
+                                }"
                                 class="badge badge-error badge-outline select-none font-light uppercase"
                             >
                                 Disconnect
-                            </button>
+                            </Link>
 
                             <Link
                                 v-else
