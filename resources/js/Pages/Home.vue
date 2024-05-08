@@ -1,7 +1,7 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { ref } from 'vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, usePage } from '@inertiajs/vue3';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 
@@ -13,6 +13,16 @@ defineProps({
         type: Object,
     },
 });
+
+const userCharacters =
+    usePage().props.auth.user !== null
+        ? usePage().props.auth.user.characters
+        : [];
+
+const userConnections =
+    usePage().props.auth.user !== null
+        ? usePage().props.auth.user.connections
+        : [];
 
 const open = ref(null);
 
@@ -116,8 +126,7 @@ function toggle(id) {
                                 <td class="hidden text-right md:table-cell">
                                     <template
                                         v-if="
-                                            $page.props.auth &&
-                                            $page.props.auth.user.connections.some(
+                                            userConnections.some(
                                                 (e) =>
                                                     e.pivot.identifier ===
                                                     character.uid,
@@ -126,7 +135,7 @@ function toggle(id) {
                                     >
                                         <span
                                             v-if="
-                                                $page.props.auth.user.characters.some(
+                                                userCharacters.some(
                                                     (e) =>
                                                         e.pivot.character_id ===
                                                         character.id,
