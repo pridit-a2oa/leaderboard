@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('connection_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('connection_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('identifier')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('characters');
             $table->foreign('connection_id')->references('id')->on('connections');
+            $table->foreign('user_id')->references('id')->on('characters');
         });
     }
 
