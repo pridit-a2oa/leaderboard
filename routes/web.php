@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::post('visibility', [CharacterController::class, 'toggleVisibility'])
         ->name('character.visibility');
 
+    Route::post('reset', [CharacterController::class, 'reset'])
+        ->name('character.reset');
+
     Route::post('disconnect', [UserController::class, 'disconnect'])
         ->name('user.disconnect');
 

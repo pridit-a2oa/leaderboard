@@ -81,8 +81,9 @@ import Setting from '@/Components/Setting.vue';
                             Unlink
                         </Link>
 
-                        <!-- <Link
-                            :href="route('character.link')"
+                        <Link
+                            v-if="is('admin | supporter')"
+                            :href="route('character.reset')"
                             method="post"
                             as="button"
                             :data="{
@@ -99,7 +100,7 @@ import Setting from '@/Components/Setting.vue';
                             />
 
                             Reset
-                        </Link> -->
+                        </Link>
                     </td>
                 </tr>
             </table>

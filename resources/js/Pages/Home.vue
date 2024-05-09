@@ -226,7 +226,7 @@ function toggle(id) {
                                     <td>{{ statistic.name }}</td>
                                     <td class="hidden md:table-cell"></td>
                                     <td class="text-center">
-                                        {{ statistic.value }}
+                                        {{ statistic.pivot.value }}
                                     </td>
                                     <td class="hidden md:table-cell"></td>
                                 </tr>

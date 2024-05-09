@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\CharacterRequest;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\CharacterFeatureRequest;
 
 class CharacterController extends Controller
 {
@@ -56,6 +57,25 @@ class CharacterController extends Controller
         // Toggle the visibility of the character
         $character->is_visible = !$character->is_visible;
         $character->save();
+
+        return Redirect::to('/settings/characters');
+    }
+
+    /**
+     * Reset the statistics of a character.
+     */
+    public function reset(CharacterFeatureRequest $request): RedirectResponse
+    {
+        $request->validated();
+
+        $character = Character::findOrFail($request->character_id);
+
+        // Zero the score of the character
+        $character->score = 0;
+        $character->save();
+
+        // Detach all character statistics
+        $character->statistics()->detach();
 
         return Redirect::to('/settings/characters');
     }
