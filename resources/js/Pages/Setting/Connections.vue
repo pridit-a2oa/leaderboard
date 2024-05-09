@@ -78,7 +78,7 @@ defineProps({
                             <Link
                                 v-else
                                 :href="route('connect')"
-                                class="badge badge-primary badge-outline select-none font-light uppercase"
+                                class="badge badge-success badge-outline select-none font-light uppercase"
                             >
                                 Connect
                             </Link>
