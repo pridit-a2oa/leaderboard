@@ -1,8 +1,13 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { watchEffect } from 'vue';
+import { Head, Link, usePage } from '@inertiajs/vue3';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
+
+watchEffect(() => {
+    window.Laravel.jsPermissions = usePage().props.permissions;
+});
 </script>
 
 <template>
@@ -82,7 +87,9 @@ import Setting from '@/Components/Setting.vue';
                         </Link>
 
                         <Link
-                            v-if="is('admin | supporter')"
+                            v-if="
+                                is('admin | supporter') && character.score > 0
+                            "
                             :href="route('character.reset')"
                             method="post"
                             as="button"
