@@ -53,7 +53,7 @@ final class SteamController
             $request->session()
                 ->flash(
                     'message',
-                    ['error', 'This Steam account is already linked to another user']
+                    ['error', 'Steam account is already connected to another user']
                 );
         }
 
