@@ -20,6 +20,15 @@ import Breadcrumb from '@/Components/Breadcrumb.vue';
 
         <footer class="footer bg-base-200">
             <div class="container mx-auto flex justify-center py-6">
+                <a href="https://github.com/pridit-a2oa" target="_blank">
+                    <font-awesome-icon
+                        class="!align-middle"
+                        :icon="['brands', 'github']"
+                        size="md"
+                        fixed-width
+                    />
+                </a>
+
                 <Link class="underlined-link" :href="route('privacy')"
                     >Privacy policy</Link
                 >
