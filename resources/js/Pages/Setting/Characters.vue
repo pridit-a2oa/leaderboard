@@ -24,7 +24,11 @@ watchEffect(() => {
             <table
                 class="table table-fixed border-separate border-spacing-x-0 border-spacing-y-1 rounded-md bg-base-200"
             >
-                <tr v-for="character in $page.props.auth.user.characters">
+                <tr
+                    v-for="character in $page.props.auth.user.characters.sort(
+                        (a, b) => (a.name > b.name ? 1 : -1),
+                    )"
+                >
                     <td class="w-0">
                         <font-awesome-icon
                             class="!align-middle"
@@ -34,86 +38,87 @@ watchEffect(() => {
                         />
                     </td>
 
-                    <td class="w-28 break-all pr-2 font-bold">
+                    <td class="break-all pr-2 font-bold">
                         {{ character.name }}
                     </td>
 
                     <td class="text-right">
-                        <Link
-                            :href="route('character.visibility')"
-                            method="post"
-                            as="button"
-                            :data="{
-                                character_id: character.id,
-                            }"
-                            class="badge badge-outline badge-sm select-none font-light uppercase"
-                            :class="{
-                                'opacity-60': !character.is_visible,
-                            }"
-                            preserveScroll
-                        >
-                            <font-awesome-icon
-                                class="mr-1 align-middle"
-                                :icon="[
-                                    'fas',
-                                    character.is_visible ? 'eye' : 'eye-slash',
-                                ]"
-                                size="2xs"
-                                fixed-width
-                            />
-
-                            <span v-if="character.is_visible">Public</span>
-                            <span v-else>Hidden</span>
-                        </Link>
-
-                        <Link
-                            :href="route('character.unlink')"
-                            method="post"
-                            as="button"
-                            :data="{
-                                character_id: character.id,
-                            }"
-                            class="badge badge-accent badge-outline badge-sm ml-2 select-none font-light uppercase"
-                            preserveScroll
-                        >
-                            <font-awesome-icon
-                                class="mr-1 align-middle"
-                                :icon="['fas', 'user-slash']"
-                                size="2xs"
-                                fixed-width
-                            />
-
-                            Unlink
-                        </Link>
-
                         <div
-                            class="tooltip tooltip-bottom tooltip-error before:w-[14rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
-                            data-tip="Score &amp; any additional statistics will be reset for this character&#10;&#10;This action cannot be reversed"
+                            class="tooltip tooltip-bottom tooltip-secondary before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            data-tip="Toggle the visibility of this character in the leaderboard"
                         >
                             <Link
-                                v-if="
-                                    is('admin | supporter') &&
-                                    parseInt(
-                                        character.score.replaceAll(',', ''),
-                                    ) > 0
-                                "
+                                :href="route('character.visibility')"
+                                method="post"
+                                as="button"
+                                :data="{
+                                    character_id: character.id,
+                                }"
+                                class="badge badge-outline badge-sm select-none font-light uppercase"
+                                :class="{
+                                    'opacity-60': !character.is_visible,
+                                }"
+                                preserveScroll
+                            >
+                                <font-awesome-icon
+                                    :icon="[
+                                        'fas',
+                                        character.is_visible
+                                            ? 'eye'
+                                            : 'eye-slash',
+                                    ]"
+                                    size="xs"
+                                    fixed-width
+                                />
+                            </Link>
+                        </div>
+
+                        <div
+                            class="tooltip tooltip-bottom tooltip-warning ml-2 before:w-[15rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            data-tip="Unlink character from your account (can be relinked at any time)"
+                        >
+                            <Link
+                                :href="route('character.unlink')"
+                                method="post"
+                                as="button"
+                                :data="{
+                                    character_id: character.id,
+                                }"
+                                class="badge badge-accent badge-outline badge-sm select-none uppercase"
+                                preserveScroll
+                            >
+                                <font-awesome-icon
+                                    :icon="['fas', 'user-slash']"
+                                    size="xs"
+                                    fixed-width
+                                />
+                            </Link>
+                        </div>
+
+                        <div
+                            v-if="
+                                is('admin | supporter') &&
+                                parseInt(character.score.replaceAll(',', '')) >
+                                    0
+                            "
+                            class="tooltip tooltip-bottom tooltip-error ml-2 before:w-[15rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            data-tip="Score and any additional statistics will be reset for this character&#10;(cannot be reversed)"
+                        >
+                            <Link
                                 :href="route('character.reset')"
                                 method="post"
                                 as="button"
                                 :data="{
                                     character_id: character.id,
                                 }"
-                                class="badge badge-error badge-outline badge-sm ml-2 select-none font-light uppercase"
+                                class="badge badge-error badge-outline badge-sm select-none uppercase"
                                 preserveScroll
                             >
                                 <font-awesome-icon
-                                    class="mr-1 align-middle"
                                     :icon="['fas', 'rotate']"
-                                    size="2xs"
+                                    size="xs"
                                     fixed-width
                                 />
-
-                                Reset
                             </Link>
                         </div>
                     </td>
