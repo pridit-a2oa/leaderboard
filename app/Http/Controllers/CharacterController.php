@@ -20,6 +20,11 @@ class CharacterController extends Controller
 
         $character = Character::findOrFail($request->character_id);
 
+        // Ineligible to link more than one character to a user as a member
+        if (auth()->user()->characters()->count() > 0 && auth()->user()->hasRole('member')) {
+            return Redirect::route('home');
+        }
+
         // Attach the character to the user
         auth()->user()->characters()->attach($character->id);
 
