@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('connection_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('identifier')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
 
             $table->foreign('connection_id')->references('id')->on('connections');
             $table->foreign('user_id')->references('id')->on('users');
