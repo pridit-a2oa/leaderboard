@@ -74,7 +74,7 @@ watchEffect(() => {
                         </div>
 
                         <div
-                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[17rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom tooltip-accent ml-3 before:w-[17rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Unlink this character from your account (can be relinked at any time)"
                         >
                             <Link
