@@ -138,8 +138,7 @@ function toggle(id) {
                                                         character.id,
                                                 )
                                             "
-                                            class="badge badge-primary badge-outline badge-sm select-none font-light uppercase opacity-80"
-                                            href="#"
+                                            class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"
                                             >You</span
                                         >
 
@@ -150,7 +149,7 @@ function toggle(id) {
                                                     $page.props.auth.user
                                                         .characters.length > 0
                                                 "
-                                                class="badge badge-error badge-outline badge-sm select-none font-light uppercase opacity-70"
+                                                class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
                                                 href="/settings/features"
                                             >
                                                 <font-awesome-icon
@@ -171,7 +170,7 @@ function toggle(id) {
                                                 :data="{
                                                     character_id: character.id,
                                                 }"
-                                                class="badge badge-accent badge-outline badge-sm select-none font-light uppercase"
+                                                class="badge badge-success badge-outline badge-sm select-none font-light uppercase"
                                                 preserveScroll
                                             >
                                                 <font-awesome-icon

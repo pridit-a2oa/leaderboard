@@ -127,7 +127,6 @@ const submit = () => {
                     </div>
 
                     <button
-                        href="#"
                         class="btn mt-4 w-full"
                         :class="{ 'opacity-25': form.processing }"
                     >
