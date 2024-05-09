@@ -129,6 +129,7 @@ const submit = () => {
                     <button
                         class="btn mt-4 w-full"
                         :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
                     >
                         Login to your account
                     </button>

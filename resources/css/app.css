@@ -23,6 +23,10 @@ tr {
     @apply !border-0;
 }
 
+.btn:disabled {
+    @apply bg-base-300;
+}
+
 input[type="text"]:focus, input[type="email"], input[type="password"] {
     @apply !shadow-none !border-transparent !ring-transparent;
 }
