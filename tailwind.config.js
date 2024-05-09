@@ -11,6 +11,7 @@ export default {
   ],
 
   safelist: [
+    'alert-error',
     'alert-info',
     'alert-success',
     'alert-warning',

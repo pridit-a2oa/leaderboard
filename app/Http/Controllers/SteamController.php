@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\ConnectionUser;
 use GuzzleHttp\Psr7\HttpFactory;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Facades\Auth;
@@ -44,9 +45,17 @@ final class SteamController
 
         $steamUser = $steamAuthenticator->getSteamUser();
 
-        Auth::user()->connections()->attach(1, [
-            'identifier' => $steamUser->getSteamId()
-        ]);
+        if (ConnectionUser::where('identifier', $steamUser->getSteamId())->doesntExist()) {
+            Auth::user()->connections()->attach(1, [
+                'identifier' => $steamUser->getSteamId()
+            ]);
+        } else {
+            $request->session()
+                ->flash(
+                    'message',
+                    ['error', 'This Steam account is already linked to another user']
+                );
+        }
 
         return Redirect::to('/settings/connections');
     }

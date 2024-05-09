@@ -25,7 +25,7 @@ class UserController extends Controller
         $request->session()
             ->flash(
                 'message',
-                'Please check your email for a confirmation link'
+                ['warning', 'Please check your email for a confirmation link']
             );
 
         return Redirect::to('/settings/delete');

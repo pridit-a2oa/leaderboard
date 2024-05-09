@@ -12,8 +12,8 @@ import Setting from '@/Components/Setting.vue';
         <Setting title="Delete Account">
             <Alert
                 v-if="$page.props.flash.message"
-                type="warning"
-                :message="$page.props.flash.message"
+                :type="$page.props.flash.message[0]"
+                :message="$page.props.flash.message[1]"
             />
 
             <div

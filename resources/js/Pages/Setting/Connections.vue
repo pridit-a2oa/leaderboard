@@ -2,6 +2,7 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import Setting from '@/Components/Setting.vue';
+import Alert from '@/Components/Alert.vue';
 
 defineProps({
     connections: {
@@ -15,6 +16,12 @@ defineProps({
 
     <DefaultLayout>
         <Setting title="Connections">
+            <Alert
+                v-if="$page.props.flash.message"
+                :type="$page.props.flash.message[0]"
+                :message="$page.props.flash.message[1]"
+            />
+
             <table class="table border-collapse rounded-md bg-base-200">
                 <tbody>
                     <tr
