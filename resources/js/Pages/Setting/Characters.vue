@@ -46,7 +46,7 @@ watchEffect(() => {
                             :data="{
                                 character_id: character.id,
                             }"
-                            class="badge badge-outline badge-sm mr-3 select-none font-light uppercase"
+                            class="badge badge-outline badge-sm select-none font-light uppercase"
                             :class="{
                                 'opacity-60': !character.is_visible,
                             }"
@@ -73,7 +73,7 @@ watchEffect(() => {
                             :data="{
                                 character_id: character.id,
                             }"
-                            class="badge badge-accent badge-outline badge-sm mr-3 select-none font-light uppercase"
+                            class="badge badge-accent badge-outline badge-sm ml-2 select-none font-light uppercase"
                             preserveScroll
                         >
                             <font-awesome-icon
@@ -86,28 +86,36 @@ watchEffect(() => {
                             Unlink
                         </Link>
 
-                        <Link
-                            v-if="
-                                is('admin | supporter') && character.score > 0
-                            "
-                            :href="route('character.reset')"
-                            method="post"
-                            as="button"
-                            :data="{
-                                character_id: character.id,
-                            }"
-                            class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
-                            preserveScroll
+                        <div
+                            class="tooltip tooltip-bottom tooltip-error before:w-[14rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            data-tip="Score &amp; any additional statistics will be reset for this character&#10;&#10;This action cannot be reversed"
                         >
-                            <font-awesome-icon
-                                class="mr-1 align-middle"
-                                :icon="['fas', 'rotate']"
-                                size="2xs"
-                                fixed-width
-                            />
+                            <Link
+                                v-if="
+                                    is('admin | supporter') &&
+                                    parseInt(
+                                        character.score.replaceAll(',', ''),
+                                    ) > 0
+                                "
+                                :href="route('character.reset')"
+                                method="post"
+                                as="button"
+                                :data="{
+                                    character_id: character.id,
+                                }"
+                                class="badge badge-error badge-outline badge-sm ml-2 select-none font-light uppercase"
+                                preserveScroll
+                            >
+                                <font-awesome-icon
+                                    class="mr-1 align-middle"
+                                    :icon="['fas', 'rotate']"
+                                    size="2xs"
+                                    fixed-width
+                                />
 
-                            Reset
-                        </Link>
+                                Reset
+                            </Link>
+                        </div>
                     </td>
                 </tr>
             </table>
