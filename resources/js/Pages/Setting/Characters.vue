@@ -74,7 +74,7 @@ watchEffect(() => {
                         </div>
 
                         <div
-                            class="tooltip tooltip-bottom tooltip-warning ml-2 before:w-[17rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[17rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Unlink this character from your account (can be relinked at any time)"
                         >
                             <Link
@@ -101,7 +101,7 @@ watchEffect(() => {
                                 parseInt(character.score.replaceAll(',', '')) >
                                     0
                             "
-                            class="tooltip tooltip-bottom tooltip-error ml-2 before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Reset score and any additional statistics for this character&#10;(cannot be reversed)"
                         >
                             <Link
