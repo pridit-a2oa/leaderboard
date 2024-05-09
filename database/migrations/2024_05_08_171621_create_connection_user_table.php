@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('connection_id')->references('id')->on('connections');
-            $table->foreign('user_id')->references('id')->on('characters');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

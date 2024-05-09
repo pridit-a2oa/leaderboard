@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
@@ -12,6 +12,10 @@ defineProps({
     statistics: {
         type: Object,
     },
+});
+
+watchEffect(() => {
+    window.Laravel.jsPermissions = usePage().props.permissions;
 });
 
 const open = ref(null);
@@ -139,19 +143,47 @@ function toggle(id) {
                                             >You</span
                                         >
 
-                                        <Link
-                                            v-else
-                                            :href="route('character.link')"
-                                            method="post"
-                                            as="button"
-                                            :data="{
-                                                character_id: character.id,
-                                            }"
-                                            class="badge badge-accent badge-outline badge-sm select-none font-light uppercase"
-                                            preserveScroll
-                                        >
-                                            Link
-                                        </Link>
+                                        <template v-else>
+                                            <Link
+                                                v-if="
+                                                    is('member') &&
+                                                    $page.props.auth.user
+                                                        .characters.length > 0
+                                                "
+                                                class="badge badge-error badge-outline badge-sm select-none font-light uppercase opacity-70"
+                                                href="/settings/features"
+                                            >
+                                                <font-awesome-icon
+                                                    class="mr-1 align-middle"
+                                                    :icon="['fas', 'lock']"
+                                                    size="2xs"
+                                                    fixed-width
+                                                />
+
+                                                Link
+                                            </Link>
+
+                                            <Link
+                                                v-else
+                                                :href="route('character.link')"
+                                                method="post"
+                                                as="button"
+                                                :data="{
+                                                    character_id: character.id,
+                                                }"
+                                                class="badge badge-accent badge-outline badge-sm select-none font-light uppercase"
+                                                preserveScroll
+                                            >
+                                                <font-awesome-icon
+                                                    class="mr-1 align-middle"
+                                                    :icon="['fas', 'user']"
+                                                    size="2xs"
+                                                    fixed-width
+                                                />
+
+                                                Link
+                                            </Link>
+                                        </template>
                                     </template>
 
                                     <a

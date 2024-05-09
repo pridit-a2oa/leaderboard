@@ -24,7 +24,20 @@ class Character extends Model
         'uid',
         'name',
         'score',
+        'is_visible',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'is_visible' => 'boolean',
+        ];
+    }
 
     /**
      * Interact with the character's score.
@@ -55,11 +68,12 @@ class Character extends Model
     }
 
     /**
-     * Scope a query to only include characters with score.
+     * Scope a query to only include characters with score and visible.
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->where('score', '>=', 1);
+        $query->where('score', '>=', 1)
+            ->where('is_visible', 1);
     }
 
     /**

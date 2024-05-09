@@ -29,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::post('link', [CharacterController::class, 'link'])
         ->name('character.link');
 
+    Route::post('unlink', [CharacterController::class, 'unlink'])
+        ->name('character.unlink');
+
+    Route::post('visibility', [CharacterController::class, 'toggleVisibility'])
+        ->name('character.visibility');
+
     Route::post('disconnect', [UserController::class, 'disconnect'])
         ->name('user.disconnect');
 
