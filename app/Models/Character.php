@@ -69,7 +69,8 @@ class Character extends Model
 
     /**
      * Scope a query to only include characters with score and visible,
-     * filtering unique names and prioritising clashes based on recently active.
+     * filtering unique names and prioritising based on highest score and, if
+     * matching, recently active.
      */
     public function scopeRankable(Builder $query): void
     {
