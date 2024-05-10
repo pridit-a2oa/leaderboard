@@ -18,7 +18,6 @@ class HomeController extends Controller
         $characters = Character::rankable()
             ->with('statistics')
             ->orderByDesc('score')
-            ->orderBy('updated_at')
             ->paginate(50)
             ->onEachSide(1);
 

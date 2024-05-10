@@ -68,11 +68,14 @@ class Character extends Model
     }
 
     /**
-     * Scope a query to only include characters with score and visible.
+     * Scope a query to only include characters with score and visible,
+     * filtering unique names and prioritising clashes based on recently active.
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->where('score', '>=', 1)
+        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, updated_at desc) AS RN FROM characters WHERE is_visible = 1) x')
+            ->where('RN', 1)
+            ->where('score', '>', 0)
             ->where('is_visible', 1);
     }
 
