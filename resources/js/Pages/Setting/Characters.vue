@@ -2,12 +2,16 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { watchEffect } from 'vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faUser,
+    faEye,
+    faEyeSlash,
+    faUserSlash,
+    faRotate,
+} from '@fortawesome/free-solid-svg-icons';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
-
-watchEffect(() => {
-    window.Laravel.jsPermissions = usePage().props.permissions;
-});
 </script>
 
 <template>
@@ -32,7 +36,7 @@ watchEffect(() => {
                     <td class="w-0">
                         <font-awesome-icon
                             class="!align-middle"
-                            :icon="['fas', 'user']"
+                            :icon="faUser"
                             size="sm"
                             fixed-width
                         />
@@ -61,12 +65,11 @@ watchEffect(() => {
                                 preserveScroll
                             >
                                 <font-awesome-icon
-                                    :icon="[
-                                        'fas',
+                                    :icon="
                                         character.is_visible
-                                            ? 'eye'
-                                            : 'eye-slash',
-                                    ]"
+                                            ? faEye
+                                            : faEyeSlash
+                                    "
                                     size="xs"
                                     fixed-width
                                 />
@@ -88,7 +91,7 @@ watchEffect(() => {
                                 preserveScroll
                             >
                                 <font-awesome-icon
-                                    :icon="['fas', 'user-slash']"
+                                    :icon="faUserSlash"
                                     size="xs"
                                     fixed-width
                                 />
@@ -97,7 +100,9 @@ watchEffect(() => {
 
                         <div
                             v-if="
-                                is('admin | supporter') &&
+                                $page.props.permissions.some((role) =>
+                                    ['admin', 'supporter'].includes(role),
+                                ) &&
                                 parseInt(character.score.replaceAll(',', '')) >
                                     0
                             "
@@ -115,7 +120,7 @@ watchEffect(() => {
                                 preserveScroll
                             >
                                 <font-awesome-icon
-                                    :icon="['fas', 'rotate']"
+                                    :icon="faRotate"
                                     size="xs"
                                     fixed-width
                                 />

@@ -2,6 +2,15 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { ref, watchEffect } from 'vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faTrophy,
+    faAngleUp,
+    faAngleDown,
+    faLock,
+    faUser,
+} from '@fortawesome/free-solid-svg-icons';
+import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 
@@ -12,10 +21,6 @@ defineProps({
     statistics: {
         type: Object,
     },
-});
-
-watchEffect(() => {
-    window.Laravel.jsPermissions = usePage().props.permissions;
 });
 
 const open = ref(null);
@@ -85,7 +90,7 @@ function toggle(id) {
                                             'text-silver': key === 1,
                                             'text-bronze': key === 2,
                                         }"
-                                        :icon="['fas', 'trophy']"
+                                        :icon="faTrophy"
                                         fixed-width
                                     />
                                 </td>
@@ -122,12 +127,11 @@ function toggle(id) {
                                     }}<font-awesome-icon
                                         v-if="character.statistics.length > 0"
                                         class="ml-1 !align-middle text-neutral-400"
-                                        :icon="[
-                                            'fas',
+                                        :icon="
                                             key === open
-                                                ? 'angle-up'
-                                                : 'angle-down',
-                                        ]"
+                                                ? faAngleUp
+                                                : faAngleDown
+                                        "
                                         size="sm"
                                         fixed-width
                                     />
@@ -161,7 +165,9 @@ function toggle(id) {
                                         <template v-else>
                                             <Link
                                                 v-if="
-                                                    is('member') &&
+                                                    $page.props.permissions.includes(
+                                                        'member',
+                                                    ) &&
                                                     $page.props.auth.user
                                                         .characters.length > 0
                                                 "
@@ -170,7 +176,7 @@ function toggle(id) {
                                             >
                                                 <font-awesome-icon
                                                     class="mr-1 align-middle"
-                                                    :icon="['fas', 'lock']"
+                                                    :icon="faLock"
                                                     size="2xs"
                                                     fixed-width
                                                 />
@@ -191,7 +197,7 @@ function toggle(id) {
                                             >
                                                 <font-awesome-icon
                                                     class="mr-1 align-middle"
-                                                    :icon="['fas', 'user']"
+                                                    :icon="faUser"
                                                     size="2xs"
                                                     fixed-width
                                                 />
@@ -208,7 +214,7 @@ function toggle(id) {
                                     >
                                         <font-awesome-icon
                                             class="align-middle"
-                                            :icon="['brands', 'steam']"
+                                            :icon="faSteam"
                                             fixed-width
                                         />
                                     </a>

@@ -5,6 +5,9 @@ import InputError from '@/Components/InputError.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+
 const showModal = ref(false);
 
 const form = useForm({
@@ -29,8 +32,7 @@ const submit = () => {
             }
         "
     >
-        <font-awesome-icon :icon="['fas', 'right-to-bracket']" size="sm" />Log
-        in
+        <font-awesome-icon :icon="faRightToBracket" size="sm" />Log in
     </button>
 
     <div class="modal" :class="{ 'modal-open': showModal }" role="dialog">

@@ -1,5 +1,8 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import AppLogo from '@/Components/ApplicationLogo.vue';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 </script>
@@ -23,7 +26,7 @@ import Breadcrumb from '@/Components/Breadcrumb.vue';
                 <a href="https://github.com/pridit-a2oa" target="_blank">
                     <font-awesome-icon
                         class="!align-middle"
-                        :icon="['brands', 'github']"
+                        :icon="faGithub"
                         fixed-width
                     />
                 </a>
@@ -41,7 +44,7 @@ import Breadcrumb from '@/Components/Breadcrumb.vue';
                         >Jordan Heale</a
                     ><font-awesome-icon
                         class="ml-1 !align-middle"
-                        :icon="['fas', 'arrow-up-right-from-square']"
+                        :icon="faArrowUpRightFromSquare"
                         size="2xs"
                     />
                 </div>

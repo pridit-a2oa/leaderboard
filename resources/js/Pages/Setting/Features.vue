@@ -2,12 +2,10 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { ref, watchEffect } from 'vue';
 import { Head, usePage } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Setting from '@/Components/Setting.vue';
 import Alert from '@/Components/Alert.vue';
-
-watchEffect(() => {
-    window.Laravel.jsPermissions = usePage().props.permissions;
-});
 
 const features = ref([
     { type: 'Single character linking', supporter: false },
@@ -23,7 +21,11 @@ const features = ref([
     <DefaultLayout>
         <Setting title="Features">
             <Alert
-                v-if="is('admin | supporter')"
+                v-if="
+                    $page.props.permissions.some((role) =>
+                        ['admin', 'supporter'].includes(role),
+                    )
+                "
                 type="success"
                 message="Thanks for being a supporter"
             />
@@ -39,23 +41,30 @@ const features = ref([
                 <ul>
                     <template v-for="feature in features">
                         <li
-                            v-if="is('member') || feature.supporter"
+                            v-if="
+                                $page.props.permissions.some((role) =>
+                                    ['admin', 'supporter'].includes(role),
+                                ) || feature.supporter
+                            "
                             class="[&:not(:last-child)]:mb-2"
                         >
                             <font-awesome-icon
                                 class="text-red-500"
                                 :class="{
                                     '!text-green-500':
-                                        is('admin | supporter') ||
-                                        !feature.supporter,
+                                        $page.props.permissions.some((role) =>
+                                            ['admin', 'supporter'].includes(
+                                                role,
+                                            ),
+                                        ) || !feature.supporter,
                                 }"
-                                :icon="[
-                                    'fas',
-                                    is('admin | supporter') ||
-                                    !feature.supporter
-                                        ? 'check'
-                                        : 'xmark',
-                                ]"
+                                :icon="
+                                    $page.props.permissions.some((role) =>
+                                        ['admin', 'supporter'].includes(role),
+                                    ) || !feature.supporter
+                                        ? faCheck
+                                        : faXmark
+                                "
                                 fixed-width
                             />
 

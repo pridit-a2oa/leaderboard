@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "ahmedsaoud31/laravel-permission-to-vuejs": "dev-master",
         "ilzrv/laravel-steam-auth": "^3.1",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.0",
@@ -14,6 +13,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "spatie/laravel-permission": "^6.4",
+        "spatie/laravel-webhook-client": "^3.3",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {

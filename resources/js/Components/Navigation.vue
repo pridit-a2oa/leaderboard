@@ -1,5 +1,14 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faBullhorn,
+    faHeart,
+    faUser,
+    faCog,
+    faRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import ExtLink from '@/Components/ExtLink.vue';
 import Login from '@/Components/Modal/Login.vue';
 </script>
@@ -9,21 +18,21 @@ import Login from '@/Components/Modal/Login.vue';
         <ExtLink
             class="text-[#7289da]"
             href="https://dsc.gg/pridit"
-            :icon="['brands', 'discord']"
+            :icon="faDiscord"
             >Discord</ExtLink
         >
 
         <ExtLink
             class="text-yellow-600"
             href="https://feedback.pridit.co.uk"
-            :icon="['fas', 'bullhorn']"
+            :icon="faBullhorn"
             >Feedback</ExtLink
         >
 
         <ExtLink
             class="text-[#ff5c5a]"
             href="https://ko-fi.com/pridit"
-            :icon="['fas', 'heart']"
+            :icon="faHeart"
             >Ko-fi</ExtLink
         >
 
@@ -32,7 +41,7 @@ import Login from '@/Components/Modal/Login.vue';
             class="dropdown dropdown-bottom ml-auto hidden md:inline-flex"
         >
             <div tabindex="0" role="button" class="btn no-animation">
-                <font-awesome-icon :icon="['fas', 'user']" size="sm" />
+                <font-awesome-icon :icon="faUser" size="sm" />
                 {{ $page.props.auth.user.name }}
             </div>
             <ul
@@ -41,14 +50,13 @@ import Login from '@/Components/Modal/Login.vue';
             >
                 <li>
                     <Link href="/settings/account"
-                        ><font-awesome-icon :icon="['fas', 'cog']" />Settings
+                        ><font-awesome-icon :icon="faCog" />Settings
                     </Link>
                 </li>
                 <li>
                     <Link :href="route('logout')" method="post" as="button"
-                        ><font-awesome-icon
-                            :icon="['fas', 'right-from-bracket']"
-                        />Log out</Link
+                        ><font-awesome-icon :icon="faRightFromBracket" />Log
+                        out</Link
                     >
                 </li>
             </ul>

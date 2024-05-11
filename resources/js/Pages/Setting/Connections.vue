@@ -1,6 +1,8 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import Setting from '@/Components/Setting.vue';
 import Alert from '@/Components/Alert.vue';
 
@@ -21,7 +23,6 @@ defineProps({
                 :type="$page.props.flash.message[0]"
                 :message="$page.props.flash.message[1]"
             />
-
             <table class="table border-collapse rounded-md bg-base-200">
                 <tbody>
                     <tr
@@ -30,9 +31,10 @@ defineProps({
                         )"
                         :key="connection.id"
                     >
+                        <!-- TODO: Needs dynamic icon -->
                         <td class="w-0 text-center">
                             <font-awesome-icon
-                                :icon="['brands', connection.name]"
+                                :icon="faSteam"
                                 size="2xl"
                                 fixed-width
                             />
@@ -67,6 +69,7 @@ defineProps({
                                 "
                                 :href="route('user.disconnect')"
                                 method="post"
+                                as="button"
                                 :data="{
                                     connection_id: connection.id,
                                 }"

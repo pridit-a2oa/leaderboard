@@ -1,4 +1,7 @@
 <script setup>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+
 const props = defineProps({
     class: {
         type: String,
@@ -9,7 +12,7 @@ const props = defineProps({
         required: true,
     },
     icon: {
-        type: Array,
+        type: Object,
         required: true,
     },
 });
@@ -19,9 +22,6 @@ const props = defineProps({
     <a :href="href" class="btn no-animation" target="_blank">
         <font-awesome-icon :icon="icon" :class="class" size="sm" />
         <slot />
-        <font-awesome-icon
-            :icon="['fas', 'arrow-up-right-from-square']"
-            size="xs"
-        />
+        <font-awesome-icon :icon="faArrowUpRightFromSquare" size="xs" />
     </a>
 </template>

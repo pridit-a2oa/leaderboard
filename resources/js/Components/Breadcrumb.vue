@@ -17,22 +17,11 @@ defineProps({
             <ul>
                 <li>
                     <Link class="underlined-link" :href="route('home')">
-                        <font-awesome-icon
-                            class="mr-2"
-                            :icon="['fas', 'house']"
-                            size="sm"
-                            fixed-width
-                        />
                         Home
                     </Link>
                 </li>
+
                 <li class="text-neutral-300">
-                    <font-awesome-icon
-                        class="mr-2"
-                        :icon="['fas', $page.props.icon]"
-                        size="sm"
-                        fixed-width
-                    />
                     {{ $page.props.name }}
                 </li>
             </ul>

@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
@@ -17,25 +16,10 @@ class PermissionSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $permissions = collect([
-            'enhanced',
-            'links',
-            'reset'
+        Role::insert([
+            ['name' => 'member'],
+            ['name' => 'supporter'],
+            ['name' => 'admin']
         ]);
-
-        $permissions->each(function ($permission) {
-            Permission::create(['name' => $permission]);
-        });
-
-        // Default, permission-less role
-        Role::create(['name' => 'member']);
-
-        // Contributors with elevated permissions to assign benefits
-        Role::create(['name' => 'supporter'])
-            ->givePermissionTo(['name' => $permissions]);
-
-        // Admins to inherit all permissions
-        Role::create(['name' => 'admin'])
-            ->givePermissionTo(Permission::all());
     }
 }

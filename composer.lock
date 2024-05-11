@@ -4,49 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f7ef919477107e596270daf5774d2fb",
+    "content-hash": "31242f5e279198385b12d2c8af6c5a6b",
     "packages": [
-        {
-            "name": "ahmedsaoud31/laravel-permission-to-vuejs",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ahmedsaoud31/laravel-permission-to-vuejs.git",
-                "reference": "7c0d54d031cc84c3ed0ac9c356e2b15283e77145"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ahmedsaoud31/laravel-permission-to-vuejs/zipball/7c0d54d031cc84c3ed0ac9c356e2b15283e77145",
-                "reference": "7c0d54d031cc84c3ed0ac9c356e2b15283e77145",
-                "shasum": ""
-            },
-            "require": {
-                "spatie/laravel-permission": ">=2.0"
-            },
-            "default-branch": true,
-            "type": "plugin",
-            "autoload": {
-                "psr-4": {
-                    "LaravelAndVueJS\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ahmed Abeoelsaoud",
-                    "email": "ahmedsaoud31@gmail.com"
-                }
-            ],
-            "description": "Laravel Permission Package To Use it in VueJs",
-            "support": {
-                "issues": "https://github.com/ahmedsaoud31/laravel-permission-to-vuejs/issues",
-                "source": "https://github.com/ahmedsaoud31/laravel-permission-to-vuejs/tree/master"
-            },
-            "time": "2024-02-11T21:06:42+00:00"
-        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -3356,6 +3315,66 @@
             "time": "2023-11-08T05:53:05+00:00"
         },
         {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-20T07:29:11+00:00"
+        },
+        {
             "name": "spatie/laravel-permission",
             "version": "6.4.0",
             "source": {
@@ -3436,6 +3455,82 @@
                 }
             ],
             "time": "2024-02-28T08:11:20+00:00"
+        },
+        {
+            "name": "spatie/laravel-webhook-client",
+            "version": "3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-webhook-client.git",
+                "reference": "1b994473be2832cd56e284178d5b2cb4373b5cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-webhook-client/zipball/1b994473be2832cd56e284178d5b2cb4373b5cf4",
+                "reference": "1b994473be2832cd56e284178d5b2cb4373b5cf4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "^9.0 || ^10.0 || ^11.0",
+                "illuminate/database": "^9.0 || ^10.0 || ^11.0",
+                "illuminate/support": "^9.0 || ^10.0 || ^11.0",
+                "php": "^8.1 || ^8.2",
+                "spatie/laravel-package-tools": "^1.11"
+            },
+            "require-dev": {
+                "larastan/larastan": "^1.0.4 || ^2.2",
+                "orchestra/testbench": "^7.0 || ^8.0 || ^9.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.3 || ^10.5",
+                "spatie/laravel-ray": "^1.24"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Spatie\\WebhookClient\\WebhookClientServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\WebhookClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Receive webhooks in Laravel apps",
+            "homepage": "https://github.com/spatie/laravel-webhook-client",
+            "keywords": [
+                "laravel-webhook-client",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-webhook-client/issues",
+                "source": "https://github.com/spatie/laravel-webhook-client/tree/3.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-04-25T14:09:05+00:00"
         },
         {
             "name": "symfony/clock",
@@ -8732,9 +8827,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ahmedsaoud31/laravel-permission-to-vuejs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

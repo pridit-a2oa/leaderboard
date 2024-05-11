@@ -1,15 +1,23 @@
 <script setup>
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faCog,
+    faUser,
+    faPlug,
+    faBars,
+    faBan,
+} from '@fortawesome/free-solid-svg-icons';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 
 defineProps({ title: String });
 
 const settings = ref([
-    { type: 'account', icon: 'cog' },
-    { type: 'characters', icon: 'user' },
-    { type: 'connections', icon: 'plug' },
-    { type: 'features', icon: 'bars' },
+    { type: 'account', icon: faCog },
+    { type: 'characters', icon: faUser },
+    { type: 'connections', icon: faPlug },
+    { type: 'features', icon: faBars },
 ]);
 </script>
 
@@ -30,7 +38,7 @@ const settings = ref([
                         }"
                         :href="`/settings/${setting.type}`"
                         ><font-awesome-icon
-                            :icon="['fas', setting.icon]"
+                            :icon="setting.icon"
                             fixed-width
                         />{{ setting.type }}</Link
                     >
@@ -45,10 +53,8 @@ const settings = ref([
                             active: $page.component.includes('Delete'),
                         }"
                         href="/settings/delete"
-                        ><font-awesome-icon
-                            :icon="['fas', 'ban']"
-                            fixed-width
-                        />Delete Account</Link
+                        ><font-awesome-icon :icon="faBan" fixed-width />Delete
+                        Account</Link
                     >
                 </li>
             </ul>

@@ -38,7 +38,7 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'message' => fn () => $request->session()->get('message')
             ],
-            'permissions' => json_decode(auth()->check() ? auth()->user()->jsPermissions() : '{}', true),
+            'permissions' => auth()->user() ? auth()->user()->roles->pluck('name') : [],
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
