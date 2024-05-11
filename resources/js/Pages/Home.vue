@@ -26,10 +26,26 @@ function toggle(id) {
 </script>
 
 <template>
+    <Head title="Leaderboard">
+        <meta
+            name="description"
+            content="Track and compare your score with the rest of the community"
+        />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Leaderboard" />
+        <meta
+            property="og:description"
+            content="Track and compare your score with the rest of the community"
+        />
+        <meta
+            property="og:image"
+            content="https://arma.pridit.co.uk/images/logo.png"
+        />
+    </Head>
+
     <DefaultLayout>
         <main class="container mx-auto text-neutral-400">
-            <Head title="Leaderboard" />
-
             <Navigation />
 
             <div
