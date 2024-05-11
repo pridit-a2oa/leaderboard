@@ -24,7 +24,6 @@ import Breadcrumb from '@/Components/Breadcrumb.vue';
                     <font-awesome-icon
                         class="!align-middle"
                         :icon="['brands', 'github']"
-                        size="md"
                         fixed-width
                     />
                 </a>
