@@ -1,6 +1,5 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { watchEffect } from 'vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {

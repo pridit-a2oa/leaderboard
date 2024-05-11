@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { ref, watchEffect } from 'vue';
+import { ref } from 'vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';

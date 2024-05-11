@@ -7,15 +7,10 @@ export default {
     './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
     './storage/framework/views/*.php',
     './resources/views/**/*.blade.php',
-    './resources/js/**/*.vue'
+    './resources/js/**/*.vue',
   ],
 
-  safelist: [
-    'alert-error',
-    'alert-info',
-    'alert-success',
-    'alert-warning',
-  ],
+  safelist: ['alert-error', 'alert-info', 'alert-success', 'alert-warning'],
 
   theme: {
     extend: {
@@ -23,22 +18,22 @@ export default {
         bronze: '#cd7f32',
         gold: '#d4af37',
         silver: '#c0c0c0',
-        supporter: '#026bbe'
+        supporter: '#026bbe',
       },
 
       fontFamily: {
-        sans: ['Figtree', ...defaultTheme.fontFamily.sans]
-      }
+        sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+      },
     },
 
     screens: {
-      'xs': '386px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px'
-    }
+      xs: '386px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
   },
 
   daisyui: {
@@ -47,11 +42,11 @@ export default {
         default: {
           primary: '#0084ff',
           secondary: '#d4d4d4',
-          'base-100': '#262626'
-        }
-      }
-    ]
+          'base-100': '#262626',
+        },
+      },
+    ],
   },
 
-  plugins: [forms, require('daisyui')]
+  plugins: [forms, require('daisyui')],
 };
