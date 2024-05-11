@@ -9,7 +9,6 @@ import {
     faBars,
     faBan,
 } from '@fortawesome/free-solid-svg-icons';
-import Breadcrumb from '@/Components/Breadcrumb.vue';
 
 defineProps({ title: String });
 

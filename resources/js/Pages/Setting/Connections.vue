@@ -59,7 +59,7 @@ defineProps({
                         </td>
 
                         <td class="text-right">
-                            <Link
+                            <div
                                 v-if="
                                     $page.props.auth.user.connections.some(
                                         (e) =>
@@ -67,16 +67,21 @@ defineProps({
                                             connection.id,
                                     )
                                 "
-                                :href="route('user.disconnect')"
-                                method="post"
-                                as="button"
-                                :data="{
-                                    connection_id: connection.id,
-                                }"
-                                class="badge badge-error badge-outline select-none font-light uppercase"
+                                class="tooltip tooltip-bottom tooltip-error before:w-[18rem]"
+                                data-tip="This action will unlink any linked characters"
                             >
-                                Disconnect
-                            </Link>
+                                <Link
+                                    :href="route('user.disconnect')"
+                                    method="post"
+                                    as="button"
+                                    :data="{
+                                        connection_id: connection.id,
+                                    }"
+                                    class="badge badge-error badge-outline select-none font-light uppercase"
+                                >
+                                    Disconnect
+                                </Link>
+                            </div>
 
                             <Link
                                 v-else

@@ -1,7 +1,7 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { ref } from 'vue';
-import { Head, Link, usePage } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
     faTrophy,
@@ -119,10 +119,13 @@ function toggle(id) {
                                     }"
                                     @click="toggle(key)"
                                 >
-                                    {{ character.name }}
-                                    <font-awesome-icon
-                                        v-if="character.statistics.length > 0"
-                                        class="ml-0.5 !align-middle text-neutral-400"
+                                    {{ character.name
+                                    }}<font-awesome-icon
+                                        v-if="
+                                            character.statistics.length > 0 &&
+                                            character.user_id !== null
+                                        "
+                                        class="ml-1 !align-middle text-neutral-400"
                                         :icon="
                                             key === open
                                                 ? faAngleUp

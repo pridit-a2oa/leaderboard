@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/{type}', function ($type) {
             return Inertia::render(sprintf('Setting/%s', ucfirst($type)), [
                 'name' => 'Settings',
+                'icon' => 'cog',
                 'connections' => Connection::get()
             ]);
         })->whereIn('type', [

@@ -46,14 +46,15 @@ final class SteamController
         $steamUser = $steamAuthenticator->getSteamUser();
 
         if (ConnectionUser::where('identifier', $steamUser->getSteamId())->doesntExist()) {
-            Auth::user()->connections()->attach(1, [
-                'identifier' => $steamUser->getSteamId()
-            ]);
+            Auth::user()->connections()->attach(
+                1,
+                ['identifier' => $steamUser->getSteamId()]
+            );
         } else {
             $request->session()
                 ->flash(
                     'message',
-                    ['error', 'Steam account is already connected to another user']
+                    ['error', 'Steam account is already connected to a user']
                 );
         }
 
