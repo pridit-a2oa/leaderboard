@@ -154,8 +154,7 @@ function toggle(id) {
                                                     null &&
                                                 $page.props.auth.user.characters.some(
                                                     (e) =>
-                                                        e.pivot.character_id ===
-                                                        character.id,
+                                                        e.id === character.id,
                                                 )
                                             "
                                             class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"

@@ -26,7 +26,8 @@ class CharacterController extends Controller
         }
 
         // Attach the character to the user
-        auth()->user()->characters()->attach($character->id);
+        $character->user()->associate(auth()->user()->id);
+        $character->save();
 
         return Redirect::route('home');
     }
@@ -40,12 +41,12 @@ class CharacterController extends Controller
 
         $character = Character::findOrFail($request->character_id);
 
+        // Dissociate the user from the character
+        $character->user()->dissociate();
+
         // Reset the visibility of the character
         $character->is_visible = true;
         $character->save();
-
-        // Detach the character from the user
-        auth()->user()->characters()->detach($character->id);
 
         return Redirect::to('/settings/characters');
     }

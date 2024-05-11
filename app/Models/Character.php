@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Statistic;
 use App\Models\CharacterStatistic;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -21,6 +23,7 @@ class Character extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'uid',
         'name',
         'score',
@@ -58,6 +61,15 @@ class Character extends Model
             get: fn (mixed $value) => Carbon::parse($value)->diffForHumans()
         );
     }
+
+    /**
+     * The user the character has.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     /**
      * The statistics that belong to the character.

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
@@ -40,13 +39,11 @@ class UserController extends Controller
             'connection_id' => ['required', 'exists:connections,id'],
         ]);
 
-        $user = Auth::user();
+        // Unassociate all characters
+        auth()->user()->characters()->update(['user_id' => null]);
 
-        // Detach all associated characters.
-        $user->characters()->detach();
-
-        // Detach the connection.
-        $user->connections()->detach($request->connection_id);
+        // Detach the connection
+        auth()->user()->connections()->detach($request->connection_id);
 
         return Redirect::to('/settings/connections');
     }

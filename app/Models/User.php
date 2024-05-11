@@ -9,6 +9,7 @@ use App\Observers\UserObserver;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -65,9 +66,9 @@ class User extends Authenticatable
     /**
      * The characters that belong to the user.
      */
-    public function characters(): BelongsToMany
+    public function characters(): HasMany
     {
-        return $this->belongsToMany(Character::class);
+        return $this->hasMany(Character::class);
     }
 
     /**
