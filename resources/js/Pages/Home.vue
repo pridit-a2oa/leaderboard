@@ -64,9 +64,7 @@ function toggle(id) {
                             <th>Name</th>
                             <th class="hidden w-0 md:table-cell"></th>
                             <th class="w-0 text-center">Score</th>
-                            <th class="hidden w-0 text-right md:table-cell">
-                                Last Updated
-                            </th>
+                            <th class="hidden w-0 md:table-cell"></th>
                         </tr>
                     </thead>
 
@@ -84,21 +82,19 @@ function toggle(id) {
                                     class="text-center"
                                 >
                                     <font-awesome-icon
-                                        class="align-middle"
+                                        class="!align-middle"
                                         :class="{
                                             'text-gold': key === 0,
                                             'text-silver': key === 1,
                                             'text-bronze': key === 2,
                                         }"
                                         :icon="faTrophy"
+                                        size="lg"
                                         fixed-width
                                     />
                                 </td>
 
-                                <td
-                                    v-else
-                                    class="flex justify-center font-bold"
-                                >
+                                <td v-else class="text-center font-bold">
                                     {{
                                         key +
                                         (characters.current_page - 1) *
@@ -123,10 +119,10 @@ function toggle(id) {
                                     }"
                                     @click="toggle(key)"
                                 >
-                                    {{ character.name
-                                    }}<font-awesome-icon
+                                    {{ character.name }}
+                                    <font-awesome-icon
                                         v-if="character.statistics.length > 0"
-                                        class="ml-1 !align-middle text-neutral-400"
+                                        class="ml-0.5 !align-middle text-neutral-400"
                                         :icon="
                                             key === open
                                                 ? faAngleUp
@@ -135,6 +131,11 @@ function toggle(id) {
                                         size="sm"
                                         fixed-width
                                     />
+                                    <span
+                                        class="mt-0.5 block select-none text-xs font-light text-neutral-500"
+                                        title="Last active"
+                                        >{{ character.updated_at }}</span
+                                    >
                                 </td>
 
                                 <td class="hidden text-right md:table-cell">
@@ -205,28 +206,24 @@ function toggle(id) {
                                             </Link>
                                         </template>
                                     </template>
-
-                                    <a
-                                        v-else
-                                        :href="`https://steamcommunity.com/profiles/${character.uid}`"
-                                        target="_blank"
-                                    >
-                                        <font-awesome-icon
-                                            class="align-middle"
-                                            :icon="faSteam"
-                                            fixed-width
-                                        />
-                                    </a>
                                 </td>
 
                                 <td class="text-center font-bold">
                                     {{ character.score }}
                                 </td>
 
-                                <td
-                                    class="hidden whitespace-nowrap text-right text-neutral-500 md:table-cell"
-                                >
-                                    {{ character.updated_at }}
+                                <td class="hidden md:table-cell">
+                                    <a
+                                        :href="`https://steamcommunity.com/profiles/${character.uid}`"
+                                        target="_blank"
+                                    >
+                                        <font-awesome-icon
+                                            class="!align-middle text-neutral-500"
+                                            :icon="faSteam"
+                                            size="lg"
+                                            fixed-width
+                                        />
+                                    </a>
                                 </td>
                             </tr>
 

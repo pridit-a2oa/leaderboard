@@ -58,7 +58,13 @@ class Character extends Model
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value) => Carbon::parse($value)->diffForHumans()
+            get: fn (mixed $value) => preg_replace(
+                '/\d+ seconds?/',
+                'less than a minute',
+                Carbon::parse($value)->diffForHumans([
+                    'options' => Carbon::JUST_NOW | Carbon::ONE_DAY_WORDS
+                ])
+            )
         );
     }
 

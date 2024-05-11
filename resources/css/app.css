@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .container {
-    max-width: 640px;
+    max-width: 580px;
     min-width: 320px;
 }
 

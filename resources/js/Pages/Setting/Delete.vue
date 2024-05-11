@@ -32,7 +32,8 @@ import Setting from '@/Components/Setting.vue';
                 <br />
 
                 <p>
-                    By performing an account deletion the following will occur:
+                    By performing an account deletion the following will be
+                    impacted:
                 </p>
 
                 <br />
@@ -44,7 +45,7 @@ import Setting from '@/Components/Setting.vue';
                     <li>Any linked characters will be unlinked</li>
                     <li>Any connections will be severed (e.g. Steam)</li>
                     <li>
-                        Ko-fi contribution will be unassociated (if associated)
+                        Ko-fi contribution will be unassociated (if supporter)
                     </li>
                 </ul>
 
