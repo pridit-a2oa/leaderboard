@@ -8,11 +8,14 @@ import Setting from '@/Components/Setting.vue';
 import Alert from '@/Components/Alert.vue';
 
 const features = ref([
-    { type: 'Single character linking', supporter: false },
-    { type: 'Multiple character linking', supporter: true },
-    { type: 'Reset statistics option (per character)', supporter: true },
-    { type: 'Additional statistics tracking (while linked)', supporter: true },
+    { type: 'Multiple character linking' },
+    { type: 'Reset statistics option (per character)' },
+    { type: 'Additional statistics tracking (while linked)' },
 ]);
+
+const benefits = usePage().props.permissions.some((role) =>
+    ['admin', 'supporter'].includes(role),
+);
 </script>
 
 <template>
@@ -21,11 +24,7 @@ const features = ref([
     <DefaultLayout>
         <Setting title="Features">
             <Alert
-                v-if="
-                    $page.props.permissions.some((role) =>
-                        ['admin', 'supporter'].includes(role),
-                    )
-                "
+                v-if="benefits"
                 type="success"
                 message="Thanks for being a supporter"
             />
@@ -40,31 +39,14 @@ const features = ref([
             <div class="rounded-md bg-base-200 p-4">
                 <ul>
                     <template v-for="feature in features">
-                        <li
-                            v-if="
-                                $page.props.permissions.some((role) =>
-                                    ['admin', 'supporter'].includes(role),
-                                ) || feature.supporter
-                            "
-                            class="[&:not(:last-child)]:mb-2"
-                        >
+                        <li class="[&:not(:last-child)]:mb-2">
                             <font-awesome-icon
-                                class="text-red-500"
-                                :class="{
-                                    '!text-green-500':
-                                        $page.props.permissions.some((role) =>
-                                            ['admin', 'supporter'].includes(
-                                                role,
-                                            ),
-                                        ) || !feature.supporter,
-                                }"
-                                :icon="
-                                    $page.props.permissions.some((role) =>
-                                        ['admin', 'supporter'].includes(role),
-                                    ) || !feature.supporter
-                                        ? faCheck
-                                        : faXmark
-                                "
+                                :class="[
+                                    benefits
+                                        ? 'text-green-500'
+                                        : 'text-red-500',
+                                ]"
+                                :icon="benefits ? faCheck : faXmark"
                                 fixed-width
                             />
 
