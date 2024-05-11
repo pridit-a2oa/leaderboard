@@ -38,9 +38,9 @@ const settings = ref([
             </ul>
 
             <ul class="menu mt-4 w-44 rounded-md bg-base-200">
-                <li class="text-red-500">
+                <li>
                     <Link
-                        class="pl-2"
+                        class="pl-2 !text-red-500"
                         :class="{
                             active: $page.component.includes('Delete'),
                         }"
