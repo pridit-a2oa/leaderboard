@@ -141,7 +141,8 @@ function toggle(id) {
                                             characters.current_page === 1 &&
                                             key === 2,
                                         'cursor-pointer':
-                                            character.statistics.length > 0,
+                                            character.statistics.length > 0 &&
+                                            character.user_id !== null,
                                     }"
                                     @click="toggle(key)"
                                 >
@@ -259,7 +260,8 @@ function toggle(id) {
                             <template
                                 v-if="
                                     key === open &&
-                                    character.statistics.length > 0
+                                    character.statistics.length > 0 &&
+                                    character.user_id !== null
                                 "
                             >
                                 <tr

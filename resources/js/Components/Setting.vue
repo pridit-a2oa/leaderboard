@@ -29,7 +29,7 @@ const settings = ref([
                     class="capitalize [&:not(:last-child)]:mb-1"
                 >
                     <Link
-                        class="pl-2"
+                        class="pl-2 !text-neutral-400"
                         :class="{
                             active: $page.component
                                 .toLowerCase()
