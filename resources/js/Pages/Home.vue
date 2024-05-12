@@ -241,7 +241,7 @@ function toggle(id) {
                                     </template>
                                 </td>
 
-                                <td class="text-right font-bold">
+                                <td class="text-bold text-right text-[1rem]">
                                     {{ character.score }}
                                 </td>
 
