@@ -32,11 +32,11 @@ class StatisticSeeder extends Seeder
             ],
             [
                 'name' => 'Incapacitations',
-                'icon' => 'heart'
+                'icon' => 'heart-pulse'
             ],
             [
                 'name' => 'Intelligence Retrievals',
-                'icon' => 'file'
+                'icon' => 'file-lines'
             ],
             [
                 'name' => 'Suicide Bomber Kills',
