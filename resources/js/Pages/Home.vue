@@ -85,7 +85,7 @@ function toggle(id) {
                             <th class="w-0">Rank</th>
                             <th>Name</th>
                             <th class="hidden w-0 md:table-cell"></th>
-                            <th class="w-0 text-center">Score</th>
+                            <th class="w-0 text-right">Score</th>
                             <th class="hidden w-0 md:table-cell"></th>
                         </tr>
                     </thead>
@@ -241,7 +241,7 @@ function toggle(id) {
                                     </template>
                                 </td>
 
-                                <td class="text-center font-bold">
+                                <td class="text-right font-bold">
                                     {{ character.score }}
                                 </td>
 
@@ -276,7 +276,7 @@ function toggle(id) {
                                             )"
                                             class="bg-base-200 text-xs odd:bg-base-100"
                                         >
-                                            <td></td>
+                                            <td class="w-14"></td>
                                             <td>
                                                 <font-awesome-icon
                                                     class="mr-3 text-neutral-500"
@@ -287,11 +287,11 @@ function toggle(id) {
                                             <td
                                                 class="hidden md:table-cell"
                                             ></td>
-                                            <td class="text-center">
+                                            <td class="text-right">
                                                 {{ statistic.pivot.value }}
                                             </td>
                                             <td
-                                                class="hidden md:table-cell"
+                                                class="hidden w-14 md:table-cell"
                                             ></td>
                                         </tr>
                                     </table>

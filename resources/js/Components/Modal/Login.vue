@@ -129,7 +129,7 @@ const submit = () => {
                 </div>
             </form>
 
-            <div class="mt-6 text-center text-sm">
+            <div class="mt-4 text-center text-sm">
                 <span>Not registered?&nbsp;</span
                 ><a class="underlined-link" href="#">Create account</a>
             </div>
