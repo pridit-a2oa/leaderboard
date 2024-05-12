@@ -96,7 +96,7 @@ function toggle(id) {
                             :key="character.id"
                         >
                             <tr
-                                class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
+                                class="!border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
                             >
                                 <td
                                     v-if="
