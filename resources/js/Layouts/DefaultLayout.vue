@@ -13,7 +13,7 @@ import { Link } from '@inertiajs/vue3';
             <AppLogo />
         </div>
 
-        <Breadcrumb />
+        <Breadcrumb v-if="$page.props.name" />
 
         <div class="container mx-auto flex-grow text-neutral-400">
             <main class="my-6">

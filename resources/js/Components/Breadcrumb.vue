@@ -8,7 +8,7 @@ library.add(faCog, faFile);
 </script>
 
 <template>
-    <div v-if="$page.component !== 'Home'" class="flex bg-base-300 text-sm">
+    <div class="flex bg-base-300 text-sm">
         <div class="container breadcrumbs mx-auto py-4">
             <ul>
                 <li>
