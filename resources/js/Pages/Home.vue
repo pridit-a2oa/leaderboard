@@ -2,6 +2,7 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { ref } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
     faTrophy,
@@ -9,10 +10,33 @@ import {
     faAngleDown,
     faLock,
     faUser,
+    faParachuteBox,
+    faTents,
+    faPlane,
+    faLandMineOn,
+    faHeart,
+    faFile,
+    faSyringe,
+    faBomb,
+    faScrewdriverWrench,
+    faCarBurst,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
+
+library.add(
+    faParachuteBox,
+    faTents,
+    faPlane,
+    faLandMineOn,
+    faHeart,
+    faFile,
+    faSyringe,
+    faBomb,
+    faScrewdriverWrench,
+    faCarBurst,
+);
 
 defineProps({
     characters: {
@@ -73,7 +97,9 @@ function toggle(id) {
                             v-for="(character, key) in characters.data"
                             :key="character.id"
                         >
-                            <tr class="!border-t-2 border-base-100">
+                            <tr
+                                class="border-base-100 [&:not(:first-child)]:!border-t-4"
+                            >
                                 <td
                                     v-if="
                                         characters.current_page === 1 &&
@@ -240,10 +266,16 @@ function toggle(id) {
                                     v-for="statistic in character.statistics.sort(
                                         (a, b) => (a.name > b.name ? 1 : -1),
                                     )"
-                                    class="bg-base-200 text-xs text-neutral-500"
+                                    class="!border-t-4 border-base-300 bg-base-200 text-xs"
                                 >
                                     <td></td>
-                                    <td>{{ statistic.name }}</td>
+                                    <td>
+                                        <font-awesome-icon
+                                            class="mr-3 text-neutral-500"
+                                            :icon="statistic.icon"
+                                            fixed-width
+                                        />{{ statistic.name }}
+                                    </td>
                                     <td class="hidden md:table-cell"></td>
                                     <td class="text-center">
                                         {{ statistic.pivot.value }}

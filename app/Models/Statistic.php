@@ -15,5 +15,6 @@ class Statistic extends Model
      */
     protected $fillable = [
         'name',
+        'icon',
     ];
 }

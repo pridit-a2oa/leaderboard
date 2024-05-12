@@ -1,6 +1,7 @@
 <?php
 
 use Inertia\Inertia;
+use App\Models\Statistic;
 use App\Models\Connection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -46,7 +47,8 @@ Route::middleware('auth')->group(function () {
             return Inertia::render(sprintf('Setting/%s', ucfirst($type)), [
                 'name' => 'Settings',
                 'icon' => 'cog',
-                'connections' => Connection::get()
+                'connections' => Connection::get(),
+                'features' => Statistic::orderBy('name')->get()->pluck('name')
             ]);
         })->whereIn('type', [
             'account',

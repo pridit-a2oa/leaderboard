@@ -10,7 +10,9 @@ import Alert from '@/Components/Alert.vue';
 const features = ref([
     { type: 'Multiple character linking' },
     { type: 'Reset statistics option (per character)' },
-    { type: 'Additional statistics tracking (while linked)' },
+    {
+        type: `<span class="tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)]" data-tip="${usePage().props.features.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
+    },
 ]);
 
 const benefits = usePage().props.permissions.some((role) =>
@@ -41,6 +43,7 @@ const benefits = usePage().props.permissions.some((role) =>
                     <template v-for="feature in features">
                         <li class="[&:not(:last-child)]:mb-2">
                             <font-awesome-icon
+                                class="mr-1"
                                 :class="[
                                     benefits
                                         ? 'text-green-500'
@@ -50,7 +53,7 @@ const benefits = usePage().props.permissions.some((role) =>
                                 fixed-width
                             />
 
-                            {{ feature.type }}
+                            <span v-html="feature.type"></span>
                         </li>
                     </template>
                 </ul>
