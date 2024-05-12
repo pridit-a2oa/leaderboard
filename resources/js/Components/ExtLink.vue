@@ -20,8 +20,8 @@ const props = defineProps({
 
 <template>
     <a :href="href" class="btn no-animation" target="_blank">
-        <font-awesome-icon :icon="icon" :class="class" size="sm" />
+        <FontAwesomeIcon :icon="icon" :class="class" size="sm" />
         <slot />
-        <font-awesome-icon :icon="faArrowUpRightFromSquare" size="xs" />
+        <FontAwesomeIcon :icon="faArrowUpRightFromSquare" size="xs" />
     </a>
 </template>

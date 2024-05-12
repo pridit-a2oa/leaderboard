@@ -14,7 +14,10 @@ class ConnectionSeeder extends Seeder
     public function run(): void
     {
         Connection::insert([
-            ['name' => 'steam'],
+            [
+                'name' => 'steam',
+                'icon' => 'steam'
+            ],
         ]);
     }
 }

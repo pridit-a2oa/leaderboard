@@ -24,7 +24,7 @@ import { Link } from '@inertiajs/vue3';
         <footer class="footer bg-base-200">
             <div class="container mx-auto flex justify-center py-6">
                 <a href="https://github.com/pridit-a2oa" target="_blank">
-                    <font-awesome-icon
+                    <FontAwesomeIcon
                         class="!align-middle"
                         :icon="faGithub"
                         fixed-width
@@ -42,7 +42,7 @@ import { Link } from '@inertiajs/vue3';
                         href="https://www.pridit.co.uk"
                         target="_blank"
                         >Jordan Heale</a
-                    ><font-awesome-icon
+                    ><FontAwesomeIcon
                         class="ml-1 !align-middle"
                         :icon="faArrowUpRightFromSquare"
                         size="2xs"

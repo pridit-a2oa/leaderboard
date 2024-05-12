@@ -23,6 +23,8 @@ tr {
     @apply !border-0;
 }
 
+.btn.btn-disabled,
+.btn[disabled],
 .btn:disabled {
     @apply bg-base-300;
 }

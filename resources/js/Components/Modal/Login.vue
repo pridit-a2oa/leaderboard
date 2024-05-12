@@ -35,7 +35,7 @@ const submit = () => {
             }
         "
     >
-        <font-awesome-icon :icon="faRightToBracket" size="sm" />Log in
+        <FontAwesomeIcon :icon="faRightToBracket" size="sm" />Log in
     </button>
 
     <div class="modal" :class="{ 'modal-open': showModal }" role="dialog">
@@ -60,7 +60,7 @@ const submit = () => {
                     <label
                         class="input input-bordered mt-4 flex items-center gap-2"
                     >
-                        <font-awesome-icon
+                        <FontAwesomeIcon
                             class="text-neutral-400"
                             :icon="faEnvelope"
                             size="xs"
@@ -82,7 +82,7 @@ const submit = () => {
                     <label
                         class="input input-bordered mt-4 flex items-center gap-2"
                     >
-                        <font-awesome-icon
+                        <FontAwesomeIcon
                             class="text-neutral-400"
                             :icon="faKey"
                             size="xs"

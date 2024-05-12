@@ -2,10 +2,14 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
+import { DisconnectButton } from '@/Components/Submit';
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, Link } from '@inertiajs/vue3';
+
+library.add(faSteam);
 
 defineProps({
     connections: {
@@ -32,10 +36,9 @@ defineProps({
                         )"
                         :key="connection.id"
                     >
-                        <!-- TODO: Needs dynamic icon -->
                         <td class="w-0 text-center">
-                            <font-awesome-icon
-                                :icon="faSteam"
+                            <FontAwesomeIcon
+                                :icon="['fab', connection.icon]"
                                 size="2xl"
                                 fixed-width
                             />
@@ -71,17 +74,7 @@ defineProps({
                                 class="tooltip tooltip-bottom tooltip-error before:w-[18rem]"
                                 data-tip="This action will unlink any linked characters"
                             >
-                                <Link
-                                    :href="route('user.disconnect')"
-                                    method="post"
-                                    as="button"
-                                    :data="{
-                                        connection_id: connection.id,
-                                    }"
-                                    class="badge badge-error badge-outline select-none font-light uppercase"
-                                >
-                                    Disconnect
-                                </Link>
+                                <DisconnectButton :id="connection.id" />
                             </div>
 
                             <Link

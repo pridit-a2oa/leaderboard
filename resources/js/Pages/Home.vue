@@ -2,42 +2,19 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
+import TableStatistics from '@/Components/TableStatistics.vue';
+import { LinkButton } from '@/Components/Submit';
 
 import { ref } from 'vue';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faTrophy,
     faAngleUp,
     faAngleDown,
     faLock,
-    faUser,
-    faParachuteBox,
-    faTents,
-    faPlane,
-    faLandMineOn,
-    faHeartPulse,
-    faFileLines,
-    faSyringe,
-    faBomb,
-    faScrewdriverWrench,
-    faCarBurst,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, Link } from '@inertiajs/vue3';
-
-library.add(
-    faParachuteBox,
-    faTents,
-    faPlane,
-    faLandMineOn,
-    faHeartPulse,
-    faFileLines,
-    faSyringe,
-    faBomb,
-    faScrewdriverWrench,
-    faCarBurst,
-);
 
 defineProps({
     characters: {
@@ -105,7 +82,7 @@ function toggle(id) {
                                     "
                                     class="text-center"
                                 >
-                                    <font-awesome-icon
+                                    <FontAwesomeIcon
                                         class="!align-middle"
                                         :class="{
                                             'text-gold': key === 0,
@@ -150,7 +127,7 @@ function toggle(id) {
                                     "
                                 >
                                     {{ character.name
-                                    }}<font-awesome-icon
+                                    }}<FontAwesomeIcon
                                         v-if="
                                             character.statistics.length > 0 &&
                                             character.user_id !== null
@@ -207,7 +184,7 @@ function toggle(id) {
                                                 class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
                                                 href="/settings/features"
                                             >
-                                                <font-awesome-icon
+                                                <FontAwesomeIcon
                                                     class="mr-1"
                                                     :icon="faLock"
                                                     size="2xs"
@@ -217,26 +194,10 @@ function toggle(id) {
                                                 Link
                                             </Link>
 
-                                            <Link
+                                            <LinkButton
                                                 v-else
-                                                :href="route('character.link')"
-                                                method="post"
-                                                as="button"
-                                                :data="{
-                                                    character_id: character.id,
-                                                }"
-                                                class="badge badge-success badge-outline badge-sm select-none font-light uppercase"
-                                                preserveScroll
-                                            >
-                                                <font-awesome-icon
-                                                    class="mr-1"
-                                                    :icon="faUser"
-                                                    size="2xs"
-                                                    fixed-width
-                                                />
-
-                                                Link
-                                            </Link>
+                                                :id="character.id"
+                                            />
                                         </template>
                                     </template>
                                 </td>
@@ -250,7 +211,7 @@ function toggle(id) {
                                         :href="`https://steamcommunity.com/profiles/${character.uid}`"
                                         target="_blank"
                                     >
-                                        <font-awesome-icon
+                                        <FontAwesomeIcon
                                             class="!align-middle text-neutral-500"
                                             :icon="faSteam"
                                             size="lg"
@@ -268,33 +229,9 @@ function toggle(id) {
                                 "
                             >
                                 <td colspan="5" class="p-0">
-                                    <table class="table border-collapse">
-                                        <tr
-                                            v-for="statistic in character.statistics.sort(
-                                                (a, b) =>
-                                                    a.name > b.name ? 1 : -1,
-                                            )"
-                                            class="bg-base-200 text-xs odd:bg-base-100"
-                                        >
-                                            <td class="w-14"></td>
-                                            <td>
-                                                <font-awesome-icon
-                                                    class="mr-3 text-neutral-500"
-                                                    :icon="statistic.icon"
-                                                    fixed-width
-                                                />{{ statistic.name }}
-                                            </td>
-                                            <td
-                                                class="hidden md:table-cell"
-                                            ></td>
-                                            <td class="text-right">
-                                                {{ statistic.pivot.value }}
-                                            </td>
-                                            <td
-                                                class="hidden w-14 md:table-cell"
-                                            ></td>
-                                        </tr>
-                                    </table>
+                                    <TableStatistics
+                                        :data="character.statistics"
+                                    />
                                 </td>
                             </tr>
                         </template>

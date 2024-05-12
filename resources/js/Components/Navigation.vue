@@ -41,7 +41,7 @@ import Login from '@/Components/Modal/Login.vue';
             class="dropdown dropdown-bottom ml-auto hidden md:inline-flex"
         >
             <div tabindex="0" role="button" class="btn no-animation">
-                <font-awesome-icon :icon="faUser" size="sm" />
+                <FontAwesomeIcon :icon="faUser" size="sm" />
                 {{ $page.props.auth.user.name }}
             </div>
             <ul
@@ -50,12 +50,12 @@ import Login from '@/Components/Modal/Login.vue';
             >
                 <li>
                     <Link href="/settings/account"
-                        ><font-awesome-icon :icon="faCog" />Settings
+                        ><FontAwesomeIcon :icon="faCog" />Settings
                     </Link>
                 </li>
                 <li>
                     <Link :href="route('logout')" method="post" as="button"
-                        ><font-awesome-icon :icon="faRightFromBracket" />Log
+                        ><FontAwesomeIcon :icon="faRightFromBracket" />Log
                         out</Link
                     >
                 </li>

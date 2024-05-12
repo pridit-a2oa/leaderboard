@@ -1,11 +1,18 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Alert from '@/Components/Alert.vue';
+import DangerButton from '@/Components/DangerButton.vue';
 import Setting from '@/Components/Setting.vue';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
+
+const form = useForm({});
+
+const deleteUserRequest = () => {
+    form.post(route('user.delete'));
+};
 </script>
 
 <template>
@@ -19,10 +26,7 @@ import { Head, Link } from '@inertiajs/vue3';
                 :message="$page.props.flash.message[1]"
             />
 
-            <div
-                v-if="!$page.props.flash.message"
-                class="rounded-md bg-base-200 p-4"
-            >
+            <div class="rounded-md bg-base-200 p-4">
                 <p>
                     Please note that this action is
                     <span class="font-bold underline">irreversible</span>
@@ -56,14 +60,18 @@ import { Head, Link } from '@inertiajs/vue3';
 
                 <br />
 
-                <Link
-                    class="btn btn-error no-animation btn-sm text-black"
-                    :href="route('user.delete')"
-                    method="post"
-                    as="button"
-                    ><font-awesome-icon :icon="faTrash" size="sm" /> Delete my
-                    account</Link
+                <DangerButton
+                    class="btn-sm"
+                    :class="{
+                        'opacity-25':
+                            form.processing || $page.props.flash.message,
+                    }"
+                    :disabled="form.processing || $page.props.flash.message"
+                    @click="deleteUserRequest"
                 >
+                    <FontAwesomeIcon :icon="faTrash" size="sm" />
+                    Delete Account
+                </DangerButton>
             </div>
         </Setting>
     </DefaultLayout>

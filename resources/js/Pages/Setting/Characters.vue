@@ -2,6 +2,11 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
+import {
+    VisibilityButton,
+    UnlinkButton,
+    ResetButton,
+} from '@/Components/Submit';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -34,7 +39,7 @@ import { Head, Link } from '@inertiajs/vue3';
                     )"
                 >
                     <td class="w-0">
-                        <font-awesome-icon
+                        <FontAwesomeIcon
                             class="!align-middle"
                             :icon="faUser"
                             size="sm"
@@ -51,51 +56,17 @@ import { Head, Link } from '@inertiajs/vue3';
                             class="tooltip tooltip-bottom tooltip-secondary before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Toggle the visibility of this character in the leaderboard"
                         >
-                            <Link
-                                :href="route('character.visibility')"
-                                method="post"
-                                as="button"
-                                :data="{
-                                    character_id: character.id,
-                                }"
-                                class="badge badge-outline badge-sm select-none font-light uppercase"
-                                :class="{
-                                    'opacity-60': !character.is_visible,
-                                }"
-                                preserveScroll
-                            >
-                                <font-awesome-icon
-                                    :icon="
-                                        character.is_visible
-                                            ? faEye
-                                            : faEyeSlash
-                                    "
-                                    size="xs"
-                                    fixed-width
-                                />
-                            </Link>
+                            <VisibilityButton
+                                :id="character.id"
+                                :visible="character.is_visible"
+                            />
                         </div>
 
                         <div
                             class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[17rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Unlink this character from your account (can be relinked at any time)"
                         >
-                            <Link
-                                :href="route('character.unlink')"
-                                method="post"
-                                as="button"
-                                :data="{
-                                    character_id: character.id,
-                                }"
-                                class="badge badge-warning badge-outline badge-sm select-none uppercase"
-                                preserveScroll
-                            >
-                                <font-awesome-icon
-                                    :icon="faUserSlash"
-                                    size="xs"
-                                    fixed-width
-                                />
-                            </Link>
+                            <UnlinkButton :id="character.id" />
                         </div>
 
                         <div
@@ -109,22 +80,7 @@ import { Head, Link } from '@inertiajs/vue3';
                             class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Reset score and any additional statistics for this character&#10;(cannot be reversed)"
                         >
-                            <Link
-                                :href="route('character.reset')"
-                                method="post"
-                                as="button"
-                                :data="{
-                                    character_id: character.id,
-                                }"
-                                class="badge badge-error badge-outline badge-sm select-none uppercase"
-                                preserveScroll
-                            >
-                                <font-awesome-icon
-                                    :icon="faRotate"
-                                    size="xs"
-                                    fixed-width
-                                />
-                            </Link>
+                            <ResetButton :id="character.id" />
                         </div>
                     </td>
                 </tr>

@@ -43,7 +43,7 @@ const benefits = usePage().props.permissions.some((role) =>
                 <ul>
                     <template v-for="feature in features">
                         <li class="[&:not(:last-child)]:mb-2">
-                            <font-awesome-icon
+                            <FontAwesomeIcon
                                 class="mr-1 !align-middle"
                                 :class="[
                                     benefits

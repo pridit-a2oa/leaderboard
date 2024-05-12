@@ -6,7 +6,6 @@ use App\Models\Character;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\CharacterRequest;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CharacterFeatureRequest;
 
 class CharacterController extends Controller
@@ -22,14 +21,14 @@ class CharacterController extends Controller
 
         // Ineligible to link more than one character to a user as a member
         if (auth()->user()->characters()->count() > 0 && auth()->user()->hasRole('member')) {
-            return Redirect::route('home');
+            return redirect(route('home', absolute: false));
         }
 
         // Attach the character to the user
         $character->user()->associate(auth()->user()->id);
         $character->save();
 
-        return Redirect::route('home');
+        return redirect(route('home', absolute: false));
     }
 
     /**
@@ -48,7 +47,7 @@ class CharacterController extends Controller
         $character->is_visible = true;
         $character->save();
 
-        return Redirect::to('/settings/characters');
+        return redirect()->back();
     }
 
     /**
@@ -64,7 +63,7 @@ class CharacterController extends Controller
         $character->is_visible = !$character->is_visible;
         $character->save();
 
-        return Redirect::to('/settings/characters');
+        return redirect()->back();
     }
 
     /**
@@ -83,6 +82,6 @@ class CharacterController extends Controller
         // Detach all character statistics
         $character->statistics()->detach();
 
-        return Redirect::to('/settings/characters');
+        return redirect()->back();
     }
 }

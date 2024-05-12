@@ -36,10 +36,9 @@ const settings = ref([
                                 .includes(setting.type),
                         }"
                         :href="`/settings/${setting.type}`"
-                        ><font-awesome-icon
-                            :icon="setting.icon"
-                            fixed-width
-                        />{{ setting.type }}</Link
+                        ><FontAwesomeIcon :icon="setting.icon" fixed-width />{{
+                            setting.type
+                        }}</Link
                     >
                 </li>
             </ul>
@@ -52,7 +51,7 @@ const settings = ref([
                             active: $page.component.includes('Delete'),
                         }"
                         href="/settings/delete"
-                        ><font-awesome-icon :icon="faBan" fixed-width />Delete
+                        ><FontAwesomeIcon :icon="faBan" fixed-width />Delete
                         Account</Link
                     >
                 </li>

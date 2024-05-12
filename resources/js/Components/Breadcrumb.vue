@@ -1,8 +1,8 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHouse, faCog, faFile } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(faCog, faFile);
 </script>
@@ -13,7 +13,7 @@ library.add(faCog, faFile);
             <ul>
                 <li>
                     <Link class="underlined-link" :href="route('home')">
-                        <font-awesome-icon
+                        <FontAwesomeIcon
                             class="mr-1.5"
                             :icon="faHouse"
                             size="sm"
@@ -25,7 +25,7 @@ library.add(faCog, faFile);
                 </li>
 
                 <li class="text-neutral-300">
-                    <font-awesome-icon
+                    <FontAwesomeIcon
                         class="mr-1.5"
                         :icon="$page.props.icon"
                         size="sm"
