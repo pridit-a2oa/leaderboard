@@ -1,10 +1,11 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
+
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Head, Link } from '@inertiajs/vue3';
 </script>
 
 <template>

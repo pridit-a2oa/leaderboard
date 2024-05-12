@@ -1,11 +1,12 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
+import Alert from '@/Components/Alert.vue';
+import Setting from '@/Components/Setting.vue';
+
 import { ref } from 'vue';
-import { Head, usePage } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
-import Setting from '@/Components/Setting.vue';
-import Alert from '@/Components/Alert.vue';
+import { Head, usePage } from '@inertiajs/vue3';
 
 const features = ref([
     { type: 'Multiple character linking' },

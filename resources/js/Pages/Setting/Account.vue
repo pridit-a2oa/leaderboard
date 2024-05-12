@@ -1,7 +1,8 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
 import Setting from '@/Components/Setting.vue';
+
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>

@@ -1,9 +1,10 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
+import Navigation from '@/Components/Navigation.vue';
+import Pagination from '@/Components/Pagination.vue';
+
 import { ref } from 'vue';
-import { Head, Link } from '@inertiajs/vue3';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
     faTrophy,
     faAngleUp,
@@ -22,8 +23,8 @@ import {
     faCarBurst,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
-import Navigation from '@/Components/Navigation.vue';
-import Pagination from '@/Components/Pagination.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Head, Link } from '@inertiajs/vue3';
 
 library.add(
     faParachuteBox,
@@ -77,10 +78,7 @@ function toggle(id) {
         <main class="container mx-auto text-neutral-400">
             <Navigation />
 
-            <div
-                v-if="characters.data.length > 0"
-                class="mb-8 mt-4 overflow-x-auto font-bold"
-            >
+            <div v-if="characters.data.length > 0" class="mb-8 mt-4 font-bold">
                 <table class="table border-collapse">
                     <thead>
                         <tr class="bg-base-100">
@@ -98,7 +96,7 @@ function toggle(id) {
                             :key="character.id"
                         >
                             <tr
-                                class="border-base-100 [&:not(:first-child)]:!border-t-4"
+                                class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                             >
                                 <td
                                     v-if="
@@ -144,7 +142,12 @@ function toggle(id) {
                                             character.statistics.length > 0 &&
                                             character.user_id !== null,
                                     }"
-                                    @click="toggle(key)"
+                                    @click="
+                                        character.statistics.length > 0 &&
+                                        character.user_id !== null
+                                            ? toggle(key)
+                                            : null
+                                    "
                                 >
                                     {{ character.name
                                     }}<font-awesome-icon
@@ -162,7 +165,7 @@ function toggle(id) {
                                         fixed-width
                                     />
                                     <span
-                                        class="mt-0.5 block select-none text-xs font-light text-neutral-500"
+                                        class="mt-0.5 flex select-none text-xs font-light text-neutral-500"
                                         title="Last active"
                                         >{{ character.updated_at }}</span
                                     >
@@ -205,7 +208,7 @@ function toggle(id) {
                                                 href="/settings/features"
                                             >
                                                 <font-awesome-icon
-                                                    class="mr-1 align-middle"
+                                                    class="mr-1"
                                                     :icon="faLock"
                                                     size="2xs"
                                                     fixed-width
@@ -226,7 +229,7 @@ function toggle(id) {
                                                 preserveScroll
                                             >
                                                 <font-awesome-icon
-                                                    class="mr-1 align-middle"
+                                                    class="mr-1"
                                                     :icon="faUser"
                                                     size="2xs"
                                                     fixed-width
@@ -257,34 +260,43 @@ function toggle(id) {
                                 </td>
                             </tr>
 
-                            <template
+                            <tr
                                 v-if="
                                     key === open &&
                                     character.statistics.length > 0 &&
                                     character.user_id !== null
                                 "
                             >
-                                <tr
-                                    v-for="statistic in character.statistics.sort(
-                                        (a, b) => (a.name > b.name ? 1 : -1),
-                                    )"
-                                    class="!border-t-4 border-base-300 bg-base-200 text-xs"
-                                >
-                                    <td></td>
-                                    <td>
-                                        <font-awesome-icon
-                                            class="mr-3 text-neutral-500"
-                                            :icon="statistic.icon"
-                                            fixed-width
-                                        />{{ statistic.name }}
-                                    </td>
-                                    <td class="hidden md:table-cell"></td>
-                                    <td class="text-center">
-                                        {{ statistic.pivot.value }}
-                                    </td>
-                                    <td class="hidden md:table-cell"></td>
-                                </tr>
-                            </template>
+                                <td colspan="5" class="p-0">
+                                    <table class="table border-collapse">
+                                        <tr
+                                            v-for="statistic in character.statistics.sort(
+                                                (a, b) =>
+                                                    a.name > b.name ? 1 : -1,
+                                            )"
+                                            class="bg-base-200 text-xs odd:bg-base-100"
+                                        >
+                                            <td></td>
+                                            <td>
+                                                <font-awesome-icon
+                                                    class="mr-3 text-neutral-500"
+                                                    :icon="statistic.icon"
+                                                    fixed-width
+                                                />{{ statistic.name }}
+                                            </td>
+                                            <td
+                                                class="hidden md:table-cell"
+                                            ></td>
+                                            <td class="text-center">
+                                                {{ statistic.pivot.value }}
+                                            </td>
+                                            <td
+                                                class="hidden md:table-cell"
+                                            ></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
                         </template>
                     </tbody>
                 </table>

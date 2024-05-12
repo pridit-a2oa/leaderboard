@@ -82,7 +82,9 @@ class Character extends Model
      */
     public function statistics(): BelongsToMany
     {
-        return $this->belongsToMany(Statistic::class)->withPivot('value');
+        return $this->belongsToMany(Statistic::class)
+            ->withPivot('value')
+            ->having('value', '>', 0);
     }
 
     /**

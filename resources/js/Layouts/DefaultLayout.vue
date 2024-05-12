@@ -1,10 +1,10 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import AppLogo from '@/Components/ApplicationLogo.vue';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>

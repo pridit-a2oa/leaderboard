@@ -1,6 +1,8 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { Head, Link, usePage } from '@inertiajs/vue3';
+import Alert from '@/Components/Alert.vue';
+import Setting from '@/Components/Setting.vue';
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
     faUser,
@@ -9,8 +11,7 @@ import {
     faUserSlash,
     faRotate,
 } from '@fortawesome/free-solid-svg-icons';
-import Alert from '@/Components/Alert.vue';
-import Setting from '@/Components/Setting.vue';
+import { Head, Link } from '@inertiajs/vue3';
 </script>
 
 <template>
