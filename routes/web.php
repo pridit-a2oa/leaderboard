@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SteamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\ConnectionController;
+use App\Http\Controllers\UserSettingController;
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
@@ -18,46 +20,56 @@ Route::get('/privacy', [HomeController::class, 'privacy'])
     ->name('privacy');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/settings', [UserController::class, 'settings'])
-        ->name('settings');
-
-    Route::get('/connect', SteamController::class)
-        ->name('connect');
-
     Route::post('delete', [UserController::class, 'delete'])
         ->name('user.delete');
 
-    Route::post('link', [CharacterController::class, 'link'])
-        ->name('character.link');
+    Route::name('connection.')
+        ->prefix('connection')
+        ->group(function () {
+            Route::get('steam', SteamController::class)
+                ->name('steam');
 
-    Route::post('unlink', [CharacterController::class, 'unlink'])
-        ->name('character.unlink');
+            Route::post('disconnect', [ConnectionController::class, 'destroy'])
+                ->name('disconnect');
+        }
+    );
 
-    Route::post('visibility', [CharacterController::class, 'toggleVisibility'])
-        ->name('character.visibility');
+    Route::name('character.')
+        ->prefix('account')
+        ->group(function () {
+            Route::post('link', [CharacterController::class, 'link'])
+                ->name('link');
 
-    Route::post('reset', [CharacterController::class, 'reset'])
-        ->name('character.reset');
+            Route::post('unlink', [CharacterController::class, 'unlink'])
+                ->name('unlink');
 
-    Route::post('disconnect', [UserController::class, 'disconnect'])
-        ->name('user.disconnect');
+            Route::post('visibility', [CharacterController::class, 'toggleVisibility'])
+                ->name('visibility');
 
-    Route::prefix('settings')->group(function () {
-        Route::get('/{type}', function ($type) {
-            return Inertia::render(sprintf('Setting/%s', ucfirst($type)), [
-                'name' => 'Settings',
-                'icon' => 'cog',
-                'connections' => Connection::get(),
-                'features' => Statistic::orderBy('name')->get()->pluck('name')
-            ]);
-        })->whereIn('type', [
-            'account',
-            'characters',
-            'connections',
-            'features',
-            'delete'
-        ]);
-    });
+            Route::post('reset', [CharacterController::class, 'reset'])
+                ->name('reset');
+        }
+    );
+
+    Route::name('user.setting.')
+        ->prefix('settings')
+        ->group(function () {
+            Route::get('/account', [UserSettingController::class, 'showAccount'])
+                ->name('account');
+
+            Route::get('/characters', [UserSettingController::class, 'showCharacters'])
+                ->name('characters');
+
+            Route::get('/connections', [UserSettingController::class, 'showConnections'])
+                ->name('connections');
+
+            Route::get('/features', [UserSettingController::class, 'showFeatures'])
+                ->name('features');
+
+            Route::get('/delete', [UserSettingController::class, 'showDelete'])
+                ->name('delete');
+        }
+    );
 });
 
 // Route::get('/', function () {

@@ -14,7 +14,7 @@ const form = useForm({
 });
 
 const disconnect = () => {
-    form.post(route('user.disconnect'), {
+    form.post(route('connection.disconnect'), {
         preserveScroll: true,
     });
 };

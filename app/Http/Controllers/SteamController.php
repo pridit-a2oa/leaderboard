@@ -58,6 +58,6 @@ final class SteamController
                 );
         }
 
-        return Redirect::to('/settings/connections');
+        return redirect(route('user.setting.connections', absolute: false));
     }
 }

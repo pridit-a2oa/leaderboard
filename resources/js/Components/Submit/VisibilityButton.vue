@@ -1,6 +1,5 @@
 <script setup>
 import BadgeButton from '@/Components/BadgeButton.vue';
-
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useForm } from '@inertiajs/vue3';

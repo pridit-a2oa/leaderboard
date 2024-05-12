@@ -45,8 +45,8 @@ defineProps({
                         </td>
 
                         <td class="p-0 font-semibold capitalize">
-                            {{ connection.name }}
-                            <span
+                            {{ connection.name
+                            }}<span
                                 class="block text-sm font-normal text-neutral-500"
                             >
                                 {{
@@ -79,7 +79,7 @@ defineProps({
 
                             <Link
                                 v-else
-                                :href="route('connect')"
+                                :href="route(`connection.${connection.name}`)"
                                 class="badge badge-success badge-outline select-none font-light uppercase"
                             >
                                 Connect

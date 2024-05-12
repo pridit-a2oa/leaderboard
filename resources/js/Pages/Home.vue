@@ -4,7 +4,6 @@ import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 import TableStatistics from '@/Components/TableStatistics.vue';
 import { LinkButton } from '@/Components/Submit';
-
 import { ref } from 'vue';
 import {
     faTrophy,
@@ -182,7 +181,11 @@ function toggle(id) {
                                                         .characters.length > 0
                                                 "
                                                 class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
-                                                href="/settings/features"
+                                                :href="
+                                                    route(
+                                                        'user.setting.features',
+                                                    )
+                                                "
                                             >
                                                 <FontAwesomeIcon
                                                     class="mr-1"

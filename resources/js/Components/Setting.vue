@@ -35,7 +35,7 @@ const settings = ref([
                                 .toLowerCase()
                                 .includes(setting.type),
                         }"
-                        :href="`/settings/${setting.type}`"
+                        :href="route(`user.setting.${setting.type}`)"
                         ><FontAwesomeIcon :icon="setting.icon" fixed-width />{{
                             setting.type
                         }}</Link
@@ -50,7 +50,7 @@ const settings = ref([
                         :class="{
                             active: $page.component.includes('Delete'),
                         }"
-                        href="/settings/delete"
+                        :href="route('user.setting.delete')"
                         ><FontAwesomeIcon :icon="faBan" fixed-width />Delete
                         Account</Link
                     >

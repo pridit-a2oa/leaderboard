@@ -49,7 +49,7 @@ import Login from '@/Components/Modal/Login.vue';
                 class="menu dropdown-content z-[1] mt-1 w-32 rounded-box bg-base-200 p-2 shadow"
             >
                 <li>
-                    <Link href="/settings/account"
+                    <Link :href="route('user.setting.account')"
                         ><FontAwesomeIcon :icon="faCog" />Settings
                     </Link>
                 </li>
