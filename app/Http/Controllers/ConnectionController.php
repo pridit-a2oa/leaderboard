@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
-class UserConnectionController extends Controller
+class ConnectionController extends Controller
 {
     /**
      * Delete the user's connection.

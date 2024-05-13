@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
             Route::get('steam', SteamController::class)
                 ->name('steam');
 
-            Route::post('disconnect', [ConnectionController::class, 'destroy'])
-                ->name('disconnect');
+            Route::delete('disconnect', [ConnectionController::class, 'destroy'])
+                ->name('destroy');
         }
     );
 
@@ -46,10 +46,10 @@ Route::middleware('auth')->group(function () {
                 }
             );
 
-            Route::post('visibility', [CharacterController::class, 'toggleVisibility'])
+            Route::patch('visibility', [CharacterController::class, 'toggleVisibility'])
                 ->name('visibility');
 
-            Route::post('reset', [CharacterController::class, 'reset'])
+            Route::patch('reset', [CharacterController::class, 'reset'])
                 ->name('reset');
         }
     );

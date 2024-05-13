@@ -21,7 +21,7 @@ const form = useForm({
 });
 
 const setVisibility = () => {
-    form.post(route('character.visibility'), {
+    form.patch(route('character.visibility'), {
         preserveScroll: true,
         onFinish: () => form.reset(),
     });

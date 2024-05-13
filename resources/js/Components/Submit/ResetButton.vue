@@ -16,7 +16,7 @@ const form = useForm({
 });
 
 const resetCharacter = () => {
-    form.post(route('character.reset'), {
+    form.patch(route('character.reset'), {
         preserveScroll: true,
     });
 };

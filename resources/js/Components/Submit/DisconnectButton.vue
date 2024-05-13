@@ -14,7 +14,7 @@ const form = useForm({
 });
 
 const disconnect = () => {
-    form.post(route('connection.disconnect'), {
+    form.delete(route('connection.destroy'), {
         preserveScroll: true,
     });
 };
