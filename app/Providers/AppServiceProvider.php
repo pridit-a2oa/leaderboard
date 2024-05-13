@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Force HTTPS
         if ($this->app->isProduction()) {
-            URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', 'on');
         }
 
         Password::defaults(function () {
