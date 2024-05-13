@@ -58,7 +58,7 @@ const submit = () => {
             <form @submit.prevent="submit">
                 <div class="form-control">
                     <label
-                        class="input input-bordered mt-4 flex items-center gap-2"
+                        class="input input-bordered mt-4 flex items-center gap-2 bg-base-200"
                     >
                         <FontAwesomeIcon
                             class="text-neutral-400"
@@ -80,7 +80,7 @@ const submit = () => {
                     <InputError class="mt-2" :message="form.errors.email" />
 
                     <label
-                        class="input input-bordered mt-4 flex items-center gap-2"
+                        class="input input-bordered mt-4 flex items-center gap-2 bg-base-200"
                     >
                         <FontAwesomeIcon
                             class="text-neutral-400"

@@ -15,11 +15,9 @@ import { Link } from '@inertiajs/vue3';
 
         <Breadcrumb v-if="$page.props.name" />
 
-        <div class="container mx-auto flex-grow text-neutral-400">
-            <main class="my-6">
-                <slot />
-            </main>
-        </div>
+        <main class="container mx-auto my-6 flex-grow text-neutral-400">
+            <slot />
+        </main>
 
         <footer class="footer bg-base-200">
             <div class="container mx-auto flex justify-center py-6">

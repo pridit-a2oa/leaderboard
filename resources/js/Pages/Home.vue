@@ -51,7 +51,7 @@ function toggle(id) {
             />
         </Head>
 
-        <main class="container mx-auto text-neutral-400">
+        <div class="container mx-auto text-neutral-400">
             <Navigation />
 
             <div v-if="characters.data.length > 0" class="mt-4 font-bold">
@@ -253,6 +253,6 @@ function toggle(id) {
                 :to="characters.to"
                 :total="characters.total"
             />
-        </main>
+        </div>
     </DefaultLayout>
 </template>
