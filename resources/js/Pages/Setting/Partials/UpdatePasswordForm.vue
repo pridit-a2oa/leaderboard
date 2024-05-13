@@ -89,7 +89,7 @@ const submit = () => {
                 <div class="mt-3 flex justify-end">
                     <SuccessMessage
                         v-if="form.wasSuccessful"
-                        message="Password has been updated"
+                        message="Password was changed"
                     />
 
                     <SaveButton

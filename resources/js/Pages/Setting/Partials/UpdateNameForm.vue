@@ -42,7 +42,7 @@ const submit = () => {
                 <div class="mt-3 flex justify-end">
                     <SuccessMessage
                         v-if="form.wasSuccessful"
-                        message="Display name has been updated"
+                        message="Display name was changed"
                     />
 
                     <SaveButton
