@@ -8,27 +8,46 @@ defineProps({
     currentPage: {
         type: Number,
     },
+    from: {
+        type: Number,
+    },
+    to: {
+        type: Number,
+    },
+    total: {
+        type: Number,
+    },
 });
 </script>
 
-<template>
-    <div v-if="links.length > 3" class="join mb-8 flex justify-center">
-        <template v-for="link in links">
-            <Link
-                class="btn no-animation first:mr-auto last:ml-auto [&:not(:first-child):not(:last-child)]:hidden md:[&:not(:first-child):not(:last-child)]:inline-flex"
-                :class="{
-                    '!hidden': link.label === '...',
-                    'btn-disabled invisible': link.url === null,
-                    'bg-neutral-700 hover:bg-neutral-700': link.active,
-                    'join-item': !!/\d/.test(link.label),
-                    '!text-neutral-600':
-                        parseInt(link.label) > currentPage + 1 ||
-                        parseInt(link.label) < currentPage - 1,
-                }"
-                :href="link.url"
-                v-html="link.label"
-                preserve-scroll
-            />
-        </template>
-    </div>
+<template v-if="links.length > 3">
+    <template v-if="links.length > 3">
+        <div class="join mb-8 mt-4 flex">
+            <template v-for="(link, key) in links">
+                <Link
+                    class="btn no-animation first:mr-auto last:ml-auto [&:not(:first-child):not(:last-child)]:hidden md:[&:not(:first-child):not(:last-child)]:inline-flex"
+                    :class="{
+                        '!hidden':
+                            link.label === '...' || !!/\d/.test(link.label),
+                        'btn-disabled invisible': link.url === null,
+                        'bg-neutral-700 hover:bg-neutral-700': link.active,
+                        '!text-neutral-600':
+                            parseInt(link.label) > currentPage + 1 ||
+                            parseInt(link.label) < currentPage - 1,
+                    }"
+                    :style="{ order: key }"
+                    :href="link.url"
+                    v-html="link.label"
+                    preserve-scroll
+                />
+            </template>
+
+            <span
+                class="order-1 flex-1 justify-center self-center text-center text-sm"
+                >Showing <strong>{{ from }}</strong> &dash;
+                <strong>{{ to }}</strong> of
+                <strong>{{ total }}</strong> records</span
+            >
+        </div>
+    </template>
 </template>

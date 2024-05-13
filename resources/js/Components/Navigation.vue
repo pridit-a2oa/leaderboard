@@ -46,7 +46,7 @@ import Login from '@/Components/Modal/Login.vue';
             </div>
             <ul
                 tabindex="0"
-                class="menu dropdown-content z-[1] mt-1 w-32 rounded-box bg-base-200 p-2 shadow"
+                class="menu dropdown-content z-[1] mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
             >
                 <li>
                     <Link :href="route('user.setting.account')"

@@ -54,7 +54,7 @@ function toggle(id) {
         <main class="container mx-auto text-neutral-400">
             <Navigation />
 
-            <div v-if="characters.data.length > 0" class="mb-8 mt-4 font-bold">
+            <div v-if="characters.data.length > 0" class="mt-4 font-bold">
                 <table class="table border-collapse">
                     <thead>
                         <tr class="bg-base-100">
@@ -249,6 +249,9 @@ function toggle(id) {
             <Pagination
                 :links="characters.links"
                 :currentPage="characters.current_page"
+                :from="characters.from"
+                :to="characters.to"
+                :total="characters.total"
             />
         </main>
     </DefaultLayout>
