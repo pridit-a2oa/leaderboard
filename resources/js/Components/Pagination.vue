@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 
 defineProps({
     links: {
-        type: Array,
+        type: Object,
     },
     currentPage: {
         type: Number,
@@ -21,33 +21,30 @@ defineProps({
 </script>
 
 <template v-if="links.length > 3">
-    <template v-if="links.length > 3">
-        <div class="join mt-4 flex">
-            <template v-for="(link, key) in links">
-                <Link
-                    class="btn no-animation first:mr-auto last:ml-auto"
-                    :class="{
-                        '!hidden':
-                            link.label === '...' || !!/\d/.test(link.label),
-                        'btn-disabled invisible': link.url === null,
-                        'bg-neutral-700 hover:bg-neutral-700': link.active,
-                        '!text-neutral-600':
-                            parseInt(link.label) > currentPage + 1 ||
-                            parseInt(link.label) < currentPage - 1,
-                    }"
-                    :style="{ order: key }"
-                    :href="link.url"
-                    v-html="link.label"
-                    preserve-scroll
-                />
-            </template>
+    <div class="join mt-4 flex">
+        <template v-for="(link, key) in links" :key="key">
+            <Link
+                class="btn no-animation first:mr-auto last:ml-auto"
+                :class="{
+                    '!hidden': link.label === '...' || !!/\d/.test(link.label),
+                    'btn-disabled invisible': link.url === null,
+                    'bg-neutral-700 hover:bg-neutral-700': link.active,
+                    '!text-neutral-600':
+                        parseInt(link.label) > currentPage + 1 ||
+                        parseInt(link.label) < currentPage - 1,
+                }"
+                :style="{ order: key }"
+                :href="link.url"
+                v-html="link.label"
+                preserve-scroll
+            />
+        </template>
 
-            <span
-                class="order-1 hidden flex-1 self-center text-center text-sm md:block"
-                >Showing <strong>{{ from }}</strong> &dash;
-                <strong>{{ to }}</strong> of
-                <strong>{{ total }}</strong> records</span
-            >
-        </div>
-    </template>
+        <span
+            class="order-1 hidden flex-1 self-center text-center text-sm md:block"
+            >Showing <strong>{{ from }}</strong> &dash;
+            <strong>{{ to }}</strong> of
+            <strong>{{ total }}</strong> records</span
+        >
+    </div>
 </template>
