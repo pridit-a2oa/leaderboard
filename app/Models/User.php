@@ -14,11 +14,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use ProtoneMedia\LaravelVerifyNewEmail\MustVerifyNewEmail;
 
 #[ObservedBy([UserObserver::class])]
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, SoftDeletes, HasRoles;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles, MustVerifyNewEmail;
 
     /**
      * The attributes that are mass assignable.
