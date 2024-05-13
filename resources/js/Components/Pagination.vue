@@ -21,9 +21,9 @@ defineProps({
 </script>
 
 <template v-if="links.length > 3">
-    {{ links }}
     <div class="join mt-4 flex">
         <template v-for="(link, key) in links" :key="key">
+            <span v-html="link.label"></span>
             <Link
                 class="btn no-animation first:mr-auto last:ml-auto"
                 :class="{
