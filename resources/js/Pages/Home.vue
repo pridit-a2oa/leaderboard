@@ -142,7 +142,7 @@ function toggle(id) {
                                     />
                                     <span
                                         class="mt-0.5 flex select-none text-xs font-light text-neutral-500"
-                                        title="Last active"
+                                        title="Last updated"
                                         >{{ character.updated_at }}</span
                                     >
                                 </td>

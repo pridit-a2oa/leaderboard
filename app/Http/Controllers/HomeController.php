@@ -19,7 +19,17 @@ class HomeController extends Controller
             ->with('statistics')
             ->orderByDesc('score')
             ->paginate(50)
-            ->onEachSide(1);
+            ->onEachSide(1)
+            ->through(fn ($item) => [
+                'id' => $item->id,
+                'user_id' => $item->user_id,
+                'uid' => $item->uid,
+                'name' => $item->name,
+                'score' => $item->score,
+                'is_visible' => $item->is_visible,
+                'updated_at' => $item->updated_at,
+                'statistics' => $item->statistics->toArray()
+            ]);
 
         return Inertia::render('Home', [
             'characters' => $characters
