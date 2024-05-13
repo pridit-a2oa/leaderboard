@@ -16,7 +16,7 @@ const form = useForm({
 });
 
 const linkCharacter = () => {
-    form.post(route('character.link'), {
+    form.post(route('character.link.store'), {
         preserveScroll: true,
         preserveState: false,
     });

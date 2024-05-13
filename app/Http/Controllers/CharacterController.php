@@ -13,46 +13,6 @@ class CharacterController extends Controller
     /**
      * Link an authorised user with a character.
      */
-    public function link(CharacterRequest $request): RedirectResponse
-    {
-        $request->validated();
-
-        $character = Character::findOrFail($request->character_id);
-
-        // Ineligible to link more than one character to a user as a member
-        if (auth()->user()->characters()->count() > 0 && auth()->user()->hasRole('member')) {
-            return redirect(route('home', absolute: false));
-        }
-
-        // Attach the character to the user
-        $character->user()->associate(auth()->user()->id);
-        $character->save();
-
-        return redirect(route('home', absolute: false));
-    }
-
-    /**
-     * Unlink an authorised user with a character.
-     */
-    public function unlink(CharacterRequest $request): RedirectResponse
-    {
-        $request->validated();
-
-        $character = Character::findOrFail($request->character_id);
-
-        // Dissociate the user from the character
-        $character->user()->dissociate();
-
-        // Reset the visibility of the character
-        $character->is_visible = true;
-        $character->save();
-
-        return redirect()->back();
-    }
-
-    /**
-     * Link an authorised user with a character.
-     */
     public function toggleVisibility(CharacterRequest $request): RedirectResponse
     {
         $request->validated();

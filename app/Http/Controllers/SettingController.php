@@ -8,7 +8,7 @@ use App\Models\Statistic;
 use App\Models\Connection;
 use Illuminate\Http\Request;
 
-class UserSettingController extends Controller
+class SettingController extends Controller
 {
     /**
      * Get the page metadata to persist throughout settings.

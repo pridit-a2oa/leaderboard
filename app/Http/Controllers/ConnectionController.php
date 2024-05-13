@@ -17,10 +17,10 @@ class UserConnectionController extends Controller
         ]);
 
         // Unassociate all associated characters
-        auth()->user()->characters()->update(['user_id' => null]);
+        $request->user()->characters()->update(['user_id' => null]);
 
         // Detach the connection type
-        auth()->user()->connections()->detach($request->connection_id);
+        $request->user()->connections()->detach($request->connection_id);
 
         return redirect(route('user.setting.connections', absolute: false));
     }

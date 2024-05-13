@@ -9,7 +9,8 @@ use App\Http\Controllers\SteamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ConnectionController;
-use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\Character\LinkController;
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
@@ -35,11 +36,15 @@ Route::middleware('auth')->group(function () {
     Route::name('character.')
         ->prefix('account')
         ->group(function () {
-            Route::post('link', [CharacterController::class, 'link'])
-                ->name('link');
+            Route::name('link.')
+                ->group(function () {
+                    Route::post('link', [LinkController::class, 'store'])
+                        ->name('store');
 
-            Route::post('unlink', [CharacterController::class, 'unlink'])
-                ->name('unlink');
+                    Route::delete('unlink', [LinkController::class, 'destroy'])
+                        ->name('destroy');
+                }
+            );
 
             Route::post('visibility', [CharacterController::class, 'toggleVisibility'])
                 ->name('visibility');
@@ -52,20 +57,20 @@ Route::middleware('auth')->group(function () {
     Route::name('user.setting.')
         ->prefix('settings')
         ->group(function () {
-            Route::get('/account', [UserSettingController::class, 'showAccount'])
+            Route::get('/account', [SettingController::class, 'showAccount'])
                 ->name('account');
 
-            Route::get('/features', [UserSettingController::class, 'showFeatures'])
+            Route::get('/features', [SettingController::class, 'showFeatures'])
                 ->name('features');
 
-            Route::get('/delete', [UserSettingController::class, 'showDelete'])
+            Route::get('/delete', [SettingController::class, 'showDelete'])
                 ->name('delete');
 
             Route::middleware('verified')->group(function () {
-                Route::get('/characters', [UserSettingController::class, 'showCharacters'])
+                Route::get('/characters', [SettingController::class, 'showCharacters'])
                     ->name('characters');
 
-                Route::get('/connections', [UserSettingController::class, 'showConnections'])
+                Route::get('/connections', [SettingController::class, 'showConnections'])
                     ->name('connections');
             });
         }
@@ -75,24 +80,5 @@ Route::middleware('auth')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('update');
     });
 });
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';

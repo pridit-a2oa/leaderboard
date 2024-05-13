@@ -16,7 +16,7 @@ const form = useForm({
 });
 
 const unlinkCharacter = () => {
-    form.post(route('character.unlink'), {
+    form.delete(route('character.link.destroy'), {
         preserveScroll: true,
         preserveState: false,
         onFinish: () => form.reset(),
