@@ -70,6 +70,7 @@ const submit = () => {
                         <TextInput
                             id="email"
                             type="email"
+                            class="!border-transparent"
                             placeholder="Email"
                             v-model="form.email"
                             required
@@ -92,6 +93,7 @@ const submit = () => {
                         <TextInput
                             id="password"
                             type="password"
+                            class="!border-transparent"
                             v-model="form.password"
                             placeholder="Password"
                             required

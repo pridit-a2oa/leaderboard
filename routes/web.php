@@ -1,8 +1,6 @@
 <?php
 
 use Inertia\Inertia;
-use App\Models\Statistic;
-use App\Models\Connection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
@@ -57,19 +55,25 @@ Route::middleware('auth')->group(function () {
             Route::get('/account', [UserSettingController::class, 'showAccount'])
                 ->name('account');
 
-            Route::get('/characters', [UserSettingController::class, 'showCharacters'])
-                ->name('characters');
-
-            Route::get('/connections', [UserSettingController::class, 'showConnections'])
-                ->name('connections');
-
             Route::get('/features', [UserSettingController::class, 'showFeatures'])
                 ->name('features');
 
             Route::get('/delete', [UserSettingController::class, 'showDelete'])
                 ->name('delete');
+
+            Route::middleware('verified')->group(function () {
+                Route::get('/characters', [UserSettingController::class, 'showCharacters'])
+                    ->name('characters');
+
+                Route::get('/connections', [UserSettingController::class, 'showConnections'])
+                    ->name('connections');
+            });
         }
     );
+
+    Route::name('profile.')->group(function () {
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('update');
+    });
 });
 
 // Route::get('/', function () {

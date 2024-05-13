@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use URL;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\App;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +22,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Force HTTPS
-        if (App::environment('production')) {
-            \URL::forceScheme('https');
+        if ($this->app->isProduction()) {
+            URL::forceScheme('https');
         }
+
+        Password::defaults(function () {
+            $rule = Password::min(8);
+
+            return $this->app->isProduction()
+                ? $rule->mixedCase()->uncompromised()
+                : $rule;
+        });
     }
 }

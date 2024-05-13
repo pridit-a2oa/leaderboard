@@ -32,7 +32,7 @@ tr {
 input[type='text']:focus,
 input[type='email'],
 input[type='password'] {
-    @apply !border-transparent !shadow-none !ring-transparent;
+    @apply !shadow-none !ring-transparent;
 }
 
 @media (width <= 767px) {

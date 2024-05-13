@@ -8,6 +8,7 @@ import {
     faPlug,
     faBars,
     faBan,
+    faLock,
 } from '@fortawesome/free-solid-svg-icons';
 
 defineProps({ title: String });
@@ -27,19 +28,46 @@ const settings = ref([
                 <li
                     v-for="setting in settings"
                     class="capitalize [&:not(:last-child)]:mb-1"
+                    :class="{
+                        'disabled opacity-40':
+                            ['characters', 'connections'].includes(
+                                setting.type,
+                            ) &&
+                            $page.props.auth.user.email_verified_at === null,
+                    }"
                 >
                     <Link
-                        class="pl-2 !text-neutral-400"
+                        class="px-2 !text-neutral-400"
                         :class="{
                             active: $page.component
                                 .toLowerCase()
                                 .includes(setting.type),
                         }"
-                        :href="route(`user.setting.${setting.type}`)"
+                        :href="
+                            ['characters', 'connections'].includes(
+                                setting.type,
+                            ) &&
+                            $page.props.auth.user.email_verified_at === null
+                                ? '#'
+                                : route(`user.setting.${setting.type}`)
+                        "
                         ><FontAwesomeIcon :icon="setting.icon" fixed-width />{{
                             setting.type
-                        }}</Link
-                    >
+                        }}
+
+                        <FontAwesomeIcon
+                            v-if="
+                                ['characters', 'connections'].includes(
+                                    setting.type,
+                                ) &&
+                                $page.props.auth.user.email_verified_at === null
+                            "
+                            :icon="faLock"
+                            size="sm"
+                            title="Verified email required"
+                            fixed-width
+                        />
+                    </Link>
                 </li>
             </ul>
 
@@ -67,7 +95,7 @@ const settings = ref([
 
 <style scoped>
 h2 {
-    @apply mb-6 text-xl font-semibold;
+    @apply mb-4 text-xl font-semibold;
 }
 
 a.active {

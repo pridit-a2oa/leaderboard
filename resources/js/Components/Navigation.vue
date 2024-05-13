@@ -40,9 +40,16 @@ import Login from '@/Components/Modal/Login.vue';
             v-if="$page.props.auth.user"
             class="dropdown dropdown-bottom ml-auto hidden md:inline-flex"
         >
-            <div tabindex="0" role="button" class="btn no-animation">
+            <div
+                tabindex="0"
+                role="button"
+                class="btn no-animation"
+                :title="$page.props.auth.user.name"
+            >
                 <FontAwesomeIcon :icon="faUser" size="sm" />
-                {{ $page.props.auth.user.name }}
+                <span class="max-w-16 truncate">
+                    {{ $page.props.auth.user.name }}
+                </span>
             </div>
             <ul
                 tabindex="0"

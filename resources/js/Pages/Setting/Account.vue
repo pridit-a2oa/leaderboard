@@ -1,7 +1,11 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Setting from '@/Components/Setting.vue';
-
+import {
+    UpdateEmailForm,
+    UpdateNameForm,
+    UpdatePasswordForm,
+} from '@/Pages/Setting/Partials';
 import { Head } from '@inertiajs/vue3';
 </script>
 
@@ -10,17 +14,11 @@ import { Head } from '@inertiajs/vue3';
 
     <DefaultLayout>
         <Setting title="Account">
-            <div>
-                <span>Change display name</span>
-            </div>
+            <UpdateNameForm />
 
-            <div>
-                <span>Update email address</span>
-            </div>
+            <UpdateEmailForm />
 
-            <div>
-                <span>Update password</span>
-            </div>
+            <UpdatePasswordForm />
         </Setting>
     </DefaultLayout>
 </template>

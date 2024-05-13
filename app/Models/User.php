@@ -2,20 +2,21 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Character;
 use App\Models\Connection;
 use App\Observers\UserObserver;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 #[ObservedBy([UserObserver::class])]
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, SoftDeletes, HasRoles;
 
@@ -64,7 +65,17 @@ class User extends Authenticatable
     }
 
     /**
-     * The characters that belong to the user.
+     * Get the user's first name.
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+        );
+    }
+
+    /**
+     * Get the characters the user has.
      */
     public function characters(): HasMany
     {
@@ -72,10 +83,11 @@ class User extends Authenticatable
     }
 
     /**
-     * The connections that belong to the user.
+     * Get the connections that belong to the user.
      */
     public function connections(): BelongsToMany
     {
-        return $this->belongsToMany(Connection::class)->withPivot('identifier');
+        return $this->belongsToMany(Connection::class)
+            ->withPivot('identifier');
     }
 }

@@ -19,7 +19,7 @@ class UserObserver
      */
     public function updated(User $user): void
     {
-        // User updates email (check Ko-fi contribution)
+        // User updates email_verified_at (check Ko-fi contribution)
     }
 
     /**
