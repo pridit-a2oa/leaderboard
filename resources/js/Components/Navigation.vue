@@ -14,7 +14,7 @@ import Login from '@/Components/Modal/Login.vue';
 </script>
 
 <template>
-    <div class="mt-8 flex flex-col justify-between gap-3 xs:flex-row">
+    <div class="flex flex-col justify-between gap-3 xs:flex-row">
         <ExtLink
             class="text-[#7289da]"
             href="https://dsc.gg/pridit"

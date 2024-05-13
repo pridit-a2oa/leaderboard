@@ -42,8 +42,7 @@ defineProps({
                 />
             </template>
 
-            <span
-                class="order-1 flex-1 justify-center self-center text-center text-sm"
+            <span class="order-1 flex-1 self-center text-center text-sm"
                 >Showing <strong>{{ from }}</strong> &dash;
                 <strong>{{ to }}</strong> of
                 <strong>{{ total }}</strong> records</span
