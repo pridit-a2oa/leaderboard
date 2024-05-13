@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 
 defineProps({
     links: {
-        type: Object,
+        type: Array,
     },
     currentPage: {
         type: Number,
@@ -21,6 +21,7 @@ defineProps({
 </script>
 
 <template v-if="links.length > 3">
+    {{ links }}
     <div class="join mt-4 flex">
         <template v-for="(link, key) in links" :key="key">
             <Link
