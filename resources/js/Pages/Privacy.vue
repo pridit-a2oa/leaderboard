@@ -7,7 +7,7 @@ import { Head, Link } from '@inertiajs/vue3';
     <DefaultLayout>
         <Head title="Privacy Policy" />
 
-        <div class="mb-8 flex flex-col gap-6">
+        <div class="flex flex-col gap-6">
             <h1>Privacy Policy</h1>
             <p>Last updated: May 03, 2024</p>
             <p>
