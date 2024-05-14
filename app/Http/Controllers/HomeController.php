@@ -43,7 +43,7 @@ class HomeController extends Controller
     {
         return Inertia::render('Privacy', [
             'name' => 'Privacy Policy',
-            'icon' => 'file'
+            'icon' => 'fa-file'
         ]);
     }
 }

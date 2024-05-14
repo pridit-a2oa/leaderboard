@@ -19,7 +19,7 @@ class SettingController extends Controller
     {
         return [
             'name' => 'Settings',
-            'icon' => 'cog',
+            'icon' => 'fa-cog',
         ];
     }
 
