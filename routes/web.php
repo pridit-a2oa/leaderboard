@@ -76,9 +76,7 @@ Route::middleware('auth')->group(function () {
         }
     );
 
-    Route::name('profile.')->group(function () {
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('update');
-    });
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 require __DIR__.'/auth.php';

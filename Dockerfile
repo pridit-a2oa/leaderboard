@@ -1,5 +1,8 @@
 FROM node:22.0.0-alpine3.19
 
+# Set the application variables
+ENV APP_NAME=Leaderboard
+
 # Setup document root
 WORKDIR /var/www/html
 
