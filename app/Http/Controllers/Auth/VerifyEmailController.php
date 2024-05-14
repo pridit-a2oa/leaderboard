@@ -27,7 +27,9 @@ class VerifyEmailController extends Controller
             })
             ->user;
 
-        $request->session()->flash('message', true);
+        $request->session()->flash('message', [
+            'success', 'Your email address was verified'
+        ]);
 
         return redirect(route('user.setting.account', absolute: false));
     }

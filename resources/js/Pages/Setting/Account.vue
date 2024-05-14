@@ -16,7 +16,7 @@ import { Head } from '@inertiajs/vue3';
         <Setting title="Account">
             <UpdateNameForm />
 
-            <UpdateEmailForm :verified="$page.props.flash.message" />
+            <UpdateEmailForm :message="$page.props.flash.message" />
 
             <UpdatePasswordForm />
         </Setting>

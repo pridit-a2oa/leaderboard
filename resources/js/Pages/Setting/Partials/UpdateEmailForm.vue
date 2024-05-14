@@ -1,21 +1,15 @@
 <script setup>
 import { ref, computed } from 'vue';
 import SaveButton from '@/Components/SaveButton.vue';
-import SuccessMessage from '@/Components/SuccessMessage.vue';
+import FormResponse from '@/Components/FormResponse.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
-    verified: {
-        type: Boolean,
-        default: false,
+    message: {
+        type: Array,
+        default: [],
     },
-});
-
-const message = computed(() => {
-    return props.verified
-        ? 'Your new email address was verified'
-        : 'You have been sent a verification link';
 });
 
 const emailInput = ref(null);
@@ -68,9 +62,16 @@ const submit = () => {
                 />
 
                 <div class="mt-3 flex justify-end">
-                    <SuccessMessage
-                        v-if="form.wasSuccessful || verified"
-                        :message="message"
+                    <FormResponse
+                        v-if="form.wasSuccessful || message.length > 0"
+                        :message="
+                            message.length > 0
+                                ? message
+                                : [
+                                      'warning',
+                                      'You have been sent a verification link',
+                                  ]
+                        "
                     />
 
                     <SaveButton

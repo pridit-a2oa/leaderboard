@@ -21,7 +21,7 @@ const deleteUserRequest = () => {
     <DefaultLayout>
         <Setting title="Delete Account">
             <Alert
-                v-if="$page.props.flash.message"
+                v-if="$page.props.flash.message.length > 0"
                 :type="$page.props.flash.message[0]"
                 :message="$page.props.flash.message[1]"
             />
@@ -64,9 +64,12 @@ const deleteUserRequest = () => {
                     class="btn-sm"
                     :class="{
                         'opacity-25':
-                            form.processing || $page.props.flash.message,
+                            form.processing ||
+                            $page.props.flash.message.length > 0,
                     }"
-                    :disabled="form.processing || $page.props.flash.message"
+                    :disabled="
+                        form.processing || $page.props.flash.message.length > 0
+                    "
                     @click="deleteUserRequest"
                 >
                     <FontAwesomeIcon :icon="faTrash" size="sm" />

@@ -24,10 +24,11 @@ defineProps({
     <DefaultLayout>
         <Setting title="Connections">
             <Alert
-                v-if="$page.props.flash.message"
+                v-if="$page.props.flash.message.length > 0"
                 :type="$page.props.flash.message[0]"
                 :message="$page.props.flash.message[1]"
             />
+
             <table class="table border-collapse rounded-md bg-base-200">
                 <tbody>
                     <tr

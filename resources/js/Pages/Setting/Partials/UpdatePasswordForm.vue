@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import SaveButton from '@/Components/SaveButton.vue';
-import SuccessMessage from '@/Components/SuccessMessage.vue';
+import FormResponse from '@/Components/FormResponse.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
@@ -87,9 +87,9 @@ const submit = () => {
                 </div>
 
                 <div class="mt-3 flex justify-end">
-                    <SuccessMessage
+                    <FormResponse
                         v-if="form.wasSuccessful"
-                        message="Password was changed"
+                        :message="['success', 'Your password was changed']"
                     />
 
                     <SaveButton
