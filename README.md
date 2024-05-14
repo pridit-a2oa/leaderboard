@@ -4,11 +4,11 @@
 
 ![ci](https://github.com/pridit-a2oa/leaderboard/actions/workflows/build-image.yml/badge.svg)
 
-At its core, this project integrates game server data to drive the display of a leaderboard.
+At its core, this [Laravel](https://laravel.com/) project integrates game server data to drive the display of a leaderboard.
 
 ## Features
 
--   Full account flow (register, login, update, reset, deletion)
+-   Full account flow (register, login, update, reset, delete)
 -   Associate a [Steam](https://store.steampowered.com/) user identifier via OpenID with an account
 -   Support for linking characters to an account and performing actions
 -   Webhook support to associate [Ko-fi](https://ko-fi.com) contributions and allow users to access a set of permission restricted features
@@ -62,13 +62,13 @@ The following tables are used as part of this process:
 -   `characters` ([uid](https://community.bistudio.com/wiki/getPlayerUID), [name](https://community.bistudio.com/wiki/name), [score](https://community.bistudio.com/wiki/score))
 -   `character_statistic` (character_id, statistic_id) - if used with supporter features
 
-For an example on how this has been integrated using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
+For an example on how this has been integrated into an existing mission using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
 
 ## Deployment
 
 For ease of use this application can be deployed through [Docker](https://www.docker.com/), as it is already dockerized with support for [SSR](https://inertiajs.com/server-side-rendering) and a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
 
-> For non-Docker hosting solutions, such as [Forge](https://forge.laravel.com/), please explore these on your own.
+> For non-Docker hosting solutions, such as [Forge](https://forge.laravel.com/), please explore these on your own (with the above considerations).
 
 Build the image:
 
@@ -89,7 +89,7 @@ docker run -d \
 ```
 
 > [!IMPORTANT]  
-> This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will depend on other containers or the services you want to use (e.g. Mailgun/managed database).
+> This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will vary depending on other containers or the services you want to use (e.g. Mailgun/managed database).
 
 ## Issues (SSR)
 
