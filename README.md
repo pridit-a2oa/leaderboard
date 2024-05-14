@@ -53,6 +53,33 @@ You should now be able to access the application via:
 
 -   http://localhost
 
+## Deployment
+
+For ease of use this application can be deployed through [Docker](https://www.docker.com/), as this application is already dockerized with support for [SSR](https://inertiajs.com/server-side-rendering) and a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
+
+> For non-Docker hosting solutions, such as [Forge](https://forge.laravel.com/), please explore these on your own.
+
+Build the image:
+
+```
+docker build . -t leaderboard
+```
+
+Start the container:
+
+```
+docker run -d \
+	--name leaderboard \
+	--restart unless-stopped \
+	-e KOFI_TOKEN=<OPTIONAL> \
+	-e STEAM_AUTH_API_KEYS=<OPTIONAL> \
+	-p 8080:8080 \
+	leaderboard
+```
+
+> [!IMPORTANT]  
+> This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will depend on other containers or the services you want to use (e.g. Mailgun/managed database).
+
 ## Issues (SSR)
 
 1. **Link** component v-html directive ignored: [vuejs/core#6435](https://github.com/vuejs/core/issues/6435)
@@ -60,4 +87,4 @@ You should now be able to access the application via:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the [MIT License](LICENSE).
