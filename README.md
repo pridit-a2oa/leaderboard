@@ -53,6 +53,17 @@ You should now be able to access the application via:
 
 -   http://localhost
 
+## Bridge
+
+As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended.
+
+The following tables are used as part of this process:
+
+-   `characters` ([uid](https://community.bistudio.com/wiki/getPlayerUID), [name](https://community.bistudio.com/wiki/name), [score](https://community.bistudio.com/wiki/score))
+-   `character_statistic` (character_id, statistic_id) - if used with supporter features
+
+For an example on how this has been integrated using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
+
 ## Deployment
 
 For ease of use this application can be deployed through [Docker](https://www.docker.com/), as it is already dockerized with support for [SSR](https://inertiajs.com/server-side-rendering) and a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
