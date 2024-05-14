@@ -13,7 +13,7 @@ At its core, this project integrates game server data to drive the display of a 
 -   Support for linking characters to an account and performing actions
 -   Webhook support to associate [Ko-fi](https://ko-fi.com) contributions and allow users to access a set of permission restricted features
 
-## Install
+## Getting Started
 
 Make a copy of the environment file:
 
