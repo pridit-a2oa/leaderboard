@@ -2,21 +2,34 @@
 
 ![ci](https://github.com/pridit-a2oa/leaderboard/actions/workflows/build-image.yml/badge.svg)
 
-Laravel 11 w/ Inertia.js leaderboard system
+This project was created using the VILT (Vue, Inertia.js, Laravel, Tailwind) stack. It integrates game server data to drive the display of a leaderboard.
+
+## Features
+
+-   Full authentication flow
+-   Associate a [Steam](https://store.steampowered.com/) user identifier (OpenID) with an account
+-   Support for linking characters to an account and performing actions
+-   Webhook support to associate [Ko-fi](https://ko-fi.com) contributions and allow users to access a set of permission restricted features
 
 ## Install
 
-```
-sail up -d
-```
+Make a copy of the environment file:
 
 ```
-sail npm run dev
+cp .env.example .env
 ```
 
+With [laravel/sail](https://github.com/laravel/sail) scaffold the project using containers:
+
 ```
-sail php artisan db:seed
+sail up -d && sail npm run dev
 ```
+
+> For a first time setup, run migrations and seed the database:
+>
+> ```
+> sail artisan migrate && sail artisan db:seed
+> ```
 
 ## SSR Issues
 
