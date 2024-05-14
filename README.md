@@ -1,3 +1,5 @@
+![Leaderboard](https://github.com/pridit-a2oa/leaderboard/assets/12836049/f6ab91db-cfdd-4b11-b6fa-814ead8cae4e)
+
 # Leaderboard
 
 ![ci](https://github.com/pridit-a2oa/leaderboard/actions/workflows/build-image.yml/badge.svg)
@@ -7,7 +9,7 @@ At its core, this project integrates game server data to drive the display of a 
 ## Features
 
 -   Full account flow (register, login, update, reset, deletion)
--   Associate a [Steam](https://store.steampowered.com/) user identifier (OpenID) with an account
+-   Associate a [Steam](https://store.steampowered.com/) user identifier via OpenID with an account
 -   Support for linking characters to an account and performing actions
 -   Webhook support to associate [Ko-fi](https://ko-fi.com) contributions and allow users to access a set of permission restricted features
 
