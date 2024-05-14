@@ -1,10 +1,12 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas, faHouse, faCog, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faCog, faFile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(fas, faCog, faFile);
+library.add(faCog, faFile);
+
+const icon = usePage().props.icon;
 </script>
 
 <template>
@@ -27,7 +29,7 @@ library.add(fas, faCog, faFile);
                 <li class="text-neutral-300">
                     <FontAwesomeIcon
                         class="mr-1.5"
-                        :icon="['fas', $page.props.icon]"
+                        :icon="icon"
                         size="sm"
                         fixed-width
                     />
