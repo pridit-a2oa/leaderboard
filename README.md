@@ -69,12 +69,12 @@ Start the container:
 
 ```
 docker run -d \
-	--name leaderboard \
-	--restart unless-stopped \
-	-e KOFI_TOKEN=<OPTIONAL> \
-	-e STEAM_AUTH_API_KEYS=<OPTIONAL> \
-	-p 8080:8080 \
-	leaderboard
+    --name leaderboard \
+    --restart unless-stopped \
+    -e KOFI_TOKEN=<OPTIONAL> \
+    -e STEAM_AUTH_API_KEYS=<OPTIONAL> \
+    -p 8080:8080 \
+    leaderboard
 ```
 
 > [!IMPORTANT]  
