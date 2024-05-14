@@ -66,7 +66,7 @@ For an example on how this has been integrated into an existing mission using [A
 
 ## Deployment
 
-For ease of use this application can be deployed through [Docker](https://www.docker.com/), as it is already dockerized with support for [SSR](https://inertiajs.com/server-side-rendering) and a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
+For ease of use this application can be deployed through [Docker](https://www.docker.com/), as it is already dockerized with support for [SSR](https://inertiajs.com/server-side-rendering#running-the-ssr-server) and a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
 
 > For non-Docker hosting solutions, such as [Forge](https://forge.laravel.com/), please explore these on your own (with the above considerations).
 
