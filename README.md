@@ -2,7 +2,7 @@
 
 ![ci](https://github.com/pridit-a2oa/leaderboard/actions/workflows/build-image.yml/badge.svg)
 
-This project was created using the VILT (Vue, Inertia.js, Laravel, Tailwind) stack. It integrates game server data to drive the display of a leaderboard.
+At its core, this project integrates game server data to drive the display of a leaderboard.
 
 ## Features
 
