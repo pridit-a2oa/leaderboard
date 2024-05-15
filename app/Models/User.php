@@ -4,14 +4,19 @@ namespace App\Models;
 
 use App\Models\Character;
 use App\Models\Connection;
+use App\Events\UserDeleted;
+use App\Models\Contribution;
 use App\Observers\UserObserver;
+use App\Events\Webhook\WebhookRefresh;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use ProtoneMedia\LaravelVerifyNewEmail\MustVerifyNewEmail;
@@ -20,6 +25,16 @@ use ProtoneMedia\LaravelVerifyNewEmail\MustVerifyNewEmail;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, SoftDeletes, HasRoles, MustVerifyNewEmail;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array<string, string>
+     */
+    protected $dispatchesEvents = [
+        'created' => WebhookRefresh::class,
+        'deleted' => UserDeleted::class,
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -73,6 +88,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
         );
+    }
+
+    /**
+     * Get the user's contribution.
+     */
+    public function contribution(): HasOne
+    {
+        return $this->hasOne(Contribution::class);
     }
 
     /**

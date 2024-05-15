@@ -3,31 +3,23 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Events\Webhook\WebhookReset;
+use App\Events\Webhook\WebhookRefresh;
 
 class UserObserver
 {
-    /**
-     * Handle the User "created" event.
-     */
-    public function created(User $user): void
-    {
-        // User creates account (check Ko-fi contribution)
-    }
-
     /**
      * Handle the User "updated" event.
      */
     public function updated(User $user): void
     {
-        // User updates email_verified_at (check Ko-fi contribution)
-    }
+        // User changes email, so either associate or dissociate a contribution
+        if ($user->wasChanged('email_verified_at')) {
+            if ($user->contribution) {
+                WebhookReset::dispatch($user);
+            }
 
-    /**
-     * Handle the User "deleted" event.
-     */
-    public function deleted(User $user): void
-    {
-        // User (soft) deletes account (unassociate Ko-fi contribution, plus the
-        // other cleanup stuff for relations)
+            WebhookRefresh::dispatch($user);
+        }
     }
 }
