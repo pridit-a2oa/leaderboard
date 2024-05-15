@@ -45,7 +45,7 @@ const props = defineProps({
 
             <td>
                 <FontAwesomeIcon
-                    class="mr-3 text-neutral-500"
+                    class="mr-2 text-neutral-500"
                     :icon="statistic.icon"
                     fixed-width
                 />{{ statistic.name }}
