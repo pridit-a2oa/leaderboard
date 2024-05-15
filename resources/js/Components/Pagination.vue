@@ -20,31 +20,34 @@ defineProps({
 });
 </script>
 
-<template v-if="links.length > 3">
-    <div class="join mt-4 flex">
-        <template v-for="(link, key) in links" :key="key">
-            <Link
-                class="btn no-animation first:mr-auto last:ml-auto"
-                :class="{
-                    '!hidden': link.label === '...' || !!/\d/.test(link.label),
-                    'btn-disabled invisible': link.url === null,
-                    'bg-neutral-700 hover:bg-neutral-700': link.active,
-                    '!text-neutral-600':
-                        parseInt(link.label) > currentPage + 1 ||
-                        parseInt(link.label) < currentPage - 1,
-                }"
-                :style="{ order: key }"
-                :href="link.url"
-                preserve-scroll
-                ><span v-html="link.label"></span
-            ></Link>
-        </template>
+<template>
+    <div v-if="links.length > 3">
+        <div class="join mt-4 flex">
+            <template v-for="(link, key) in links" :key="key">
+                <Link
+                    class="btn no-animation first:mr-auto last:ml-auto"
+                    :class="{
+                        '!hidden':
+                            link.label === '...' || !!/\d/.test(link.label),
+                        'btn-disabled invisible': link.url === null,
+                        'bg-neutral-700 hover:bg-neutral-700': link.active,
+                        '!text-neutral-600':
+                            parseInt(link.label) > currentPage + 1 ||
+                            parseInt(link.label) < currentPage - 1,
+                    }"
+                    :style="{ order: key }"
+                    :href="link.url"
+                    preserve-scroll
+                    ><span v-html="link.label"></span
+                ></Link>
+            </template>
 
-        <span
-            class="order-1 hidden flex-1 self-center text-center text-sm md:block"
-            >Showing <strong>{{ from }}</strong> &dash;
-            <strong>{{ to }}</strong> of
-            <strong>{{ total }}</strong> records</span
-        >
+            <span
+                class="order-1 hidden flex-1 self-center text-center text-sm md:block"
+                >Showing <strong>{{ from }}</strong> &dash;
+                <strong>{{ to }}</strong> of
+                <strong>{{ total }}</strong> records</span
+            >
+        </div>
     </div>
 </template>
