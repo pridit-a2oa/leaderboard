@@ -33,7 +33,6 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $dispatchesEvents = [
-        'created' => WebhookRefresh::class,
         'deleted' => UserDeleted::class,
     ];
 
