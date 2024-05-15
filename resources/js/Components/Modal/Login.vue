@@ -42,7 +42,7 @@ const submit = () => {
         <div
             class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
         >
-            <h3 class="text-lg font-bold">Sign in</h3>
+            <h2 class="text-lg font-bold">Sign in</h2>
 
             <button
                 class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
