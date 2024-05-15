@@ -10,6 +10,7 @@ use App\Observers\UserObserver;
 use App\Events\Webhook\WebhookRefresh;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -113,5 +114,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Connection::class)
             ->withPivot('identifier');
+    }
+
+    /**
+     * Scope a query to only include verified users.
+     */
+    public function scopeVerified(Builder $query): void
+    {
+        $query->whereNotNull('email_verified_at');
     }
 }

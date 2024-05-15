@@ -28,7 +28,9 @@ class ProcessWebhookJob extends SpatieProcessWebhookJob
         $contribution->save();
 
         if ($contribution->wasRecentlyCreated) {
-            $user = User::where('email', $data->email)->first();
+            $user = User::where('email', $data->email)
+                ->verified()
+                ->first();
 
             if ($user) {
                 // Associate the contribution with the user
