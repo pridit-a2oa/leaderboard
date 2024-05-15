@@ -8,8 +8,8 @@ At its core, this [Laravel](https://laravel.com/) project integrates game server
 
 ## Features
 
--   Full account flow (register, login, update, reset, delete)
--   Associate a [Steam](https://store.steampowered.com/) user identifier via OpenID with an account
+-   Full account flow/lifecycle (register, login, update, recover, delete)
+-   Associate a [Steam](https://store.steampowered.com/) user identifier (via OpenID) with an account
 -   Support for linking characters to an account and performing actions
 -   Webhook support to associate [Ko-fi](https://ko-fi.com) contributions and allow users to access a set of permission restricted features
 
