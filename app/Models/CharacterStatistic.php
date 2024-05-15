@@ -23,24 +23,18 @@ class CharacterStatistic extends Pivot
      *
      * @var array
      */
-    protected $appends = ['name'];
+    protected $appends = [
+        'formatted_value',
+    ];
 
     /**
-     * Interact with the statistic value.
+     * Interact with the character's statistic value.
      */
-    protected function value(): Attribute
+    protected function formattedValue(): Attribute
     {
         return Attribute::make(
-            get: fn (int $value) => number_format($value, 0, ',')
+            get: fn (mixed $value, array $attributes) => number_format($attributes['value'], 0, ',')
         );
-    }
-
-    /**
-     * Determine the name of the statistic.
-     */
-    protected function getNameAttribute()
-    {
-        return $this->statistic()->first()->name;
     }
 
     /**

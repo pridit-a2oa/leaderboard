@@ -26,6 +26,7 @@ class HomeController extends Controller
                 'uid' => $item->uid,
                 'name' => $item->name,
                 'score' => $item->score,
+                'formatted_score' => $item->formatted_score,
                 'is_visible' => $item->is_visible,
                 'updated_at' => $item->updated_at,
                 'statistics' => $item->statistics->toArray()
@@ -33,17 +34,6 @@ class HomeController extends Controller
 
         return Inertia::render('Home', [
             'characters' => $characters
-        ]);
-    }
-
-    /**
-     * Show the privacy policy page.
-     */
-    public function privacy(): Response
-    {
-        return Inertia::render('Privacy', [
-            'name' => 'Privacy Policy',
-            'icon' => 'fa-file'
         ]);
     }
 }

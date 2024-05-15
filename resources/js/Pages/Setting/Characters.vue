@@ -77,9 +77,7 @@ import { Head, Link } from '@inertiajs/vue3';
                             v-if="
                                 $page.props.permissions.some((role) =>
                                     ['admin', 'supporter'].includes(role),
-                                ) &&
-                                parseInt(character.score.replaceAll(',', '')) >
-                                    0
+                                ) && character.score > 0
                             "
                             class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Reset score and any additional statistics for this character&#10;(cannot be reversed)"

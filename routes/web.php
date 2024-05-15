@@ -1,22 +1,27 @@
 <?php
 
 use Inertia\Inertia;
+use Inertia\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SteamController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ConnectionController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\Character\LinkController;
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/privacy', [HomeController::class, 'privacy'])
-    ->name('privacy');
+Route::get('/privacy', function (): Response {
+    return Inertia::render('Privacy', [
+        'name' => 'Privacy Policy',
+        'icon' => 'file'
+    ]);
+})->name('privacy');
 
 Route::middleware('auth')->group(function () {
     Route::post('delete', [UserController::class, 'delete'])

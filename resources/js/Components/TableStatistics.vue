@@ -54,7 +54,7 @@ const props = defineProps({
             <td class="hidden md:table-cell"></td>
 
             <td class="text-right">
-                {{ statistic.pivot.value }}
+                {{ statistic.pivot.formatted_value }}
             </td>
 
             <td class="hidden w-14 md:table-cell"></td>

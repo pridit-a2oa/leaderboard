@@ -31,6 +31,15 @@ class Character extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'formatted_score',
+    ];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -45,10 +54,10 @@ class Character extends Model
     /**
      * Interact with the character's score.
      */
-    protected function score(): Attribute
+    protected function formattedScore(): Attribute
     {
         return Attribute::make(
-            get: fn (int $value) => number_format($value, 0, ',')
+            get: fn (mixed $value, array $attributes) => number_format($attributes['score'], 0, ',')
         );
     }
 
@@ -62,7 +71,7 @@ class Character extends Model
                 '/\d+ seconds?/',
                 'less than a minute',
                 Carbon::parse($value)->diffForHumans([
-                    'options' => Carbon::JUST_NOW | Carbon::ONE_DAY_WORDS
+                    'options' => Carbon::JUST_NOW
                 ])
             )
         );
@@ -76,13 +85,13 @@ class Character extends Model
         return $this->belongsTo(User::class);
     }
 
-
     /**
      * The statistics that belong to the character.
      */
     public function statistics(): BelongsToMany
     {
         return $this->belongsToMany(Statistic::class)
+            ->using(CharacterStatistic::class)
             ->withPivot('value')
             ->having('value', '>', 0);
     }

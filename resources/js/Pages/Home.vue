@@ -216,7 +216,7 @@ function toggle(id) {
                                 </td>
 
                                 <td class="text-bold text-right text-[1rem]">
-                                    {{ character.score }}
+                                    {{ character.formatted_score }}
                                 </td>
 
                                 <td class="hidden md:table-cell">
