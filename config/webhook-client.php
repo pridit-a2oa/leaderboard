@@ -25,7 +25,7 @@ return [
              *
              * It should implement \Spatie\WebhookClient\SignatureValidator\SignatureValidator
              */
-            'signature_validator' => \App\SignatureValidator\DefaultSignatureValidator::class,
+            'signature_validator' => \App\SignatureValidator\KofiSignatureValidator::class,
 
             /*
              * This class determines if the webhook call should be stored and processed.
@@ -49,9 +49,7 @@ return [
              *
              * To store all headers, set this value to `*`.
              */
-            'store_headers' => [
-
-            ],
+            'store_headers' => '*',
 
             /*
              * The class name of the job that will process the webhook request.
