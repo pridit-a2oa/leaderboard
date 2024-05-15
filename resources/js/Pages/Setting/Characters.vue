@@ -47,8 +47,12 @@ import { Head, Link } from '@inertiajs/vue3';
                         />
                     </td>
 
-                    <td class="break-all pr-2 font-bold">
-                        {{ character.name }}
+                    <td
+                        class="truncate pr-2 font-bold text-neutral-500 hover:text-clip hover:whitespace-normal hover:break-all"
+                    >
+                        <span class="text-neutral-300">{{
+                            character.name
+                        }}</span>
                     </td>
 
                     <td class="text-right">

@@ -25,7 +25,7 @@ const linkCharacter = () => {
 
 <template>
     <BadgeButton
-        class="badge-success"
+        class="badge-success badge-sm"
         :class="{
             'opacity-25': form.processing,
         }"

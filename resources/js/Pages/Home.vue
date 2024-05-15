@@ -104,16 +104,8 @@ function toggle(id) {
                                 </td>
 
                                 <td
+                                    class="max-w-0 truncate text-neutral-600"
                                     :class="{
-                                        '!text-gold':
-                                            characters.current_page === 1 &&
-                                            key === 0,
-                                        '!text-silver':
-                                            characters.current_page === 1 &&
-                                            key === 1,
-                                        '!text-bronze':
-                                            characters.current_page === 1 &&
-                                            key === 2,
                                         'cursor-pointer':
                                             character.statistics.length > 0 &&
                                             character.user_id !== null,
@@ -125,13 +117,12 @@ function toggle(id) {
                                             : null
                                     "
                                 >
-                                    {{ character.name
-                                    }}<FontAwesomeIcon
+                                    <FontAwesomeIcon
                                         v-if="
                                             character.statistics.length > 0 &&
                                             character.user_id !== null
                                         "
-                                        class="ml-1 !align-middle text-neutral-400"
+                                        class="mr-0.5 !align-middle"
                                         :icon="
                                             key === open
                                                 ? faAngleUp
@@ -140,6 +131,25 @@ function toggle(id) {
                                         size="sm"
                                         fixed-width
                                     />
+
+                                    <span
+                                        class="text-neutral-400"
+                                        :class="{
+                                            '!text-gold':
+                                                characters.current_page === 1 &&
+                                                key === 0,
+                                            '!text-silver':
+                                                characters.current_page === 1 &&
+                                                key === 1,
+                                            '!text-bronze':
+                                                characters.current_page === 1 &&
+                                                key === 2,
+                                        }"
+                                        :title="character.name"
+                                    >
+                                        {{ character.name }}</span
+                                    >
+
                                     <span
                                         class="mt-0.5 flex select-none text-xs font-light text-neutral-500"
                                         title="Last updated"
