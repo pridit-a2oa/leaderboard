@@ -7,7 +7,6 @@ use App\Models\Connection;
 use App\Events\UserDeleted;
 use App\Models\Contribution;
 use App\Observers\UserObserver;
-use App\Events\Webhook\WebhookRefresh;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
