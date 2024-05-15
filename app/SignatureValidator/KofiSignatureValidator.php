@@ -4,7 +4,6 @@ namespace App\SignatureValidator;
 
 use Illuminate\Http\Request;
 use Spatie\WebhookClient\WebhookConfig;
-use App\Exceptions\InvalidWebhookException;
 use Spatie\WebhookClient\Exceptions\InvalidConfig;
 use Spatie\WebhookClient\SignatureValidator\SignatureValidator;
 
@@ -12,30 +11,25 @@ class KofiSignatureValidator implements SignatureValidator
 {
     public function isValid(Request $request, WebhookConfig $config): bool
     {
-        // $signingSecret = $config->signingSecret;
+        $signingSecret = $config->signingSecret;
 
-        // if (empty($signingSecret)) {
-        //     throw InvalidConfig::signingSecretNotSet();
-        // }
+        if (empty($signingSecret)) {
+            throw InvalidConfig::signingSecretNotSet();
+        }
 
-        // if (json_validate($request->data) === false) {
-        //     throw InvalidWebhookException::invalidJson();
-        // }
+        if (json_validate($request->data) === false) {
+            return false;
+        }
 
-        // $data = json_decode($request->data);
+        $data = json_decode($request->data);
 
-        // $computedSignature = hash_hmac(
-        //     'sha256',
-        //     $request->getContent(),
-        //     $signingSecret
-        // );
+        if (!isset($data->verification_token)) {
+            return false;
+        }
 
-        // var_dump($data->verification_token, $computedSignature);
-
-        // die();
-
-        // return hash_equals($data->verification_token, $computedSignature);
-
-        return true;
+        return hash_equals(
+            $signingSecret,
+            $data->verification_token
+        );
     }
 }
