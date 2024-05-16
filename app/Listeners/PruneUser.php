@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\UserDeleted;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class PruneUser
 {
@@ -27,7 +25,7 @@ class PruneUser
         $user->fill([
             'name' => null,
             'email' => null,
-            'email_verified_at' => null
+            'email_verified_at' => null,
         ]);
 
         // Detach the user's character(s)

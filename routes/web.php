@@ -1,17 +1,16 @@
 <?php
 
-use Inertia\Inertia;
-use Inertia\Response;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\SteamController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\Character\LinkController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ConnectionController;
-use App\Http\Controllers\Character\LinkController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SteamController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+use Inertia\Response;
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
@@ -19,14 +18,14 @@ Route::get('/', [HomeController::class, 'index'])
 Route::get('/terms', function (): Response {
     return Inertia::render('Terms', [
         'name' => 'Terms of Use',
-        'icon' => 'file'
+        'icon' => 'file',
     ]);
 })->name('terms');
 
 Route::get('/privacy', function (): Response {
     return Inertia::render('Privacy', [
         'name' => 'Privacy Policy',
-        'icon' => 'file'
+        'icon' => 'file',
     ]);
 })->name('privacy');
 
@@ -43,7 +42,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('disconnect', [ConnectionController::class, 'destroy'])
                 ->name('destroy');
         }
-    );
+        );
 
     Route::name('character.')
         ->prefix('account')
@@ -56,7 +55,7 @@ Route::middleware('auth')->group(function () {
                     Route::delete('unlink', [LinkController::class, 'destroy'])
                         ->name('destroy');
                 }
-            );
+                );
 
             Route::patch('visibility', [CharacterController::class, 'toggleVisibility'])
                 ->name('visibility');
@@ -64,7 +63,7 @@ Route::middleware('auth')->group(function () {
             Route::patch('reset', [CharacterController::class, 'reset'])
                 ->name('reset');
         }
-    );
+        );
 
     Route::name('user.setting.')
         ->prefix('settings')
@@ -86,7 +85,7 @@ Route::middleware('auth')->group(function () {
                     ->name('connections');
             });
         }
-    );
+        );
 
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });

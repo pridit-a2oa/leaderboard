@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Statistic;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class CharacterStatistic extends Pivot
 {

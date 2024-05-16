@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Spatie\WebhookClient\Models\WebhookCall;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\WebhookClient\Models\WebhookCall;
 
 class Contribution extends Model
 {
@@ -18,7 +18,7 @@ class Contribution extends Model
      */
     protected $fillable = [
         'webhook_id',
-        'email'
+        'email',
     ];
 
     /**

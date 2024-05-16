@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Connection;
+use App\Models\Statistic;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Models\Statistic;
-use App\Models\Connection;
-use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
@@ -46,8 +46,8 @@ class SettingController extends Controller
     {
         return Inertia::render('Setting/Connections', [
             'connections' => Connection::get()
-                ->toArray()
-            ]
+                ->toArray(),
+        ]
             + $this->metadata()
         );
     }
@@ -60,8 +60,8 @@ class SettingController extends Controller
         return Inertia::render('Setting/Features', [
             'features' => Statistic::orderBy('name')
                 ->get()
-                ->pluck('name')
-            ]
+                ->pluck('name'),
+        ]
             + $this->metadata()
         );
     }

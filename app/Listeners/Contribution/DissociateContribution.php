@@ -2,11 +2,9 @@
 
 namespace App\Listeners\Contribution;
 
-use App\Models\User;
-use App\Models\Contribution;
 use App\Events\Webhook\WebhookReset;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Models\Contribution;
+use App\Models\User;
 
 class DissociateContribution
 {
@@ -26,7 +24,9 @@ class DissociateContribution
         $user = $event->user;
 
         // User does not have a contribution
-        if (!$user->contribution) return;
+        if (! $user->contribution) {
+            return;
+        }
 
         // Dissociate the user's contribution, making it valid for re-use
         $user->contribution->user_id = null;

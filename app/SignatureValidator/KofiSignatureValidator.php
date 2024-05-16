@@ -3,9 +3,9 @@
 namespace App\SignatureValidator;
 
 use Illuminate\Http\Request;
-use Spatie\WebhookClient\WebhookConfig;
 use Spatie\WebhookClient\Exceptions\InvalidConfig;
 use Spatie\WebhookClient\SignatureValidator\SignatureValidator;
+use Spatie\WebhookClient\WebhookConfig;
 
 class KofiSignatureValidator implements SignatureValidator
 {
@@ -23,7 +23,7 @@ class KofiSignatureValidator implements SignatureValidator
 
         $data = json_decode($request->data);
 
-        if (!isset($data->verification_token)) {
+        if (! isset($data->verification_token)) {
             return false;
         }
 

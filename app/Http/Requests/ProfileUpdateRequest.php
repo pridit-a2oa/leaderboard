@@ -23,7 +23,7 @@ class ProfileUpdateRequest extends FormRequest
                 'lowercase',
                 'email',
                 'max:255',
-                Rule::unique(User::class)
+                Rule::unique(User::class),
             ],
         ];
     }

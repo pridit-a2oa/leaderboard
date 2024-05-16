@@ -2,11 +2,9 @@
 
 namespace App\Listeners\Contribution;
 
-use App\Models\User;
-use App\Models\Contribution;
 use App\Events\Webhook\WebhookRefresh;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Models\Contribution;
+use App\Models\User;
 
 class AssociateContribution
 {
@@ -27,7 +25,9 @@ class AssociateContribution
         $contribution = Contribution::where('email', $event->user->email)->first();
 
         // No contribution was found
-        if (!$contribution) return;
+        if (! $contribution) {
+            return;
+        }
 
         // Associate the contribution to the user
         $contribution->user()->associate($event->user->id);

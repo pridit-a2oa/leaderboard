@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Character;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\CharacterRequest;
 use App\Http\Requests\CharacterFeatureRequest;
+use App\Http\Requests\CharacterRequest;
+use App\Models\Character;
+use Illuminate\Http\RedirectResponse;
 
 class CharacterController extends Controller
 {
@@ -20,7 +19,7 @@ class CharacterController extends Controller
         $character = Character::findOrFail($request->character_id);
 
         // Toggle the visibility of the character
-        $character->is_visible = !$character->is_visible;
+        $character->is_visible = ! $character->is_visible;
         $character->save();
 
         return redirect()->back();

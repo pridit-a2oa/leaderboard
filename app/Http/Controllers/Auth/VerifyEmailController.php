@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use ProtoneMedia\LaravelVerifyNewEmail\Http\InvalidVerificationLinkException;
 
 class VerifyEmailController extends Controller
@@ -28,7 +28,7 @@ class VerifyEmailController extends Controller
             ->user;
 
         $request->session()->flash('message', [
-            'success', 'Your email address was verified'
+            'success', 'Your email address was verified',
         ]);
 
         return redirect(route('user.setting.account', absolute: false));

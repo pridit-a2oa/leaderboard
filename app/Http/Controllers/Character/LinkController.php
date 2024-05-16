@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Character;
 
-use App\Models\Character;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\CharacterRequest;
+use App\Models\Character;
+use Illuminate\Http\RedirectResponse;
 
 class LinkController extends Controller
 {

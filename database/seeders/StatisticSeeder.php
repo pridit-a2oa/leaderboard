@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Statistic;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class StatisticSeeder extends Seeder
 {
@@ -16,44 +15,44 @@ class StatisticSeeder extends Seeder
         Statistic::insert([
             [
                 'name' => 'Airdrop Requests',
-                'icon' => 'parachute-box'
+                'icon' => 'parachute-box',
             ],
             [
                 'name' => 'Camp Captures',
-                'icon' => 'tents'
+                'icon' => 'tents',
             ],
             [
                 'name' => 'HALO Jumps',
-                'icon' => 'plane'
+                'icon' => 'plane',
             ],
             [
                 'name' => 'IED Defusals',
-                'icon' => 'land-mine-on'
+                'icon' => 'land-mine-on',
             ],
             [
                 'name' => 'Incapacitations',
-                'icon' => 'heart-pulse'
+                'icon' => 'heart-pulse',
             ],
             [
                 'name' => 'Intelligence Retrievals',
-                'icon' => 'file-lines'
+                'icon' => 'file-lines',
             ],
             [
                 'name' => 'Suicide Bomber Kills',
-                'icon' => 'bomb'
+                'icon' => 'bomb',
             ],
             [
                 'name' => 'Player Revivals',
-                'icon' => 'syringe'
+                'icon' => 'syringe',
             ],
             [
                 'name' => 'Vehicle Deconstructions',
-                'icon' => 'screwdriver-wrench'
+                'icon' => 'screwdriver-wrench',
             ],
             [
                 'name' => 'Wreck Collections',
-                'icon' => 'car-burst'
-            ]
+                'icon' => 'car-burst',
+            ],
         ]);
     }
 }

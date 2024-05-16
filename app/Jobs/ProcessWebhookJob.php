@@ -2,11 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
 use App\Models\Contribution;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Illuminate\Database\QueryException;
-use App\Exceptions\ContributionEmailNotUniqueException;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob as SpatieProcessWebhookJob;
 
 class ProcessWebhookJob extends SpatieProcessWebhookJob
@@ -21,7 +19,7 @@ class ProcessWebhookJob extends SpatieProcessWebhookJob
         $data = json_decode($call->payload['data']);
 
         $contribution = Contribution::firstOrCreate([
-            'email' => $data->email
+            'email' => $data->email,
         ]);
 
         $contribution->webhook()->associate($call->id);

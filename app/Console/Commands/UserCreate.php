@@ -4,10 +4,12 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
-use function Laravel\Prompts\{password,select,text};
+use function Laravel\Prompts\password;
+use function Laravel\Prompts\select;
+use function Laravel\Prompts\text;
 
 class UserCreate extends Command
 {
@@ -45,7 +47,7 @@ class UserCreate extends Command
             'password' => Hash::make(password(
                 label: 'Password',
                 required: true
-            ))
+            )),
         ];
 
         $user = User::create($prompt);

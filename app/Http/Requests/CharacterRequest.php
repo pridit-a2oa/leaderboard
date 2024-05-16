@@ -28,7 +28,7 @@ class CharacterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'character_id' => ['required', 'exists:characters,id']
+            'character_id' => ['required', 'exists:characters,id'],
         ];
     }
 }

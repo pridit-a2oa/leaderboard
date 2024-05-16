@@ -14,11 +14,11 @@ class CharacterFeatureRequest extends FormRequest
     {
         return $this->user()->hasRole(['admin', 'supporter'])
             && Character::findOrFail($this->character_id)
-            ->whereIn(
-                'uid',
-                $this->user()->connections()->pluck('identifier')->all()
-            )
-            ->exists();
+                ->whereIn(
+                    'uid',
+                    $this->user()->connections()->pluck('identifier')->all()
+                )
+                ->exists();
     }
 
     /**
@@ -29,7 +29,7 @@ class CharacterFeatureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'character_id' => ['required', 'exists:characters,id']
+            'character_id' => ['required', 'exists:characters,id'],
         ];
     }
 }

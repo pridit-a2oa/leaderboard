@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Connection;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ConnectionSeeder extends Seeder
 {
@@ -16,7 +15,7 @@ class ConnectionSeeder extends Seeder
         Connection::insert([
             [
                 'name' => 'steam',
-                'icon' => 'steam'
+                'icon' => 'steam',
             ],
         ]);
     }

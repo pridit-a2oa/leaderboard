@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
-use App\Models\User;
-use App\Events\Webhook\WebhookReset;
 use App\Events\Webhook\WebhookRefresh;
+use App\Events\Webhook\WebhookReset;
+use App\Models\User;
 
 class UserObserver
 {
