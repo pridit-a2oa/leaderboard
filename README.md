@@ -24,13 +24,15 @@ cp .env.example .env
 With [laravel/sail](https://github.com/laravel/sail) start/build the project's containers:
 
 ```
-sail up -d
+./vendor/bin/sail up -d
 ```
+
+> For the remaining steps referring to `sail` is an alias of `./vendor/bin/sail`
 
 Run vite:
 
 ```
-npm run dev
+sail npm run dev
 ```
 
 ### Initial Setup
@@ -41,7 +43,7 @@ Generate an application key:
 sail artisan key:generate
 ```
 
-Run the migrations and seed database:
+Run the migrations and seed the database:
 
 ```
 sail artisan migrate && sail artisan db:seed
@@ -62,7 +64,7 @@ The following tables are used as part of this process:
 -   `characters` ([uid](https://community.bistudio.com/wiki/getPlayerUID), [name](https://community.bistudio.com/wiki/name), [score](https://community.bistudio.com/wiki/score))
     -   _minimum for basic function_
 -   `character_statistic` (character_id, statistic_id, value)
-    -   _if tracking additional statistics_
+    -   _for tracking additional statistics_
 -   `model_has_roles` (role_id, model_id)
     -   _for determining feature access based on a permissions library_
 
