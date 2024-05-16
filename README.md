@@ -21,7 +21,7 @@ Make a copy of the environment file:
 cp .env.example .env
 ```
 
-With [laravel/sail](https://github.com/laravel/sail) start/build the project's containers:
+With [laravel/sail](https://laravel.com/docs/11.x/sail) start/build the project's containers:
 
 ```
 ./vendor/bin/sail up -d
@@ -96,6 +96,14 @@ docker run -d \
 
 > [!IMPORTANT]  
 > This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will vary depending on other containers or the services you want to use (e.g. Mailgun/managed database).
+
+## Linting
+
+For style fixing [laravel/pint](https://laravel.com/docs/11.x/pint) can be used.
+
+```
+./vendor/bin/pint
+```
 
 ## Issues (SSR)
 
