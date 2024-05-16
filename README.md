@@ -27,7 +27,7 @@ With [laravel/sail](https://laravel.com/docs/11.x/sail) start/build the project'
 ./vendor/bin/sail up -d
 ```
 
-> For the remaining steps referring to `sail` is an alias of `./vendor/bin/sail`
+> For the remaining steps `sail` acts as an alias of `./vendor/bin/sail`
 
 Run vite:
 
