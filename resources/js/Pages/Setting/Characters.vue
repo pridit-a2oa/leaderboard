@@ -7,16 +7,9 @@ import {
     UnlinkButton,
     ResetButton,
 } from '@/Components/Submit';
-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-    faUser,
-    faEye,
-    faEyeSlash,
-    faUserSlash,
-    faRotate,
-} from '@fortawesome/free-solid-svg-icons';
-import { Head, Link } from '@inertiajs/vue3';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>

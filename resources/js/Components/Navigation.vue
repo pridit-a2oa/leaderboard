@@ -1,4 +1,5 @@
 <script setup>
+import { ref, watch } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -6,11 +7,18 @@ import {
     faHeart,
     faUser,
     faCog,
+    faRightToBracket,
     faRightFromBracket,
+    faArrowRightLong,
 } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { LoginForm, RegistrationForm } from '@/Components/Form';
 import ExtLink from '@/Components/ExtLink.vue';
-import Login from '@/Components/Modal/Login.vue';
+import Modal from '@/Components/Modal.vue';
+
+const showModal = ref(false);
+
+const register = ref(false);
 </script>
 
 <template>
@@ -69,6 +77,56 @@ import Login from '@/Components/Modal/Login.vue';
             </ul>
         </div>
 
-        <Login v-else />
+        <template v-else>
+            <button
+                class="btn no-animation ml-auto hidden md:inline-flex"
+                @click="showModal = true"
+            >
+                <FontAwesomeIcon :icon="faRightToBracket" size="sm" />Log in
+            </button>
+
+            <Modal
+                :class="{ 'modal-open': showModal }"
+                @close="showModal = false"
+            >
+                <LoginForm v-if="!register" title="Sign in">
+                    <div class="pt-4 text-center text-sm">
+                        <span>Not registered?&nbsp;</span>
+
+                        <button
+                            class="underlined-link"
+                            @click="register = true"
+                        >
+                            Sign up
+
+                            <FontAwesomeIcon
+                                class="ml-0.5 !align-middle"
+                                :icon="faArrowRightLong"
+                                size="xs"
+                            />
+                        </button>
+                    </div>
+                </LoginForm>
+
+                <RegistrationForm v-else title="Register account">
+                    <div class="pt-4 text-center text-sm">
+                        <span>Already registered?&nbsp;</span>
+
+                        <button
+                            class="underlined-link"
+                            @click="register = false"
+                        >
+                            Log in
+
+                            <FontAwesomeIcon
+                                class="ml-0.5 !align-middle"
+                                :icon="faArrowRightLong"
+                                size="xs"
+                            />
+                        </button>
+                    </div>
+                </RegistrationForm>
+            </Modal>
+        </template>
     </div>
 </template>

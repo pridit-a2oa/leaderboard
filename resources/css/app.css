@@ -15,7 +15,7 @@
     @apply text-neutral-500;
 }
 
-a.underlined-link {
+.underlined-link {
     @apply text-neutral-400 opacity-90 hover:underline hover:underline-offset-4;
 }
 
