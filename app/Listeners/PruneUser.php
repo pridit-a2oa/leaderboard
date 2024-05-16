@@ -39,6 +39,9 @@ class PruneUser
         // Dissociate the user's contribution
         $user->contribution()->dissociate();
 
+        // Clear any pending email
+        $user->clearPendingEmail();
+
         // Delete the user's role
         $user->syncRoles();
 
