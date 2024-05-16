@@ -9,7 +9,7 @@ import { Head, Link } from '@inertiajs/vue3';
 
         <div class="flex flex-col gap-6">
             <h1>Privacy Policy</h1>
-            <p>Last updated: May 03, 2024</p>
+            <p>Last updated: May 16, 2024</p>
             <p>
                 This Privacy Policy describes Our policies and procedures on the
                 collection, use and disclosure of Your information when You use
@@ -563,7 +563,7 @@ h4 {
 }
 
 ul {
-    @apply flex list-outside list-decimal flex-col gap-4 rounded-md bg-base-200 px-3 py-3 pl-10;
+    @apply flex list-inside list-decimal flex-col gap-4 rounded-md bg-base-200 px-3 py-3 pl-4;
 
     li {
         @apply flex-1;

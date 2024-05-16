@@ -15,26 +15,35 @@ import { Link } from '@inertiajs/vue3';
 
         <Breadcrumb v-if="$page.props.name" />
 
-        <main class="container mx-auto my-6 flex-grow text-neutral-400">
+        <main class="container mx-auto my-6 flex-grow">
             <slot />
         </main>
 
         <footer class="footer bg-base-200">
-            <div class="container mx-auto flex justify-center py-6">
+            <div
+                class="container mx-auto flex justify-center py-6 text-xs text-neutral-300"
+            >
                 <a href="https://github.com/pridit-a2oa" target="_blank">
-                    <FontAwesomeIcon
-                        class="!align-middle"
-                        :icon="faGithub"
-                        fixed-width
-                    />
+                    <FontAwesomeIcon :icon="faGithub" size="lg" fixed-width />
                 </a>
 
-                <Link class="underlined-link" :href="route('privacy')"
-                    >Privacy policy</Link
-                >
+                <ul class="inline-flex gap-3">
+                    <li>
+                        <Link class="underlined-link" :href="route('terms')"
+                            >Terms of Use</Link
+                        >
+                    </li>
 
-                <div class="ml-auto self-center text-xs">
+                    <li>
+                        <Link class="underlined-link" :href="route('privacy')"
+                            >Privacy Policy</Link
+                        >
+                    </li>
+                </ul>
+
+                <div class="ml-auto self-center">
                     <span>&copy; {{ new Date().getFullYear() }}&nbsp;</span>
+
                     <a
                         class="underlined-link"
                         href="https://www.pridit.co.uk"

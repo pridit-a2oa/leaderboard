@@ -16,6 +16,13 @@ use App\Http\Controllers\Character\LinkController;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+Route::get('/terms', function (): Response {
+    return Inertia::render('Terms', [
+        'name' => 'Terms of Use',
+        'icon' => 'file'
+    ]);
+})->name('terms');
+
 Route::get('/privacy', function (): Response {
     return Inertia::render('Privacy', [
         'name' => 'Privacy Policy',
