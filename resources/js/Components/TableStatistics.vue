@@ -41,7 +41,7 @@ const props = defineProps({
             v-for="statistic in data.sort((a, b) => (a.name > b.name ? 1 : -1))"
             class="bg-base-200 text-xs odd:bg-base-100"
         >
-            <td class="w-14"></td>
+            <td class="w-[3.75rem]"></td>
 
             <td>
                 <FontAwesomeIcon
