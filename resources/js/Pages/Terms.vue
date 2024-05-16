@@ -261,8 +261,12 @@ import { Head, Link } from '@inertiajs/vue3';
 
                 <p>
                     Subject to your compliance with these Legal Terms, including
-                    the 'PROHIBITED ACTIVITIES' section below, we grant you a
-                    non-exclusive, non-transferable, revocable licence to:
+                    the '<a
+                        class="underlined-link"
+                        href="#prohibited-activities"
+                        >PROHIBITED ACTIVITIES</a
+                    >' section below, we grant you a non-exclusive,
+                    non-transferable, revocable licence to:
                 </p>
 
                 <ul>
@@ -292,7 +296,9 @@ import { Head, Link } from '@inertiajs/vue3';
                     If you wish to make any use of the Services, Content, or
                     Marks other than as set out in this section or elsewhere in
                     our Legal Terms, please address your request to:
-                    <a href="mailto:privacy@pridit.co.uk"
+                    <a
+                        class="underlined-link"
+                        href="mailto:privacy@pridit.co.uk"
                         >privacy@pridit.co.uk</a
                     >. If we ever grant you the permission to post, reproduce,
                     or publicly display any part of our Services or Content, you
