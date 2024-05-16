@@ -17,7 +17,6 @@ import ExtLink from '@/Components/ExtLink.vue';
 import Modal from '@/Components/Modal.vue';
 
 const showModal = ref(false);
-
 const register = ref(false);
 </script>
 
@@ -91,7 +90,7 @@ const register = ref(false);
             >
                 <LoginForm v-if="!register" title="Sign in">
                     <div class="pt-4 text-center text-sm">
-                        <span>Not registered?&nbsp;</span>
+                        <span>No account?&nbsp;</span>
 
                         <button
                             class="underlined-link"
@@ -108,7 +107,7 @@ const register = ref(false);
                     </div>
                 </LoginForm>
 
-                <RegistrationForm v-else title="Register account">
+                <RegistrationForm v-else title="Registration">
                     <div class="pt-4 text-center text-sm">
                         <span>Already registered?&nbsp;</span>
 
