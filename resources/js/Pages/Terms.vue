@@ -43,12 +43,12 @@ import { Head, Link } from '@inertiajs/vue3';
             <p>
                 These Legal Terms constitute a legally binding agreement made
                 between you, whether personally or on behalf of an entity
-                ('you'), and Leaderboard, concerning your access to and use of
-                the Services. You agree that by accessing the Services, you have
-                read, understood, and agreed to be bound by all of these Legal
-                Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN
-                YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU
-                MUST DISCONTINUE USE IMMEDIATELY.
+                ('you'), and Pridit's Domination Takistan, concerning your
+                access to and use of the Services. You agree that by accessing
+                the Services, you have read, understood, and agreed to be bound
+                by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF
+                THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING
+                THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.
             </p>
 
             <p>
