@@ -37,9 +37,12 @@ class PruneUser
         $user->connections()->detach();
 
         // Dissociate the user's contribution
-        $user->contribution()->dissociate();
+        if ($user->contribution) {
+            $user->contribution->user_id = null;
+            $user->contribution->save();
+        }
 
-        // Clear any pending email
+        // Clear any pending email of the user
         $user->clearPendingEmail();
 
         // Delete the user's role
