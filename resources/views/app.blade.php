@@ -16,6 +16,12 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
+        @production
+            <!-- Start cookieyes banner -->
+            <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/4f302f6d10fb4a176a5d2bff/script.js"></script>
+            <!-- End cookieyes banner -->
+        @endproduction
+
         <!-- Scripts -->
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
