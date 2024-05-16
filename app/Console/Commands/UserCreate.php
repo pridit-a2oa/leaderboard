@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
+use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\password;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
@@ -42,6 +43,11 @@ class UserCreate extends Command
             'email' => text(
                 label: 'Email address',
                 validate: ['email' => 'required|email|unique:users,email']
+            ),
+
+            'email_verified_at' => confirm(
+                label: 'Email is verified',
+                default: false
             ),
 
             'password' => Hash::make(password(
