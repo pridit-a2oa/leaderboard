@@ -104,7 +104,7 @@ function toggle(id) {
                                 </td>
 
                                 <td
-                                    class="max-w-0 truncate text-neutral-600"
+                                    class="flex max-w-52 flex-col"
                                     :class="{
                                         'cursor-pointer':
                                             character.statistics.length > 0 &&
@@ -117,41 +117,43 @@ function toggle(id) {
                                             : null
                                     "
                                 >
-                                    <FontAwesomeIcon
-                                        v-if="
-                                            character.statistics.length > 0 &&
-                                            character.user_id !== null
-                                        "
-                                        class="mr-0.5 !align-middle"
-                                        :icon="
-                                            key === open
-                                                ? faAngleUp
-                                                : faAngleDown
-                                        "
-                                        size="sm"
-                                        fixed-width
-                                    />
+                                    <span class="truncate">
+                                        <FontAwesomeIcon
+                                            v-if="
+                                                character.statistics.length >
+                                                    0 &&
+                                                character.user_id !== null
+                                            "
+                                            class="mr-0.5 !align-middle"
+                                            :icon="
+                                                key === open
+                                                    ? faAngleUp
+                                                    : faAngleDown
+                                            "
+                                            size="sm"
+                                            fixed-width
+                                        />
+
+                                        <span
+                                            class="text-neutral-400"
+                                            :class="{
+                                                '!text-gold':
+                                                    characters.current_page ===
+                                                        1 && key === 0,
+                                                '!text-silver':
+                                                    characters.current_page ===
+                                                        1 && key === 1,
+                                                '!text-bronze':
+                                                    characters.current_page ===
+                                                        1 && key === 2,
+                                            }"
+                                            :title="character.name"
+                                            >{{ character.name }}</span
+                                        >
+                                    </span>
 
                                     <span
-                                        class="text-neutral-400"
-                                        :class="{
-                                            '!text-gold':
-                                                characters.current_page === 1 &&
-                                                key === 0,
-                                            '!text-silver':
-                                                characters.current_page === 1 &&
-                                                key === 1,
-                                            '!text-bronze':
-                                                characters.current_page === 1 &&
-                                                key === 2,
-                                        }"
-                                        :title="character.name"
-                                    >
-                                        {{ character.name }}</span
-                                    >
-
-                                    <span
-                                        class="mt-0.5 flex select-none text-xs font-light text-neutral-500"
+                                        class="mt-0.5 w-max select-none text-xs font-light text-neutral-500"
                                         title="Last updated"
                                         >{{ character.updated_at }}</span
                                     >
