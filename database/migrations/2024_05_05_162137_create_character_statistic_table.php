@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('character_id')->nullable();
             $table->unsignedBigInteger('statistic_id')->nullable();
-            $table->bigInteger('value')->default(0);
+            $table->bigInteger('value')->default(1);
+
+            $table->unique(['character_id', 'statistic_id']);
 
             $table->foreign('character_id')->references('id')->on('characters');
             $table->foreign('statistic_id')->references('id')->on('statistics');
