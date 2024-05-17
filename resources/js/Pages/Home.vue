@@ -104,7 +104,7 @@ function toggle(id) {
                                 </td>
 
                                 <td
-                                    class="flex max-w-52 flex-col"
+                                    class="grid"
                                     :class="{
                                         'cursor-pointer':
                                             character.statistics.length > 0 &&
