@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         ->prefix('connection')
         ->group(function () {
             Route::get('steam', SteamController::class)
+                ->middleware('throttle:2,1')
                 ->name('steam');
 
             Route::delete('disconnect', [ConnectionController::class, 'destroy'])
