@@ -1,10 +1,14 @@
 <script setup>
+import { ref } from 'vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from '@inertiajs/vue3';
+
+const emailInput = ref(null);
+const passwordInput = ref(null);
 
 defineProps({
     title: {
@@ -27,6 +31,7 @@ const login = () => {
 
 const reset = () => {
     form.post(route('password.email'), {
+        onError: () => emailInput.value.focus(),
         onFinish: () => form.reset('password'),
     });
 };
@@ -49,6 +54,7 @@ const reset = () => {
 
                 <TextInput
                     id="email"
+                    ref="emailInput"
                     type="email"
                     class="!border-transparent"
                     placeholder="Email"
@@ -73,6 +79,7 @@ const reset = () => {
 
                 <TextInput
                     id="password"
+                    ref="passwordInput"
                     type="password"
                     class="!border-transparent"
                     v-model="form.password"
