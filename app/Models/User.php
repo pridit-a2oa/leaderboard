@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\URL;
 use ProtoneMedia\LaravelVerifyNewEmail\MustVerifyNewEmail;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -42,6 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'email_verified_at',
         'password',
+        'delete_token',
     ];
 
     /**
@@ -52,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'delete_token',
     ];
 
     /**
@@ -118,5 +121,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeVerified(Builder $query): void
     {
         $query->whereNotNull('email_verified_at');
+    }
+
+    /**
+     * Creates a temporary signed URL to confirm user deletion.
+     */
+    public function deletionUrl(): string
+    {
+        return URL::temporarySignedRoute(
+            'user.destroy',
+            now()->addMinutes(config('auth.verification.expire', 60)),
+            ['token' => $this->delete_token]
+        );
     }
 }

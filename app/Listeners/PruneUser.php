@@ -26,13 +26,14 @@ class PruneUser
             'name' => null,
             'email' => null,
             'email_verified_at' => null,
+            'delete_token' => null,
         ]);
 
         // Detach the user's character(s)
-        $user->characters()->detach();
+        $user->characters()->update(['user_id' => null]);
 
         // Detach the user's connection(s)
-        $user->connections()->detach();
+        $user->connections()->sync([]);
 
         // Dissociate the user's contribution
         if ($user->contribution) {

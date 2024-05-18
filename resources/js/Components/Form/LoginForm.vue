@@ -40,7 +40,7 @@ const reset = () => {
 <template>
     <h2 class="text-lg font-bold">{{ title }}</h2>
 
-    <form @submit.prevent="">
+    <form @submit.prevent="" @keydown.enter="$event.preventDefault()">
         <div class="form-control">
             <label
                 class="input input-bordered mt-4 flex items-center gap-2 bg-base-200"
@@ -61,7 +61,6 @@ const reset = () => {
                     v-model="form.email"
                     required
                     autocomplete="username"
-                    @keyup.enter="login"
                 />
             </label>
 
@@ -85,7 +84,6 @@ const reset = () => {
                     v-model="form.password"
                     placeholder="Password"
                     autocomplete="current-password"
-                    @keyup.enter="login"
                 />
             </label>
 
@@ -103,7 +101,6 @@ const reset = () => {
                 </label>
 
                 <button
-                    type="submit"
                     class="underlined-link ml-auto content-center text-sm"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
@@ -114,7 +111,6 @@ const reset = () => {
             </div>
 
             <button
-                type="submit"
                 class="btn no-animation mt-4 w-full"
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"

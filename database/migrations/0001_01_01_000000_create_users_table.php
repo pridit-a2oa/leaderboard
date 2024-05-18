@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('delete_token', 100)->nullable();
             $table->timestamps();
             $table->softDeletesTz('deleted_at', precision: 0);
         });
@@ -45,6 +46,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('delete_tokens');
         Schema::dropIfExists('sessions');
     }
 };
