@@ -61,12 +61,17 @@ As the platform depends on data inserted from an Arma 2: Operation Arrowhead mis
 
 The following tables are used as part of this process:
 
+**Minimum**
+
 -   `characters` ([uid](https://community.bistudio.com/wiki/getPlayerUID), [name](https://community.bistudio.com/wiki/name), [score](https://community.bistudio.com/wiki/score))
-    -   _minimum for basic function_
+    -   _stores the main data_
+
+**Optional**
+
 -   `character_statistic` (character_id, statistic_id, value)
-    -   _for tracking additional statistics_
+    -   _tracking additional `statistics`_
 -   `model_has_roles` (role_id, model_id)
-    -   _for determining feature access based on a permissions library_
+    -   _determining feature access based on a permissions library_
 
 For an example on how this has been integrated into an existing mission using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
 
