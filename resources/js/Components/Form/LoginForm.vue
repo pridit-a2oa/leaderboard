@@ -19,8 +19,14 @@ const form = useForm({
     remember: false,
 });
 
-const submit = () => {
+const login = () => {
     form.post(route('login'), {
+        onFinish: () => form.reset('password'),
+    });
+};
+
+const reset = () => {
+    form.post(route('password.email'), {
         onFinish: () => form.reset('password'),
     });
 };
@@ -29,7 +35,7 @@ const submit = () => {
 <template>
     <h2 class="text-lg font-bold">{{ title }}</h2>
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="">
         <div class="form-control">
             <label
                 class="input input-bordered mt-4 flex items-center gap-2 bg-base-200"
@@ -49,6 +55,7 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autocomplete="username"
+                    @keyup.enter="login"
                 />
             </label>
 
@@ -70,8 +77,8 @@ const submit = () => {
                     class="!border-transparent"
                     v-model="form.password"
                     placeholder="Password"
-                    required
                     autocomplete="current-password"
+                    @keyup.enter="login"
                 />
             </label>
 
@@ -88,17 +95,23 @@ const submit = () => {
                     <span class="label-text">Remember me</span>
                 </label>
 
-                <a
+                <button
+                    type="submit"
                     class="underlined-link ml-auto content-center text-sm"
-                    href="#"
-                    >Lost Password?</a
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                    @click="reset"
                 >
+                    Lost Password?
+                </button>
             </div>
 
             <button
+                type="submit"
                 class="btn no-animation mt-4 w-full"
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
+                @click="login"
             >
                 Log in to your account
             </button>
