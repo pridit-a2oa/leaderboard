@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('identifier')->nullable();
             $table->timestamp('created_at')->useCurrent();
 
+            $table->unique(['connection_id', 'user_id']);
+
             $table->foreign('connection_id')->references('id')->on('connections');
             $table->foreign('user_id')->references('id')->on('users');
         });
