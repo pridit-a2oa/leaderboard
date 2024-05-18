@@ -12,7 +12,7 @@ const features = ref([
     { type: 'Multiple character linking' },
     { type: 'Reset statistics option (per character)' },
     {
-        type: `<span class="tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)]" data-tip="${usePage().props.features.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
+        type: `<span class="tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)]" data-tip="${usePage().props.features.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
     },
 ]);
 
