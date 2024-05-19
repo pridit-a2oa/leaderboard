@@ -7,6 +7,7 @@ import TableStatistics from '@/Components/TableStatistics.vue';
 import { LinkButton } from '@/Components/Submit';
 import {
     faHeart,
+    faHeartCrack,
     faTrophy,
     faAngleUp,
     faAngleDown,
@@ -78,7 +79,9 @@ function toggle(id) {
                             <tr
                                 class="!border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
                             >
-                                <td class="hidden bg-base-200 md:table-cell">
+                                <td
+                                    class="hidden bg-base-200 p-0 px-2 text-center md:table-cell"
+                                >
                                     <a
                                         :href="`https://steamcommunity.com/profiles/${character.uid}`"
                                         target="_blank"
@@ -155,7 +158,7 @@ function toggle(id) {
                                 </td>
 
                                 <td
-                                    class="ltr grid"
+                                    class="ltr grid p-0 px-2 py-3"
                                     :class="{
                                         'cursor-pointer':
                                             character.statistics.length > 0 &&
@@ -215,7 +218,7 @@ function toggle(id) {
                                         characters.current_page === 1 &&
                                         key in [0, 1, 2]
                                     "
-                                    class="bg-base-100 text-center"
+                                    class="bg-base-300 text-center"
                                 >
                                     <FontAwesomeIcon
                                         class="!align-middle"
@@ -232,7 +235,7 @@ function toggle(id) {
 
                                 <td
                                     v-else
-                                    class="bg-base-100 text-center text-[1rem] font-bold"
+                                    class="bg-base-300 text-center text-[1rem] font-bold"
                                 >
                                     {{
                                         key +
@@ -242,15 +245,21 @@ function toggle(id) {
                                     }}
                                 </td>
 
-                                <td class="hidden bg-base-300 md:table-cell">
+                                <td
+                                    class="hidden bg-base-200 p-0 px-2.5 text-center md:table-cell"
+                                >
                                     <FontAwesomeIcon
-                                        class="!align-middle text-base-100"
+                                        class="!align-middle text-neutral-700"
                                         :class="{
-                                            '!text-[#ff5c51]':
+                                            '!text-[#ff5c51] opacity-80':
                                                 character.role.name ===
                                                 'supporter',
                                         }"
-                                        :icon="faHeart"
+                                        :icon="
+                                            character.role.name === 'supporter'
+                                                ? faHeart
+                                                : faHeartCrack
+                                        "
                                         fixed-width
                                     />
                                 </td>
