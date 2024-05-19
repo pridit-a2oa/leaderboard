@@ -1,11 +1,12 @@
 <script setup>
+import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 import TableStatistics from '@/Components/TableStatistics.vue';
 import { LinkButton } from '@/Components/Submit';
-import { ref } from 'vue';
 import {
+    faHeart,
     faTrophy,
     faAngleUp,
     faAngleDown,
@@ -55,14 +56,17 @@ function toggle(id) {
             <Navigation />
 
             <div v-if="characters.data.length > 0" class="mt-4 font-bold">
-                <table class="table border-collapse">
+                <table class="table border-collapse" style="direction: rtl">
                     <thead>
                         <tr class="bg-base-100">
-                            <th class="w-0">Rank</th>
-                            <th>Name</th>
                             <th class="hidden w-0 md:table-cell"></th>
                             <th class="w-0 text-right">Score</th>
                             <th class="hidden w-0 md:table-cell"></th>
+                            <th>Name</th>
+                            <th class="w-0">Rank</th>
+                            <th
+                                class="hidden w-0 text-center md:table-cell"
+                            ></th>
                         </tr>
                     </thead>
 
@@ -74,37 +78,84 @@ function toggle(id) {
                             <tr
                                 class="!border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
                             >
-                                <td
-                                    v-if="
-                                        characters.current_page === 1 &&
-                                        key in [0, 1, 2]
-                                    "
-                                    class="text-center"
-                                >
-                                    <FontAwesomeIcon
-                                        class="!align-middle"
-                                        :class="{
-                                            'text-gold': key === 0,
-                                            'text-silver': key === 1,
-                                            'text-bronze': key === 2,
-                                        }"
-                                        :icon="faTrophy"
-                                        size="lg"
-                                        fixed-width
-                                    />
+                                <td class="hidden bg-base-200 md:table-cell">
+                                    <a
+                                        :href="`https://steamcommunity.com/profiles/${character.uid}`"
+                                        target="_blank"
+                                    >
+                                        <FontAwesomeIcon
+                                            class="!align-middle text-neutral-500"
+                                            :icon="faSteam"
+                                            size="lg"
+                                            fixed-width
+                                        />
+                                    </a>
                                 </td>
 
-                                <td v-else class="text-center font-bold">
-                                    {{
-                                        key +
-                                        (characters.current_page - 1) *
-                                            characters.per_page +
-                                        1
-                                    }}
+                                <td class="text-bold text-right text-[1rem]">
+                                    {{ character.formatted_score }}
+                                </td>
+
+                                <td class="hidden text-right md:table-cell">
+                                    <template
+                                        v-if="
+                                            $page.props.auth.user !== null &&
+                                            $page.props.auth.user.connections.some(
+                                                (e) =>
+                                                    e.pivot.identifier ===
+                                                    character.uid,
+                                            )
+                                        "
+                                    >
+                                        <span
+                                            v-if="
+                                                $page.props.auth.user !==
+                                                    null &&
+                                                $page.props.auth.user.characters.some(
+                                                    (e) =>
+                                                        e.id === character.id,
+                                                )
+                                            "
+                                            class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"
+                                            >You</span
+                                        >
+
+                                        <template v-else>
+                                            <Link
+                                                v-if="
+                                                    $page.props.roles.includes(
+                                                        'member',
+                                                    ) &&
+                                                    $page.props.auth.user
+                                                        .characters.length > 0
+                                                "
+                                                class="ltr badge badge-error badge-outline badge-sm select-none font-light uppercase"
+                                                :href="
+                                                    route(
+                                                        'user.setting.features',
+                                                    )
+                                                "
+                                            >
+                                                <FontAwesomeIcon
+                                                    class="mr-1"
+                                                    :icon="faLock"
+                                                    size="2xs"
+                                                    fixed-width
+                                                />
+
+                                                Link
+                                            </Link>
+
+                                            <LinkButton
+                                                v-else
+                                                :id="character.id"
+                                            />
+                                        </template>
+                                    </template>
                                 </td>
 
                                 <td
-                                    class="grid"
+                                    class="ltr grid"
                                     :class="{
                                         'cursor-pointer':
                                             character.statistics.length > 0 &&
@@ -159,80 +210,49 @@ function toggle(id) {
                                     >
                                 </td>
 
-                                <td class="hidden text-right md:table-cell">
-                                    <template
-                                        v-if="
-                                            $page.props.auth.user !== null &&
-                                            $page.props.auth.user.connections.some(
-                                                (e) =>
-                                                    e.pivot.identifier ===
-                                                    character.uid,
-                                            )
-                                        "
-                                    >
-                                        <span
-                                            v-if="
-                                                $page.props.auth.user !==
-                                                    null &&
-                                                $page.props.auth.user.characters.some(
-                                                    (e) =>
-                                                        e.id === character.id,
-                                                )
-                                            "
-                                            class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"
-                                            >You</span
-                                        >
-
-                                        <template v-else>
-                                            <Link
-                                                v-if="
-                                                    $page.props.permissions.includes(
-                                                        'member',
-                                                    ) &&
-                                                    $page.props.auth.user
-                                                        .characters.length > 0
-                                                "
-                                                class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
-                                                :href="
-                                                    route(
-                                                        'user.setting.features',
-                                                    )
-                                                "
-                                            >
-                                                <FontAwesomeIcon
-                                                    class="mr-1"
-                                                    :icon="faLock"
-                                                    size="2xs"
-                                                    fixed-width
-                                                />
-
-                                                Link
-                                            </Link>
-
-                                            <LinkButton
-                                                v-else
-                                                :id="character.id"
-                                            />
-                                        </template>
-                                    </template>
+                                <td
+                                    v-if="
+                                        characters.current_page === 1 &&
+                                        key in [0, 1, 2]
+                                    "
+                                    class="bg-base-100 text-center"
+                                >
+                                    <FontAwesomeIcon
+                                        class="!align-middle"
+                                        :class="{
+                                            'text-gold': key === 0,
+                                            'text-silver': key === 1,
+                                            'text-bronze': key === 2,
+                                        }"
+                                        :icon="faTrophy"
+                                        size="lg"
+                                        fixed-width
+                                    />
                                 </td>
 
-                                <td class="text-bold text-right text-[1rem]">
-                                    {{ character.formatted_score }}
+                                <td
+                                    v-else
+                                    class="bg-base-100 text-center text-[1rem] font-bold"
+                                >
+                                    {{
+                                        key +
+                                        (characters.current_page - 1) *
+                                            characters.per_page +
+                                        1
+                                    }}
                                 </td>
 
-                                <td class="hidden md:table-cell">
-                                    <a
-                                        :href="`https://steamcommunity.com/profiles/${character.uid}`"
-                                        target="_blank"
-                                    >
-                                        <FontAwesomeIcon
-                                            class="!align-middle text-neutral-500"
-                                            :icon="faSteam"
-                                            size="lg"
-                                            fixed-width
-                                        />
-                                    </a>
+                                <td class="hidden bg-base-300 md:table-cell">
+                                    <FontAwesomeIcon
+                                        class="!align-middle text-base-100"
+                                        :class="{
+                                            '!text-[#ff5c51]':
+                                                character.role.name ===
+                                                'supporter',
+                                        }"
+                                        :icon="faHeart"
+                                        fixed-width
+                                    />
                                 </td>
                             </tr>
 
@@ -243,7 +263,10 @@ function toggle(id) {
                                     character.user_id !== null
                                 "
                             >
-                                <td colspan="5" class="p-0">
+                                <td
+                                    class="p-0"
+                                    :colspan="$vssWidth <= 767 ? 2 : 4"
+                                >
                                     <TableStatistics
                                         :data="character.statistics"
                                     />

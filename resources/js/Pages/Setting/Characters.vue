@@ -68,7 +68,7 @@ import { Head } from '@inertiajs/vue3';
 
                         <div
                             v-if="
-                                $page.props.permissions.some((role) =>
+                                $page.props.roles.some((role) =>
                                     ['admin', 'supporter'].includes(role),
                                 ) && character.score > 0
                             "

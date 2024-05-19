@@ -41,23 +41,19 @@ const props = defineProps({
             v-for="statistic in data.sort((a, b) => (a.name > b.name ? 1 : -1))"
             class="bg-base-200 text-xs odd:bg-base-100"
         >
-            <td class="w-[3.75rem]"></td>
-
-            <td>
-                <FontAwesomeIcon
-                    class="mr-2 text-neutral-500"
-                    :icon="statistic.icon"
-                    fixed-width
-                />{{ statistic.name }}
-            </td>
-
-            <td class="hidden md:table-cell"></td>
+            <td class="hidden w-[3.25rem] md:table-cell"></td>
 
             <td class="text-right">
                 {{ statistic.pivot.formatted_value }}
             </td>
 
-            <td class="hidden w-14 md:table-cell"></td>
+            <td class="ltr">
+                <FontAwesomeIcon
+                    class="pr-2 text-neutral-500"
+                    :icon="statistic.icon"
+                    fixed-width
+                />{{ statistic.name }}
+            </td>
         </tr>
     </table>
 </template>

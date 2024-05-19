@@ -16,7 +16,7 @@ const features = ref([
     },
 ]);
 
-const benefits = usePage().props.permissions.some((role) =>
+const benefits = usePage().props.roles.some((role) =>
     ['admin', 'supporter'].includes(role),
 );
 </script>

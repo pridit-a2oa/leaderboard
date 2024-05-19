@@ -23,6 +23,10 @@ tr {
     @apply !border-0;
 }
 
+.ltr {
+    direction: ltr;
+}
+
 .btn.btn-disabled,
 .btn[disabled],
 .btn:disabled {

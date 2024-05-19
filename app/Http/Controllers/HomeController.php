@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index(): Response
     {
         $characters = Character::rankable()
-            ->with('statistics')
+            ->with('user.roles', 'statistics')
             ->orderByDesc('score')
             ->paginate(50)
             ->onEachSide(1)
@@ -27,6 +27,7 @@ class HomeController extends Controller
                 'formatted_score' => $item->formatted_score,
                 'is_visible' => $item->is_visible,
                 'updated_at' => $item->updated_at,
+                'role' => $item->user ? $item->user->roles->first()->only('name') : [],
                 'statistics' => $item->statistics->toArray(),
             ]);
 

@@ -26,7 +26,8 @@
         "@fortawesome/free-brands-svg-icons": "^6.5.2",
         "@fortawesome/free-regular-svg-icons": "^6.5.2",
         "@fortawesome/free-solid-svg-icons": "^6.5.2",
-        "@fortawesome/vue-fontawesome": "^3.0.6"
+        "@fortawesome/vue-fontawesome": "^3.0.6",
+        "vue-screen-size": "^2.1.0"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "^4.17.2"

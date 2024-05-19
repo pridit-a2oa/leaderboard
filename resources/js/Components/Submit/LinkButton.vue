@@ -18,14 +18,13 @@ const form = useForm({
 const linkCharacter = () => {
     form.post(route('character.link.store'), {
         preserveScroll: true,
-        preserveState: false,
     });
 };
 </script>
 
 <template>
     <BadgeButton
-        class="badge-success badge-sm"
+        class="ltr badge-success badge-sm"
         :class="{
             'opacity-25': form.processing,
         }"

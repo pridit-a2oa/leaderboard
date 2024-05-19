@@ -1,4 +1,5 @@
 import { createSSRApp, h } from 'vue';
+import { VueScreenSizeMixin } from 'vue-screen-size';
 import { renderToString } from '@vue/server-renderer';
 import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
@@ -29,7 +30,8 @@ createServer((page) =>
         .use(ZiggyVue, {
           ...page.props.ziggy,
           location: new URL(page.props.ziggy.location),
-        });
+        })
+        .mixin(VueScreenSizeMixin);
     },
   }),
 );
