@@ -57,9 +57,7 @@ You should now be able to access the application via:
 
 ## Bridge
 
-As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended.
-
-The following tables are used as part of this process:
+As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended. The following tables are used as part of this process:
 
 **Minimum**
 
