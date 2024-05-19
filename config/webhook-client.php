@@ -65,7 +65,7 @@ return [
      *
      * It deletes all records after 1 week. Set to null if no models should be deleted.
      */
-    'delete_after_days' => 30,
+    'delete_after_days' => null,
 
     /*
      * Should a unique token be added to the route name
