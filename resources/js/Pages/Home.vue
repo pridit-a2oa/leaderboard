@@ -63,7 +63,7 @@ function toggle(id) {
                             <th class="hidden w-0 md:table-cell"></th>
                             <th class="w-0 text-right">Score</th>
                             <th class="hidden w-0 md:table-cell"></th>
-                            <th>Name</th>
+                            <th class="p-0 px-2">Name</th>
                             <th class="w-0">Rank</th>
                             <th
                                 class="hidden w-0 text-center md:table-cell"
