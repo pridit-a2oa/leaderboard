@@ -23,6 +23,10 @@ tr {
     @apply !border-0;
 }
 
+.rtl {
+    direction: rtl;
+}
+
 .ltr {
     direction: ltr;
 }

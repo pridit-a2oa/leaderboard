@@ -57,7 +57,7 @@ function toggle(id) {
             <Navigation />
 
             <div v-if="characters.data.length > 0" class="mt-4 font-bold">
-                <table class="table border-collapse" style="direction: rtl">
+                <table class="rtl table border-collapse">
                     <thead>
                         <tr class="bg-base-100">
                             <th class="hidden w-0 md:table-cell"></th>
