@@ -10,7 +10,7 @@ import { Head, useForm } from '@inertiajs/vue3';
 const form = useForm({});
 
 const deleteUserRequest = () => {
-    form.post(route('user.delete'));
+    form.post(route('delete'));
 };
 </script>
 

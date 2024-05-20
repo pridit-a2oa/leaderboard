@@ -129,7 +129,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function deletionUrl(): string
     {
         return URL::temporarySignedRoute(
-            'user.destroy',
+            'destroy',
             now()->addMinutes(config('auth.verification.expire', 60)),
             ['token' => $this->delete_token]
         );

@@ -1,14 +1,16 @@
 <script setup>
+import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
-
-import { ref } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Head, usePage } from '@inertiajs/vue3';
 
 const features = ref([
+    {
+        type: '<span class="tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)]" data-tip="By default, only characters active within the last 60 days are displayed in the leaderboard. With this benefit, all linked characters remain visible.">Inactivity</span> exemption',
+    },
     { type: 'Multiple character linking' },
     { type: 'Reset statistics option (per character)' },
     {

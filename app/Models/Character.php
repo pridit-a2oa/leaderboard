@@ -59,9 +59,9 @@ class Character extends Model
     }
 
     /**
-     * Interact with the character's updated at.
+     * Interact with the character's last seen at.
      */
-    protected function updatedAt(): Attribute
+    protected function lastSeenAt(): Attribute
     {
         return Attribute::make(
             get: fn (mixed $value) => preg_replace(
@@ -97,13 +97,21 @@ class Character extends Model
      * Scope a query to only include characters with score and visible,
      * filtering unique names and prioritising based on highest score and, if
      * matching, recently active.
+     *
+     * Additionally, impose a 60 day (inactivity point) condition unless the
+     * character's linked user is a supporter/admin.
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, updated_at desc) AS RN FROM characters WHERE is_visible = 1) x')
+        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at desc) AS RN FROM characters WHERE is_visible = 1) characters')
             ->where('RN', 1)
             ->where('score', '>', 0)
-            ->where('is_visible', 1);
+            ->where(function (Builder $query) {
+                $query->where('last_seen_at', '>=', now()->subDays(60))
+                    ->orWhereHas('user.roles', function (Builder $query) {
+                        $query->whereIn('role_id', [2, 3]);
+                    });
+            });
     }
 
     /**

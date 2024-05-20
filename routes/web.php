@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\DeleteUserController;
 use App\Http\Controllers\Character\LinkController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ConnectionController;
@@ -12,9 +11,15 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 
+/**
+ * Home
+ */
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+/**
+ * Terms of Use
+ */
 Route::get('/terms', function (): Response {
     return Inertia::render('Terms', [
         'name' => 'Terms of Use',
@@ -22,6 +27,9 @@ Route::get('/terms', function (): Response {
     ]);
 })->name('terms');
 
+/**
+ * Privacy Policy
+ */
 Route::get('/privacy', function (): Response {
     return Inertia::render('Privacy', [
         'name' => 'Privacy Policy',
@@ -30,6 +38,9 @@ Route::get('/privacy', function (): Response {
 })->name('privacy');
 
 Route::middleware('auth')->group(function () {
+    /**
+     * Connections
+     */
     Route::name('connection.')
         ->prefix('connection')
         ->group(function () {
@@ -41,6 +52,9 @@ Route::middleware('auth')->group(function () {
                 ->name('destroy');
         });
 
+    /**
+     * Characters
+     */
     Route::name('character.')
         ->prefix('account')
         ->group(function () {
@@ -61,17 +75,9 @@ Route::middleware('auth')->group(function () {
                 ->name('reset');
         });
 
-    Route::name('user.')
-        ->group(function () {
-            Route::post('delete', [DeleteUserController::class, 'create'])
-                ->middleware('throttle:1,60')
-                ->name('delete');
-
-            Route::get('destroy/{token}', [DeleteUserController::class, 'destroy'])
-                ->middleware('signed')
-                ->name('destroy');
-        });
-
+    /**
+     * Settings
+     */
     Route::name('user.setting.')
         ->prefix('settings')
         ->group(function () {
