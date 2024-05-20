@@ -10,12 +10,15 @@ import { Head, usePage } from '@inertiajs/vue3';
 
 const features = ref([
     {
-        type: '<span class="tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)]" data-tip="By default, only characters active within the last 60 days are displayed in the leaderboard. With this benefit, all linked characters remain visible.">Inactivity</span> exemption',
+        type: '<span class="tooltip-benefit" data-tip="By default, characters must be active within the last 60 days to be displayed in the leaderboard.">Inactivity</span> exemption',
+    },
+    {
+        type: 'Supporter badge (<span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score.">single</span>)',
     },
     { type: 'Multiple character linking' },
     { type: 'Reset statistics option (per character)' },
     {
-        type: `<span class="tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)]" data-tip="${usePage().props.features.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
+        type: `<span class="tooltip-benefit" data-tip="${usePage().props.features.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
     },
 ]);
 

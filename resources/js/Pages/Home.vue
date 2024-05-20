@@ -248,20 +248,31 @@ function toggle(id) {
                                 <td
                                     class="hidden bg-base-200 p-0 px-2.5 text-center md:table-cell"
                                 >
-                                    <FontAwesomeIcon
-                                        class="!align-middle text-neutral-700"
-                                        :class="{
-                                            '!text-supporter opacity-80':
-                                                character.role.name ===
-                                                'supporter',
-                                        }"
-                                        :icon="
-                                            character.role.name === 'supporter'
-                                                ? faHeart
-                                                : faHeartCrack
+                                    <Link
+                                        :href="
+                                            $page.props.auth.user
+                                                ? route('user.setting.features')
+                                                : '#'
                                         "
-                                        fixed-width
-                                    />
+                                    >
+                                        <FontAwesomeIcon
+                                            v-if="
+                                                character.role.name ===
+                                                    'supporter' &&
+                                                character.is_highest_score
+                                            "
+                                            class="!align-middle text-supporter opacity-80"
+                                            :icon="faHeart"
+                                            fixed-width
+                                        />
+
+                                        <FontAwesomeIcon
+                                            v-else
+                                            class="!align-middle text-neutral-700"
+                                            :icon="faHeartCrack"
+                                            fixed-width
+                                        />
+                                    </Link>
                                 </td>
                             </tr>
 

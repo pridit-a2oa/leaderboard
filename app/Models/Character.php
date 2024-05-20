@@ -49,6 +49,19 @@ class Character extends Model
     }
 
     /**
+     * Determine whether the character is the one with the highest score out of
+     * those linked to a user.
+     */
+    protected function isHighestScore(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => $this->user
+                ? $this->user->characters->max('score') === $attributes['score']
+                : false
+        );
+    }
+
+    /**
      * Interact with the character's score.
      */
     protected function formattedScore(): Attribute

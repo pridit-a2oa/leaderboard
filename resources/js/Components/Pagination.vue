@@ -36,7 +36,7 @@ defineProps({
                             parseInt(link.label) < currentPage - 1,
                     }"
                     :style="{ order: key }"
-                    :href="link.url"
+                    :href="link.url ?? '#'"
                     preserve-scroll
                     ><span v-html="link.label"></span
                 ></Link>
