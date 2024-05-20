@@ -251,7 +251,7 @@ function toggle(id) {
                                     <FontAwesomeIcon
                                         class="!align-middle text-neutral-700"
                                         :class="{
-                                            '!text-[#ff5c51] opacity-80':
+                                            '!text-supporter opacity-80':
                                                 character.role.name ===
                                                 'supporter',
                                         }"

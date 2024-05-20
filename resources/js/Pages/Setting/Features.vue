@@ -3,8 +3,9 @@ import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
+import SupporterBadge from '@/Components/SupporterBadge.vue';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCheck, faXmark, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Head, usePage } from '@inertiajs/vue3';
 
 const features = ref([
@@ -28,20 +29,18 @@ const benefits = usePage().props.roles.some((role) =>
 
     <DefaultLayout>
         <Setting title="Features">
-            <Alert
-                v-if="benefits"
-                type="success"
-                message="Thanks for being a supporter"
-            />
-
-            <a v-else href="https://ko-fi.com/pridit" target="_blank">
+            <a v-if="!benefits" href="https://ko-fi.com/pridit" target="_blank">
                 <Alert
                     type="info"
                     message="Support on Ko-fi to unlock additional features"
                 />
             </a>
 
-            <div class="rounded-md bg-base-200 p-4">
+            <div class="indicator w-full rounded-md bg-base-200 p-4">
+                <SupporterBadge
+                    v-if="$page.props.roles.includes('supporter')"
+                />
+
                 <ul>
                     <template v-for="feature in features">
                         <li class="[&:not(:last-child)]:mb-2">

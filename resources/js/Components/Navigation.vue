@@ -1,7 +1,9 @@
 <script setup>
-import { ref, watch } from 'vue';
-import { Link } from '@inertiajs/vue3';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ref } from 'vue';
+import { LoginForm, RegistrationForm } from '@/Components/Form';
+import ExtLink from '@/Components/ExtLink.vue';
+import Modal from '@/Components/Modal.vue';
+import SupporterBadge from '@/Components/SupporterBadge.vue';
 import {
     faBullhorn,
     faHeart,
@@ -9,12 +11,12 @@ import {
     faCog,
     faRightToBracket,
     faRightFromBracket,
+    faCaretDown,
     faArrowRightLong,
 } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { LoginForm, RegistrationForm } from '@/Components/Form';
-import ExtLink from '@/Components/ExtLink.vue';
-import Modal from '@/Components/Modal.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Link } from '@inertiajs/vue3';
 
 const showModal = ref(false);
 const register = ref(false);
@@ -37,7 +39,7 @@ const register = ref(false);
         >
 
         <ExtLink
-            class="text-[#ff5c5a]"
+            class="text-supporter"
             href="https://ko-fi.com/pridit"
             :icon="faHeart"
             >Ko-fi</ExtLink
@@ -45,7 +47,7 @@ const register = ref(false);
 
         <div
             v-if="$page.props.auth.user"
-            class="dropdown dropdown-bottom ml-auto hidden md:inline-flex"
+            class="dropdown dropdown-bottom indicator ml-auto hidden md:inline-flex"
         >
             <div
                 tabindex="0"
@@ -53,11 +55,19 @@ const register = ref(false);
                 class="btn no-animation"
                 :title="$page.props.auth.user.name"
             >
+                <SupporterBadge
+                    v-if="$page.props.roles.includes('supporter')"
+                />
+
                 <FontAwesomeIcon :icon="faUser" size="sm" />
+
                 <span class="max-w-16 truncate">
                     {{ $page.props.auth.user.name }}
                 </span>
+
+                <FontAwesomeIcon class="text-neutral-600" :icon="faCaretDown" />
             </div>
+
             <ul
                 tabindex="0"
                 class="menu dropdown-content z-[1] mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
