@@ -52,12 +52,12 @@ const submit = () => {
                 <TextInput
                     id="email"
                     type="email"
-                    disabled="disabled"
                     class="!border-transparent"
                     placeholder="Email"
                     v-model="form.email"
                     required
                     autocomplete="username"
+                    readonly
                 />
             </label>
 
@@ -79,6 +79,7 @@ const submit = () => {
                     class="!border-transparent"
                     v-model="form.password"
                     placeholder="New Password"
+                    required
                 />
             </label>
 
@@ -100,6 +101,7 @@ const submit = () => {
                     class="!border-transparent"
                     v-model="form.password_confirmation"
                     placeholder="Confirm New Password"
+                    required
                 />
             </label>
 
