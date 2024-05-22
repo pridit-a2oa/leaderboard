@@ -70,7 +70,9 @@ class UserTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/')
                 ->press($this->user->name)
-                ->press('Log out');
+                ->press('Log out')
+                ->waitUntilMissing('#nprogress')
+                ->assertSee('Log in');
         });
     }
 }
