@@ -49,9 +49,8 @@ const register = ref(false);
             v-if="$page.props.auth.user"
             class="dropdown dropdown-bottom indicator ml-auto hidden md:inline-flex"
         >
-            <div
+            <button
                 tabindex="0"
-                role="button"
                 class="btn no-animation"
                 :title="$page.props.auth.user.name"
             >
@@ -66,7 +65,7 @@ const register = ref(false);
                 </span>
 
                 <FontAwesomeIcon class="text-neutral-600" :icon="faCaretDown" />
-            </div>
+            </button>
 
             <ul
                 tabindex="0"

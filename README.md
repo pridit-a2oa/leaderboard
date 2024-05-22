@@ -54,7 +54,7 @@ sail artisan migrate && sail artisan db:seed
 
 You should now be able to access the application via:
 
--   http://localhost
+-   http://laravel.test
 
 ## Bridge
 
@@ -118,11 +118,20 @@ For style fixing [laravel/pint](https://laravel.com/docs/11.x/pint) can be used.
 
 > Create a new MySQL database called `testing`
 
-Run the tests:
+Run the unit/feature tests:
 
 ```
 sail artisan test
 ```
+
+Run the browser tests supported by [laravel/dusk](https://laravel.com/docs/11.x/dusk):
+
+```
+sail dusk
+```
+
+> [!IMPORTANT]  
+> Dusk will not work with [Vite](http://localhost:5173/) running, so ensure it is off prior to running this test suite.
 
 ## License
 
