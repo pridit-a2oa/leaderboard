@@ -50,13 +50,15 @@ class Character extends Model
 
     /**
      * Determine whether the character is the one with the highest score out of
-     * those linked to a user.
+     * those linked to a user and not hidden.
      */
     protected function isHighestScore(): Attribute
     {
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => $this->user
-                ? $this->user->characters->max('score') === $attributes['score']
+                ? $this->user->characters
+                    ->where('is_hidden', 0)
+                    ->max('score') === $attributes['score']
                 : false
         );
     }
