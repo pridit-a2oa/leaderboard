@@ -1,12 +1,12 @@
-name: ci
+name: image
 
 on:
   push:
     branches:
-      - 'production'
+      - production
 
 jobs:
-  docker:
+  build-image:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx

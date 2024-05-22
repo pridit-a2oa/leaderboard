@@ -2,7 +2,8 @@
 
 # Leaderboard
 
-![ci](https://github.com/pridit-a2oa/leaderboard/actions/workflows/build-image.yml/badge.svg)
+![lint](https://github.com/pridit-a2oa/leaderboard/actions/workflows/coding-standards.yml/badge.svg)
+![tests](https://github.com/pridit-a2oa/leaderboard/actions/workflows/tests.yml/badge.svg)
 
 At its core, this [Laravel](https://laravel.com/) project integrates game server data to drive the display of a leaderboard.
 
@@ -100,6 +101,11 @@ docker run -d \
 > [!IMPORTANT]  
 > This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will vary depending on other containers or the services you want to use (e.g. Mailgun/managed database).
 
+## Issues (SSR)
+
+1. **Link** component v-html directive ignored: [vuejs/core#6435](https://github.com/vuejs/core/issues/6435)
+2. [Font Awesome](https://fontawesome.com/) hydration mismatch using strings: [FortAwesome/vue-fontawesome#394](https://github.com/FortAwesome/vue-fontawesome/issues/394)
+
 ## Linting
 
 For style fixing [laravel/pint](https://laravel.com/docs/11.x/pint) can be used.
@@ -108,10 +114,15 @@ For style fixing [laravel/pint](https://laravel.com/docs/11.x/pint) can be used.
 ./vendor/bin/pint
 ```
 
-## Issues (SSR)
+## Testing
 
-1. **Link** component v-html directive ignored: [vuejs/core#6435](https://github.com/vuejs/core/issues/6435)
-2. [Font Awesome](https://fontawesome.com/) hydration mismatch using strings: [FortAwesome/vue-fontawesome#394](https://github.com/FortAwesome/vue-fontawesome/issues/394)
+> Create a new MySQL database called `testing`
+
+Run the tests:
+
+```
+sail artisan test
+```
 
 ## License
 
