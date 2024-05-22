@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
+import ResetPassword from '@/Components/ResetPassword.vue';
 import TableStatistics from '@/Components/TableStatistics.vue';
 import { LinkButton } from '@/Components/Submit';
 import {
@@ -55,6 +56,12 @@ function toggle(id) {
 
         <div class="container mx-auto text-neutral-400">
             <Navigation />
+
+            <ResetPassword
+                v-if="$page.props.flash.data"
+                :email="$page.props.flash.data.email"
+                :token="$page.props.flash.data.token"
+            />
 
             <div v-if="characters.data.length > 0" class="mt-4 font-bold">
                 <table class="rtl table border-collapse">
