@@ -30,6 +30,7 @@ import { Head } from '@inertiajs/vue3';
                     v-for="character in $page.props.auth.user.characters.sort(
                         (a, b) => (a.name > b.name ? 1 : -1),
                     )"
+                    :key="character.id"
                 >
                     <td class="w-0">
                         <FontAwesomeIcon
