@@ -8,7 +8,7 @@ import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
 
-const features = ref([
+const extras = ref([
     {
         type: '<span class="tooltip-benefit" data-tip="By default, characters must be active within the last 60 days to be displayed in the leaderboard.">Inactivity</span> exemption',
     },
@@ -18,7 +18,7 @@ const features = ref([
     { type: 'Multiple character linking' },
     { type: 'Reset statistics option (per character)' },
     {
-        type: `<span class="tooltip-benefit" data-tip="${usePage().props.features.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
+        type: `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
     },
 ]);
 
@@ -31,7 +31,7 @@ const benefits = usePage().props.roles.some((role) =>
     <Head title="Settings" />
 
     <DefaultLayout>
-        <Setting title="Features">
+        <Setting title="Extras">
             <a v-if="!benefits" href="https://ko-fi.com/pridit" target="_blank">
                 <Alert
                     type="info"
@@ -45,7 +45,7 @@ const benefits = usePage().props.roles.some((role) =>
                 />
 
                 <ul>
-                    <template v-for="feature in features">
+                    <template v-for="extra in extras">
                         <li class="[&:not(:last-child)]:mb-2">
                             <FontAwesomeIcon
                                 class="mr-1 !align-middle"
@@ -58,7 +58,7 @@ const benefits = usePage().props.roles.some((role) =>
                                 fixed-width
                             />
 
-                            <span v-html="feature.type"></span>
+                            <span v-html="extra.type"></span>
                         </li>
                     </template>
                 </ul>

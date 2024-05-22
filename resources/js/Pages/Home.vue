@@ -134,9 +134,7 @@ function toggle(id) {
                                                 "
                                                 class="ltr badge badge-error badge-outline badge-sm select-none font-light uppercase"
                                                 :href="
-                                                    route(
-                                                        'user.setting.features',
-                                                    )
+                                                    route('user.setting.extras')
                                                 "
                                             >
                                                 <FontAwesomeIcon
@@ -251,7 +249,7 @@ function toggle(id) {
                                     <Link
                                         :href="
                                             $page.props.auth.user
-                                                ? route('user.setting.features')
+                                                ? route('user.setting.extras')
                                                 : '#'
                                         "
                                     >

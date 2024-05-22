@@ -53,12 +53,12 @@ class SettingController extends Controller
     }
 
     /**
-     * Show the features page, along with available features.
+     * Show the extras page, along with possible additional statistics.
      */
-    public function showFeatures(Request $request): Response
+    public function showExtras(Request $request): Response
     {
-        return Inertia::render('Setting/Features', [
-            'features' => Statistic::orderBy('name')
+        return Inertia::render('Setting/Extras', [
+            'statistics' => Statistic::orderBy('name')
                 ->get()
                 ->pluck('name'),
         ]

@@ -84,8 +84,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/account', [SettingController::class, 'showAccount'])
                 ->name('account');
 
-            Route::get('/features', [SettingController::class, 'showFeatures'])
-                ->name('features');
+            Route::get('/extras', [SettingController::class, 'showExtras'])
+                ->name('extras');
 
             Route::get('/delete', [SettingController::class, 'showDelete'])
                 ->name('delete');

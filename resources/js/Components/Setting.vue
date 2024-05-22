@@ -6,7 +6,7 @@ import {
     faCog,
     faUser,
     faPlug,
-    faBars,
+    faStar,
     faBan,
     faLock,
 } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,7 @@ const settings = ref([
     { type: 'account', icon: faCog },
     { type: 'characters', icon: faUser },
     { type: 'connections', icon: faPlug },
-    { type: 'features', icon: faBars },
+    { type: 'extras', icon: faStar },
 ]);
 </script>
 
