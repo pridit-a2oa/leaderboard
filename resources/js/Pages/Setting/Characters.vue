@@ -55,7 +55,7 @@ import { Head } from '@inertiajs/vue3';
                         >
                             <VisibilityButton
                                 :id="character.id"
-                                :visible="character.is_visible"
+                                :hidden="character.is_hidden"
                             />
                         </div>
 

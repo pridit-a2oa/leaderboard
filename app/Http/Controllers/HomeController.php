@@ -26,7 +26,6 @@ class HomeController extends Controller
                 'score' => $item->score,
                 'formatted_score' => $item->formatted_score,
                 'is_highest_score' => $item->is_highest_score,
-                'is_visible' => $item->is_visible,
                 'last_seen_at' => $item->last_seen_at,
                 'role' => $item->user ? $item->user->roles->first()->only('name') : [],
                 'statistics' => $item->statistics->toArray(),

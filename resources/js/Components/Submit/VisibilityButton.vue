@@ -10,7 +10,7 @@ const props = defineProps({
         required: true,
     },
 
-    visible: {
+    hidden: {
         type: Boolean,
         required: true,
     },
@@ -31,13 +31,13 @@ const setVisibility = () => {
 <template>
     <BadgeButton
         :class="{
-            'opacity-60': !visible,
+            'opacity-60': hidden,
         }"
         :disabled="form.processing"
         @click="setVisibility"
     >
         <FontAwesomeIcon
-            :icon="visible ? faEye : faEyeSlash"
+            :icon="hidden ? faEyeSlash : faEye"
             size="xs"
             fixed-width
         />

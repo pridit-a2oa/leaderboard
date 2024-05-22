@@ -46,7 +46,7 @@ class LinkController extends Controller
         $character->user()->dissociate();
 
         // Reset the visibility of the character
-        $character->is_visible = true;
+        $character->is_hidden = false;
         $character->save();
 
         return back();

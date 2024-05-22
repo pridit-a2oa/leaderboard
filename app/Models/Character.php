@@ -24,7 +24,7 @@ class Character extends Model
         'uid',
         'name',
         'score',
-        'is_visible',
+        'is_hidden',
     ];
 
     /**
@@ -44,7 +44,7 @@ class Character extends Model
     protected function casts(): array
     {
         return [
-            'is_visible' => 'boolean',
+            'is_hidden' => 'boolean',
         ];
     }
 
@@ -116,7 +116,7 @@ class Character extends Model
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at desc) AS RN FROM characters WHERE is_visible = 1) characters')
+        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at desc) AS RN FROM characters WHERE is_hidden = 0) characters')
             ->where('RN', 1)
             ->where('score', '>', 0)
             ->where(function (Builder $query) {

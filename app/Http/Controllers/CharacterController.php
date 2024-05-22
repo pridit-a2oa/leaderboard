@@ -19,7 +19,7 @@ class CharacterController extends Controller
         $character = Character::findOrFail($request->character_id);
 
         // Toggle the visibility of the character
-        $character->is_visible = ! $character->is_visible;
+        $character->is_hidden = ! $character->is_hidden;
         $character->save();
 
         return redirect()->back();
