@@ -64,6 +64,6 @@ class UserCreate extends Command
             default: 'member'
         );
 
-        $user->assignRole($role);
+        $user->syncRoles($role);
     }
 }
