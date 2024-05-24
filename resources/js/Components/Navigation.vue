@@ -58,7 +58,7 @@ const register = ref(false);
                     v-if="$page.props.roles.includes('supporter')"
                 />
 
-                <FontAwesomeIcon :icon="faUser" size="sm" />
+                <FontAwesomeIcon :icon="faUser" size="sm" fixed-width />
 
                 <span class="max-w-16 truncate">
                     {{ $page.props.auth.user.name }}

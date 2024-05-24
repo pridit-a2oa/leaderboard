@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 <template>
     <span
-        class="badge indicator-item badge-secondary badge-sm p-0 px-1 py-2"
+        class="indicator-item mr-1 mt-1 cursor-pointer rounded-full bg-base-100 p-0 px-1 py-1"
         title="Thanks for being a supporter!"
     >
-        <FontAwesomeIcon class="text-supporter" :icon="faHeart" />
+        <FontAwesomeIcon class="text-supporter" :icon="faHeart" fixed-width />
     </span>
 </template>
