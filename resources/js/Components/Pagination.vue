@@ -25,7 +25,7 @@ defineProps({
         <div class="join mt-4 flex">
             <template v-for="(link, key) in links" :key="key">
                 <Link
-                    class="btn no-animation first:mr-auto last:ml-auto"
+                    class="btn first:mr-auto last:ml-auto"
                     :class="{
                         '!hidden':
                             link.label === '...' || !!/\d/.test(link.label),
