@@ -50,7 +50,7 @@ const submit = () => {
                 />
 
                 <TextInput
-                    id="email"
+                    id="reset-email"
                     type="email"
                     class="!border-transparent"
                     placeholder="Email"
@@ -74,7 +74,7 @@ const submit = () => {
                 />
 
                 <TextInput
-                    id="password"
+                    id="reset-password"
                     type="password"
                     class="!border-transparent"
                     v-model="form.password"
@@ -96,7 +96,7 @@ const submit = () => {
                 />
 
                 <TextInput
-                    id="password_confirmation"
+                    id="reset-password_confirmation"
                     type="password"
                     class="!border-transparent"
                     v-model="form.password_confirmation"
