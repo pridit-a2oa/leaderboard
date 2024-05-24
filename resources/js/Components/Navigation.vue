@@ -51,7 +51,7 @@ const register = ref(false);
         >
             <button
                 tabindex="0"
-                class="btn no-animation"
+                class="btn"
                 :title="$page.props.auth.user.name"
             >
                 <SupporterBadge />
