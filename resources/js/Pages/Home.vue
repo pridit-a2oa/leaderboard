@@ -183,7 +183,7 @@ function toggle(id) {
                                                     0 &&
                                                 character.user_id !== null
                                             "
-                                            class="mr-0.5 !align-middle"
+                                            class="mr-1.5 rounded border border-neutral-700 bg-base-100 !align-middle"
                                             :icon="
                                                 key === open
                                                     ? faAngleUp

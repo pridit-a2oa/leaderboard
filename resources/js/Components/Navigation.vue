@@ -54,9 +54,7 @@ const register = ref(false);
                 class="btn no-animation"
                 :title="$page.props.auth.user.name"
             >
-                <SupporterBadge
-                    v-if="$page.props.roles.includes('supporter')"
-                />
+                <SupporterBadge />
 
                 <FontAwesomeIcon :icon="faUser" size="sm" />
 

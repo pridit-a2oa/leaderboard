@@ -40,9 +40,7 @@ const benefits = usePage().props.roles.some((role) =>
             </a>
 
             <div class="indicator w-full rounded-md bg-base-200 p-4">
-                <SupporterBadge
-                    v-if="$page.props.roles.includes('supporter')"
-                />
+                <SupporterBadge />
 
                 <ul>
                     <template v-for="extra in extras">
