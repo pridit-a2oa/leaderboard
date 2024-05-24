@@ -31,6 +31,7 @@ const unlinkCharacter = () => {
         }"
         :disabled="form.processing"
         @click="unlinkCharacter"
+        dusk="unlink-button"
     >
         <FontAwesomeIcon :icon="faUserSlash" size="xs" fixed-width />
     </BadgeButton>

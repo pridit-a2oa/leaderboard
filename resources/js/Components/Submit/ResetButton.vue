@@ -30,6 +30,7 @@ const resetCharacter = () => {
         }"
         :disabled="form.processing"
         @click="resetCharacter"
+        dusk="reset-button"
     >
         <FontAwesomeIcon :icon="faRotate" size="xs" fixed-width />
     </BadgeButton>

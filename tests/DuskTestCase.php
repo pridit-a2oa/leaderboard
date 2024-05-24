@@ -11,6 +11,13 @@ use PHPUnit\Framework\Attributes\BeforeClass;
 
 abstract class DuskTestCase extends BaseTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('db:seed');
+    }
+
     /**
      * Prepare for Dusk test execution.
      */

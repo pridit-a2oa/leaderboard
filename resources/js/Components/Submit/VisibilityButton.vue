@@ -35,6 +35,7 @@ const setVisibility = () => {
         }"
         :disabled="form.processing"
         @click="setVisibility"
+        dusk="visibility-button"
     >
         <FontAwesomeIcon
             :icon="hidden ? faEyeSlash : faEye"
