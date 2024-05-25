@@ -1,4 +1,4 @@
-![Leaderboard](https://github.com/pridit-a2oa/leaderboard/assets/12836049/09e40e52-72d7-4cac-9ca4-31b89e980a55)
+![Leaderboard](https://github.com/pridit-a2oa/leaderboard/assets/12836049/32d8caf0-34e8-48ee-aefd-846765b4fd75)
 
 # Leaderboard
 
