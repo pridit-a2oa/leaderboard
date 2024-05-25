@@ -118,7 +118,7 @@ class Character extends Model
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at desc) AS RN FROM characters WHERE is_hidden = 0) characters')
+        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at) AS RN FROM characters WHERE is_hidden = 0) characters')
             ->where('RN', 1)
             ->where('score', '>', 0)
             ->where(function (Builder $query) {
@@ -126,7 +126,9 @@ class Character extends Model
                     ->orWhereHas('user.roles', function (Builder $query) {
                         $query->whereIn('role_id', [2, 3]);
                     });
-            });
+            })
+            ->orderByDesc('score')
+            ->orderBy('last_seen_at');
     }
 
     /**

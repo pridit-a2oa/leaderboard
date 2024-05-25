@@ -16,7 +16,6 @@ class HomeController extends Controller
     {
         $characters = Character::rankable()
             ->with('user.roles', 'statistics')
-            ->orderByDesc('score')
             ->paginate(50)
             ->onEachSide(1)
             ->through(fn ($item) => [
@@ -35,7 +34,6 @@ class HomeController extends Controller
         Cache::add(
             'ranking',
             Character::rankable()
-                ->orderByDesc('score')
                 ->get()
                 ->groupBy('name')
                 ->keys()
