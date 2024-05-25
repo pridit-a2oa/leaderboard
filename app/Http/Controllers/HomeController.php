@@ -37,9 +37,8 @@ class HomeController extends Controller
             Character::rankable()
                 ->orderByDesc('score')
                 ->get()
-                ->flatMap(function ($item, $key) {
-                    return [$item['name'] => $key + 1];
-                })
+                ->groupBy('name')
+                ->keys()
                 ->toArray(),
             now()->addDays(1)
         );

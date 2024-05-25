@@ -21,7 +21,7 @@ import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, Link } from '@inertiajs/vue3';
 
-defineProps({
+const props = defineProps({
     characters: {
         type: Object,
     },
@@ -39,7 +39,21 @@ function toggle(id) {
     open.value = open.value === id ? null : id;
 }
 
-function getRank(rank) {
+function getRank(key, added) {
+    return (
+        key +
+        ((props.characters.current_page - 1) * props.characters.per_page +
+            (added ?? 0))
+    );
+}
+
+function getCachedRank(name) {
+    return Object.keys(props.ranking).find(
+        (key) => props.ranking[key] === name,
+    );
+}
+
+function getMovementRank(rank) {
     switch (true) {
         case rank > 0:
             return ['text-success', faChevronUp];
@@ -260,35 +274,22 @@ function getRank(rank) {
                                     v-else
                                     class="bg-base-300 text-center text-[1rem] font-bold"
                                 >
-                                    {{
-                                        key +
-                                        (characters.current_page - 1) *
-                                            characters.per_page +
-                                        1
-                                    }}
+                                    {{ getRank(key, 1) }}
                                 </td>
 
                                 <td class="hidden p-0 pl-5 md:table-cell">
                                     <FontAwesomeIcon
                                         class="!align-middle"
                                         :class="
-                                            getRank(
-                                                ranking[character.name] -
-                                                    (key +
-                                                        (characters.current_page -
-                                                            1) *
-                                                            characters.per_page +
-                                                        1),
+                                            getMovementRank(
+                                                getCachedRank(character.name) -
+                                                    getRank(key),
                                             )[0]
                                         "
                                         :icon="
-                                            getRank(
-                                                ranking[character.name] -
-                                                    (key +
-                                                        (characters.current_page -
-                                                            1) *
-                                                            characters.per_page +
-                                                        1),
+                                            getMovementRank(
+                                                getCachedRank(character.name) -
+                                                    getRank(key),
                                             )[1]
                                         "
                                         fixed-width
