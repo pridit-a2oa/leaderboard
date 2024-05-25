@@ -24,7 +24,6 @@ class Character extends Model
         'uid',
         'name',
         'score',
-        'identifier',
         'is_hidden',
     ];
 

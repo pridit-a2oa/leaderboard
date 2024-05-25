@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,8 +32,21 @@ class HomeController extends Controller
                 'statistics' => $item->statistics->toArray(),
             ]);
 
+        Cache::add(
+            'ranking',
+            Character::rankable()
+                ->orderByDesc('score')
+                ->get()
+                ->flatMap(function ($item, $key) {
+                    return [$item['name'] => $key + 1];
+                })
+                ->toArray(),
+            now()->addDays(1)
+        );
+
         return Inertia::render('Home', [
             'characters' => $characters,
+            'ranking' => Cache::get('ranking') ?? [],
         ]);
     }
 }

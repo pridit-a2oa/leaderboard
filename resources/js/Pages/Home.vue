@@ -13,6 +13,9 @@ import {
     faAngleUp,
     faAngleDown,
     faLock,
+    faMinus,
+    faChevronUp,
+    faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -25,12 +28,26 @@ defineProps({
     statistics: {
         type: Object,
     },
+    ranking: {
+        type: Object,
+    },
 });
 
 const open = ref(null);
 
 function toggle(id) {
     open.value = open.value === id ? null : id;
+}
+
+function getRank(rank) {
+    switch (true) {
+        case rank > 0:
+            return ['text-success', faChevronUp];
+        case rank < 0:
+            return ['text-error', faChevronDown];
+        default:
+            return ['text-neutral-700', faMinus];
+    }
 }
 </script>
 
@@ -72,6 +89,7 @@ function toggle(id) {
                             <th class="hidden w-0 md:table-cell"></th>
                             <th class="p-0 px-2">Name</th>
                             <th class="w-0">Rank</th>
+                            <th class="hidden w-0 md:table-cell"></th>
                             <th
                                 class="hidden w-0 text-center md:table-cell"
                             ></th>
@@ -248,6 +266,33 @@ function toggle(id) {
                                             characters.per_page +
                                         1
                                     }}
+                                </td>
+
+                                <td class="hidden p-0 pl-5 md:table-cell">
+                                    <FontAwesomeIcon
+                                        class="!align-middle"
+                                        :class="
+                                            getRank(
+                                                ranking[character.name] -
+                                                    (key +
+                                                        (characters.current_page -
+                                                            1) *
+                                                            characters.per_page +
+                                                        1),
+                                            )[0]
+                                        "
+                                        :icon="
+                                            getRank(
+                                                ranking[character.name] -
+                                                    (key +
+                                                        (characters.current_page -
+                                                            1) *
+                                                            characters.per_page +
+                                                        1),
+                                            )[1]
+                                        "
+                                        fixed-width
+                                    />
                                 </td>
 
                                 <td
