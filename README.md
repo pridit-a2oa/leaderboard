@@ -5,7 +5,7 @@
 ![lint](https://github.com/pridit-a2oa/leaderboard/actions/workflows/coding-standards.yml/badge.svg)
 ![tests](https://github.com/pridit-a2oa/leaderboard/actions/workflows/tests.yml/badge.svg)
 
-At its core, this [Laravel](https://laravel.com/) project integrates game server data to drive the display of a leaderboard.
+This project integrates game server data to drive the display of a leaderboard, with some additional facilities for logged in users to associate and manage elements of their respective in-game character(s).
 
 ## Features
 
