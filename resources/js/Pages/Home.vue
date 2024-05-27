@@ -246,7 +246,9 @@ function getMovementRank(rank) {
                                     <span
                                         class="mt-0.5 w-max select-none text-xs font-light text-neutral-500"
                                         title="Last active"
-                                        >{{ character.last_seen_at }}</span
+                                        >{{
+                                            character.formatted_last_seen_at
+                                        }}</span
                                     >
                                 </td>
 

@@ -38,16 +38,26 @@ class AppServiceProvider extends ServiceProvider
                 : $rule;
         });
 
-        // Monitor scheduled commands (starting)
-        Event::listen(CommandStarting::class, function (CommandStarting $event) {
-            if (! in_array($event->command, ['schedule:run', 'schedule:work'])) {
+        $ignored = [
+            'db:seed',
+            'dusk',
+            'migrate',
+            'migrate:fresh',
+            'optimize:clear',
+            'schedule:run',
+            'schedule:work',
+        ];
+
+        // Monitor command state (starting)
+        Event::listen(CommandStarting::class, function (CommandStarting $event) use ($ignored) {
+            if (! in_array($event->command, $ignored)) {
                 Log::info(sprintf('[%s] Starting', $event->command));
             }
         });
 
-        // Monitor scheduled commands (finished)
-        Event::listen(CommandFinished::class, function (CommandFinished $event) {
-            if (! in_array($event->command, ['schedule:run', 'schedule:work'])) {
+        // Monitor command state (finished)
+        Event::listen(CommandFinished::class, function (CommandFinished $event) use ($ignored) {
+            if (! in_array($event->command, $ignored)) {
                 Log::info(sprintf('[%s] Finished', $event->command));
             }
         });

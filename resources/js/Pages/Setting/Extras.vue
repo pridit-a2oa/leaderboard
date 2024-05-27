@@ -10,10 +10,10 @@ import { Head, usePage } from '@inertiajs/vue3';
 
 const extras = ref([
     {
-        type: '<span class="tooltip-benefit" data-tip="By default, characters must be active within the last 60 days to be displayed in the leaderboard.">Inactivity</span> exemption',
+        type: '<span class="tooltip-benefit" data-tip="By default, characters must be active within the last 6 weeks to be displayed in the leaderboard.">Inactivity</span> exemption',
     },
     {
-        type: 'Supporter badge (<span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score.">single</span>)',
+        type: 'Supporter badge (<span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score. If more than one character has the same score then most recently active is used as the mediating factor.">single</span>)',
     },
     { type: 'Multiple character linking' },
     { type: 'Reset statistics option (per character)' },

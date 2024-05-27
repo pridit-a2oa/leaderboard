@@ -84,10 +84,10 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_can_see_character_last_seen_before_sixty_days(): void
+    public function test_can_see_character_last_seen_before_six_weeks(): void
     {
         Character::factory()->create([
-            'last_seen_at' => now()->subDays(59),
+            'last_seen_at' => now()->subDays(41),
         ]);
 
         $this->get('/')
@@ -97,10 +97,10 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_character_last_seen_after_sixty_days(): void
+    public function test_cannot_see_character_last_seen_after_six_weeks(): void
     {
         Character::factory()->create([
-            'last_seen_at' => now()->subDays(61),
+            'last_seen_at' => now()->subDays(43),
         ]);
 
         $this->get('/')

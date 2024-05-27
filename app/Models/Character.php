@@ -34,6 +34,7 @@ class Character extends Model
      */
     protected $appends = [
         'formatted_score',
+        'formatted_last_seen_at',
     ];
 
     /**
@@ -49,8 +50,8 @@ class Character extends Model
     }
 
     /**
-     * Determine whether the character is the one with the highest score out of
-     * those linked to a user and not hidden.
+     * Determine whether the character has the highest score. On clashes,
+     * resolve by basing from recency (e.g. linked).
      */
     protected function isHighestScore(): Attribute
     {
@@ -58,7 +59,10 @@ class Character extends Model
             get: fn (mixed $value, array $attributes) => $this->user
                 ? $this->user->characters
                     ->where('is_hidden', 0)
-                    ->max('score') === $attributes['score']
+                    ->sortByDesc('last_seen_at')
+                    ->sortByDesc('score')
+                    ->first()
+                    ->id === $attributes['id']
                 : false
         );
     }
@@ -76,13 +80,13 @@ class Character extends Model
     /**
      * Interact with the character's last seen at.
      */
-    protected function lastSeenAt(): Attribute
+    protected function formattedLastSeenAt(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value) => preg_replace(
+            get: fn (mixed $value, array $attributes) => preg_replace(
                 '/\d+ seconds?/',
                 'less than a minute',
-                Carbon::parse($value)->diffForHumans([
+                Carbon::parse($attributes['last_seen_at'])->diffForHumans([
                     'options' => Carbon::JUST_NOW,
                 ])
             )
@@ -122,7 +126,7 @@ class Character extends Model
             ->where('RN', 1)
             ->where('score', '>', 0)
             ->where(function (Builder $query) {
-                $query->where('last_seen_at', '>=', now()->subDays(60))
+                $query->where('last_seen_at', '>=', now()->subDays(42))
                     ->orWhereHas('user.roles', function (Builder $query) {
                         $query->whereIn('role_id', [2, 3]);
                     });

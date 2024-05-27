@@ -46,6 +46,12 @@ COPY .docker/php.ini /etc/php83/conf.d/custom.ini
 # Configure supervisord
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Configure cron
+COPY .docker/crontab /etc/cron.d
+
+# Set permissions
+RUN chmod -R 644 /etc/cron.d
+
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN chown -R nobody.nobody /var/www/html /run /var/lib/nginx /var/log/nginx
 

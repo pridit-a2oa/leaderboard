@@ -26,14 +26,14 @@ class HomeController extends Controller
                 'score' => $item->score,
                 'formatted_score' => $item->formatted_score,
                 'is_highest_score' => $item->is_highest_score,
-                'last_seen_at' => $item->last_seen_at,
+                'formatted_last_seen_at' => $item->formatted_last_seen_at,
                 'role' => $item->user ? $item->user->roles->first()->only('name') : [],
                 'statistics' => $item->statistics->toArray(),
             ]);
 
         return Inertia::render('Home', [
             'characters' => $characters,
-            'ranking' => Cache::get('ranking') ?? [],
+            'ranking' => Cache::get('ranking', []),
         ]);
     }
 }
