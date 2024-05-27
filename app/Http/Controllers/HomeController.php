@@ -31,16 +31,6 @@ class HomeController extends Controller
                 'statistics' => $item->statistics->toArray(),
             ]);
 
-        Cache::add(
-            'ranking',
-            Character::rankable()
-                ->get()
-                ->pluck('name')
-                ->values()
-                ->toArray(),
-            now()->addDays(1)
-        );
-
         return Inertia::render('Home', [
             'characters' => $characters,
             'ranking' => Cache::get('ranking') ?? [],
