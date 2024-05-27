@@ -35,8 +35,8 @@ class HomeController extends Controller
             'ranking',
             Character::rankable()
                 ->get()
-                ->groupBy('name')
-                ->keys()
+                ->pluck('name')
+                ->values()
                 ->toArray(),
             now()->addDays(1)
         );
