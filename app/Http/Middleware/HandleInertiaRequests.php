@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
@@ -39,7 +40,7 @@ class HandleInertiaRequests extends Middleware
                 'data' => fn () => $request->session()->get('data'),
                 'message' => fn () => $request->session()->get('message') ?: [],
             ],
-            'roles' => auth()->user() ? auth()->user()->roles->pluck('name') : [],
+            'roles' => Auth::check() ? $request->user()->roles->pluck('name') : [],
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
