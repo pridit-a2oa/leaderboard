@@ -12,6 +12,25 @@ use Illuminate\Validation\Rules\Password;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Commands to ignore logging of start/stop points.
+     *
+     * @var array
+     */
+    protected $ignored = [
+        'db:seed',
+        'dusk',
+        'migrate',
+        'migrate:fresh',
+        'optimize:clear',
+        'package:discover',
+        'queue:work',
+        'serve',
+        'schedule:run',
+        'schedule:work',
+        'tinker',
+    ];
+
+    /**
      * Register any application services.
      */
     public function register(): void
@@ -38,27 +57,16 @@ class AppServiceProvider extends ServiceProvider
                 : $rule;
         });
 
-        $ignored = [
-            'db:seed',
-            'dusk',
-            'migrate',
-            'migrate:fresh',
-            'optimize:clear',
-            'package:discover',
-            'schedule:run',
-            'schedule:work',
-        ];
-
         // Monitor command state (starting)
-        Event::listen(CommandStarting::class, function (CommandStarting $event) use ($ignored) {
-            if (! in_array($event->command, $ignored)) {
+        Event::listen(CommandStarting::class, function (CommandStarting $event) {
+            if (! in_array($event->command, $this->ignored)) {
                 Log::info(sprintf('[%s] Starting', $event->command));
             }
         });
 
         // Monitor command state (finished)
-        Event::listen(CommandFinished::class, function (CommandFinished $event) use ($ignored) {
-            if (! in_array($event->command, $ignored)) {
+        Event::listen(CommandFinished::class, function (CommandFinished $event) {
+            if (! in_array($event->command, $this->ignored)) {
                 Log::info(sprintf('[%s] Finished', $event->command));
             }
         });
