@@ -44,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
             'migrate',
             'migrate:fresh',
             'optimize:clear',
+            'package:discover',
             'schedule:run',
             'schedule:work',
         ];
