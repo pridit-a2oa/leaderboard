@@ -27,6 +27,11 @@ class CacheRanking extends Command
      */
     public function handle()
     {
+        // Clear the existing cache
+        if (Cache::has('ranking')) {
+            Cache::forget('ranking');
+        }
+
         Cache::add(
             'ranking',
             Character::rankable()
