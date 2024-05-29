@@ -3,6 +3,10 @@ FROM node:22.0.0-alpine3.19
 # Set the application variables
 ENV APP_NAME=Leaderboard
 
+# Add a non-root user to prevent files being created with root permissions on host machine
+RUN addgroup -g 1001 laravel \
+    && adduser -u 1001 -G laravel -s /bin/ash -D laravel
+
 # Setup document root
 WORKDIR /var/www/html
 
@@ -47,19 +51,19 @@ COPY .docker/php.ini /etc/php83/conf.d/custom.ini
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Configure cron
-COPY .docker/crontab /etc/cron.d
+COPY .docker/crontab /etc/crontabs
 
 # Set permissions
-RUN chmod -R 644 /etc/cron.d
+RUN chmod -R 644 /etc/crontabs
 
-# Make sure files/folders needed by the processes are accessable when they run under the nobody user
-RUN chown -R nobody.nobody /var/www/html /run /var/lib/nginx /var/log/nginx
+# Make sure files/folders needed by the processes are accessable when they run under the laravel user
+RUN chown -R laravel.laravel /var/www/html /run /var/lib/nginx /var/log/nginx
 
 # Create symlink for php
 RUN ln -s /usr/bin/php83 /usr/bin/php
 
 # Add application
-COPY --chown=nobody . /var/www/html/
+COPY --chown=laravel . /var/www/html/
 
 # Install composer from the official image
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -73,14 +77,13 @@ RUN npm install
 # Build app
 RUN npm run build
 
-# Switch to non-root user
-USER nobody
-
 # Expose the port nginx is reachable on
 EXPOSE 8080
 
 # Let supervisord start nginx & php-fpm
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+RUN chmod +x .docker/entrypoint.sh
+
+ENTRYPOINT [".docker/entrypoint.sh"]
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
