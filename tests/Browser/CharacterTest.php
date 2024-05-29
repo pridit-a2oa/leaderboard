@@ -64,7 +64,7 @@ class CharacterTest extends DuskTestCase
                 ->click('@visibility-button')
                 ->waitUntilMissing('#nprogress')
                 ->visit('/')
-                ->assertSee('No records found');
+                ->assertSee('Anonymous');
         });
     }
 

@@ -21,14 +21,15 @@ class HomeController extends Controller
             ->through(fn ($item) => [
                 'id' => $item->id,
                 'user_id' => $item->user_id,
-                'uid' => $item->uid,
-                'name' => $item->name,
+                'uid' => ! $item->is_hidden ? $item->uid : '',
+                'name' => ! $item->is_hidden ? $item->name : 'Anonymous',
                 'score' => $item->score,
                 'formatted_score' => $item->formatted_score,
-                'is_highest_score' => $item->is_highest_score,
-                'formatted_last_seen_at' => $item->formatted_last_seen_at,
+                'is_hidden' => $item->is_hidden,
+                'is_highest_score' => $item->user ? $item->is_highest_score : false,
+                'formatted_last_seen_at' => ! $item->is_hidden ? $item->formatted_last_seen_at : 'N/A',
                 'role' => $item->user ? $item->user->roles->first()->only('name') : [],
-                'statistics' => $item->statistics->toArray(),
+                'statistics' => ! $item->is_hidden ? $item->statistics->toArray() : [],
             ]);
 
         return Inertia::render('Home', [

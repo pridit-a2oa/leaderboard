@@ -117,11 +117,19 @@ function getMovementRank(rank) {
                         >
                             <tr
                                 class="!border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
+                                :class="{
+                                    'bg-base-100 opacity-50':
+                                        character.is_hidden,
+                                }"
                             >
                                 <td
-                                    class="hidden bg-base-200 p-0 px-2 text-center md:table-cell"
+                                    class="hidden p-0 px-2 text-center md:table-cell"
+                                    :class="{
+                                        'bg-base-200': !character.is_hidden,
+                                    }"
                                 >
                                     <a
+                                        v-if="character.uid"
                                         :href="`https://steamcommunity.com/profiles/${character.uid}`"
                                         target="_blank"
                                     >
@@ -257,7 +265,7 @@ function getMovementRank(rank) {
                                         characters.current_page === 1 &&
                                         key in [0, 1, 2]
                                     "
-                                    class="bg-base-300 text-center"
+                                    class="text-center"
                                 >
                                     <FontAwesomeIcon
                                         class="!align-middle"
@@ -274,7 +282,7 @@ function getMovementRank(rank) {
 
                                 <td
                                     v-else
-                                    class="bg-base-300 text-center text-[1rem] font-bold"
+                                    class="text-center text-[1rem] font-bold"
                                 >
                                     {{ getRank(key, 1) }}
                                 </td>
@@ -299,9 +307,13 @@ function getMovementRank(rank) {
                                 </td>
 
                                 <td
-                                    class="hidden bg-base-200 p-0 px-2.5 text-center md:table-cell"
+                                    class="hidden p-0 px-2.5 text-center md:table-cell"
+                                    :class="{
+                                        'bg-base-200': !character.is_hidden,
+                                    }"
                                 >
                                     <Link
+                                        v-if="!character.is_hidden"
                                         :href="
                                             $page.props.auth.user
                                                 ? route('user.setting.extras')

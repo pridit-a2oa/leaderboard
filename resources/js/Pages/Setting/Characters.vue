@@ -51,8 +51,8 @@ import { Head } from '@inertiajs/vue3';
 
                     <td class="text-right">
                         <div
-                            class="tooltip tooltip-bottom tooltip-secondary before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
-                            data-tip="Toggle the visibility of this character in the leaderboard"
+                            class="tooltip tooltip-bottom tooltip-secondary before:w-[14rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            data-tip="Toggle whether this character is anonymized in the leaderboard"
                         >
                             <VisibilityButton
                                 :id="character.id"

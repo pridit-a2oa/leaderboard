@@ -36,19 +36,6 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_hidden_character(): void
-    {
-        Character::factory()->create([
-            'is_hidden' => 1,
-        ]);
-
-        $this->get('/')
-            ->assertInertia(fn (Assert $page) => $page
-                ->component('Home')
-                ->has('characters.data', 0)
-            );
-    }
-
     public function test_cannot_see_zero_score_character(): void
     {
         Character::factory()->create([

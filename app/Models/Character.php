@@ -51,19 +51,23 @@ class Character extends Model
 
     /**
      * Determine whether the character has the highest score. On clashes,
-     * resolve by basing from recency (e.g. linked).
+     * resolve by basing from last seen.
      */
     protected function isHighestScore(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes) => $this->user
-                ? $this->user->characters
+            get: function (mixed $value, array $attributes) {
+                if ($this->user->characters->where('is_hidden', 0)->count() === 0) {
+                    return false;
+                }
+
+                return $this->user->characters
                     ->where('is_hidden', 0)
                     ->sortByDesc('last_seen_at')
                     ->sortByDesc('score')
                     ->first()
-                    ->id === $attributes['id']
-                : false
+                    ->id === $attributes['id'];
+            }
         );
     }
 
@@ -122,7 +126,7 @@ class Character extends Model
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at) AS RN FROM characters WHERE is_hidden = 0) characters')
+        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at) AS RN FROM characters) characters')
             ->where('RN', 1)
             ->where('score', '>', 0)
             ->where(function (Builder $query) {
