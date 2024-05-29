@@ -36,7 +36,7 @@ class CacheRanking extends Command
             'ranking',
             Character::rankable()
                 ->get()
-                ->pluck('name')
+                ->pluck('id')
                 ->values()
                 ->toArray()
         );

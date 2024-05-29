@@ -47,10 +47,8 @@ function getRank(key, added) {
     );
 }
 
-function getCachedRank(name) {
-    return Object.keys(props.ranking).find(
-        (key) => props.ranking[key] === name,
-    );
+function getCachedRank(id) {
+    return Object.keys(props.ranking).find((key) => props.ranking[key] === id);
 }
 
 function getMovementRank(rank) {
@@ -292,13 +290,13 @@ function getMovementRank(rank) {
                                         class="!align-middle"
                                         :class="
                                             getMovementRank(
-                                                getCachedRank(character.name) -
+                                                getCachedRank(character.id) -
                                                     getRank(key),
                                             )[0]
                                         "
                                         :icon="
                                             getMovementRank(
-                                                getCachedRank(character.name) -
+                                                getCachedRank(character.id) -
                                                     getRank(key),
                                             )[1]
                                         "
