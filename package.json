@@ -14,20 +14,21 @@
         "axios": "^1.6.4",
         "daisyui": "^4.10.1",
         "laravel-vite-plugin": "^1.0",
+        "lodash": "^4.17.21",
         "postcss": "^8.4.31",
         "prettier": "^3.2.5",
         "prettier-plugin-tailwindcss": "^0.5.14",
         "tailwindcss": "^3.2.1",
         "vite": "^5.0",
-        "vue": "^3.4.0"
+        "vue": "^3.4.0",
+        "vue-screen-size": "^2.1.0"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.5.2",
         "@fortawesome/free-brands-svg-icons": "^6.5.2",
         "@fortawesome/free-regular-svg-icons": "^6.5.2",
         "@fortawesome/free-solid-svg-icons": "^6.5.2",
-        "@fortawesome/vue-fontawesome": "^3.0.6",
-        "vue-screen-size": "^2.1.0"
+        "@fortawesome/vue-fontawesome": "^3.0.6"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "^4.17.2"
