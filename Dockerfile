@@ -3,15 +3,13 @@ FROM node:22.0.0-alpine3.19
 # Set the application variables
 ENV APP_NAME=Leaderboard
 
-# Add a non-root user to prevent files being created with root permissions on host machine
-RUN addgroup -g 1001 laravel \
-    && adduser -u 1001 -G laravel -s /bin/ash -D laravel
-
 # Setup document root
 WORKDIR /var/www/html
 
 # Install packages and remove default server definition
 RUN apk add --no-cache \
+    dcron \
+    libcap \
     curl \
     nodejs-current \
     npm \
@@ -40,6 +38,12 @@ RUN apk add --no-cache \
     php83-zip \
     supervisor
 
+# Add a non-root user to prevent files being created with root permissions on host machine
+RUN addgroup -g 1001 laravel \
+    && adduser -u 1001 -G laravel -s /bin/ash -D laravel \
+    && chown laravel:laravel /usr/sbin/crond \
+    && setcap cap_setgid=ep /usr/sbin/crond
+
 # Configure nginx
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
@@ -53,8 +57,8 @@ COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Configure cron
 COPY .docker/crontab /etc/crontabs
 
-# Set permissions
-RUN chmod -R 644 /etc/crontabs
+RUN chown -R laravel /etc/crontabs/laravel
+RUN chmod -R 644 /etc/crontabs/laravel
 
 # Make sure files/folders needed by the processes are accessable when they run under the laravel user
 RUN chown -R laravel.laravel /var/www/html /run /var/lib/nginx /var/log/nginx
@@ -77,12 +81,16 @@ RUN npm install
 # Build app
 RUN npm run build
 
+# Set entrypoint execution permission
+RUN chmod +x .docker/entrypoint.sh
+
+# Switch to non-root user
+USER laravel
+
 # Expose the port nginx is reachable on
 EXPOSE 8080
 
 # Let supervisord start nginx & php-fpm
-RUN chmod +x .docker/entrypoint.sh
-
 ENTRYPOINT [".docker/entrypoint.sh"]
 
 # Configure a healthcheck to validate that everything is up&running
