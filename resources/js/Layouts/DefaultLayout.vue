@@ -1,5 +1,5 @@
 <script setup>
-import AppLogo from '@/Components/ApplicationLogo.vue';
+import AppBanner from '@/Components/ApplicationBanner.vue';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -9,13 +9,11 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <div class="flex h-screen flex-col">
-        <div class="bg-base-200">
-            <AppLogo />
-        </div>
+        <AppBanner />
 
         <Breadcrumb v-if="$page.props.name" />
 
-        <main class="container mx-auto my-6 flex-grow">
+        <main class="container mx-auto my-8 flex-grow">
             <slot />
         </main>
 
