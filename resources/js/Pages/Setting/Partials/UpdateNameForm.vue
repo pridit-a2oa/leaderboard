@@ -25,7 +25,7 @@ const submit = () => {
         <form @submit.prevent="submit">
             <label class="form-control">
                 <div class="label !pt-0">
-                    <span class="label-text">Display Name</span>
+                    <span class="label-text">Nickname</span>
                 </div>
 
                 <TextInput
@@ -42,7 +42,7 @@ const submit = () => {
                 <div class="mt-3 flex justify-end">
                     <FormResponse
                         v-if="form.wasSuccessful"
-                        :message="['success', 'Display name was changed']"
+                        :message="['success', 'Nickname was changed']"
                     />
 
                     <SaveButton

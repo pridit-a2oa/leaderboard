@@ -47,7 +47,7 @@ const submit = () => {
                     id="name"
                     type="text"
                     class="!border-transparent"
-                    placeholder="Display Name"
+                    placeholder="Nickname"
                     v-model="form.name"
                     required
                 />
