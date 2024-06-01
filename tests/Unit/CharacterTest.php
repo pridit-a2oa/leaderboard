@@ -21,7 +21,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data', 0)
+                ->missing('characters.data.0')
             );
     }
 
@@ -45,7 +45,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data', 0)
+                ->missing('characters.data.0')
             );
     }
 
@@ -93,7 +93,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data', 0)
+                ->missing('characters.data.0')
             );
     }
 
@@ -104,7 +104,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data.0.statistics', 0)
+                ->missing('characters.data.0.statistics')
             );
     }
 
