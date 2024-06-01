@@ -235,14 +235,17 @@ function getMovementRank(rank) {
                                             class="text-neutral-400"
                                             :class="{
                                                 '!text-gold':
-                                                    characters.current_page ===
-                                                        1 && key === 0,
+                                                    characters.meta
+                                                        .current_page === 1 &&
+                                                    key === 0,
                                                 '!text-silver':
-                                                    characters.current_page ===
-                                                        1 && key === 1,
+                                                    characters.meta
+                                                        .current_page === 1 &&
+                                                    key === 1,
                                                 '!text-bronze':
-                                                    characters.current_page ===
-                                                        1 && key === 2,
+                                                    characters.meta
+                                                        .current_page === 1 &&
+                                                    key === 2,
                                             }"
                                             :title="character.name"
                                             >{{
@@ -263,7 +266,7 @@ function getMovementRank(rank) {
 
                                 <td
                                     v-if="
-                                        characters.current_page === 1 &&
+                                        characters.meta.current_page === 1 &&
                                         key in [0, 1, 2]
                                     "
                                     class="text-center"
