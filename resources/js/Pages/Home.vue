@@ -42,7 +42,8 @@ function toggle(id) {
 function getRank(key, added) {
     return (
         key +
-        ((props.characters.current_page - 1) * props.characters.per_page +
+        ((props.characters.meta.current_page - 1) *
+            props.characters.meta.per_page +
             (added ?? 0))
     );
 }
@@ -204,11 +205,11 @@ function getMovementRank(rank) {
                                     class="ltr grid p-0 px-2 py-3"
                                     :class="{
                                         'cursor-pointer':
-                                            character.statistics.length > 0 &&
+                                            character.statistics &&
                                             character.user_id !== null,
                                     }"
                                     @click="
-                                        character.statistics.length > 0 &&
+                                        character.statistics &&
                                         character.user_id !== null
                                             ? toggle(key)
                                             : null
@@ -217,8 +218,7 @@ function getMovementRank(rank) {
                                     <span class="truncate">
                                         <FontAwesomeIcon
                                             v-if="
-                                                character.statistics.length >
-                                                    0 &&
+                                                character.statistics &&
                                                 character.user_id !== null
                                             "
                                             class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle"
@@ -245,7 +245,9 @@ function getMovementRank(rank) {
                                                         1 && key === 2,
                                             }"
                                             :title="character.name"
-                                            >{{ character.name }}</span
+                                            >{{
+                                                character.name ?? 'Anonymous'
+                                            }}</span
                                         >
                                     </span>
 
@@ -253,7 +255,8 @@ function getMovementRank(rank) {
                                         class="mt-0.5 w-max select-none text-xs font-light text-neutral-500"
                                         title="Last active"
                                         >{{
-                                            character.formatted_last_seen_at
+                                            character.formatted_last_seen_at ??
+                                            'N/A'
                                         }}</span
                                     >
                                 </td>
@@ -320,7 +323,7 @@ function getMovementRank(rank) {
                                     >
                                         <FontAwesomeIcon
                                             v-if="
-                                                character.role.name ===
+                                                character.role ===
                                                     'supporter' &&
                                                 character.is_highest_score
                                             "
@@ -342,7 +345,7 @@ function getMovementRank(rank) {
                             <tr
                                 v-if="
                                     key === open &&
-                                    character.statistics.length > 0 &&
+                                    character.statistics &&
                                     character.user_id !== null
                                 "
                             >
@@ -364,13 +367,7 @@ function getMovementRank(rank) {
                 <div class="divider">No records found</div>
             </div>
 
-            <Pagination
-                :links="characters.links"
-                :currentPage="characters.current_page"
-                :from="characters.from"
-                :to="characters.to"
-                :total="characters.total"
-            />
+            <Pagination :meta="characters.meta" />
         </div>
     </DefaultLayout>
 </template>
