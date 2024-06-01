@@ -29,8 +29,11 @@ class PruneUser
             'delete_token' => null,
         ]);
 
-        // Detach the user's character(s)
-        $user->characters()->update(['user_id' => null]);
+        // Detach the user's character(s) and reset visibility
+        $user->characters()->update([
+            'user_id' => null,
+            'is_hidden' => false,
+        ]);
 
         // Detach the user's connection(s)
         $user->connections()->sync([]);
