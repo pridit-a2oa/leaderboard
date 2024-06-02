@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 
 defineProps({
     meta: {
-        type: Array,
+        type: Object,
     },
 });
 </script>
