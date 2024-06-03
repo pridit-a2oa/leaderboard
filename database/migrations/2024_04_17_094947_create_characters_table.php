@@ -23,6 +23,8 @@ return new class extends Migration
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletesTz('deleted_at', precision: 0);
 
+            $table->unique(['uid', 'name']);
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
