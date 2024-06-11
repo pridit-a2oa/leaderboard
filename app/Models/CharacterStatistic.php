@@ -28,15 +28,6 @@ class CharacterStatistic extends Pivot
     ];
 
     /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'formatted_value',
-    ];
-
-    /**
      * Interact with the character's statistic value.
      */
     protected function formattedValue(): Attribute
