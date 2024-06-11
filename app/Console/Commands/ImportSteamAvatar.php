@@ -32,11 +32,8 @@ class ImportSteamAvatar extends Command
             $this->fail('No Steam API key specified.');
         }
 
-        Character::select('uid')
-            ->missingAvatar()
-            ->orderBy('uid')
-            ->groupBy('uid')
-            ->chunk(25, function (Collection $characters) {
+        Character::missingAvatar()
+            ->chunkById(25, function (Collection $characters) {
                 $response = Http::get(sprintf(
                     'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=%s&steamids=%s',
                     config('steam-auth.api_keys')[0],
