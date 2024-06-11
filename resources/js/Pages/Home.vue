@@ -100,7 +100,7 @@ function getMovementRank(rank) {
                             <th class="hidden w-0 md:table-cell"></th>
                             <th class="w-0 text-right">Score</th>
                             <th class="hidden w-0 md:table-cell"></th>
-                            <th class="p-0 px-2">Name</th>
+                            <th></th>
                             <th class="w-0">Rank</th>
                             <th class="hidden w-0 md:table-cell"></th>
                             <th
@@ -202,7 +202,7 @@ function getMovementRank(rank) {
                                 </td>
 
                                 <td
-                                    class="ltr grid p-0 px-2 py-3"
+                                    class="ltr grid auto-cols-max grid-flow-col grid-rows-2 p-0 px-2 py-3"
                                     :class="{
                                         'cursor-pointer':
                                             character.statistics &&
@@ -215,6 +215,18 @@ function getMovementRank(rank) {
                                             : null
                                     "
                                 >
+                                    <object
+                                        class="row-span-2 mr-5 h-6 w-6 self-center rounded-full"
+                                        :data="character.avatar_url"
+                                        type="image/jpeg"
+                                    >
+                                        <img
+                                            class="skeleton h-6 w-6 bg-base-100"
+                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                            alt="Avatar"
+                                        />
+                                    </object>
+
                                     <span class="truncate">
                                         <FontAwesomeIcon
                                             v-if="

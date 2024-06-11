@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('uid')->nullable();
             $table->string('name');
+            $table->string('avatar_url')->nullable();
             $table->bigInteger('score')->default(0);
             $table->boolean('is_hidden')->default(0);
             $table->timestamp('last_seen_at')->useCurrent();

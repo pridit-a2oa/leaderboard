@@ -25,6 +25,7 @@ class Character extends Model
         'name',
         'score',
         'is_hidden',
+        'avatar_url',
     ];
 
     /**
@@ -145,5 +146,13 @@ class Character extends Model
     public function scopeLinkable(Builder $query): void
     {
         $query->whereNull('user_id');
+    }
+
+    /**
+     * Scope a query to only include characters with missing avatar URLs.
+     */
+    public function scopeMissingAvatar(Builder $query): void
+    {
+        $query->whereNull('avatar_url');
     }
 }
