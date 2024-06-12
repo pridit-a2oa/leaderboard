@@ -24,7 +24,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
     <input
-        class="placeholder:text-neutral-500"
+        class="w-full placeholder:text-neutral-500"
         :class="{
             'input-error': error,
         }"
