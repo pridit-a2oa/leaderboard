@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/delete', [SettingController::class, 'showDelete'])
                 ->name('delete');
 
-            Route::middleware('verified')->group(function () {
+            Route::middleware('verified:user.setting.account')->group(function () {
                 Route::get('/characters', [SettingController::class, 'showCharacters'])
                     ->name('characters');
 
