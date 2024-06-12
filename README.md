@@ -58,19 +58,15 @@ You should now be able to access the application via:
 
 ## Bridge
 
-As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended. The following tables are used as part of this process:
+As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended.
 
-**Minimum**
+The following tables are used as part of this process:
 
--   `characters` ([uid](https://community.bistudio.com/wiki/getPlayerUID), [name](https://community.bistudio.com/wiki/name), [score](https://community.bistudio.com/wiki/score))
-    -   _stores the main data_
-
-**Optional**
-
--   `character_statistic` (character_id, statistic_id, value)
-    -   _tracking additional `statistics`_
--   `model_has_roles` (role_id, model_id)
-    -   _determining feature access based on a permissions library_
+| Optional | Name                  | Fields                                                                                                                                                        | Purpose                                       |
+| -------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| ❌       | `characters`          | [uid](https://community.bistudio.com/wiki/getPlayerUID), [name](https://community.bistudio.com/wiki/name), [score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
+| ✔️       | `character_statistic` | character_id, statistic_id, value                                                                                                                             | Tracking additional `statistics`              |
+| ✔️       | `model_has_roles`     | role_id, model_id                                                                                                                                             | Feature access based on a permissions library |
 
 For an example on how this has been integrated into an existing mission using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
 
