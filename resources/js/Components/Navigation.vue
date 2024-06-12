@@ -86,7 +86,10 @@ const register = ref(false);
         <template v-else>
             <button
                 class="btn no-animation ml-auto hidden md:inline-flex"
-                @click="showModal = true"
+                @click="
+                    showModal = true;
+                    register = false;
+                "
             >
                 <FontAwesomeIcon :icon="faRightToBracket" size="sm" />Log in
             </button>
