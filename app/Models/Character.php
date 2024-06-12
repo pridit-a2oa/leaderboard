@@ -119,7 +119,7 @@ class Character extends Model
     {
         $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at) AS RN FROM characters) characters')
             ->where('RN', 1)
-            ->where('score', '>', 0)
+            ->where('score', '>=', 10)
             ->where(function (Builder $query) {
                 $query->where('last_seen_at', '>=', now()->subDays(42))
                     ->orWhereHas('user.roles', function (Builder $query) {
