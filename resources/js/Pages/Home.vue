@@ -215,17 +215,16 @@ function getMovementRank(rank) {
                                             : null
                                     "
                                 >
-                                    <object
-                                        class="row-span-2 mr-4 h-6 w-6 select-none self-center rounded-full"
-                                        :data="character.avatar_url ?? '//:0'"
-                                        type="image/jpeg"
-                                    >
-                                        <img
-                                            class="skeleton h-6 w-6 select-none bg-base-100"
-                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                            alt="Avatar"
-                                        />
-                                    </object>
+                                    <img
+                                        class="row-span-2 mr-4 h-6 w-6 select-none self-center rounded-full bg-base-100 text-[0rem]"
+                                        :src="
+                                            character.avatar_url ??
+                                            'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+                                        "
+                                        alt="Avatar"
+                                        loading="lazy"
+                                        onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
+                                    />
 
                                     <span class="truncate">
                                         <FontAwesomeIcon
