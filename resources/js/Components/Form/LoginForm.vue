@@ -97,7 +97,7 @@ const reset = () => {
                         v-model:checked="form.remember"
                     />
 
-                    <span class="label-text">Remember me</span>
+                    <span class="label-text">Keep me signed in</span>
                 </label>
 
                 <button

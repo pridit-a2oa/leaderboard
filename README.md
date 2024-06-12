@@ -130,6 +130,10 @@ Run the browser tests supported by [laravel/dusk](https://laravel.com/docs/11.x/
 sail dusk
 ```
 
+While running Dusk tests Selenium can be observed using noVNC via:
+
+-   http://localhost:7900/?autoconnect=1&resize=scale&password=secret
+
 > [!IMPORTANT]  
 > Dusk will not work with [Vite](http://localhost:5173/) running, so ensure it is off prior to running this test suite.
 

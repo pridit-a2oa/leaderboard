@@ -16,12 +16,11 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'min:3', 'max:20'],
-
             'email' => [
                 'string',
                 'lowercase',
                 'email',
+                'indisposable',
                 'max:255',
                 Rule::unique(User::class),
             ],

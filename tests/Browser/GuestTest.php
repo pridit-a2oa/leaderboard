@@ -18,7 +18,6 @@ class GuestTest extends DuskTestCase
         parent::setUp();
 
         $this->user = User::factory([
-            'name' => 'John',
             'password' => Hash::make('password'),
         ]);
     }
@@ -29,16 +28,15 @@ class GuestTest extends DuskTestCase
             $user = $this->user->make();
 
             $browser->visit('/')
-                ->press('Log in')
+                ->press('Sign in')
                 ->press('Sign up')
-                ->type('#name', $user->name)
                 ->type('#email', $user->email)
                 ->type('#password', 'password')
                 ->type('#password_confirmation', 'password')
                 ->check('conditions')
                 ->press('Register an account')
                 ->waitUntilMissing('button[disabled]')
-                ->assertSee('John');
+                ->assertSee('Account');
         });
     }
 
@@ -57,12 +55,12 @@ class GuestTest extends DuskTestCase
                 ->type('#reset-password_confirmation', 'password2')
                 ->press('Reset Password')
                 ->waitUntilMissing('#nprogress')
-                ->press('Log in')
+                ->press('Sign in')
                 ->type('#email', $user->email)
                 ->type('#password', 'password2')
                 ->press('Log in to your account')
                 ->waitUntilMissing('button[disabled]')
-                ->assertSee($user->name);
+                ->assertSee('Account');
         });
     }
 
@@ -72,12 +70,12 @@ class GuestTest extends DuskTestCase
             $user = $this->user->create();
 
             $browser->visit('/')
-                ->press('Log in')
+                ->press('Sign in')
                 ->type('#email', $user->email)
                 ->type('#password', 'password')
                 ->press('Log in to your account')
                 ->waitUntilMissing('button[disabled]')
-                ->assertSee('John');
+                ->assertSee('Account');
         });
     }
 }

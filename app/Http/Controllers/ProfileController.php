@@ -12,13 +12,9 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->safe()->only('name'));
-
         if ($request->safe()->only('email')) {
             $request->user()->newEmail($request->safe()->email);
         }
-
-        $request->user()->save();
 
         return redirect(route('user.setting.account', absolute: false));
     }

@@ -23,7 +23,6 @@ class PruneUser
 
         // Nullify the user's relevant data
         $user->fill([
-            'name' => null,
             'email' => null,
             'email_verified_at' => null,
             'delete_token' => null,

@@ -17,7 +17,6 @@ class AuthenticatedTest extends DuskTestCase
         parent::setUp();
 
         $this->user = User::factory()->create([
-            'name' => 'John',
             'password' => Hash::make('password'),
         ]);
     }
@@ -27,7 +26,7 @@ class AuthenticatedTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/')
-                ->assertSee('John');
+                ->assertSee('Account');
         });
     }
 
@@ -36,7 +35,7 @@ class AuthenticatedTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/')
-                ->press($this->user->name)
+                ->press('Account')
                 ->clickLink('Settings')
                 ->waitUntilMissing('#nprogress')
                 ->assertSee('Account');
@@ -48,10 +47,10 @@ class AuthenticatedTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/')
-                ->press($this->user->name)
+                ->press('Account')
                 ->press('Log out')
                 ->waitUntilMissing('#nprogress')
-                ->assertSee('Log in');
+                ->assertSee('Sign in');
         });
     }
 }

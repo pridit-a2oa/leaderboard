@@ -38,28 +38,6 @@ const submit = () => {
             >
                 <FontAwesomeIcon
                     class="text-neutral-400"
-                    :icon="faUser"
-                    size="xs"
-                    fixed-width
-                />
-
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="!border-transparent"
-                    placeholder="Nickname"
-                    v-model="form.name"
-                    required
-                />
-            </label>
-
-            <InputError class="mt-2" :message="form.errors.name" />
-
-            <label
-                class="input input-bordered mt-4 flex items-center gap-2 bg-base-200"
-            >
-                <FontAwesomeIcon
-                    class="text-neutral-400"
                     :icon="faEnvelope"
                     size="xs"
                     fixed-width
@@ -128,13 +106,14 @@ const submit = () => {
                 <label class="label cursor-pointer">
                     <Checkbox
                         name="conditions"
-                        class="checkbox checkbox-xs mr-2 rounded-[0.3rem]"
+                        class="checkbox checkbox-xs mr-3 rounded-[0.3rem]"
                         v-model:checked="form.conditions"
                         required
                     />
 
-                    <span class="label-text"
-                        >I agree to the
+                    <span class="label-text text-xs"
+                        >I confirm that I am at least 18 years old and agree to
+                        the
                         <a
                             class="underlined-link"
                             :href="route('terms')"
@@ -147,7 +126,7 @@ const submit = () => {
                             :href="route('privacy')"
                             target="_blank"
                             >Privacy Policy</a
-                        ></span
+                        >.</span
                     >
                 </label>
             </div>

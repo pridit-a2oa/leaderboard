@@ -49,18 +49,10 @@ const register = ref(false);
             v-if="$page.props.auth.user"
             class="dropdown dropdown-bottom indicator ml-auto hidden md:inline-flex"
         >
-            <button
-                tabindex="0"
-                class="btn"
-                :title="$page.props.auth.user.name"
-            >
+            <button tabindex="0" class="btn">
                 <SupporterBadge />
 
-                <FontAwesomeIcon :icon="faUser" size="sm" />
-
-                <span class="max-w-16 truncate">
-                    {{ $page.props.auth.user.name }}
-                </span>
+                <span class="max-w-16 truncate">Account</span>
 
                 <FontAwesomeIcon class="text-neutral-600" :icon="faCaretDown" />
             </button>
@@ -91,7 +83,7 @@ const register = ref(false);
                     register = false;
                 "
             >
-                <FontAwesomeIcon :icon="faRightToBracket" size="sm" />Log in
+                <FontAwesomeIcon :icon="faRightToBracket" size="sm" />Sign in
             </button>
 
             <Modal
@@ -106,10 +98,8 @@ const register = ref(false);
                             class="underlined-link"
                             @click="register = true"
                         >
-                            Sign up
-
-                            <FontAwesomeIcon
-                                class="ml-0.5 !align-middle"
+                            Sign up<FontAwesomeIcon
+                                class="ml-1 !align-middle"
                                 :icon="faArrowRightLong"
                                 size="xs"
                             />
@@ -117,7 +107,7 @@ const register = ref(false);
                     </div>
                 </LoginForm>
 
-                <RegistrationForm v-else title="Registration">
+                <RegistrationForm v-else title="Sign up">
                     <div class="pt-4 text-center text-sm">
                         <span>Already registered?&nbsp;</span>
 
@@ -125,10 +115,8 @@ const register = ref(false);
                             class="underlined-link"
                             @click="register = false"
                         >
-                            Log in
-
-                            <FontAwesomeIcon
-                                class="ml-0.5 !align-middle"
+                            Sign in<FontAwesomeIcon
+                                class="ml-1 !align-middle"
                                 :icon="faArrowRightLong"
                                 size="xs"
                             />

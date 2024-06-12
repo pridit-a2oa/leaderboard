@@ -34,12 +34,6 @@ class UserCreate extends Command
     public function handle()
     {
         $prompt = [
-            'name' => text(
-                label: 'Name',
-                required: true,
-                default: 'John Doe'
-            ),
-
             'email' => text(
                 label: 'Email address',
                 validate: ['email' => 'required|email|unique:users,email']
