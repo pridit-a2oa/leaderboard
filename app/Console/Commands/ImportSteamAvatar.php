@@ -14,14 +14,14 @@ class ImportSteamAvatar extends Command
      *
      * @var string
      */
-    protected $signature = 'import:steam-avatar';
+    protected $signature = 'import:steam-avatars';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'From the base64 of characters retrieve the subsequent Steam avatar URL, if missing';
+    protected $description = 'Using the uid of characters missing an avatar, retrieve the subsequent non-default Steam avatar URL';
 
     /**
      * Execute the console command.
@@ -45,6 +45,11 @@ class ImportSteamAvatar extends Command
                 }
 
                 $response->collect('response.players')->each(function ($player) {
+                    // Ignore default avatar
+                    if ($player['avatar'] === 'https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg') {
+                        return;
+                    }
+
                     Character::where('uid', $player['steamid'])
                         ->update([
                             'avatar_url' => $player['avatar'],
