@@ -216,7 +216,7 @@ function getMovementRank(rank) {
                                     "
                                 >
                                     <object
-                                        class="row-span-2 mr-5 h-6 w-6 self-center rounded-full"
+                                        class="row-span-2 mr-4 h-6 w-6 self-center rounded-full"
                                         :data="character.avatar_url"
                                         type="image/jpeg"
                                     >
