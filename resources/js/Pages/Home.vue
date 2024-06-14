@@ -4,6 +4,7 @@ import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
 import ResetPassword from '@/Components/ResetPassword.vue';
+import RewardAlert from '@/Components/RewardAlert.vue';
 import TableStatistics from '@/Components/TableStatistics.vue';
 import { LinkButton } from '@/Components/Submit';
 import {
@@ -85,6 +86,8 @@ function getMovementRank(rank) {
         </Head>
 
         <div class="container mx-auto text-neutral-400">
+            <RewardAlert v-if="$vssWidth >= 768" />
+
             <Navigation />
 
             <ResetPassword

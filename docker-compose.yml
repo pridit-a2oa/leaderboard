@@ -27,6 +27,7 @@ services:
             - selenium
     mysql:
         image: 'mysql/mysql-server:8.0'
+        # command: mysqld --default-authentication-plugin=mysql_native_password
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:

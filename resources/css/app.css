@@ -32,7 +32,7 @@ tr {
 }
 
 .tooltip-benefit {
-    @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:content-[attr(data-tip)];
+    @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light before:content-[attr(data-tip)];
 }
 
 .btn.btn-disabled,

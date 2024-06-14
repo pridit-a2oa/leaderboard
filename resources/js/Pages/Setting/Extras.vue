@@ -16,9 +16,9 @@ const extras = ref([
         type: 'Supporter badge (<span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score. If more than one character has the same score then most recently active is used as the mediating factor.">single</span>)',
     },
     { type: 'Multiple character linking' },
-    { type: 'Reset statistics option (per character)' },
+    { type: 'Reset option (per character)' },
     {
-        type: `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Additional statistics</span> tracking (while linked)`,
+        type: `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Statistics</span> tracking (while linked)`,
     },
 ]);
 
@@ -39,27 +39,32 @@ const benefits = usePage().props.roles.some((role) =>
                 />
             </a>
 
-            <div class="indicator w-full rounded-md bg-base-200 p-4">
+            <div class="indicator w-auto">
                 <SupporterBadge />
 
-                <ul>
-                    <template v-for="extra in extras">
-                        <li class="[&:not(:last-child)]:mb-2">
-                            <FontAwesomeIcon
-                                class="mr-1 !align-middle"
-                                :class="[
-                                    benefits
-                                        ? 'text-green-500'
-                                        : 'text-red-500',
-                                ]"
-                                :icon="benefits ? faCheck : faXmark"
-                                fixed-width
-                            />
-
-                            <span v-html="extra.type"></span>
-                        </li>
-                    </template>
-                </ul>
+                <table class="table table-fixed rounded-md bg-base-200">
+                    <tbody>
+                        <tr
+                            v-for="extra in extras"
+                            class="border-base-100 [&:not(:last-child)]:!border-b-4"
+                        >
+                            <td class="w-0">
+                                <FontAwesomeIcon
+                                    class="!align-middle"
+                                    :class="[
+                                        benefits
+                                            ? 'text-green-500'
+                                            : 'text-red-500',
+                                    ]"
+                                    :icon="benefits ? faCheck : faXmark"
+                                    size="lg"
+                                    transform="shrink-1"
+                                />
+                            </td>
+                            <td class="p-0 pl-3" v-html="extra.type"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </Setting>
     </DefaultLayout>

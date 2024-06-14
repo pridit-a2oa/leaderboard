@@ -8,7 +8,7 @@ const supporter = usePage().props.roles.includes('supporter');
 
 <template>
     <span
-        class="indicator-item mr-1 mt-1 cursor-pointer rounded-full bg-base-100 p-0 px-1 py-1"
+        class="indicator-item mr-0.5 mt-0.5 cursor-pointer rounded-full bg-base-100 p-0 px-1 py-1"
         :title="supporter ? 'Thanks for being a supporter!' : ':('"
     >
         <FontAwesomeIcon
