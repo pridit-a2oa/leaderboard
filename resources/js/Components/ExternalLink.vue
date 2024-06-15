@@ -3,10 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 const props = defineProps({
-    class: {
-        type: String,
-        required: true,
-    },
     href: {
         type: String,
         required: true,

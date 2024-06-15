@@ -1,23 +1,38 @@
 <script setup>
 import { usePage } from '@inertiajs/vue3';
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+} from '@fortawesome/vue-fontawesome';
 
 const supporter = usePage().props.roles.includes('supporter');
 </script>
 
 <template>
     <span
-        class="indicator-item mr-0.5 mt-0.5 cursor-pointer rounded-full bg-base-100 p-0 px-1 py-1"
+        class="indicator-item cursor-pointer"
         :title="supporter ? 'Thanks for being a supporter!' : ':('"
     >
-        <FontAwesomeIcon
-            class="text-neutral-700"
-            :class="{
-                'text-supporter': supporter,
-            }"
-            :icon="supporter ? faHeart : faHeartBroken"
-            fixed-width
-        />
+        <FontAwesomeLayers fixed-width>
+            <FontAwesomeIcon
+                class="z-10 text-neutral-700"
+                :class="{
+                    'text-supporter': supporter,
+                }"
+                :icon="supporter ? faHeart : faHeartBroken"
+                size="md"
+            />
+
+            <FontAwesomeIcon
+                class="text-base-100"
+                :class="{
+                    'text-supporter': supporter,
+                }"
+                :icon="faHeart"
+                size="2xl"
+                transform="left-3 down-1"
+            />
+        </FontAwesomeLayers>
     </span>
 </template>

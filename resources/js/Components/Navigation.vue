@@ -49,9 +49,9 @@ const register = ref(false);
             v-if="$page.props.auth.user"
             class="dropdown dropdown-bottom indicator ml-auto hidden md:inline-flex"
         >
-            <button tabindex="0" class="btn">
-                <SupporterBadge />
+            <SupporterBadge />
 
+            <button tabindex="0" class="btn">
                 <span class="max-w-16 truncate">Account</span>
 
                 <FontAwesomeIcon class="text-neutral-600" :icon="faCaretDown" />
