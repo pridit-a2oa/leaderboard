@@ -21,14 +21,10 @@ const supporter = usePage().props.roles.includes('supporter');
                     'text-supporter': supporter,
                 }"
                 :icon="supporter ? faHeart : faHeartBroken"
-                size="md"
             />
 
             <FontAwesomeIcon
                 class="text-base-100"
-                :class="{
-                    'text-supporter': supporter,
-                }"
                 :icon="faHeart"
                 size="2xl"
                 transform="left-3 down-1"
