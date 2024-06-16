@@ -53,7 +53,7 @@ defineProps({
 
                             <span
                                 v-if="connection.disclaimer"
-                                class="tooltip tooltip-bottom tooltip-secondary ml-1 cursor-pointer rounded-full text-sky-500 before:w-[17rem]"
+                                class="tooltip tooltip-bottom tooltip-secondary ml-1 cursor-pointer rounded-full text-neutral-400 before:w-[17rem]"
                                 :data-tip="connection.disclaimer"
                             >
                                 <FontAwesomeIcon
@@ -64,7 +64,7 @@ defineProps({
                             </span>
 
                             <span
-                                class="block text-sm font-normal text-neutral-500"
+                                class="block text-sm font-normal text-neutral-600"
                             >
                                 {{
                                     $page.props.auth.user.connections

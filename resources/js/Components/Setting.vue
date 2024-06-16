@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+} from '@fortawesome/vue-fontawesome';
 import {
     faCog,
     faUser,
@@ -9,6 +12,7 @@ import {
     faStar,
     faBan,
     faLock,
+    faCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 defineProps({ title: String });
@@ -37,7 +41,7 @@ const settings = ref([
                     }"
                 >
                     <Link
-                        class="px-2 !text-neutral-400"
+                        class="group px-2 !text-neutral-400"
                         :class="{
                             active: $page.component
                                 .toLowerCase()
@@ -51,9 +55,34 @@ const settings = ref([
                                 ? '#'
                                 : route(`user.setting.${setting.type}`)
                         "
-                        ><FontAwesomeIcon :icon="setting.icon" fixed-width />{{
-                            setting.type
-                        }}
+                    >
+                        <FontAwesomeLayers class="indicator">
+                            <FontAwesomeIcon :icon="setting.icon" />
+                            <FontAwesomeIcon
+                                v-if="
+                                    setting.type === 'connections' &&
+                                    $page.props.auth.user.email_verified_at !==
+                                        null
+                                "
+                                class="delay-50 indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition ease-in-out group-hover:!bg-[#333]"
+                                :class="{
+                                    'text-red-500':
+                                        $page.props.auth.user.connections
+                                            .length === 0,
+                                    'text-green-700':
+                                        $page.props.auth.user.connections
+                                            .length > 0,
+                                    active: $page.component
+                                        .toLowerCase()
+                                        .includes(setting.type),
+                                }"
+                                :icon="faCircle"
+                                size="xs"
+                                transform="shrink-6"
+                            />
+                        </FontAwesomeLayers>
+
+                        {{ setting.type }}
 
                         <FontAwesomeIcon
                             v-if="
@@ -64,7 +93,7 @@ const settings = ref([
                             "
                             :icon="faLock"
                             size="sm"
-                            title="Verified email required"
+                            title="Please verify your email"
                             fixed-width
                         />
                     </Link>
@@ -98,7 +127,7 @@ h2 {
     @apply mb-4 text-xl font-semibold;
 }
 
-a.active {
-    @apply !bg-[#333333];
+.active {
+    @apply !bg-[#333];
 }
 </style>
