@@ -51,7 +51,7 @@ import { Head } from '@inertiajs/vue3';
 
                         <td class="text-right">
                             <div
-                                class="tooltip tooltip-bottom tooltip-secondary before:w-[14rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                                class="tooltip tooltip-bottom tooltip-secondary before:w-[14rem]"
                                 data-tip="Toggle whether this character is anonymized in the leaderboard"
                             >
                                 <VisibilityButton
@@ -61,7 +61,7 @@ import { Head } from '@inertiajs/vue3';
                             </div>
 
                             <div
-                                class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[17rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                                class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[17rem]"
                                 data-tip="Unlink this character from your account (can be relinked at any time)"
                             >
                                 <UnlinkButton :id="character.id" />

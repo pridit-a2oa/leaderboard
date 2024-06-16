@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ConnectionResource;
 use App\Models\Connection;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
@@ -45,8 +46,9 @@ class SettingController extends Controller
     public function showConnections(Request $request): Response
     {
         return Inertia::render('Setting/Connections', [
-            'connections' => Connection::get()
-                ->toArray(),
+            'connections' => ConnectionResource::collection(
+                Connection::get()
+            ),
         ]
             + $this->metadata()
         );

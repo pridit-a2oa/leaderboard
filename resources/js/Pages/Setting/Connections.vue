@@ -3,8 +3,8 @@ import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Alert from '@/Components/Alert.vue';
 import Setting from '@/Components/Setting.vue';
 import { DisconnectButton } from '@/Components/Submit';
-
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
+import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, Link } from '@inertiajs/vue3';
@@ -32,10 +32,11 @@ defineProps({
             <table class="table border-collapse rounded-md bg-base-200">
                 <tbody>
                     <tr
-                        v-for="connection in connections.sort((a, b) =>
+                        v-for="connection in connections.data.sort((a, b) =>
                             a.name > b.name ? 1 : -1,
                         )"
                         :key="connection.id"
+                        class="border-base-100 [&:not(:last-child)]:!border-b-4"
                     >
                         <td class="w-0 text-center">
                             <FontAwesomeIcon
@@ -45,9 +46,24 @@ defineProps({
                             />
                         </td>
 
-                        <td class="p-0 font-semibold capitalize">
-                            {{ connection.name
-                            }}<span
+                        <td class="p-0">
+                            <span class="font-semibold">
+                                {{ connection.formatted_name }}
+                            </span>
+
+                            <span
+                                v-if="connection.disclaimer"
+                                class="tooltip tooltip-bottom tooltip-secondary ml-1 cursor-pointer rounded-full text-sky-500 before:w-[17rem]"
+                                :data-tip="connection.disclaimer"
+                            >
+                                <FontAwesomeIcon
+                                    class="!align-middle"
+                                    :icon="faCircleQuestion"
+                                    fixed-width
+                                />
+                            </span>
+
+                            <span
                                 class="block text-sm font-normal text-neutral-500"
                             >
                                 {{
@@ -72,19 +88,26 @@ defineProps({
                                             connection.id,
                                     )
                                 "
-                                class="tooltip tooltip-bottom tooltip-error before:w-[18rem]"
+                                class="tooltip tooltip-bottom tooltip-error before:w-[10rem]"
                                 data-tip="This action will unlink any linked characters"
                             >
                                 <DisconnectButton :id="connection.id" />
                             </div>
 
-                            <Link
+                            <div
                                 v-else
-                                :href="route(`connection.${connection.name}`)"
-                                class="badge badge-success badge-outline select-none font-light uppercase"
+                                class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
+                                :data-tip="`You will be taken to ${connection.formatted_name} to complete this process`"
                             >
-                                Connect
-                            </Link>
+                                <Link
+                                    :href="
+                                        route(`connection.${connection.name}`)
+                                    "
+                                    class="badge badge-success badge-outline select-none font-light uppercase"
+                                >
+                                    Connect
+                                </Link>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
