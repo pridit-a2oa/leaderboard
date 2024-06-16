@@ -1,5 +1,6 @@
 <script setup>
 import AppBanner from '@/Components/ApplicationBanner.vue';
+import AccountModal from '@/Components/AccountModal.vue';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -8,6 +9,8 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
+    <AccountModal />
+
     <div class="flex h-screen flex-col">
         <AppBanner />
 

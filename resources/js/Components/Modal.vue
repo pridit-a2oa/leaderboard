@@ -11,14 +11,17 @@ const props = defineProps({
         <div
             class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
         >
-            <button
+            <label
+                for="modal"
                 class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-                @click="$emit('close')"
+                @click="$emit('reset')"
             >
                 &#x2715;
-            </button>
+            </label>
 
             <slot />
         </div>
+
+        <label class="modal-backdrop" for="modal">Close</label>
     </div>
 </template>

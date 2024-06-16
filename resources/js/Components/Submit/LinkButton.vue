@@ -7,7 +7,6 @@ import { useForm } from '@inertiajs/vue3';
 const props = defineProps({
     id: {
         type: Number,
-        required: true,
     },
 });
 
@@ -29,7 +28,7 @@ const linkCharacter = () => {
             'opacity-25': form.processing,
         }"
         :disabled="form.processing"
-        @click="linkCharacter"
+        v-on="id ? { click: linkCharacter } : {}"
     >
         <FontAwesomeIcon class="mr-1" :icon="faUser" size="2xs" fixed-width />
 
