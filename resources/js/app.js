@@ -2,7 +2,6 @@ import './bootstrap';
 import '../css/app.css';
 
 import { createSSRApp, h } from 'vue';
-import VueScreen from 'vue-screen';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
@@ -26,7 +25,6 @@ createInertiaApp({
     return createSSRApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue)
-      .use(VueScreen, 'tailwind')
       .mount(el);
   },
   progress: {

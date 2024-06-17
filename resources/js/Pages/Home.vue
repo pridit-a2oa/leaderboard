@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { useGrid } from 'vue-screen';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import Navigation from '@/Components/Navigation.vue';
 import Pagination from '@/Components/Pagination.vue';
@@ -24,6 +25,8 @@ import {
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 import { Head, Link } from '@inertiajs/vue3';
+
+const grid = useGrid('tailwind');
 
 const props = defineProps({
     characters: {
@@ -89,7 +92,7 @@ function getMovementRank(rank) {
         </Head>
 
         <div class="container mx-auto text-neutral-400">
-            <RewardAlert v-if="$grid.md" />
+            <RewardAlert v-show="grid.md" />
 
             <Navigation />
 
@@ -366,7 +369,7 @@ function getMovementRank(rank) {
                                     character.user_id !== null
                                 "
                             >
-                                <td class="p-0" :colspan="$grid.md ? 4 : 2">
+                                <td class="p-0" :colspan="grid.md ? 4 : 2">
                                     <TableStatistics
                                         :data="character.statistics"
                                     />
