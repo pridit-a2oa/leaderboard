@@ -1,5 +1,5 @@
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import {
     FontAwesomeIcon,
@@ -10,8 +10,9 @@ const supporter = usePage().props.roles.includes('supporter');
 </script>
 
 <template>
-    <span
-        class="indicator-item cursor-pointer"
+    <Link
+        class="indicator-item"
+        :href="route('user.setting.extras')"
         :title="supporter ? 'Thanks for being a supporter!' : ':('"
     >
         <FontAwesomeLayers fixed-width>
@@ -30,5 +31,5 @@ const supporter = usePage().props.roles.includes('supporter');
                 transform="left-3 down-1"
             />
         </FontAwesomeLayers>
-    </span>
+    </Link>
 </template>

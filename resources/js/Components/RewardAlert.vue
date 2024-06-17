@@ -56,9 +56,7 @@ import {
                                     size="xs"
                                 />
                             </label>
-
-                            <span v-else>&nbsp;Sign up</span>
-
+                            <template v-else>&nbsp;Sign up</template>
                             for an account
                         </li>
 
@@ -87,16 +85,15 @@ import {
                                         0,
                             }"
                         >
-                            <LinkButton
-                                class="mx-1"
-                                :class="{
-                                    '!badge-neutral':
-                                        $page.props.auth.user !== null &&
-                                        $page.props.auth.user.characters
-                                            .length !== 0,
-                                }"
-                                disabled
-                            />
+                            <template
+                                v-if="
+                                    $page.props.auth.user !== null &&
+                                    $page.props.auth.user.characters.length !==
+                                        0
+                                "
+                                >&nbsp;Link</template
+                            >
+                            <LinkButton v-else class="mx-1" disabled />
                             your character
                         </li>
                     </ol>

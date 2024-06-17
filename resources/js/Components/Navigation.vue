@@ -39,43 +39,51 @@ import { Link } from '@inertiajs/vue3';
 
         <div
             v-if="$page.props.auth.user"
-            class="dropdown dropdown-bottom indicator ml-auto hidden md:inline-flex"
+            class="indicator ml-auto hidden md:inline-flex"
         >
             <SupporterBadge />
 
-            <button tabindex="0" class="btn">
-                <span class="max-w-16 truncate">Account</span>
+            <div class="dropdown dropdown-bottom">
+                <button tabindex="0" class="btn">
+                    <span class="max-w-16 truncate">Account</span>
 
-                <FontAwesomeIcon class="text-neutral-600" :icon="faCaretDown" />
-            </button>
+                    <FontAwesomeIcon
+                        class="text-neutral-600"
+                        :icon="faCaretDown"
+                    />
+                </button>
 
-            <ul
-                tabindex="0"
-                class="menu dropdown-content z-[1] mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
-            >
-                <li>
-                    <Link class="px-2" :href="route('user.setting.account')"
-                        ><FontAwesomeIcon :icon="faCog" />Settings
-                    </Link>
-                </li>
+                <ul
+                    tabindex="0"
+                    class="menu dropdown-content z-[1] mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
+                >
+                    <li>
+                        <Link class="px-2" :href="route('user.setting.account')"
+                            ><FontAwesomeIcon :icon="faCog" />Settings
+                        </Link>
+                    </li>
 
-                <li>
-                    <Link
-                        class="px-2"
-                        :href="route('logout')"
-                        method="post"
-                        as="button"
-                        ><FontAwesomeIcon :icon="faRightFromBracket" />Log
-                        out</Link
-                    >
-                </li>
-            </ul>
+                    <li>
+                        <Link
+                            class="px-2"
+                            :href="route('logout')"
+                            method="post"
+                            as="button"
+                            ><FontAwesomeIcon :icon="faRightFromBracket" />Log
+                            out</Link
+                        >
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <template v-else>
             <label
                 for="modal"
                 class="btn no-animation ml-auto hidden md:inline-flex"
+                role="button"
+                tabindex="0"
+                dusk="login-button"
             >
                 <FontAwesomeIcon :icon="faRightToBracket" size="sm" />Sign in
             </label>

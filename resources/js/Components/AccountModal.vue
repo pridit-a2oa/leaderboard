@@ -16,16 +16,13 @@ const register = ref(false);
             <div class="pt-4 text-center text-sm">
                 <span>No account?&nbsp;</span>
 
-                <span
-                    class="underlined-link cursor-pointer select-none"
-                    as="link"
-                    @click="register = true"
-                    >Sign up<FontAwesomeIcon
+                <button class="underlined-link" @click="register = true">
+                    Sign up<FontAwesomeIcon
                         class="ml-1 !align-middle"
                         :icon="faArrowRightLong"
                         size="xs"
                     />
-                </span>
+                </button>
             </div>
         </LoginForm>
 
@@ -33,16 +30,13 @@ const register = ref(false);
             <div class="pt-4 text-center text-sm">
                 <span>Already registered?&nbsp;</span>
 
-                <span
-                    class="underlined-link cursor-pointer select-none"
-                    as="link"
-                    @click="register = false"
-                    >Sign in<FontAwesomeIcon
+                <button class="underlined-link" @click="register = false">
+                    Sign in<FontAwesomeIcon
                         class="ml-1 !align-middle"
                         :icon="faArrowRightLong"
                         size="xs"
                     />
-                </span>
+                </button>
             </div>
         </RegistrationForm>
     </Modal>

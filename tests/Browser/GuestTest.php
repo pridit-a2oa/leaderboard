@@ -28,7 +28,7 @@ class GuestTest extends DuskTestCase
             $user = $this->user->make();
 
             $browser->visit('/')
-                ->press('Sign in')
+                ->click('@login-button')
                 ->press('Sign up')
                 ->type('#email', $user->email)
                 ->type('#password', 'password')
@@ -55,7 +55,7 @@ class GuestTest extends DuskTestCase
                 ->type('#reset-password_confirmation', 'password2')
                 ->press('Reset Password')
                 ->waitUntilMissing('#nprogress')
-                ->press('Sign in')
+                ->click('@login-button')
                 ->type('#email', $user->email)
                 ->type('#password', 'password2')
                 ->press('Log in to your account')
@@ -70,7 +70,7 @@ class GuestTest extends DuskTestCase
             $user = $this->user->create();
 
             $browser->visit('/')
-                ->press('Sign in')
+                ->click('@login-button')
                 ->type('#email', $user->email)
                 ->type('#password', 'password')
                 ->press('Log in to your account')
