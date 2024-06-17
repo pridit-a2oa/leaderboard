@@ -1,5 +1,5 @@
 import { createSSRApp, h } from 'vue';
-import { VueScreenSizeMixin } from 'vue-screen-size';
+import VueScreen from 'vue-screen';
 import { renderToString } from '@vue/server-renderer';
 import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
@@ -31,7 +31,7 @@ createServer((page) =>
           ...page.props.ziggy,
           location: new URL(page.props.ziggy.location),
         })
-        .mixin(VueScreenSizeMixin);
+        .use(VueScreen, 'tailwind');
     },
   }),
 );

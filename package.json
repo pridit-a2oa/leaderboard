@@ -20,15 +20,15 @@
         "prettier-plugin-tailwindcss": "^0.6.2",
         "tailwindcss": "^3.4.4",
         "vite": "^5.2",
-        "vue": "^3.4.0",
-        "vue-screen-size": "^2.1.0"
+        "vue": "^3.4.0"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.5.2",
         "@fortawesome/free-brands-svg-icons": "^6.5.2",
         "@fortawesome/free-regular-svg-icons": "^6.5.2",
         "@fortawesome/free-solid-svg-icons": "^6.5.2",
-        "@fortawesome/vue-fontawesome": "^3.0.6"
+        "@fortawesome/vue-fontawesome": "^3.0.6",
+        "vue-screen": "^2.4.0"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "^4.17.2"

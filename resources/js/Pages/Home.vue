@@ -89,7 +89,7 @@ function getMovementRank(rank) {
         </Head>
 
         <div class="container mx-auto text-neutral-400">
-            <RewardAlert v-if="$vssWidth >= 768" />
+            <RewardAlert v-if="$grid.md" />
 
             <Navigation />
 
@@ -366,10 +366,7 @@ function getMovementRank(rank) {
                                     character.user_id !== null
                                 "
                             >
-                                <td
-                                    class="p-0"
-                                    :colspan="$vssWidth <= 767 ? 2 : 4"
-                                >
+                                <td class="p-0" :colspan="$grid.md ? 4 : 2">
                                     <TableStatistics
                                         :data="character.statistics"
                                     />
