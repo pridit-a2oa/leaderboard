@@ -9,7 +9,7 @@ import TableStatistics from '@/Components/TableStatistics.vue';
 import { LinkButton } from '@/Components/Submit';
 import {
     faHeart,
-    faHeartCrack,
+    faCircle,
     faTrophy,
     faAngleUp,
     faAngleDown,
@@ -19,7 +19,10 @@ import {
     faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+} from '@fortawesome/vue-fontawesome';
 import { Head, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -104,11 +107,9 @@ function getMovementRank(rank) {
                             <th class="w-0 text-right">Score</th>
                             <th class="hidden w-0 md:table-cell"></th>
                             <th></th>
+                            <th class="w-0"></th>
                             <th class="w-0">Rank</th>
                             <th class="hidden w-0 md:table-cell"></th>
-                            <th
-                                class="hidden w-0 text-center md:table-cell"
-                            ></th>
                         </tr>
                     </thead>
 
@@ -205,7 +206,7 @@ function getMovementRank(rank) {
                                 </td>
 
                                 <td
-                                    class="ltr grid auto-cols-max grid-flow-col grid-rows-2 p-0 px-2 py-3"
+                                    class="ltr grid grid-rows-2 p-0 px-2 py-3"
                                     :class="{
                                         'cursor-pointer':
                                             character.statistics &&
@@ -218,17 +219,6 @@ function getMovementRank(rank) {
                                             : null
                                     "
                                 >
-                                    <img
-                                        class="row-span-2 mr-4 h-6 w-6 select-none self-center rounded-full bg-base-100 text-[0rem]"
-                                        :src="
-                                            character.avatar_url ??
-                                            'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
-                                        "
-                                        alt="Avatar"
-                                        loading="lazy"
-                                        onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
-                                    />
-
                                     <span class="truncate">
                                         <FontAwesomeIcon
                                             v-if="
@@ -278,6 +268,46 @@ function getMovementRank(rank) {
                                     >
                                 </td>
 
+                                <td class="ltr px-2">
+                                    <div class="indicator align-middle">
+                                        <img
+                                            class="h-6 w-6 select-none self-center rounded-full bg-base-100 text-[0rem]"
+                                            :src="
+                                                character.avatar_url ??
+                                                'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+                                            "
+                                            alt="Avatar"
+                                            loading="lazy"
+                                            onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
+                                        />
+
+                                        <span
+                                            v-if="
+                                                character.role ===
+                                                    'supporter' &&
+                                                character.is_highest_score
+                                            "
+                                            class="indicator-item indicator-end indicator-middle"
+                                        >
+                                            <FontAwesomeLayers>
+                                                <FontAwesomeIcon
+                                                    class="z-[1] text-supporter opacity-80"
+                                                    :icon="faHeart"
+                                                    size="lg"
+                                                    transform="left-3 down-1 shrink-6"
+                                                />
+
+                                                <FontAwesomeIcon
+                                                    class="text-base-300"
+                                                    :icon="faCircle"
+                                                    size="lg"
+                                                    transform="left-3 down-1"
+                                                />
+                                            </FontAwesomeLayers>
+                                        </span>
+                                    </div>
+                                </td>
+
                                 <td
                                     v-if="
                                         characters.meta.current_page === 1 &&
@@ -305,57 +335,27 @@ function getMovementRank(rank) {
                                     {{ getRank(key, 1) }}
                                 </td>
 
-                                <td class="hidden p-0 pl-5 md:table-cell">
-                                    <FontAwesomeIcon
-                                        class="!align-middle"
-                                        :class="
-                                            getMovementRank(
-                                                getCachedRank(character.id) -
-                                                    getRank(key),
-                                            )[0]
-                                        "
-                                        :icon="
-                                            getMovementRank(
-                                                getCachedRank(character.id) -
-                                                    getRank(key),
-                                            )[1]
-                                        "
-                                        fixed-width
-                                    />
-                                </td>
-
-                                <td
-                                    class="hidden p-0 px-2.5 text-center md:table-cell"
-                                    :class="{
-                                        'bg-base-200': !character.is_hidden,
-                                    }"
-                                >
-                                    <Link
-                                        v-if="!character.is_hidden"
-                                        :href="
-                                            $page.props.auth.user
-                                                ? route('user.setting.extras')
-                                                : '#'
-                                        "
-                                    >
+                                <td class="hidden p-0 md:table-cell">
+                                    <span class="ltr">
                                         <FontAwesomeIcon
-                                            v-if="
-                                                character.role ===
-                                                    'supporter' &&
-                                                character.is_highest_score
+                                            class="p-0 pl-4 !align-middle"
+                                            :class="
+                                                getMovementRank(
+                                                    getCachedRank(
+                                                        character.id,
+                                                    ) - getRank(key),
+                                                )[0]
                                             "
-                                            class="!align-middle text-supporter opacity-80"
-                                            :icon="faHeart"
+                                            :icon="
+                                                getMovementRank(
+                                                    getCachedRank(
+                                                        character.id,
+                                                    ) - getRank(key),
+                                                )[1]
+                                            "
                                             fixed-width
                                         />
-
-                                        <FontAwesomeIcon
-                                            v-else
-                                            class="!align-middle text-neutral-700"
-                                            :icon="faHeartCrack"
-                                            fixed-width
-                                        />
-                                    </Link>
+                                    </span>
                                 </td>
                             </tr>
 

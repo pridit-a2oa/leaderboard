@@ -22,6 +22,8 @@ const props = defineProps({
             <slot />
         </div>
 
-        <label class="modal-backdrop" for="modal">Close</label>
+        <label for="modal" class="modal-backdrop" @click="$emit('reset')"
+            >Close</label
+        >
     </div>
 </template>
