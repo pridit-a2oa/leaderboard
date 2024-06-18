@@ -1,36 +1,18 @@
 <script setup>
-import ExternalLink from '@/Components/ExternalLink.vue';
 import { LinkButton } from '@/Components/Submit';
+import ExternalLink from '@/Components/ExternalLink.vue';
+import RewardIcon from '@/Components/RewardIcon.vue';
 import {
-    faPersonRifle,
-    faCircleCheck,
     faArrowRightLong,
     faPlug,
     faGun,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-    FontAwesomeIcon,
-    FontAwesomeLayers,
-} from '@fortawesome/vue-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-    <div role="alert" class="alert mb-6 rounded-lg">
-        <FontAwesomeLayers class="indicator mr-1">
-            <FontAwesomeIcon :icon="faPersonRifle" fixed-width />
-            <FontAwesomeIcon
-                v-if="
-                    $page.props.auth.user !== null &&
-                    $page.props.auth.user.connections.length !== 0 &&
-                    $page.props.auth.user.characters.length !== 0
-                "
-                :icon="faCircleCheck"
-                size="sm"
-                fixed-width
-                class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 p-0 py-0.5 text-green-700"
-                transform="shrink-2"
-            />
-        </FontAwesomeLayers>
+    <div class="alert mb-6 rounded-lg" role="alert">
+        <RewardIcon :user="$page.props.auth.user" />
 
         <div class="text-sm">
             <div class="dropdown dropdown-hover">
