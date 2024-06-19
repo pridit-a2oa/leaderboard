@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
             <div class="dropdown dropdown-hover">
                 <span class="tooltip-benefit">Link</span>
 
-                <div class="dropdown-content z-[1] w-max">
+                <div class="dropdown-content z-20 w-max">
                     <ol
                         class="mt-2 flex list-inside list-decimal flex-col gap-4 rounded-md border-2 border-base-100 bg-base-200 p-3"
                     >
@@ -30,7 +30,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                         >
                             <label
                                 v-if="$page.props.auth.user === null"
-                                for="modal"
+                                for="account-modal"
                                 class="underlined-link ml-1 cursor-pointer select-none"
                                 >Sign up<FontAwesomeIcon
                                     class="mx-1 !align-middle"

@@ -60,7 +60,7 @@ import { Link } from '@inertiajs/vue3';
 
                 <ul
                     tabindex="0"
-                    class="menu dropdown-content z-[1] mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
+                    class="menu dropdown-content z-10 mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
                 >
                     <li>
                         <Link class="px-2" :href="route('user.setting.account')"
@@ -84,7 +84,7 @@ import { Link } from '@inertiajs/vue3';
 
         <template v-else>
             <label
-                for="modal"
+                for="account-modal"
                 class="btn no-animation ml-auto hidden md:inline-flex"
                 role="button"
                 tabindex="0"

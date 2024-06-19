@@ -11,7 +11,7 @@ import { Banner, Breadcrumbs, Footer } from '@/Components/ui';
 
         <Breadcrumbs v-if="$page.props.name" />
 
-        <main class="container mx-auto my-8 flex-grow">
+        <main class="container mx-auto my-8 flex-grow text-neutral-400">
             <slot />
         </main>
 

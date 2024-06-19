@@ -1,31 +1,52 @@
 <script setup>
 const props = defineProps({
+    id: {
+        type: String,
+    },
     class: {
         type: String,
+    },
+    checked: {
+        type: Boolean,
+        default: false,
     },
 });
 </script>
 
 <template>
-    <div class="modal" :class="class" role="dialog">
-        <div
-            class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
-        >
-            <label
-                for="modal"
-                class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-                @click="$emit('reset')"
+    <div>
+        <input
+            :id="id"
+            type="checkbox"
+            class="modal-toggle"
+            :checked="checked"
+        />
+
+        <div class="modal" :class="class" role="dialog">
+            <div
+                class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
             >
-                &#x2715;
-            </label>
+                <label
+                    v-if="id"
+                    :for="id"
+                    class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+                    @click="$emit('reset')"
+                >
+                    &#x2715;
+                </label>
 
-            <div class="flex flex-col text-sm">
-                <slot />
+                <div class="flex flex-col text-sm">
+                    <slot />
+                </div>
             </div>
-        </div>
 
-        <label for="modal" class="modal-backdrop" @click="$emit('reset')"
-            >Close</label
-        >
+            <label
+                v-if="id"
+                :for="id"
+                class="modal-backdrop"
+                @click="$emit('reset')"
+                >Close</label
+            >
+        </div>
     </div>
 </template>

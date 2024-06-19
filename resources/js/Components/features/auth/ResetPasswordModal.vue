@@ -4,7 +4,7 @@ import { PasswordResetForm } from '@/Components/features/auth';
 </script>
 
 <template>
-    <BaseModal class="modal-open">
+    <BaseModal checked="true">
         <PasswordResetForm title="Reset Password" v-bind="$attrs" />
     </BaseModal>
 </template>

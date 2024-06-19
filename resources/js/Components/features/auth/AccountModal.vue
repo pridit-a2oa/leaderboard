@@ -9,9 +9,11 @@ const register = ref(false);
 </script>
 
 <template>
-    <input id="modal" type="checkbox" class="modal-toggle" />
-
-    <BaseModal v-if="$page.props.auth.user === null" @reset="register = false">
+    <BaseModal
+        id="account-modal"
+        v-show="$page.props.auth.user === null"
+        @reset="register = false"
+    >
         <LoginForm v-if="!register" title="Sign in">
             <span>No account?&nbsp;</span>
 

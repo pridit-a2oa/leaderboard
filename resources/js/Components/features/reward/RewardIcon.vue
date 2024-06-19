@@ -13,15 +13,15 @@ import {
 const props = defineProps({
     user: {
         type: Object,
-        required: true,
     },
 });
 
 const rewarded = computed(() => {
-    return (
-        props.user.connections.length !== 0 &&
-        props.user.characters.length !== 0
-    );
+    if (props.user)
+        return (
+            props.user.connections.length !== 0 &&
+            props.user.characters.length !== 0
+        );
 });
 </script>
 
