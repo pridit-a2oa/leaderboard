@@ -10,8 +10,8 @@ const register = ref(false);
 
 <template>
     <BaseModal
+        v-if="$page.props.auth.user === null"
         id="account-modal"
-        v-show="$page.props.auth.user === null"
         @reset="register = false"
     >
         <LoginForm v-if="!register" title="Sign in">
