@@ -88,7 +88,7 @@ function getMovementRank(rank) {
             />
         </Head>
 
-        <RewardAlert v-show="grid.md" />
+        <RewardAlert class="hidden md:grid" />
 
         <Navbar />
 
