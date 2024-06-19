@@ -10,8 +10,6 @@ export default {
     './resources/js/**/*.vue',
   ],
 
-  safelist: ['alert-error', 'alert-info', 'alert-success', 'alert-warning'],
-
   theme: {
     extend: {
       colors: {
