@@ -2,12 +2,10 @@
 import { ref } from 'vue';
 import { useGrid } from 'vue-screen';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import Navigation from '@/Components/Navigation.vue';
-import Pagination from '@/Components/Pagination.vue';
-import ResetPassword from '@/Components/ResetPassword.vue';
-import RewardAlert from '@/Components/RewardAlert.vue';
-import TableStatistics from '@/Components/TableStatistics.vue';
-import { LinkButton } from '@/Components/Submit';
+import { ResetPasswordModal } from '@/Components/features/auth';
+import { LinkButton, StatisticsTable } from '@/Components/features/character';
+import { RewardAlert } from '@/Components/features/reward';
+import { Navbar, Pagination } from '@/Components/ui';
 import {
     faHeart,
     faCircle,
@@ -94,9 +92,11 @@ function getMovementRank(rank) {
         <div class="container mx-auto text-neutral-400">
             <RewardAlert v-show="grid.md" />
 
-            <Navigation />
+            <Navbar />
 
-            <ResetPassword
+            {{ $page.props.flash.data }}
+
+            <ResetPasswordModal
                 v-if="$page.props.flash.data"
                 :email="$page.props.flash.data.email"
                 :token="$page.props.flash.data.token"
@@ -370,7 +370,7 @@ function getMovementRank(rank) {
                                 "
                             >
                                 <td class="p-0" :colspan="grid.md ? 4 : 2">
-                                    <TableStatistics
+                                    <StatisticsTable
                                         :data="character.statistics"
                                     />
                                 </td>

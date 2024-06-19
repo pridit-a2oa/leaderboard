@@ -1,12 +1,12 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import Alert from '@/Components/Alert.vue';
-import Setting from '@/Components/Setting.vue';
 import {
-    VisibilityButton,
+    AnonymiseButton,
     UnlinkButton,
     ResetButton,
-} from '@/Components/Submit';
+} from '@/Components/features/character';
+import { UserSettings } from '@/Components/features/user';
+import { Alert } from '@/Components/ui';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Head } from '@inertiajs/vue3';
@@ -16,7 +16,7 @@ import { Head } from '@inertiajs/vue3';
     <Head title="Settings" />
 
     <DefaultLayout>
-        <Setting title="Characters">
+        <UserSettings title="Characters">
             <Alert
                 v-if="$page.props.auth.user.characters.length === 0"
                 type="warning"
@@ -54,7 +54,7 @@ import { Head } from '@inertiajs/vue3';
                                 class="tooltip tooltip-bottom tooltip-secondary before:w-[14rem]"
                                 data-tip="Toggle whether this character is anonymized in the leaderboard"
                             >
-                                <VisibilityButton
+                                <AnonymiseButton
                                     :id="character.id"
                                     :hidden="character.is_hidden"
                                 />
@@ -82,6 +82,6 @@ import { Head } from '@inertiajs/vue3';
                     </tr>
                 </tbody>
             </table>
-        </Setting>
+        </UserSettings>
     </DefaultLayout>
 </template>

@@ -1,7 +1,10 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import Setting from '@/Components/Setting.vue';
-import { UpdateEmailForm, UpdatePasswordForm } from '@/Pages/Setting/Partials';
+import { UserSettings } from '@/Components/features/user';
+import {
+    UpdateEmailForm,
+    UpdatePasswordForm,
+} from '@/Components/forms/complex';
 import { Head } from '@inertiajs/vue3';
 </script>
 
@@ -9,10 +12,10 @@ import { Head } from '@inertiajs/vue3';
     <Head title="Settings" />
 
     <DefaultLayout>
-        <Setting title="Account">
+        <UserSettings title="Account">
             <UpdateEmailForm :message="$page.props.flash.message" />
 
             <UpdatePasswordForm />
-        </Setting>
+        </UserSettings>
     </DefaultLayout>
 </template>

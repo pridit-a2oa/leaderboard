@@ -1,9 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import Alert from '@/Components/Alert.vue';
-import Setting from '@/Components/Setting.vue';
-import SupporterBadge from '@/Components/SupporterBadge.vue';
+import { UserSettings, UserSupporterIcon } from '@/Components/features/user';
+import { Alert } from '@/Components/ui';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
@@ -31,7 +30,7 @@ const benefits = usePage().props.roles.some((role) =>
     <Head title="Settings" />
 
     <DefaultLayout>
-        <Setting title="Extras">
+        <UserSettings title="Extras">
             <a v-if="!benefits" href="https://ko-fi.com/pridit" target="_blank">
                 <Alert
                     type="info"
@@ -40,7 +39,7 @@ const benefits = usePage().props.roles.some((role) =>
             </a>
 
             <div class="indicator w-auto">
-                <SupporterBadge />
+                <UserSupporterIcon />
 
                 <table class="table table-fixed rounded-md bg-base-200">
                     <tbody>
@@ -66,6 +65,6 @@ const benefits = usePage().props.roles.some((role) =>
                     </tbody>
                 </table>
             </div>
-        </Setting>
+        </UserSettings>
     </DefaultLayout>
 </template>

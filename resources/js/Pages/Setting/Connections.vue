@@ -1,8 +1,8 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import Alert from '@/Components/Alert.vue';
-import Setting from '@/Components/Setting.vue';
-import { DisconnectButton } from '@/Components/Submit';
+import { DisconnectButton } from '@/Components/features/character';
+import { UserSettings } from '@/Components/features/user';
+import { Alert } from '@/Components/ui';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -22,7 +22,7 @@ defineProps({
     <Head title="Settings" />
 
     <DefaultLayout>
-        <Setting title="Connections">
+        <UserSettings title="Connections">
             <Alert
                 v-if="$page.props.flash.message.length > 0"
                 :type="$page.props.flash.message[0]"
@@ -112,6 +112,6 @@ defineProps({
                     </tr>
                 </tbody>
             </table>
-        </Setting>
+        </UserSettings>
     </DefaultLayout>
 </template>

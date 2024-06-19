@@ -1,8 +1,8 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import Alert from '@/Components/Alert.vue';
-import DangerButton from '@/Components/DangerButton.vue';
-import Setting from '@/Components/Setting.vue';
+import { Alert } from '@/Components/ui';
+import { UserSettings } from '@/Components/features/user';
+import { DangerButton } from '@/Components/buttons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, useForm } from '@inertiajs/vue3';
@@ -18,7 +18,7 @@ const deleteUserRequest = () => {
     <Head title="Settings" />
 
     <DefaultLayout>
-        <Setting title="Delete Account">
+        <UserSettings title="Delete Account">
             <Alert
                 v-if="$page.props.flash.message.length > 0"
                 :type="$page.props.flash.message[0]"
@@ -71,6 +71,6 @@ const deleteUserRequest = () => {
                     Delete Account
                 </DangerButton>
             </div>
-        </Setting>
+        </UserSettings>
     </DefaultLayout>
 </template>
