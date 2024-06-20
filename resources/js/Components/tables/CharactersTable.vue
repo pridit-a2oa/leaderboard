@@ -290,7 +290,7 @@ function getMovementRank(rank) {
 
                 <tr v-if="character.statistics && key === open">
                     <td class="p-0" :colspan="grid.md ? 4 : 2">
-                        <StatisticsTable :data="character.statistics" />
+                        <StatisticsTable :statistics="character.statistics" />
                     </td>
                 </tr>
             </template>

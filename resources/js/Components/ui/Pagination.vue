@@ -12,6 +12,7 @@ defineProps({
     <div v-if="meta.links.length > 3" class="join mt-4 flex">
         <template v-for="(link, key) in meta.links" :key="key">
             <Link
+                :style="{ order: key }"
                 class="btn first:mr-auto last:ml-auto"
                 :class="{
                     '!hidden': link.label === '...' || !!/\d/.test(link.label),
@@ -21,7 +22,6 @@ defineProps({
                         parseInt(link.label) > meta.current_page + 1 ||
                         parseInt(link.label) < meta.current_page - 1,
                 }"
-                :style="{ order: key }"
                 :href="link.url ?? '#'"
                 preserve-scroll
                 ><span v-html="link.label"></span

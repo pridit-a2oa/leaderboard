@@ -7,8 +7,8 @@ import {
 } from '@/Components/features/character';
 import { UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head } from '@inertiajs/vue3';
 </script>
 
@@ -27,7 +27,10 @@ import { Head } from '@inertiajs/vue3';
                 <tbody>
                     <tr
                         v-for="character in $page.props.auth.user.characters.sort(
-                            (a, b) => (a.name > b.name ? 1 : -1),
+                            (a, b) =>
+                                a.name.toLowerCase() > b.name.toLowerCase()
+                                    ? 1
+                                    : -1,
                         )"
                         :key="character.id"
                         class="border-base-100 [&:not(:last-child)]:!border-b-4"

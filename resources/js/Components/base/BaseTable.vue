@@ -1,5 +1,5 @@
 <template>
-    <table class="table border-collapse" v-bind="$attrs">
+    <table class="table border-collapse text-neutral-400" v-bind="$attrs">
         <slot />
     </table>
 </template>

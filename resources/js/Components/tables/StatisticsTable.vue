@@ -29,7 +29,7 @@ library.add(
 );
 
 const props = defineProps({
-    data: {
+    statistics: {
         type: Array,
         required: true,
     },
@@ -39,7 +39,9 @@ const props = defineProps({
 <template>
     <BaseTable>
         <tr
-            v-for="statistic in data.sort((a, b) => (a.name > b.name ? 1 : -1))"
+            v-for="statistic in statistics.sort((a, b) =>
+                a.name > b.name ? 1 : -1,
+            )"
             class="bg-base-200 text-xs odd:bg-base-100"
         >
             <td class="hidden w-[2.35rem] bg-base-100 md:table-cell"></td>

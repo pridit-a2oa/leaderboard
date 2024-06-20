@@ -11,7 +11,7 @@ import { Banner, Breadcrumbs, Footer } from '@/Components/ui';
 
         <Breadcrumbs />
 
-        <main class="container mx-auto my-8 flex-grow text-neutral-400">
+        <main class="container mx-auto my-8 flex-grow">
             <slot />
         </main>
 

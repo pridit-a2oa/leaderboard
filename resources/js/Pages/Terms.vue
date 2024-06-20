@@ -1,7 +1,6 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { NormalLink } from '@/Components/links';
 import { Head, Link } from '@inertiajs/vue3';
 </script>
 
@@ -867,15 +866,10 @@ import { Head, Link } from '@inertiajs/vue3';
 
                 <p>
                     The European Commission provides an
-                    <a
-                        class="underlined-link"
+                    <NormalLink
                         href="https://ec.europa.eu/consumers/odr"
-                        target="_blank"
-                        >online dispute resolution platform
-                        <FontAwesomeIcon
-                            class="!align-middle"
-                            :icon="faArrowUpRightFromSquare"
-                            size="2xs" /></a
+                        size="2xs"
+                        >online dispute resolution platform</NormalLink
                     >, which you can access. If you would like to bring this
                     subject to our attention, please contact us.
                 </p>
