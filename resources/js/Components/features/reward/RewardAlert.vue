@@ -8,6 +8,7 @@ import {
     faGun,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -20,7 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
                 <div class="dropdown-content z-20 w-max">
                     <ol
-                        class="mt-2 flex list-inside list-decimal flex-col gap-4 rounded-md border-2 border-base-100 bg-base-200 p-3"
+                        class="mt-2 flex list-inside list-decimal flex-col gap-3.5 rounded-md border-2 border-base-100 bg-base-200 p-3"
                     >
                         <li
                             :class="{
@@ -28,8 +29,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                                     $page.props.auth.user !== null,
                             }"
                         >
+                            <template v-if="$page.props.auth.user !== null">
+                                Sign up
+                            </template>
                             <label
-                                v-if="$page.props.auth.user === null"
+                                v-else
                                 for="account-modal"
                                 class="underlined-link ml-1 cursor-pointer select-none"
                                 >Sign up<FontAwesomeIcon
@@ -38,7 +42,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                                     size="xs"
                                 />
                             </label>
-                            <template v-else>&nbsp;Sign up</template>
                             for an account
                         </li>
 
@@ -50,13 +53,29 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                                         0,
                             }"
                         >
-                            Connect
-                            <FontAwesomeIcon
-                                class="mx-0.5 !align-middle"
-                                :icon="faPlug"
-                                size="xs"
-                            />
-                            your Steam profile
+                            Create
+                            <template
+                                v-if="
+                                    $page.props.auth.user !== null &&
+                                    $page.props.auth.user.connections.length > 0
+                                "
+                            >
+                                connection
+                            </template>
+                            <Link
+                                v-else
+                                class="btn btn-xs mx-0.5 rounded-md bg-base-100 p-0 px-2 align-middle"
+                                :href="
+                                    $page.props.auth.user !== null
+                                        ? route('user.setting.connections')
+                                        : '#'
+                                "
+                            >
+                                <FontAwesomeIcon :icon="faPlug" size="xs" />
+                                Connection
+                            </Link>
+
+                            to Steam
                         </li>
 
                         <li
@@ -73,8 +92,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                                     $page.props.auth.user.characters.length !==
                                         0
                                 "
-                                >&nbsp;Link</template
                             >
+                                Link
+                            </template>
                             <LinkButton v-else class="mx-1" disabled />
                             your character
                         </li>

@@ -74,10 +74,10 @@ const settings = ref([
                                 "
                                 class="delay-50 indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition ease-in-out group-hover:!bg-[#333]"
                                 :class="{
-                                    'text-red-500':
+                                    'text-error':
                                         $page.props.auth.user.connections
                                             .length === 0,
-                                    'text-green-700':
+                                    'text-success':
                                         $page.props.auth.user.connections
                                             .length > 0,
                                     active: $page.component
@@ -110,7 +110,7 @@ const settings = ref([
             <ul class="menu mt-4 w-44 rounded-md bg-base-200">
                 <li>
                     <Link
-                        class="pl-2 !text-red-500"
+                        class="pl-2 !text-error"
                         :class="{
                             active: $page.component.includes('Delete'),
                         }"

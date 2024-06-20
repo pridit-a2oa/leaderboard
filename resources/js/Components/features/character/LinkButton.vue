@@ -23,7 +23,8 @@ const linkCharacter = () => {
 
 <template>
     <BaseBadge
-        class="ltr badge-success badge-sm"
+        dir="ltr"
+        class="badge-success badge-sm"
         :class="{
             'opacity-25': form.processing,
         }"

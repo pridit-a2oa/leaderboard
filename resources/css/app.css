@@ -7,48 +7,44 @@
     min-width: 320px;
 }
 
-.btn {
-    @apply border-0;
-}
-
-.fa-arrow-up-right-from-square {
-    @apply text-neutral-500;
-}
-
-.underlined-link {
-    @apply text-neutral-400 opacity-90 hover:underline hover:underline-offset-4;
-}
-
-tr {
-    @apply !border-0;
-}
-
-.rtl {
-    direction: rtl;
-}
-
-.ltr {
-    direction: ltr;
-}
-
-.tooltip-benefit {
-    @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light before:content-[attr(data-tip)];
-}
-
-.btn.btn-disabled,
-.btn[disabled],
-.btn:disabled {
-    @apply bg-base-300;
-}
-
-input[type='text']:focus,
-input[type='email'],
-input[type='password'] {
-    @apply !shadow-none !ring-transparent;
-}
-
 @media (width <= 767px) {
     .container {
         max-width: 387px;
+    }
+}
+
+@layer base {
+    input[type='text']:focus,
+    input[type='email'],
+    input[type='password'] {
+        @apply !shadow-none !ring-transparent;
+    }
+
+    tr {
+        @apply !border-0;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply border-0;
+    }
+
+    .btn.btn-disabled,
+    .btn[disabled],
+    .btn:disabled {
+        @apply bg-base-300;
+    }
+
+    .fa-arrow-up-right-from-square {
+        @apply text-neutral-500;
+    }
+
+    .tooltip-benefit {
+        @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light;
+    }
+
+    .underlined-link {
+        @apply text-neutral-400 opacity-90 hover:underline hover:underline-offset-4;
     }
 }

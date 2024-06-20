@@ -4,7 +4,7 @@ import { BaseButton } from '@/Components/base';
 
 <template>
     <BaseButton
-        class="bg-red-500 text-neutral-800 hover:bg-red-500"
+        class="bg-error text-neutral-800 hover:bg-error"
         v-bind="$attrs"
     >
         <slot />

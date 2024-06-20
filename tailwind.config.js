@@ -1,6 +1,8 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -41,6 +43,8 @@ export default {
           primary: '#0084ff',
           secondary: '#d4d4d4',
           'base-100': '#262626',
+          error: colors.red['500'],
+          success: colors.green['600'],
         },
       },
     ],

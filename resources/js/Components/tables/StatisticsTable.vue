@@ -50,7 +50,7 @@ const props = defineProps({
                 {{ statistic.pivot.formatted_value }}
             </td>
 
-            <td class="ltr">
+            <td dir="ltr" class="text-left">
                 <FontAwesomeIcon
                     class="pr-2 text-neutral-500"
                     :icon="statistic.icon"

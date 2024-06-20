@@ -73,7 +73,7 @@ import { Link } from '@inertiajs/vue3';
 
                     <li>
                         <Link
-                            class="pl-2 text-red-500 focus:text-red-500 active:!text-red-500"
+                            class="pl-2 text-error focus:text-error active:!text-error"
                             :href="route('logout')"
                             method="post"
                             as="button"

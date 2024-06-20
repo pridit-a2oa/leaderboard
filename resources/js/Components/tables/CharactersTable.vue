@@ -64,7 +64,7 @@ function getMovementRank(rank) {
 </script>
 
 <template>
-    <BaseTable class="rtl">
+    <BaseTable dir="rtl">
         <thead>
             <tr class="bg-base-100">
                 <th class="hidden w-0 md:table-cell"></th>
@@ -141,7 +141,8 @@ function getMovementRank(rank) {
                                         $page.props.auth.user.characters
                                             .length > 0
                                     "
-                                    class="ltr badge badge-error badge-outline badge-sm select-none font-light uppercase"
+                                    dir="ltr"
+                                    class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
                                     :href="route('user.setting.extras')"
                                 >
                                     <FontAwesomeIcon
@@ -160,7 +161,8 @@ function getMovementRank(rank) {
                     </td>
 
                     <td
-                        class="ltr grid grid-rows-2 p-0 px-2 py-3"
+                        dir="ltr"
+                        class="grid grid-rows-2 p-0 px-2 py-3"
                         :class="{
                             'cursor-pointer': character.statistics,
                         }"
@@ -202,7 +204,7 @@ function getMovementRank(rank) {
                         >
                     </td>
 
-                    <td class="ltr px-2">
+                    <td dir="ltr" class="px-2">
                         <div class="indicator align-middle">
                             <img
                                 class="h-6 w-6 select-none self-center rounded-full bg-base-100 text-[0rem]"
@@ -220,7 +222,7 @@ function getMovementRank(rank) {
                                     character.role === 'supporter' &&
                                     character.is_highest_score
                                 "
-                                class="indicator-item indicator-end indicator-middle cursor-pointer"
+                                class="indicator-item indicator-start indicator-bottom cursor-pointer"
                                 title="Supporter"
                             >
                                 <FontAwesomeLayers>
@@ -228,14 +230,14 @@ function getMovementRank(rank) {
                                         class="z-10 text-supporter opacity-80"
                                         :icon="faHeart"
                                         size="lg"
-                                        transform="left-3 down-1 shrink-6"
+                                        transform="right-6 shrink-6"
                                     />
 
                                     <FontAwesomeIcon
                                         class="text-base-300"
                                         :icon="faCircle"
                                         size="lg"
-                                        transform="left-3 down-1"
+                                        transform="right-6"
                                     />
                                 </FontAwesomeLayers>
                             </span>
@@ -266,25 +268,21 @@ function getMovementRank(rank) {
                         {{ getRank(key, 1) }}
                     </td>
 
-                    <td class="hidden p-0 md:table-cell">
-                        <span class="ltr">
-                            <FontAwesomeIcon
-                                class="p-0 pl-4 !align-middle"
-                                :class="
-                                    getMovementRank(
-                                        getCachedRank(character.id) -
-                                            getRank(key),
-                                    )[0]
-                                "
-                                :icon="
-                                    getMovementRank(
-                                        getCachedRank(character.id) -
-                                            getRank(key),
-                                    )[1]
-                                "
-                                fixed-width
-                            />
-                        </span>
+                    <td class="hidden pr-0 md:table-cell">
+                        <FontAwesomeIcon
+                            class="!align-middle"
+                            :class="
+                                getMovementRank(
+                                    getCachedRank(character.id) - getRank(key),
+                                )[0]
+                            "
+                            :icon="
+                                getMovementRank(
+                                    getCachedRank(character.id) - getRank(key),
+                                )[1]
+                            "
+                            fixed-width
+                        />
                     </td>
                 </tr>
 

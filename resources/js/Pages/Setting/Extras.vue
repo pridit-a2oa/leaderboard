@@ -52,8 +52,8 @@ const benefits = usePage().props.roles.some((role) =>
                                     class="!align-middle"
                                     :class="[
                                         benefits
-                                            ? 'text-green-500'
-                                            : 'text-red-500',
+                                            ? 'text-success'
+                                            : 'text-error',
                                     ]"
                                     :icon="benefits ? faCheck : faXmark"
                                     size="lg"
