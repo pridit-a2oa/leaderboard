@@ -104,7 +104,7 @@ const reset = () => {
                 :disabled="form.processing"
                 @click="login"
             >
-                Log in to your account
+                Sign in to your account
             </button>
         </div>
     </form>

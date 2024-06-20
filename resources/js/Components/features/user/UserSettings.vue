@@ -5,11 +5,11 @@ import {
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 import {
-    faCog,
+    faCircleUser,
     faUser,
     faPlug,
     faStar,
-    faBan,
+    faTrashCan,
     faLock,
     faCircle,
 } from '@fortawesome/free-solid-svg-icons';
@@ -26,7 +26,7 @@ const verifiedEmail = computed(() => {
 });
 
 const settings = ref([
-    { type: 'account', icon: faCog },
+    { type: 'account', icon: faCircleUser },
     { type: 'characters', icon: faUser },
     { type: 'connections', icon: faPlug },
     { type: 'extras', icon: faStar },
@@ -35,7 +35,7 @@ const settings = ref([
 
 <template>
     <div class="flex w-full">
-        <div class="font-semibold">
+        <div>
             <ul class="menu w-44 rounded-md bg-base-200">
                 <li
                     v-for="setting in settings"
@@ -48,7 +48,7 @@ const settings = ref([
                     }"
                 >
                     <Link
-                        class="group px-2 !text-neutral-400"
+                        class="group px-2"
                         :class="{
                             active: $page.component
                                 .toLowerCase()
@@ -62,8 +62,11 @@ const settings = ref([
                                 : route(`user.setting.${setting.type}`)
                         "
                     >
-                        <FontAwesomeLayers class="indicator">
-                            <FontAwesomeIcon :icon="setting.icon" />
+                        <FontAwesomeLayers class="indicator" fixed-width>
+                            <FontAwesomeIcon
+                                class="text-neutral-400"
+                                :icon="setting.icon"
+                            />
                             <FontAwesomeIcon
                                 v-if="
                                     setting.type === 'connections' &&
@@ -112,8 +115,10 @@ const settings = ref([
                             active: $page.component.includes('Delete'),
                         }"
                         :href="route('user.setting.delete')"
-                        ><FontAwesomeIcon :icon="faBan" fixed-width />Delete
-                        Account</Link
+                        ><FontAwesomeIcon
+                            :icon="faTrashCan"
+                            fixed-width
+                        />Delete Account</Link
                     >
                 </li>
             </ul>

@@ -4,7 +4,7 @@ import { ButtonLink } from '@/Components/links';
 import {
     faBullhorn,
     faHeart,
-    faCog,
+    faBars,
     faRightToBracket,
     faRightFromBracket,
     faCaretDown,
@@ -62,20 +62,25 @@ import { Link } from '@inertiajs/vue3';
                     tabindex="0"
                     class="menu dropdown-content z-10 mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
                 >
-                    <li>
-                        <Link class="px-2" :href="route('user.setting.account')"
-                            ><FontAwesomeIcon :icon="faCog" />Settings
+                    <li class="mb-0.5">
+                        <Link class="pl-2" :href="route('user.setting.account')"
+                            ><FontAwesomeIcon
+                                :icon="faBars"
+                                fixed-width
+                            />Settings
                         </Link>
                     </li>
 
                     <li>
                         <Link
-                            class="px-2"
+                            class="pl-2 text-red-500 focus:text-red-500 active:!text-red-500"
                             :href="route('logout')"
                             method="post"
                             as="button"
-                            ><FontAwesomeIcon :icon="faRightFromBracket" />Log
-                            out</Link
+                            ><FontAwesomeIcon
+                                :icon="faRightFromBracket"
+                                fixed-width
+                            />Sign out</Link
                         >
                     </li>
                 </ul>

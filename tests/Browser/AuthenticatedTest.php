@@ -48,7 +48,7 @@ class AuthenticatedTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/')
                 ->press('Account')
-                ->press('Log out')
+                ->press('Sign out')
                 ->waitUntilMissing('#nprogress')
                 ->assertSee('Sign in');
         });

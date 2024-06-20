@@ -3,8 +3,6 @@ import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Alert } from '@/Components/ui';
 import { UserSettings } from '@/Components/features/user';
 import { DangerButton } from '@/Components/buttons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, useForm } from '@inertiajs/vue3';
 
 const form = useForm({});
@@ -67,7 +65,6 @@ const deleteUserRequest = () => {
                     "
                     @click="deleteUserRequest"
                 >
-                    <FontAwesomeIcon :icon="faTrash" size="sm" />
                     Delete Account
                 </DangerButton>
             </div>
