@@ -14,7 +14,7 @@ defineProps({
 });
 
 const types = {
-    danger: 'alert-danger',
+    error: 'alert-error',
     info: 'alert-info',
     success: 'alert-success',
     warning: 'alert-warning',

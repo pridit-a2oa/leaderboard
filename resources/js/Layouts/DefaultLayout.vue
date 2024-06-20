@@ -9,7 +9,7 @@ import { Banner, Breadcrumbs, Footer } from '@/Components/ui';
     <div class="flex h-screen flex-col">
         <Banner />
 
-        <Breadcrumbs v-if="$page.props.name" />
+        <Breadcrumbs />
 
         <main class="container mx-auto my-8 flex-grow text-neutral-400">
             <slot />

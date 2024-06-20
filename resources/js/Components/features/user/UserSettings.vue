@@ -1,6 +1,5 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3';
 import {
     FontAwesomeIcon,
     FontAwesomeLayers,
@@ -14,6 +13,7 @@ import {
     faLock,
     faCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link, usePage } from '@inertiajs/vue3';
 
 defineProps({
     title: {

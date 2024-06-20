@@ -1,16 +1,14 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHouse, faCog, faFile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Link } from '@inertiajs/vue3';
 
 library.add(faCog, faFile);
-
-const icon = usePage().props.icon;
 </script>
 
 <template>
-    <div class="flex bg-base-300 text-sm">
+    <div v-if="$page.props.name" class="flex bg-base-300 text-sm">
         <div class="container breadcrumbs mx-auto py-4">
             <ul>
                 <li>
@@ -29,7 +27,7 @@ const icon = usePage().props.icon;
                 <li class="text-neutral-300">
                     <FontAwesomeIcon
                         class="mr-1.5"
-                        :icon="icon"
+                        :icon="$page.props.icon"
                         size="sm"
                         fixed-width
                     />

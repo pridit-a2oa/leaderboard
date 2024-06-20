@@ -1,4 +1,5 @@
 <script setup>
+import { BaseTable } from '@/Components/base';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faParachuteBox,
@@ -36,7 +37,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <table class="table border-collapse">
+    <BaseTable>
         <tr
             v-for="statistic in data.sort((a, b) => (a.name > b.name ? 1 : -1))"
             class="bg-base-200 text-xs odd:bg-base-100"
@@ -55,5 +56,5 @@ const props = defineProps({
                 />{{ statistic.name }}
             </td>
         </tr>
-    </table>
+    </BaseTable>
 </template>

@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-    <div class="alert mb-6 rounded-lg" role="alert">
+    <div class="alert mb-6 hidden rounded-lg md:grid" role="alert">
         <RewardIcon :user="$page.props.auth.user" />
 
         <div class="text-sm">

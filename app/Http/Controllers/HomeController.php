@@ -21,8 +21,9 @@ class HomeController extends Controller
                     ->rankable()
                     ->paginate(50)
                     ->onEachSide(1)
-            ),
-            'ranking' => Cache::get('ranking', []),
+            )->additional([
+                'ranking' => Cache::get('ranking', []),
+            ]),
         ]);
     }
 }
