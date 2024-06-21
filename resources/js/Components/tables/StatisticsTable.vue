@@ -1,6 +1,5 @@
 <script setup>
 import { BaseTable } from '@/Components/base';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faParachuteBox,
     faTents,
@@ -15,25 +14,25 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(
-    faParachuteBox,
-    faTents,
-    faPlane,
-    faLandMineOn,
-    faHeartPulse,
-    faFileLines,
-    faSyringe,
-    faBomb,
-    faScrewdriverWrench,
-    faCarBurst,
-);
-
 const props = defineProps({
     statistics: {
         type: Array,
         required: true,
     },
 });
+
+const icon = {
+    'parachute-box': faParachuteBox,
+    tents: faTents,
+    plane: faPlane,
+    'land-mine-on': faLandMineOn,
+    'heart-pulse': faHeartPulse,
+    'file-lines': faFileLines,
+    syringe: faSyringe,
+    bomb: faBomb,
+    'screwdriver-wrench': faScrewdriverWrench,
+    'car-burst': faCarBurst,
+};
 </script>
 
 <template>
@@ -52,8 +51,9 @@ const props = defineProps({
 
             <td dir="ltr" class="text-left">
                 <FontAwesomeIcon
+                    v-if="icon[statistic.icon]"
                     class="pr-2 text-neutral-500"
-                    :icon="statistic.icon"
+                    :icon="icon[statistic.icon]"
                     fixed-width
                 />{{ statistic.name }}
             </td>
