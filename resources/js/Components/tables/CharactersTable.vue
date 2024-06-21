@@ -109,7 +109,7 @@ function getMovementRank(rank) {
                     </td>
 
                     <td class="text-bold text-right text-[1rem]">
-                        {{ character.formatted_score }}
+                        {{ character.formatted_score ?? '&dash;' }}
                     </td>
 
                     <td class="hidden text-right md:table-cell">
@@ -199,7 +199,7 @@ function getMovementRank(rank) {
                             class="mt-0.5 w-max select-none text-xs font-light text-neutral-500"
                             title="Last active"
                             >{{
-                                character.formatted_last_seen_at ?? 'N/A'
+                                character.formatted_last_seen_at ?? 'n/a'
                             }}</span
                         >
                     </td>
