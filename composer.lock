@@ -2115,16 +2115,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "415782b7e48223342f1a616c16c45a95b15b2318"
+                "reference": "39c8ef752db6865717cc3fba63970c16f057982c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/415782b7e48223342f1a616c16c45a95b15b2318",
-                "reference": "415782b7e48223342f1a616c16c45a95b15b2318",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/39c8ef752db6865717cc3fba63970c16f057982c",
+                "reference": "39c8ef752db6865717cc3fba63970c16f057982c",
                 "shasum": ""
             },
             "require": {
@@ -2217,7 +2217,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-03T17:25:54+00:00"
+            "time": "2024-06-20T15:52:59+00:00"
         },
         {
             "name": "nette/schema",
@@ -3589,16 +3589,16 @@
         },
         {
             "name": "spatie/laravel-webhook-client",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-webhook-client.git",
-                "reference": "14c7f77012c8649009be52f6adc1efcfe812ff03"
+                "reference": "b9fce0dbcbb9fb3de191b6c94553e5c77ce81a05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-webhook-client/zipball/14c7f77012c8649009be52f6adc1efcfe812ff03",
-                "reference": "14c7f77012c8649009be52f6adc1efcfe812ff03",
+                "url": "https://api.github.com/repos/spatie/laravel-webhook-client/zipball/b9fce0dbcbb9fb3de191b6c94553e5c77ce81a05",
+                "reference": "b9fce0dbcbb9fb3de191b6c94553e5c77ce81a05",
                 "shasum": ""
             },
             "require": {
@@ -3653,7 +3653,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-webhook-client/issues",
-                "source": "https://github.com/spatie/laravel-webhook-client/tree/3.4.0"
+                "source": "https://github.com/spatie/laravel-webhook-client/tree/3.4.1"
             },
             "funding": [
                 {
@@ -3661,7 +3661,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-05-21T12:49:49+00:00"
+            "time": "2024-06-24T07:36:09+00:00"
         },
         {
             "name": "symfony/clock",
