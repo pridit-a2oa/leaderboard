@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    scrollbar-color: unset;
+}
+
 .container {
     max-width: 590px;
     min-width: 320px;
