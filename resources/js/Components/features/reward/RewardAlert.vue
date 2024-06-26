@@ -4,8 +4,8 @@ import { RewardIcon } from '@/Components/features/reward';
 import { NormalLink } from '@/Components/links';
 import {
     faArrowRightLong,
-    faPlug,
     faGun,
+    faPlug,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Link } from '@inertiajs/vue3';

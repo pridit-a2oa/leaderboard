@@ -5,13 +5,13 @@ import {
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 import {
+    faCircle,
     faCircleUser,
-    faUser,
+    faLock,
     faPlug,
     faStar,
     faTrashCan,
-    faLock,
-    faCircle,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link, usePage } from '@inertiajs/vue3';
 

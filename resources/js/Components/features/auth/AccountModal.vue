@@ -18,7 +18,8 @@ const register = ref(false);
             <span>No account?&nbsp;</span>
 
             <button class="underlined-link" @click="register = true">
-                Sign up<FontAwesomeIcon
+                Sign up
+                <FontAwesomeIcon
                     class="ml-1 !align-middle"
                     :icon="faArrowRightLong"
                     size="xs"
@@ -30,7 +31,8 @@ const register = ref(false);
             <span>Already registered?&nbsp;</span>
 
             <button class="underlined-link" @click="register = false">
-                Sign in<FontAwesomeIcon
+                Sign in
+                <FontAwesomeIcon
                     class="ml-1 !align-middle"
                     :icon="faArrowRightLong"
                     size="xs"

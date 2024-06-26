@@ -5,15 +5,15 @@ import { BaseTable } from '@/Components/base';
 import { LinkButton } from '@/Components/features/character';
 import { StatisticsTable } from '@/Components/tables';
 import {
-    faHeart,
-    faCircle,
-    faTrophy,
-    faAngleUp,
     faAngleDown,
+    faAngleUp,
+    faChevronDown,
+    faChevronUp,
+    faCircle,
+    faHeart,
     faLock,
     faMinus,
-    faChevronUp,
-    faChevronDown,
+    faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import {

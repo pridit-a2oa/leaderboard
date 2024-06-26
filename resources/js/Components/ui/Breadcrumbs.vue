@@ -1,5 +1,5 @@
 <script setup>
-import { faHouse, faBars, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faFile, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Link, usePage } from '@inertiajs/vue3';
 
@@ -21,7 +21,6 @@ const icon = {
                             size="sm"
                             fixed-width
                         />
-
                         Home
                     </Link>
                 </li>
@@ -34,7 +33,6 @@ const icon = {
                         size="sm"
                         fixed-width
                     />
-
                     {{ $page.props.name }}
                 </li>
             </ul>

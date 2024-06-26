@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue';
 import {
-    faPersonRifle,
     faCircleCheck,
     faCircleXmark,
+    faPersonRifle,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     FontAwesomeIcon,

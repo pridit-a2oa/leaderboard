@@ -1,16 +1,16 @@
 <script setup>
 import { BaseTable } from '@/Components/base';
 import {
-    faParachuteBox,
-    faTents,
-    faPlane,
-    faLandMineOn,
-    faHeartPulse,
-    faFileLines,
-    faSyringe,
     faBomb,
-    faScrewdriverWrench,
     faCarBurst,
+    faFileLines,
+    faHeartPulse,
+    faLandMineOn,
+    faParachuteBox,
+    faPlane,
+    faScrewdriverWrench,
+    faSyringe,
+    faTents,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -22,16 +22,16 @@ const props = defineProps({
 });
 
 const icon = {
-    'parachute-box': faParachuteBox,
-    tents: faTents,
-    plane: faPlane,
-    'land-mine-on': faLandMineOn,
-    'heart-pulse': faHeartPulse,
-    'file-lines': faFileLines,
-    syringe: faSyringe,
     bomb: faBomb,
-    'screwdriver-wrench': faScrewdriverWrench,
     'car-burst': faCarBurst,
+    'file-lines': faFileLines,
+    'heart-pulse': faHeartPulse,
+    'land-mine-on': faLandMineOn,
+    'parachute-box': faParachuteBox,
+    plane: faPlane,
+    'screwdriver-wrench': faScrewdriverWrench,
+    syringe: faSyringe,
+    tents: faTents,
 };
 </script>
 

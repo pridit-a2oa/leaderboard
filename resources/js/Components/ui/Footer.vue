@@ -16,15 +16,15 @@ import { Link } from '@inertiajs/vue3';
 
             <ul class="inline-flex gap-3">
                 <li>
-                    <Link class="underlined-link" :href="route('terms')"
-                        >Terms of Use</Link
-                    >
+                    <Link class="underlined-link" :href="route('terms')">
+                        Terms of Use
+                    </Link>
                 </li>
 
                 <li>
-                    <Link class="underlined-link" :href="route('privacy')"
-                        >Privacy Policy</Link
-                    >
+                    <Link class="underlined-link" :href="route('privacy')">
+                        Privacy Policy
+                    </Link>
                 </li>
             </ul>
 

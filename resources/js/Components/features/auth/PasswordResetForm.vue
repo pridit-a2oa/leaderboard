@@ -1,7 +1,7 @@
 <script setup>
 import { FormInput } from '@/Components/forms/elements';
 import { useForm } from '@inertiajs/vue3';
-import { faKey, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 const props = defineProps({
