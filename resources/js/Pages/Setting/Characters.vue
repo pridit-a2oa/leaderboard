@@ -33,7 +33,7 @@ import { Head } from '@inertiajs/vue3';
                                     : -1,
                         )"
                         :key="character.id"
-                        class="border-base-100 [&:not(:last-child)]:!border-b-4"
+                        class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                     >
                         <td class="w-0">
                             <FontAwesomeIcon
