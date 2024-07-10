@@ -20,7 +20,7 @@
         "prettier-plugin-tailwindcss": "^0.6.5",
         "tailwindcss": "^3.4.4",
         "vite": "^5.3",
-        "vue": "^3.4.0"
+        "vue": "^3.4.30"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -28,7 +28,8 @@
         "@fortawesome/free-regular-svg-icons": "^6.5.2",
         "@fortawesome/free-solid-svg-icons": "^6.5.2",
         "@fortawesome/vue-fontawesome": "^3.0.6",
-        "vue-screen": "^2.4.0"
+        "vue-screen": "^2.4.0",
+        "vue-web-component-wrapper": "^1.6.1"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "^4.17.2"
