@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('connection_user', function (Blueprint $table) {
+        Schema::create('preference_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('connection_id');
+            $table->unsignedBigInteger('preference_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('identifier')->nullable();
-            $table->timestamp('created_at')->useCurrent();
+            $table->boolean('value')->default(0);
 
-            $table->unique(['connection_id', 'user_id']);
+            $table->unique(['preference_id', 'user_id']);
 
-            $table->foreign('connection_id')->references('id')->on('connections');
+            $table->foreign('preference_id')->references('id')->on('preferences');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('connection_user');
+        Schema::dropIfExists('user_preferences');
     }
 };

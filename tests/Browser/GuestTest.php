@@ -34,7 +34,7 @@ class GuestTest extends DuskTestCase
                 ->type('#password', 'password')
                 ->type('#password_confirmation', 'password')
                 ->check('conditions')
-                ->press('Create an account')
+                ->press('Create account')
                 ->waitUntilMissing('button[disabled]')
                 ->assertSee('Account');
         });

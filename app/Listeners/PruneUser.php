@@ -21,35 +21,33 @@ class PruneUser
     {
         $user = $event->user;
 
-        // Nullify the user's relevant data
         $user->fill([
             'email' => null,
             'email_verified_at' => null,
             'delete_token' => null,
         ]);
 
-        // Detach the user's character(s) and reset visibility
+        // Linked characters are able to be relinked
         $user->characters()->update([
             'user_id' => null,
             'is_hidden' => false,
         ]);
 
-        // Detach the user's connection(s)
-        $user->connections()->sync([]);
-
-        // Dissociate the user's contribution
+        // Any third-party contribution can be reassociated
         if ($user->contribution) {
             $user->contribution->user_id = null;
             $user->contribution->save();
         }
 
-        // Clear any pending email of the user
+        $user->connections()->sync([]);
+        $user->preferences()->sync([]);
+
+        // Remove pending email change
         $user->clearPendingEmail();
 
-        // Delete the user's role
+        // Remove role
         $user->syncRoles();
 
-        // Persist the changes
         $user->save();
     }
 }

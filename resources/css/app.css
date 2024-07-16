@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+*,
+:hover {
     scrollbar-color: unset;
 }
 
@@ -40,15 +41,23 @@
         @apply bg-base-300;
     }
 
-    .fa-arrow-up-right-from-square {
-        @apply text-neutral-500;
+    .label-text {
+        @apply font-bold;
+    }
+
+    .tooltip::before {
+        @apply p-2 font-mono;
     }
 
     .tooltip-benefit {
         @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light;
     }
 
+    .tooltip-error::before {
+        @apply text-neutral-200;
+    }
+
     .underlined-link {
-        @apply text-neutral-400 opacity-90 hover:underline hover:underline-offset-4;
+        @apply text-neutral-400 opacity-90 hover:!text-neutral-400 hover:underline hover:underline-offset-4;
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SteamController;
+use App\Http\Controllers\UserPreferenceController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -100,6 +101,7 @@ Route::middleware('auth')->group(function () {
         });
 
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/preferences', [UserPreferenceController::class, 'update'])->name('preferences.update');
 });
 
 Route::webhooks('/webhook/kofi');

@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { RewardAlert } from '@/Components/features/reward';
+import { RewardBanner } from '@/Components/features/reward';
 import { CharactersTable } from '@/Components/tables';
 import { Navbar, Pagination } from '@/Components/ui';
 import { Head } from '@inertiajs/vue3';
@@ -32,7 +32,7 @@ defineProps({
             />
         </Head>
 
-        <RewardAlert />
+        <RewardBanner />
 
         <Navbar />
 

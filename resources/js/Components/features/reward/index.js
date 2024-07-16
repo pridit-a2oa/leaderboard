@@ -1,4 +1,4 @@
-import RewardAlert from './RewardAlert.vue';
+import RewardBanner from './RewardBanner.vue';
 import RewardIcon from './RewardIcon.vue';
 
-export { RewardAlert, RewardIcon };
+export { RewardBanner, RewardIcon };

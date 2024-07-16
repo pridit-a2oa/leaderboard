@@ -12,6 +12,7 @@ This project integrates game server data to drive the display of a leaderboard, 
 -   Full account flow/lifecycle (register, login, recover, update, delete)
 -   Support for linking characters to an account and performing actions
 -   [Steam](https://store.steampowered.com/) user identifier (via OpenID) associating with an account (to match characters)
+-   [Gravatar](https://gravatar.com) support for overriding character avatars with the one driven via user email instead of Steam
 -   [Ko-fi](https://ko-fi.com) webhook support to associate contributions and allow users to access a set of permission restricted features
 
 ## Getting Started
@@ -97,10 +98,11 @@ docker run -d \
 > [!IMPORTANT]  
 > This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will vary depending on other containers or the services you want to use (e.g. Mailgun/managed database).
 
-## Issues (SSR)
+## Issues
 
-1. **Link** component v-html directive ignored: [vuejs/core#6435](https://github.com/vuejs/core/issues/6435)
-2. [Font Awesome](https://fontawesome.com/) hydration mismatch using strings: [FortAwesome/vue-fontawesome#394](https://github.com/FortAwesome/vue-fontawesome/issues/394)
+1. (SSR) **Link** component v-html directive ignored: [vuejs/core#6435](https://github.com/vuejs/core/issues/6435)
+2. (SSR) [Font Awesome](https://fontawesome.com/) hydration mismatch using strings: [FortAwesome/vue-fontawesome#394](https://github.com/FortAwesome/vue-fontawesome/issues/394)
+3. [Web Components](https://vuejs.org/guide/extras/web-components) with SSR (missing exports, definitions, bundling) and general limitations (shadow DOM restricting styling)
 
 ## Linting
 

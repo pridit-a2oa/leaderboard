@@ -31,7 +31,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
         </ButtonLink>
 
         <ButtonLink href="https://ko-fi.com/pridit">
-            <FontAwesomeIcon class="text-supporter" :icon="faHeart" size="sm" />
+            <FontAwesomeIcon
+                class="text-role-supporter"
+                :icon="faHeart"
+                size="sm"
+            />
             Ko-fi
         </ButtonLink>
 

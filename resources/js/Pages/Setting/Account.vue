@@ -4,6 +4,7 @@ import { UserSettings } from '@/Components/features/user';
 import {
     UpdateEmailForm,
     UpdatePasswordForm,
+    UpdatePreferencesForm,
 } from '@/Components/forms/complex';
 import { Head } from '@inertiajs/vue3';
 </script>
@@ -16,6 +17,8 @@ import { Head } from '@inertiajs/vue3';
             <UpdateEmailForm :message="$page.props.flash.message" />
 
             <UpdatePasswordForm />
+
+            <UpdatePreferencesForm v-if="$page.props.preferences.length > 0" />
         </UserSettings>
     </DefaultLayout>
 </template>

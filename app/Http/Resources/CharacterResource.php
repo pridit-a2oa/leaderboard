@@ -25,8 +25,11 @@ class CharacterResource extends JsonResource
             'is_highest_score' => $this->when(! $this->is_hidden, $this->whenLoaded('user') ? $this->is_highest_score : false),
             'formatted_score' => $this->when(! $this->is_hidden, $this->formatted_score),
             'formatted_last_seen_at' => $this->when(! $this->is_hidden, $this->formatted_last_seen_at),
-            'role' => $this->when(! $this->is_hidden && $this->user, $this->whenLoaded('user') ? $this->user->roles->value('name') : false),
             'statistics' => $this->when(! $this->is_hidden && $this->statistics->isNotEmpty(), StatisticResource::collection($this->whenLoaded('statistics'))),
+            'user' => [
+                'gravatar_url' => $this->when(! $this->is_hidden && $this->user && $this->user->preferences->contains('name', 'gravatar') && $this->user->preferences->where('name', 'gravatar')->first()->pivot->value, $this->whenLoaded('user') ? $this->user->gravatar_url : false),
+                'role' => $this->when(! $this->is_hidden && $this->user, $this->whenLoaded('user') ? $this->user->roles->value('name') : false),
+            ],
         ];
     }
 }

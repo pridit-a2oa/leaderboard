@@ -8,7 +8,7 @@
         "php": "^8.2",
         "creativeorange/gravatar": "^1.0",
         "ilzrv/laravel-steam-auth": "^3.1",
-        "inertiajs/inertia-laravel": "^1.0",
+        "inertiajs/inertia-laravel": "^1.3",
         "laravel/framework": "^11.0",
         "laravel/prompts": "^0.1.18",
         "laravel/sanctum": "^4.0",

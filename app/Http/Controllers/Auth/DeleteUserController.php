@@ -25,12 +25,6 @@ class DeleteUserController extends Controller
 
         event(new UserRequestDelete($request->user()));
 
-        $request->session()
-            ->flash(
-                'message',
-                ['warning', 'Please check your email for a confirmation link']
-            );
-
         return redirect(route('user.setting.delete'));
     }
 

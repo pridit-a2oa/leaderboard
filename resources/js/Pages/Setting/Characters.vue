@@ -1,9 +1,9 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import {
-    AnonymiseButton,
-    UnlinkButton,
-    ResetButton,
+    AnonymiseBadge,
+    UnlinkBadge,
+    ResetBadge,
 } from '@/Components/features/character';
 import { UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
@@ -57,17 +57,17 @@ import { Head } from '@inertiajs/vue3';
                                 class="tooltip tooltip-bottom tooltip-secondary before:w-[14rem]"
                                 data-tip="Toggle whether this character is anonymized in the leaderboard"
                             >
-                                <AnonymiseButton
+                                <AnonymiseBadge
                                     :id="character.id"
                                     :hidden="character.is_hidden"
                                 />
                             </div>
 
                             <div
-                                class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[17rem]"
-                                data-tip="Unlink this character from your account (can be relinked at any time)"
+                                class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                                data-tip="Unlink this character from your account&#10;(can be relinked at any time)"
                             >
-                                <UnlinkButton :id="character.id" />
+                                <UnlinkBadge :id="character.id" />
                             </div>
 
                             <div
@@ -79,7 +79,7 @@ import { Head } from '@inertiajs/vue3';
                                 class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                                 data-tip="Reset score and any additional statistics for this character&#10;(cannot be reversed)"
                             >
-                                <ResetButton :id="character.id" />
+                                <ResetBadge :id="character.id" />
                             </div>
                         </td>
                     </tr>

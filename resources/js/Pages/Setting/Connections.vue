@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { DisconnectButton } from '@/Components/features/character';
+import { DisconnectBadge } from '@/Components/features/character';
 import { UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
@@ -53,7 +53,7 @@ defineProps({
 
                             <span
                                 v-if="connection.disclaimer"
-                                class="tooltip tooltip-bottom tooltip-secondary ml-1 cursor-pointer rounded-full text-neutral-400 before:w-[17rem]"
+                                class="tooltip tooltip-bottom tooltip-secondary ml-1 cursor-pointer rounded-full text-neutral-400 before:w-[16rem]"
                                 :data-tip="connection.disclaimer"
                             >
                                 <FontAwesomeIcon
@@ -91,13 +91,13 @@ defineProps({
                                 class="tooltip tooltip-bottom tooltip-error before:w-[10rem]"
                                 data-tip="This action will unlink any linked characters"
                             >
-                                <DisconnectButton :id="connection.id" />
+                                <DisconnectBadge :id="connection.id" />
                             </div>
 
                             <div
                                 v-else
                                 class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
-                                :data-tip="`You will be taken to ${connection.formatted_name} to complete this process`"
+                                :data-tip="`You will be redirected to ${connection.formatted_name} to complete this process`"
                             >
                                 <Link
                                     :href="

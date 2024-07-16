@@ -1,13 +1,7 @@
-import AnonymiseButton from './AnonymiseButton.vue';
-import DisconnectButton from './DisconnectButton.vue';
-import LinkButton from './LinkButton.vue';
-import ResetButton from './ResetButton.vue';
-import UnlinkButton from './UnlinkButton.vue';
+import AnonymiseBadge from './AnonymiseBadge.vue';
+import DisconnectBadge from './DisconnectBadge.vue';
+import LinkBadge from './LinkBadge.vue';
+import ResetBadge from './ResetBadge.vue';
+import UnlinkBadge from './UnlinkBadge.vue';
 
-export {
-  AnonymiseButton,
-  DisconnectButton,
-  ResetButton,
-  LinkButton,
-  UnlinkButton,
-};
+export { AnonymiseBadge, DisconnectBadge, ResetBadge, LinkBadge, UnlinkBadge };

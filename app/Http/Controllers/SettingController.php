@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ConnectionResource;
 use App\Models\Connection;
+use App\Models\Preference;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -29,7 +30,9 @@ class SettingController extends Controller
      */
     public function showAccount(Request $request): Response
     {
-        return Inertia::render('Setting/Account', $this->metadata());
+        return Inertia::render('Setting/Account', [
+            'preferences' => Preference::get(),
+        ] + $this->metadata());
     }
 
     /**

@@ -34,7 +34,7 @@ const submit = () => {
                     <span class="label-text">Email Address</span>
 
                     <span
-                        class="badge badge-outline label-text badge-sm"
+                        class="badge badge-outline label-text label-text-alt badge-sm"
                         :class="
                             $page.props.auth.user.email_verified_at !== null
                                 ? 'badge-success'

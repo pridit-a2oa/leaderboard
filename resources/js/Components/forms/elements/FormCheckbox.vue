@@ -9,13 +9,10 @@ defineProps({
 </script>
 
 <template>
-    <label class="label cursor-pointer">
-        <BaseCheckbox
-            class="checkbox checkbox-xs mr-2 rounded-[0.3rem]"
-            v-bind="$attrs"
-        />
+    <label class="label cursor-pointer justify-normal">
+        <BaseCheckbox v-bind="$attrs" />
 
-        <span class="label-text">
+        <span class="text-sm">
             <slot />
         </span>
     </label>

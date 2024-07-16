@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Events\UserDeleted;
 use App\Observers\UserObserver;
+use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,6 +24,15 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, HasRoles, MustVerifyNewEmail, Notifiable, SoftDeletes;
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'gravatar_url',
+    ];
 
     /**
      * The event map for the model.
@@ -53,7 +64,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
-        'delete_token',
     ];
 
     /**
@@ -64,6 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $with = [
         'characters',
         'connections',
+        'preferences',
     ];
 
     /**
@@ -105,11 +116,33 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the preferences for the user.
+     */
+    public function preferences(): BelongsToMany
+    {
+        return $this->belongsToMany(Preference::class)
+            ->using(PreferenceUser::class)
+            ->withPivot('value');
+    }
+
+    /**
      * Scope a query to only include verified users.
      */
     public function scopeVerified(Builder $query): void
     {
         $query->whereNotNull('email_verified_at');
+    }
+
+    /**
+     * Get the user's Gravatar URL (if applicable)
+     */
+    protected function gravatarUrl(): Attribute
+    {
+        return new Attribute(
+            get: fn (mixed $value, array $attributes) => Gravatar::exists($attributes['email'])
+                ? Gravatar::get($attributes['email'])
+                : '',
+        );
     }
 
     /**

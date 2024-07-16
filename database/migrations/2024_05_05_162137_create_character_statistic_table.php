@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('character_statistic', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('character_id')->nullable();
-            $table->unsignedBigInteger('statistic_id')->nullable();
+            $table->unsignedBigInteger('character_id');
+            $table->unsignedBigInteger('statistic_id');
             $table->bigInteger('value')->default(1);
 
             $table->unique(['character_id', 'statistic_id']);

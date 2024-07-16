@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Preference;
+use Illuminate\Database\Seeder;
+
+class PreferenceSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Preference::insert([
+            [
+                'name' => 'gravatar',
+                'description' => 'Override <span class="font-bold">Steam</span> avatar with <component-link title="Gravatar" href="https://support.gravatar.com/basic/where-appear/" size="2xs"></component-link> for my linked characters (visible to everyone)',
+            ],
+        ]);
+    }
+}

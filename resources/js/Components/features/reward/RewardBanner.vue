@@ -1,12 +1,9 @@
 <script setup>
-import { LinkButton } from '@/Components/features/character';
+import { LinkButton } from '@/Components/buttons';
+import { LinkBadge } from '@/Components/features/character';
 import { RewardIcon } from '@/Components/features/reward';
 import { NormalLink } from '@/Components/links';
-import {
-    faArrowRightLong,
-    faGun,
-    faPlug,
-} from '@fortawesome/free-solid-svg-icons';
+import { faGun, faPlug } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Link } from '@inertiajs/vue3';
 </script>
@@ -32,16 +29,13 @@ import { Link } from '@inertiajs/vue3';
                             <template v-if="$page.props.auth.user !== null">
                                 Sign up
                             </template>
-                            <label
-                                v-else
-                                for="account-modal"
-                                class="underlined-link ml-1 cursor-pointer select-none"
-                                >Sign up<FontAwesomeIcon
-                                    class="mx-1 !align-middle"
-                                    :icon="faArrowRightLong"
-                                    size="xs"
-                                />
-                            </label>
+                            <LinkButton v-else class="mx-1">
+                                <label
+                                    for="account-modal"
+                                    class="cursor-pointer"
+                                    >Sign up</label
+                                >
+                            </LinkButton>
                             for an account
                         </li>
 
@@ -95,14 +89,14 @@ import { Link } from '@inertiajs/vue3';
                             >
                                 Link
                             </template>
-                            <LinkButton v-else class="mx-1" disabled />
+                            <LinkBadge v-else class="mx-1" disabled />
                             your character
                         </li>
                     </ol>
                 </div>
             </div>
             a character to access the<FontAwesomeIcon
-                class="mx-1 !align-middle text-gold"
+                class="mx-1 !align-middle text-amber-400"
                 :icon="faGun"
                 size="2xs"
                 fixed-width

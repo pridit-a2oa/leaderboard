@@ -48,9 +48,9 @@ const settings = ref([
                     }"
                 >
                     <Link
-                        class="group px-2"
+                        class="hover:focus:active:!bg-highlight group px-2"
                         :class="{
-                            active: $page.component
+                            'bg-highlight': $page.component
                                 .toLowerCase()
                                 .includes(setting.type),
                         }"
@@ -72,17 +72,17 @@ const settings = ref([
                                     setting.type === 'connections' &&
                                     verifiedEmail
                                 "
-                                class="delay-50 indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition ease-in-out group-hover:!bg-[#333]"
+                                class="group-hover:bg-highlight indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms]"
                                 :class="{
+                                    'bg-highlight': $page.component
+                                        .toLowerCase()
+                                        .includes(setting.type),
                                     'text-error':
                                         $page.props.auth.user.connections
                                             .length === 0,
                                     'text-success':
                                         $page.props.auth.user.connections
                                             .length > 0,
-                                    active: $page.component
-                                        .toLowerCase()
-                                        .includes(setting.type),
                                 }"
                                 :icon="faCircle"
                                 size="xs"
@@ -110,9 +110,9 @@ const settings = ref([
             <ul class="menu mt-4 w-44 rounded-md bg-base-200">
                 <li>
                     <Link
-                        class="pl-2 !text-error"
+                        class="hover:focus:active:bg-highlight pl-2 !text-error"
                         :class="{
-                            active: $page.component.includes('Delete'),
+                            'bg-highlight': $page.component.includes('Delete'),
                         }"
                         :href="route('user.setting.delete')"
                         ><FontAwesomeIcon
@@ -134,9 +134,5 @@ const settings = ref([
 <style scoped>
 h2 {
     @apply mb-4 text-xl font-semibold;
-}
-
-.active {
-    @apply !bg-[#333];
 }
 </style>

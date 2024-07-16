@@ -92,7 +92,7 @@ const submit = () => {
                     v-model:checked="form.conditions"
                     required
                 >
-                    <span class="ml-1 block text-xs"
+                    <span class="ml-0.5 block text-xs"
                         >I confirm that I am at least 18 years old and agree to
                         the
                         <a
@@ -117,7 +117,7 @@ const submit = () => {
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
             >
-                Create an account
+                Create account
             </button>
         </div>
     </form>

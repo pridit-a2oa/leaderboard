@@ -19,7 +19,7 @@ const supporter = usePage().props.roles.includes('supporter');
             <FontAwesomeIcon
                 class="z-10 text-neutral-700"
                 :class="{
-                    'text-supporter': supporter,
+                    'text-role-supporter': supporter,
                 }"
                 :icon="supporter ? faHeart : faHeartBroken"
             />

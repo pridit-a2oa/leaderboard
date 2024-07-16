@@ -18,7 +18,7 @@ class CharacterFactory extends Factory
     {
         return [
             'uid' => '76561197992228102',
-            'name' => fake()->userName(),
+            'name' => ucfirst(fake()->userName()),
             'score' => fake()->randomNumber(5, false),
         ];
     }

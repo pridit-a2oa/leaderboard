@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { useGrid } from 'vue-screen';
 import { BaseTable } from '@/Components/base';
-import { LinkButton } from '@/Components/features/character';
+import { LinkBadge } from '@/Components/features/character';
 import { StatisticsTable } from '@/Components/tables';
 import {
     faAngleDown,
@@ -155,14 +155,14 @@ function getMovementRank(rank) {
                                     Link
                                 </Link>
 
-                                <LinkButton v-else :id="character.id" />
+                                <LinkBadge v-else :id="character.id" />
                             </template>
                         </template>
                     </td>
 
                     <td
                         dir="ltr"
-                        class="grid grid-rows-2 p-0 px-2 py-3"
+                        class="grid grid-rows-2 p-0 px-2 py-3 text-left"
                         :class="{
                             'cursor-pointer': character.statistics,
                         }"
@@ -180,13 +180,13 @@ function getMovementRank(rank) {
                             <span
                                 class="text-neutral-400"
                                 :class="{
-                                    '!text-gold':
+                                    '!text-rank-gold':
                                         characters.meta.current_page === 1 &&
                                         key === 0,
-                                    '!text-silver':
+                                    '!text-rank-silver':
                                         characters.meta.current_page === 1 &&
                                         key === 1,
-                                    '!text-bronze':
+                                    '!text-rank-bronze':
                                         characters.meta.current_page === 1 &&
                                         key === 2,
                                 }"
@@ -209,6 +209,7 @@ function getMovementRank(rank) {
                             <img
                                 class="h-6 w-6 select-none self-center rounded-full bg-base-100 text-[0rem]"
                                 :src="
+                                    character.user.gravatar_url ??
                                     character.avatar_url ??
                                     'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
                                 "
@@ -219,7 +220,7 @@ function getMovementRank(rank) {
 
                             <span
                                 v-if="
-                                    character.role === 'supporter' &&
+                                    character.user.role === 'supporter' &&
                                     character.is_highest_score
                                 "
                                 class="indicator-item indicator-start indicator-bottom cursor-pointer"
@@ -227,7 +228,7 @@ function getMovementRank(rank) {
                             >
                                 <FontAwesomeLayers>
                                     <FontAwesomeIcon
-                                        class="z-10 text-supporter opacity-80"
+                                        class="z-10 text-role-supporter opacity-80"
                                         :icon="faHeart"
                                         size="lg"
                                         transform="right-6 shrink-6"
@@ -254,9 +255,9 @@ function getMovementRank(rank) {
                         <FontAwesomeIcon
                             class="!align-middle"
                             :class="{
-                                'text-gold': key === 0,
-                                'text-silver': key === 1,
-                                'text-bronze': key === 2,
+                                'text-rank-gold': key === 0,
+                                'text-rank-silver': key === 1,
+                                'text-rank-bronze': key === 2,
                             }"
                             :icon="faTrophy"
                             size="lg"

@@ -1,4 +1,4 @@
-import DangerButton from './DangerButton.vue';
+import LinkButton from './LinkButton.vue';
 import SuccessButton from './SuccessButton.vue';
 
-export { DangerButton, SuccessButton };
+export { LinkButton, SuccessButton };
