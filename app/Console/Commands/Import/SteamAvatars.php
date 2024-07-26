@@ -22,7 +22,7 @@ class SteamAvatars extends Command
      *
      * @var string
      */
-    protected $description = 'Using the uid of characters missing an avatar, retrieve the subsequent non-default Steam avatar URL';
+    protected $description = 'Using the GUID of characters missing an avatar, retrieve the subsequent non-default Steam avatar URL';
 
     /**
      * Execute the console command.
@@ -39,7 +39,7 @@ class SteamAvatars extends Command
             $response = Http::get(sprintf(
                 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=%s&steamids=%s',
                 config('steam-auth.api_keys')[0],
-                implode(',', $characters->pluck('uid')->toArray())
+                implode(',', $characters->pluck('guid')->toArray())
             ));
 
             if ($response->failed()) {
@@ -52,7 +52,7 @@ class SteamAvatars extends Command
                     return;
                 }
 
-                Character::where('uid', $player['steamid'])
+                Character::where('guid', $player['steamid'])
                     ->update([
                         'avatar_url' => $player['avatarmedium'],
                     ]);

@@ -17,7 +17,7 @@ class CharacterFactory extends Factory
     public function definition(): array
     {
         return [
-            'uid' => '76561197992228102',
+            'guid' => '76561197992228102',
             'name' => ucfirst(fake()->userName()),
             'score' => fake()->randomNumber(5, false),
         ];

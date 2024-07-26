@@ -95,8 +95,8 @@ function getMovementRank(rank) {
                         }"
                     >
                         <a
-                            v-if="character.uid"
-                            :href="`https://steamcommunity.com/profiles/${character.uid}`"
+                            v-if="character.guid"
+                            :href="`https://steamcommunity.com/profiles/${character.guid}`"
                             target="_blank"
                         >
                             <FontAwesomeIcon
@@ -117,7 +117,8 @@ function getMovementRank(rank) {
                             v-if="
                                 $page.props.auth.user !== null &&
                                 $page.props.auth.user.connections.some(
-                                    (e) => e.pivot.identifier === character.uid,
+                                    (e) =>
+                                        e.pivot.identifier === character.guid,
                                 )
                             "
                         >

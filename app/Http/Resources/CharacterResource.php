@@ -17,7 +17,7 @@ class CharacterResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->when(! $this->is_hidden && $this->user_id, $this->user_id),
-            'uid' => $this->when(! $this->is_hidden, $this->uid),
+            'guid' => $this->when(! $this->is_hidden, $this->guid),
             'name' => $this->when(! $this->is_hidden, $this->name),
             'avatar_url' => $this->when(! $this->is_hidden, $this->avatar_url),
             'score' => $this->when(! $this->is_hidden, $this->score),

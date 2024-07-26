@@ -35,7 +35,7 @@ class CharacterTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             Character::factory()->create([
-                'uid' => '1',
+                'guid' => '1',
             ]);
 
             $user = User::factory()->hasAttached(
@@ -54,7 +54,7 @@ class CharacterTest extends DuskTestCase
     public function test_can_toggle_visibility_of_character(): void
     {
         $this->browse(function (Browser $browser) {
-            $user = User::factory()->hasCharacters(['uid' => '1'])->hasAttached(
+            $user = User::factory()->hasCharacters(['guid' => '1'])->hasAttached(
                 Connection::factory(),
                 ['identifier' => '1']
             )->create();
@@ -71,7 +71,7 @@ class CharacterTest extends DuskTestCase
     public function test_can_unlink_then_relink_character(): void
     {
         $this->browse(function (Browser $browser) {
-            $user = User::factory()->hasCharacters(['uid' => '1'])->hasAttached(
+            $user = User::factory()->hasCharacters(['guid' => '1'])->hasAttached(
                 Connection::factory(),
                 ['identifier' => '1']
             )->create();
@@ -94,7 +94,7 @@ class CharacterTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $character = Character::factory()->create([
-                'uid' => '1',
+                'guid' => '1',
             ]);
 
             $user = User::factory()->hasCharacters()
@@ -116,7 +116,7 @@ class CharacterTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $character = Character::factory()->create([
-                'uid' => '1',
+                'guid' => '1',
             ]);
 
             $user = User::factory()->hasCharacters()
@@ -138,7 +138,7 @@ class CharacterTest extends DuskTestCase
     public function test_can_reset_character_as_supporter(): void
     {
         $this->browse(function (Browser $browser) {
-            $user = User::factory()->hasCharacters(['uid' => '1'])
+            $user = User::factory()->hasCharacters(['guid' => '1'])
                 ->hasAttached(
                     Connection::factory(),
                     ['identifier' => '1']

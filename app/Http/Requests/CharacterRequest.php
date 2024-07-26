@@ -14,7 +14,7 @@ class CharacterRequest extends FormRequest
     {
         return Character::findOrFail($this->character_id)
             ->whereIn(
-                'uid',
+                'guid',
                 $this->user()->connections()->pluck('identifier')->all()
             )
             ->exists();

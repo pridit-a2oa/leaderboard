@@ -21,7 +21,7 @@ class Character extends Model
      */
     protected $fillable = [
         'user_id',
-        'uid',
+        'guid',
         'name',
         'score',
         'is_hidden',
