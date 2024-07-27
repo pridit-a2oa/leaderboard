@@ -10,6 +10,7 @@ import {
     faChevronDown,
     faChevronUp,
     faCircle,
+    faCommentSlash,
     faHeart,
     faLock,
     faMinus,
@@ -207,17 +208,34 @@ function getMovementRank(rank) {
 
                     <td dir="ltr" class="px-2">
                         <div class="indicator align-middle">
-                            <img
-                                class="h-6 w-6 select-none self-center rounded-full bg-base-100 text-[0rem]"
-                                :src="
-                                    character.user.gravatar_url ??
-                                    character.avatar_url ??
-                                    'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
-                                "
-                                alt="Avatar"
-                                loading="lazy"
-                                onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
-                            />
+                            <div
+                                class="h-6 w-6 rounded-full bg-base-100"
+                                :class="{
+                                    'tooltip tooltip-bottom tooltip-secondary before:text-xs':
+                                        character.is_muted,
+                                }"
+                                data-tip="This player is banned from text chat"
+                            >
+                                <img
+                                    v-if="!character.is_muted"
+                                    class="select-none self-center rounded-full text-[0rem]"
+                                    :src="
+                                        character.user.gravatar_url ??
+                                        character.avatar_url ??
+                                        'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+                                    "
+                                    alt="Avatar"
+                                    loading="lazy"
+                                    onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
+                                />
+
+                                <FontAwesomeIcon
+                                    v-else
+                                    class="cursor-pointer text-red-400 opacity-60"
+                                    :icon="faCommentSlash"
+                                    transform="down-3"
+                                />
+                            </div>
 
                             <span
                                 v-if="

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Character extends Model
 {
@@ -105,6 +106,14 @@ class Character extends Model
             ->using(CharacterStatistic::class)
             ->withPivot('value')
             ->having('value', '>', 0);
+    }
+
+    /**
+     * The mute associated with the character's GUID.
+     */
+    public function mute(): HasOne
+    {
+        return $this->hasOne(Mute::class, 'guid', 'guid');
     }
 
     /**
