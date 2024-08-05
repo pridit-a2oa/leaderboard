@@ -1,5 +1,9 @@
 <script setup>
-import { faBars, faFile, faHouse } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBars,
+    faFile,
+    faRankingStar,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Link, usePage } from '@inertiajs/vue3';
 
@@ -17,11 +21,11 @@ const icon = {
                     <Link class="underlined-link" :href="route('home')">
                         <FontAwesomeIcon
                             class="mr-1.5"
-                            :icon="faHouse"
+                            :icon="faRankingStar"
                             size="sm"
                             fixed-width
                         />
-                        Home
+                        Leaderboard
                     </Link>
                 </li>
 
