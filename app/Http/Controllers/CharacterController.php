@@ -34,10 +34,6 @@ class CharacterController extends Controller
 
         $character = Character::findOrFail($request->character_id);
 
-        // Zero the score of the character
-        $character->score = 0;
-        $character->save();
-
         // Detach all character statistics
         $character->statistics()->detach();
 

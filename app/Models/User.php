@@ -103,7 +103,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function characters(): HasMany
     {
-        return $this->hasMany(Character::class);
+        return $this->hasMany(Character::class)
+            ->withCount('statistics');
     }
 
     /**

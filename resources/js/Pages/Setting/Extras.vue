@@ -15,7 +15,6 @@ const extras = ref([
         type: '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the last 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
     },
     { type: 'Multiple character linking' },
-    { type: 'Reset option (per character)' },
     {
         type: `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Statistics</span> tracking (while linked)`,
     },

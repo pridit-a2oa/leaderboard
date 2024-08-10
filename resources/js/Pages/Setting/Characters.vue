@@ -74,10 +74,10 @@ import { Head } from '@inertiajs/vue3';
                                 v-if="
                                     $page.props.roles.some((role) =>
                                         ['admin', 'supporter'].includes(role),
-                                    ) && character.score > 0
+                                    ) && character.statistics_count > 0
                                 "
-                                class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
-                                data-tip="Reset score and any additional statistics for this character&#10;(cannot be reversed)"
+                                class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                                data-tip="Reset additional statistics for this character&#10;(cannot be reversed)"
                             >
                                 <ResetBadge :id="character.id" />
                             </div>
