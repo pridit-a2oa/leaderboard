@@ -313,7 +313,7 @@ function getMovementRank(rank) {
 
                         <FontAwesomeIcon
                             v-else
-                            class="cursor-pointer !align-middle text-teal-600"
+                            class="cursor-pointer !align-middle text-teal-500"
                             :icon="faHand"
                             title="I'm new"
                             transform="rotate-45"
