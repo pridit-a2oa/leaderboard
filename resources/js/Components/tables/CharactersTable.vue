@@ -11,6 +11,7 @@ import {
     faChevronUp,
     faCircle,
     faCommentSlash,
+    faHand,
     faHeart,
     faLock,
     faMinus,
@@ -92,7 +93,7 @@ function getMovementRank(rank) {
                     <td
                         class="hidden p-0 px-2 text-center md:table-cell"
                         :class="{
-                            'bg-base-200': !character.is_hidden,
+                            'bg-base-200/75': !character.is_hidden,
                         }"
                     >
                         <a
@@ -288,8 +289,14 @@ function getMovementRank(rank) {
                         {{ getRank(key, 1) }}
                     </td>
 
-                    <td class="hidden pr-0 md:table-cell">
+                    <td
+                        class="hidden p-0 px-3 md:table-cell"
+                        :class="{
+                            'bg-base-200/75': !character.is_hidden,
+                        }"
+                    >
                         <FontAwesomeIcon
+                            v-if="getCachedRank(character.id)"
                             class="!align-middle"
                             :class="
                                 getMovementRank(
@@ -301,6 +308,15 @@ function getMovementRank(rank) {
                                     getCachedRank(character.id) - getRank(key),
                                 )[1]
                             "
+                            fixed-width
+                        />
+
+                        <FontAwesomeIcon
+                            v-else
+                            class="cursor-pointer !align-middle text-teal-600"
+                            :icon="faHand"
+                            title="I'm new"
+                            transform="rotate-45"
                             fixed-width
                         />
                     </td>
