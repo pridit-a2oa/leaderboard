@@ -77,7 +77,7 @@ import { Head } from '@inertiajs/vue3';
                                     ) && character.statistics_count > 0
                                 "
                                 class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
-                                data-tip="Reset additional statistics for this character&#10;(cannot be reversed)"
+                                data-tip="Reset statistics for this character&#10;(cannot be reversed)"
                             >
                                 <ResetBadge :id="character.id" />
                             </div>
