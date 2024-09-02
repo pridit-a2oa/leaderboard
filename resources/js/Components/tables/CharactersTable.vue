@@ -69,7 +69,6 @@ function getMovementRank(rank) {
     <BaseTable dir="rtl">
         <thead>
             <tr class="bg-base-100">
-                <th class="hidden w-0 md:table-cell"></th>
                 <th class="w-0 text-right">Score</th>
                 <th class="hidden w-0 md:table-cell"></th>
                 <th></th>
@@ -85,32 +84,12 @@ function getMovementRank(rank) {
                 :key="character.id"
             >
                 <tr
-                    class="!border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
+                    class="group !border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
                     }"
                 >
-                    <td
-                        class="hidden p-0 px-2 text-center md:table-cell"
-                        :class="{
-                            'bg-base-200/75': !character.is_hidden,
-                        }"
-                    >
-                        <a
-                            v-if="character.guid"
-                            :href="`https://steamcommunity.com/profiles/${character.guid}`"
-                            target="_blank"
-                        >
-                            <FontAwesomeIcon
-                                class="!align-middle text-neutral-500"
-                                :icon="faSteam"
-                                size="lg"
-                                fixed-width
-                            />
-                        </a>
-                    </td>
-
-                    <td class="text-bold text-right text-[1rem]">
+                    <td class="text-right text-lg font-medium">
                         {{ character.formatted_score ?? '&dash;' }}
                     </td>
 
@@ -194,8 +173,25 @@ function getMovementRank(rank) {
                                         key === 2,
                                 }"
                                 :title="character.name"
-                                >{{ character.name ?? 'Anonymous' }}</span
                             >
+                                {{ character.name ?? 'Anonymous' }}
+
+                                <a
+                                    v-if="
+                                        character.guid && !character.is_hidden
+                                    "
+                                    class=""
+                                    :href="`https://steamcommunity.com/profiles/${character.guid}`"
+                                    target="_blank"
+                                >
+                                    <FontAwesomeIcon
+                                        class="ml-0.5 !align-middle text-neutral-400 opacity-0 transition ease-in-out group-hover:opacity-100"
+                                        :icon="faSteam"
+                                        title="Steam Community Profile"
+                                        fixed-width
+                                    />
+                                </a>
+                            </span>
                         </span>
 
                         <span
@@ -313,9 +309,9 @@ function getMovementRank(rank) {
 
                         <FontAwesomeIcon
                             v-else
-                            class="cursor-pointer !align-middle text-teal-500"
+                            class="!align-middle text-teal-500"
                             :icon="faHand"
-                            title="I'm new"
+                            title="!I'm new"
                             transform="rotate-45"
                             fixed-width
                         />
