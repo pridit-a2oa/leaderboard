@@ -43,8 +43,6 @@ const icon = {
             )"
             class="bg-base-200 text-xs odd:bg-base-100"
         >
-            <td class="hidden w-[2.35rem] bg-base-100 md:table-cell"></td>
-
             <td class="text-right">
                 {{ statistic.pivot.formatted_value }}
             </td>
