@@ -54,8 +54,8 @@ import { Head } from '@inertiajs/vue3';
 
                         <td class="text-right">
                             <div
-                                class="tooltip tooltip-bottom tooltip-secondary before:w-[14rem]"
-                                data-tip="Toggle whether this character is anonymized in the leaderboard"
+                                class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
+                                data-tip="Toggle whether this character is anonymized publicly"
                             >
                                 <AnonymiseBadge
                                     :id="character.id"

@@ -87,9 +87,15 @@ function getMovementRank(rank) {
                     class="group !border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
+                        'text-rank-gold':
+                            characters.meta.current_page === 1 && key === 0,
+                        'text-rank-silver':
+                            characters.meta.current_page === 1 && key === 1,
+                        'text-rank-bronze':
+                            characters.meta.current_page === 1 && key === 2,
                     }"
                 >
-                    <td class="text-right text-lg font-medium">
+                    <td class="text-right text-lg font-light">
                         {{ character.formatted_score ?? '&dash;' }}
                     </td>
 
@@ -153,27 +159,13 @@ function getMovementRank(rank) {
                         <span class="truncate">
                             <FontAwesomeIcon
                                 v-if="character.statistics"
-                                class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle"
+                                class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
                                 size="sm"
                                 fixed-width
                             />
 
-                            <span
-                                class="text-neutral-400"
-                                :class="{
-                                    '!text-rank-gold':
-                                        characters.meta.current_page === 1 &&
-                                        key === 0,
-                                    '!text-rank-silver':
-                                        characters.meta.current_page === 1 &&
-                                        key === 1,
-                                    '!text-rank-bronze':
-                                        characters.meta.current_page === 1 &&
-                                        key === 2,
-                                }"
-                                :title="character.name"
-                            >
+                            <span :title="character.name">
                                 {{ character.name ?? 'Anonymous' }}
 
                                 <a
@@ -183,6 +175,7 @@ function getMovementRank(rank) {
                                     class=""
                                     :href="`https://steamcommunity.com/profiles/${character.guid}`"
                                     target="_blank"
+                                    @click.stop
                                 >
                                     <FontAwesomeIcon
                                         class="ml-0.5 !align-middle text-neutral-400 opacity-0 transition ease-in-out group-hover:opacity-100"
@@ -270,13 +263,8 @@ function getMovementRank(rank) {
                     >
                         <FontAwesomeIcon
                             class="!align-middle"
-                            :class="{
-                                'text-rank-gold': key === 0,
-                                'text-rank-silver': key === 1,
-                                'text-rank-bronze': key === 2,
-                            }"
                             :icon="faTrophy"
-                            size="lg"
+                            size="xl"
                             fixed-width
                         />
                     </td>
@@ -286,7 +274,7 @@ function getMovementRank(rank) {
                     </td>
 
                     <td
-                        class="hidden p-0 px-3 md:table-cell"
+                        class="hidden md:table-cell"
                         :class="{
                             'bg-base-200/75': !character.is_hidden,
                         }"
