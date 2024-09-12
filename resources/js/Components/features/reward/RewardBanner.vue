@@ -102,15 +102,11 @@ import { Link } from '@inertiajs/vue3';
                 fixed-width
             />
             <strong>gold-plated variant</strong> of the
-            <NormalLink
-                href="https://armedassault.fandom.com/wiki/AKS"
-                size="2xs"
+            <NormalLink href="https://armedassault.fandom.com/wiki/AKS"
                 >AKS</NormalLink
             >
             and
-            <NormalLink
-                href="https://armedassault.fandom.com/wiki/Revolver"
-                size="2xs"
+            <NormalLink href="https://armedassault.fandom.com/wiki/Revolver"
                 >Revolver</NormalLink
             >
         </div>

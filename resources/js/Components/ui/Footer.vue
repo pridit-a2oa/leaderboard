@@ -8,7 +8,7 @@ import { Link } from '@inertiajs/vue3';
 <template>
     <footer class="footer bg-base-200">
         <div
-            class="container mx-auto flex justify-center py-6 text-xs text-neutral-300"
+            class="container mx-auto flex justify-center py-6 text-neutral-300"
         >
             <a href="https://github.com/pridit-a2oa" target="_blank">
                 <FontAwesomeIcon :icon="faGithub" size="lg" fixed-width />
@@ -31,7 +31,7 @@ import { Link } from '@inertiajs/vue3';
             <div class="ml-auto self-center">
                 <span>&copy; {{ new Date().getFullYear() }}&nbsp;</span>
 
-                <NormalLink href="https://www.pridit.co.uk" size="2xs"
+                <NormalLink href="https://www.pridit.co.uk"
                     >Jordan Heale</NormalLink
                 >
             </div>
