@@ -52,7 +52,8 @@ const submit = () => {
                     id="email"
                     ref="emailInput"
                     type="name"
-                    class="input-bordered"
+                    class="!border-transparent"
+                    classes="!bg-base-100"
                     autocomplete="email"
                     required
                     v-model="form.email"

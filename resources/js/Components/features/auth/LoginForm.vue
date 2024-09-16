@@ -45,7 +45,7 @@ const reset = () => {
                 ref="emailInput"
                 type="email"
                 class="!border-transparent"
-                classes="input input-bordered mt-4"
+                classes="mt-4"
                 placeholder="Email"
                 :error="form.errors.email"
                 v-model="form.email"
@@ -53,9 +53,9 @@ const reset = () => {
                 autocomplete="email"
             >
                 <FontAwesomeIcon
-                    class="text-neutral-400"
+                    class="text-neutral-500"
                     :icon="faEnvelope"
-                    size="xs"
+                    size="sm"
                     fixed-width
                 />
             </FormInput>
@@ -65,16 +65,16 @@ const reset = () => {
                 ref="passwordInput"
                 type="password"
                 class="!border-transparent"
-                classes="input input-bordered mt-4"
+                classes="mt-4"
                 :error="form.errors.password"
                 v-model="form.password"
                 placeholder="Password"
                 autocomplete="current-password"
             >
                 <FontAwesomeIcon
-                    class="text-neutral-400"
+                    class="text-neutral-500"
                     :icon="faKey"
-                    size="xs"
+                    size="sm"
                     fixed-width
                 />
             </FormInput>

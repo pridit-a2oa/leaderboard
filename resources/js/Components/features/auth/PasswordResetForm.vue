@@ -42,7 +42,7 @@ const submit = () => {
                 id="reset-email"
                 type="email"
                 class="!border-transparent"
-                classes="input input-bordered mt-4"
+                classes="mt-4"
                 placeholder="Email"
                 :error="form.errors.email"
                 v-model="form.email"
@@ -51,9 +51,9 @@ const submit = () => {
                 readonly
             >
                 <FontAwesomeIcon
-                    class="text-neutral-400"
+                    class="text-neutral-500"
                     :icon="faEnvelope"
-                    size="xs"
+                    size="sm"
                     fixed-width
                 />
             </FormInput>
@@ -62,16 +62,16 @@ const submit = () => {
                 id="reset-password"
                 type="password"
                 class="!border-transparent"
-                classes="input input-bordered mt-4"
+                classes="mt-4"
                 :error="form.errors.password"
                 v-model="form.password"
                 placeholder="New Password"
                 required
             >
                 <FontAwesomeIcon
-                    class="text-neutral-400"
+                    class="text-neutral-500"
                     :icon="faKey"
-                    size="xs"
+                    size="sm"
                     fixed-width
                 />
             </FormInput>
@@ -80,16 +80,16 @@ const submit = () => {
                 id="reset-password_confirmation"
                 type="password"
                 class="!border-transparent"
-                classes="input input-bordered mt-4"
+                classes="mt-4"
                 :error="form.errors.password_confirmation"
                 v-model="form.password_confirmation"
                 placeholder="Confirm New Password"
                 required
             >
                 <FontAwesomeIcon
-                    class="text-neutral-400"
+                    class="text-neutral-500"
                     :icon="faKey"
-                    size="xs"
+                    size="sm"
                     fixed-width
                 />
             </FormInput>

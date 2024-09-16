@@ -43,7 +43,8 @@ const submit = () => {
                     <FormInput
                         id="current_password"
                         type="password"
-                        class="input-bordered"
+                        class="!border-transparent"
+                        classes="!bg-base-100"
                         ref="currentPasswordInput"
                         placeholder="&#9679;&#9679;&#9679;"
                         v-model="form.current_password"
@@ -61,7 +62,8 @@ const submit = () => {
                     <FormInput
                         id="password"
                         type="password"
-                        class="input-bordered"
+                        class="!border-transparent"
+                        classes="!bg-base-100"
                         placeholder="&#9679;&#9679;&#9679;"
                         v-model="form.password"
                         required
@@ -77,7 +79,8 @@ const submit = () => {
                     <FormInput
                         id="password_confirmation"
                         type="password"
-                        class="input-bordered"
+                        class="!border-transparent"
+                        classes="!bg-base-100"
                         placeholder="&#9679;&#9679;&#9679;"
                         v-model="form.password_confirmation"
                         :error="form.errors.password_confirmation"
