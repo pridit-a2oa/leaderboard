@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('mutes', function (Blueprint $table) {
             $table->id();
             $table->string('guid')->unique();
+            $table->enum('reason', ['advertising', 'disruptive', 'toxic'])->nullable();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
