@@ -45,8 +45,9 @@ class CharacterTest extends DuskTestCase
 
             $browser->loginAs($user)
                 ->visit('/')
+                ->assertPresent('@link-button')
                 ->press('LINK')
-                ->waitUntilMissing('#nprogress')
+                ->waitForText('YOU')
                 ->assertSee('YOU');
         });
     }
@@ -78,14 +79,15 @@ class CharacterTest extends DuskTestCase
 
             $browser->loginAs($user)
                 ->visit('/')
-                ->assertSee('YOU')
+                ->assertMissing('@link-button')
                 ->visit('/settings/characters')
                 ->click('@unlink-button')
                 ->waitUntilMissing('#nprogress')
                 ->assertSee('You have no linked characters')
                 ->visit('/')
+                ->assertPresent('@link-button')
                 ->press('LINK')
-                ->waitUntilMissing('#nprogress')
+                ->waitForText('YOU')
                 ->assertSee('YOU');
         });
     }
@@ -135,10 +137,10 @@ class CharacterTest extends DuskTestCase
         });
     }
 
-    public function test_can_reset_character_as_supporter(): void
+    public function test_can_reset_character_statistics_as_supporter(): void
     {
         $this->browse(function (Browser $browser) {
-            $user = User::factory()->hasCharacters(['guid' => '1'])
+            $user = User::factory()->has(Character::factory(['guid' => '1'])->hasStatistics())
                 ->hasAttached(
                     Connection::factory(),
                     ['identifier' => '1']
@@ -152,10 +154,10 @@ class CharacterTest extends DuskTestCase
                 ->visit('/')
                 ->assertSee($character)
                 ->visit('/settings/characters')
+                ->assertPresent('@reset-button')
                 ->click('@reset-button')
                 ->waitUntilMissing('#nprogress')
-                ->visit('/')
-                ->assertSee('No records found');
+                ->assertMissing('@reset-button');
         });
     }
 }

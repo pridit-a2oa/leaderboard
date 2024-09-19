@@ -30,6 +30,7 @@ const linkCharacter = () => {
         }"
         :disabled="form.processing"
         v-on="id ? { click: linkCharacter } : {}"
+        dusk="link-button"
     >
         <FontAwesomeIcon class="mr-1" :icon="faUser" size="2xs" fixed-width />
 
