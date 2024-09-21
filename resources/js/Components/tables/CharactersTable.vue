@@ -214,7 +214,6 @@ function getMovementRank(rank) {
                         <div class="indicator align-middle">
                             <div class="h-7 w-7 rounded-full bg-base-100">
                                 <img
-                                    v-if="!character.is_muted"
                                     class="select-none self-center rounded-full text-[0rem]"
                                     :src="
                                         character.user.gravatar_url ??
