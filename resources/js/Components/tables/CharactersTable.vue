@@ -10,11 +10,11 @@ import {
     faChevronDown,
     faChevronUp,
     faCircle,
-    faCommentSlash,
     faHand,
     faHeart,
     faLock,
     faMinus,
+    faTriangleExclamation,
     faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
@@ -70,7 +70,6 @@ function getMovementRank(rank) {
         <thead>
             <tr class="bg-base-100">
                 <th class="w-0 text-right">Score</th>
-                <th class="hidden w-0 md:table-cell"></th>
                 <th></th>
                 <th class="w-0"></th>
                 <th class="w-0">Rank</th>
@@ -99,64 +98,17 @@ function getMovementRank(rank) {
                         {{ character.formatted_score ?? '&dash;' }}
                     </td>
 
-                    <td class="hidden text-right md:table-cell">
-                        <template
-                            v-if="
-                                $page.props.auth.user !== null &&
-                                $page.props.auth.user.connections.some(
-                                    (e) =>
-                                        e.pivot.identifier === character.guid,
-                                )
-                            "
-                        >
-                            <Link
-                                v-if="
-                                    $page.props.auth.user !== null &&
-                                    $page.props.auth.user.characters.some(
-                                        (e) => e.id === character.id,
-                                    )
-                                "
-                                class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"
-                                :href="route('user.setting.characters')"
-                            >
-                                You
-                            </Link>
-
-                            <template v-else>
-                                <Link
-                                    v-if="
-                                        $page.props.roles.includes('member') &&
-                                        $page.props.auth.user.characters
-                                            .length > 0
-                                    "
-                                    dir="ltr"
-                                    class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
-                                    :href="route('user.setting.extras')"
-                                >
-                                    <FontAwesomeIcon
-                                        class="mr-1"
-                                        :icon="faLock"
-                                        size="2xs"
-                                        fixed-width
-                                    />
-
-                                    Link
-                                </Link>
-
-                                <LinkBadge v-else :id="character.id" />
-                            </template>
-                        </template>
-                    </td>
-
                     <td
                         dir="ltr"
-                        class="grid grid-rows-2 p-0 px-2 py-3 text-left"
-                        :class="{
-                            'cursor-pointer': character.statistics,
-                        }"
-                        @click="character.statistics ? toggle(key) : null"
+                        class="grid grid-flow-col grid-cols-1 grid-rows-2 p-0 px-2 py-3 text-left"
                     >
-                        <span class="truncate">
+                        <span
+                            class="truncate"
+                            :class="{
+                                'cursor-pointer': character.statistics,
+                            }"
+                            @click="character.statistics ? toggle(key) : null"
+                        >
                             <FontAwesomeIcon
                                 v-if="character.statistics"
                                 class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
@@ -166,9 +118,8 @@ function getMovementRank(rank) {
                             />
 
                             <span :title="character.name">
-                                {{ character.name ?? 'Anonymous' }}
-
-                                <a
+                                {{ character.name ?? 'Anonymous'
+                                }}<a
                                     v-if="
                                         character.guid && !character.is_hidden
                                     "
@@ -178,7 +129,7 @@ function getMovementRank(rank) {
                                     @click.stop
                                 >
                                     <FontAwesomeIcon
-                                        class="ml-0.5 !align-middle text-neutral-400 opacity-0 transition ease-in-out group-hover:opacity-100"
+                                        class="ml-1 !align-middle text-neutral-400 opacity-0 transition ease-in-out group-hover:opacity-100"
                                         :icon="faSteam"
                                         title="Steam Community Profile"
                                         fixed-width
@@ -194,18 +145,74 @@ function getMovementRank(rank) {
                                 character.formatted_last_seen_at ?? 'n/a'
                             }}</span
                         >
+
+                        <div
+                            class="col-span-1 row-span-2 ml-4 hidden self-center md:table-cell"
+                        >
+                            <template
+                                v-if="
+                                    $page.props.auth.user !== null &&
+                                    $page.props.auth.user.connections.some(
+                                        (e) =>
+                                            e.pivot.identifier ===
+                                            character.guid,
+                                    )
+                                "
+                            >
+                                <Link
+                                    v-if="
+                                        $page.props.auth.user !== null &&
+                                        $page.props.auth.user.characters.some(
+                                            (e) => e.id === character.id,
+                                        )
+                                    "
+                                    class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"
+                                    :href="route('user.setting.characters')"
+                                >
+                                    You
+                                </Link>
+
+                                <template v-else>
+                                    <Link
+                                        v-if="
+                                            $page.props.roles.includes(
+                                                'member',
+                                            ) &&
+                                            $page.props.auth.user.characters
+                                                .length > 0
+                                        "
+                                        dir="ltr"
+                                        class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
+                                        :href="route('user.setting.extras')"
+                                    >
+                                        <FontAwesomeIcon
+                                            class="mr-1"
+                                            :icon="faLock"
+                                            size="2xs"
+                                            fixed-width
+                                        />
+
+                                        Link
+                                    </Link>
+
+                                    <LinkBadge v-else :id="character.id" />
+                                </template>
+                            </template>
+
+                            <FontAwesomeIcon
+                                v-if="character.is_muted"
+                                class="ml-2 !align-middle text-warning/70"
+                                :icon="faTriangleExclamation"
+                                size="lg"
+                                title="This player is banned from text chat"
+                                fixed-width
+                            />
+                        </div>
                     </td>
 
-                    <td dir="ltr" class="px-2">
+                    <td dir="ltr" class="px-1.5">
                         <div class="indicator align-middle">
-                            <div
-                                class="h-6 w-6 rounded-full bg-base-100"
-                                :class="{
-                                    'tooltip tooltip-bottom tooltip-secondary before:text-xs':
-                                        character.is_muted,
-                                }"
-                                data-tip="This player is banned from text chat"
-                            >
+                            <div class="h-7 w-7 rounded-full bg-base-100">
                                 <img
                                     v-if="!character.is_muted"
                                     class="select-none self-center rounded-full text-[0rem]"
@@ -218,13 +225,6 @@ function getMovementRank(rank) {
                                     loading="lazy"
                                     onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
                                 />
-
-                                <FontAwesomeIcon
-                                    v-else
-                                    class="cursor-pointer text-red-400 opacity-60"
-                                    :icon="faCommentSlash"
-                                    transform="down-3"
-                                />
                             </div>
 
                             <span
@@ -232,7 +232,7 @@ function getMovementRank(rank) {
                                     character.user.role === 'supporter' &&
                                     character.is_highest_score
                                 "
-                                class="indicator-item indicator-start indicator-bottom cursor-pointer"
+                                class="indicator-item indicator-start indicator-bottom"
                                 title="Supporter"
                             >
                                 <FontAwesomeLayers>
@@ -240,14 +240,14 @@ function getMovementRank(rank) {
                                         class="z-10 text-role-supporter opacity-80"
                                         :icon="faHeart"
                                         size="lg"
-                                        transform="right-6 shrink-6"
+                                        transform="right-8 shrink-6"
                                     />
 
                                     <FontAwesomeIcon
                                         class="text-base-300"
                                         :icon="faCircle"
                                         size="lg"
-                                        transform="right-6"
+                                        transform="right-8"
                                     />
                                 </FontAwesomeLayers>
                             </span>
