@@ -27,7 +27,7 @@ services:
             - selenium
     mysql:
         image: 'mysql/mysql-server:8.0'
-        command: mysqld --default-authentication-plugin=mysql_native_password
+        command: 'mysqld --default-authentication-plugin=mysql_native_password'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
@@ -55,7 +55,7 @@ services:
         networks:
             - sail
     selenium:
-        image: 'selenium/standalone-chrome'
+        image: selenium/standalone-chrome
         shm_size: 2gb
         ports:
             - '${FORWARD_SELENIUM_PORT:-4444}:4444'
