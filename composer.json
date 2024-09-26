@@ -2,10 +2,13 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "creativeorange/gravatar": "^1.0",
         "ilzrv/laravel-steam-auth": "^3.1",
         "inertiajs/inertia-laravel": "^1.3",
