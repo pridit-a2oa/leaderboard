@@ -199,14 +199,16 @@ function getMovementRank(rank) {
                                 </template>
                             </template>
 
-                            <FontAwesomeIcon
-                                v-if="character.is_muted"
-                                class="ml-2 !align-middle text-warning/70"
-                                :icon="faTriangleExclamation"
-                                size="lg"
-                                title="This player is banned from text chat"
-                                fixed-width
-                            />
+                            <template v-else>
+                                <FontAwesomeIcon
+                                    v-if="character.is_muted"
+                                    class="ml-2 !align-middle text-warning/70"
+                                    :icon="faTriangleExclamation"
+                                    size="lg"
+                                    title="This player is banned from text chat"
+                                    fixed-width
+                                />
+                            </template>
                         </div>
                     </td>
 
