@@ -40,11 +40,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
+            test: ['CMD', 'mysqladmin', 'ping', '-p${DB_PASSWORD}']
             retries: 3
             timeout: 5s
     mailpit:
@@ -55,7 +51,7 @@ services:
         networks:
             - sail
     selenium:
-        image: selenium/standalone-chrome
+        image: 'selenium/standalone-chromium'
         shm_size: 2gb
         ports:
             - '${FORWARD_SELENIUM_PORT:-4444}:4444'
