@@ -10,7 +10,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Settings" />
+    <Head title="Settings &#x2022; Account" />
 
     <DefaultLayout>
         <UserSettings title="Account">

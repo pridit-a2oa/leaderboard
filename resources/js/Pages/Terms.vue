@@ -6,7 +6,7 @@ import { Head, Link } from '@inertiajs/vue3';
 
 <template>
     <DefaultLayout>
-        <Head title="Terms of Use" />
+        <Head title="Leaderboard &#x2022; Terms of Use" />
 
         <div class="flex flex-col gap-6">
             <h1>Terms of Use</h1>

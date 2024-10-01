@@ -13,7 +13,7 @@ const deleteUserRequest = () => {
 </script>
 
 <template>
-    <Head title="Settings" />
+    <Head title="Settings &#x2022; Delete Account" />
 
     <DefaultLayout>
         <UserSettings title="Delete Account">

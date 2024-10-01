@@ -13,7 +13,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Settings" />
+    <Head title="Settings &#x2022; Characters" />
 
     <DefaultLayout>
         <UserSettings title="Characters">

@@ -5,7 +5,7 @@ import { Head, Link } from '@inertiajs/vue3';
 
 <template>
     <DefaultLayout>
-        <Head title="Privacy Policy" />
+        <Head title="Leaderboard &#x2022; Privacy Policy" />
 
         <div class="flex flex-col gap-6">
             <h1>Privacy Policy</h1>

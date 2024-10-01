@@ -26,7 +26,7 @@ const benefits = usePage().props.roles.some((role) =>
 </script>
 
 <template>
-    <Head title="Settings" />
+    <Head title="Settings &#x2022; Extras" />
 
     <DefaultLayout>
         <UserSettings title="Extras">

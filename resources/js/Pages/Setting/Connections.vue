@@ -19,7 +19,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Settings" />
+    <Head title="Settings &#x2022; Connections" />
 
     <DefaultLayout>
         <UserSettings title="Connections">
