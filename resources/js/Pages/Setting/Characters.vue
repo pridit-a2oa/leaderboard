@@ -7,7 +7,7 @@ import {
 } from '@/Components/features/character';
 import { UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faPerson } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head } from '@inertiajs/vue3';
 </script>
@@ -38,9 +38,8 @@ import { Head } from '@inertiajs/vue3';
                         <td class="w-0">
                             <FontAwesomeIcon
                                 class="!align-middle"
-                                :icon="faUser"
-                                size="sm"
-                                fixed-width
+                                :icon="faPerson"
+                                size="lg"
                             />
                         </td>
 
