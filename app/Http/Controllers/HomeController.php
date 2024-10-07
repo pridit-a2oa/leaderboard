@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CharacterResource;
 use App\Models\Character;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -18,7 +19,11 @@ class HomeController extends Controller
         return Inertia::render('Home', [
             'characters' => CharacterResource::collection(
                 Character::with('statistics', 'user')
-                    ->rankable()
+                    ->when(! auth()->check() || ! auth()->user()->hasRole('admin'), function (Builder $query) {
+                        $query->rankable();
+                    })
+                    ->orderByDesc('score')
+                    ->orderBy('last_seen_at')
                     ->paginate(50)
                     ->onEachSide(1)
             )->additional([
