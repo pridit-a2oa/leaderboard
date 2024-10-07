@@ -209,7 +209,11 @@ function getMovementRank(rank) {
                                     fixed-width
                                 />
 
-                                <CopyButton v-else :value="character.guid" />
+                                <CopyButton
+                                    v-else
+                                    class="opacity-[.01] transition ease-in-out group-hover:opacity-100"
+                                    :value="character.guid"
+                                />
                             </template>
                         </div>
                     </td>
