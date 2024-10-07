@@ -134,9 +134,7 @@ class Character extends Model
                     ->orWhereHas('user.roles', function (Builder $query) {
                         $query->whereIn('role_id', [2, 3]);
                     });
-            })
-            ->orderByDesc('score')
-            ->orderBy('last_seen_at');
+            });
     }
 
     /**
