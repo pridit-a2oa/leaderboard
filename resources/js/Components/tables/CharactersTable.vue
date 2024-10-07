@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useGrid } from 'vue-screen';
 import { BaseTable } from '@/Components/base';
+import { CopyButton } from '@/Components/buttons';
 import { LinkBadge } from '@/Components/features/character';
 import { StatisticsTable } from '@/Components/tables';
 import {
@@ -123,7 +124,6 @@ function getMovementRank(rank) {
                                     v-if="
                                         character.guid && !character.is_hidden
                                     "
-                                    class=""
                                     :href="`https://steamcommunity.com/profiles/${character.guid}`"
                                     target="_blank"
                                     @click.stop
@@ -202,12 +202,14 @@ function getMovementRank(rank) {
                             <template v-else>
                                 <FontAwesomeIcon
                                     v-if="character.is_muted"
-                                    class="ml-2 !align-middle text-warning/70"
+                                    class="ml-2 !align-middle text-warning/75"
                                     :icon="faTriangleExclamation"
                                     size="lg"
-                                    title="This player is banned from text chat"
+                                    title="This player is chat banned"
                                     fixed-width
                                 />
+
+                                <CopyButton v-else :value="character.guid" />
                             </template>
                         </div>
                     </td>
@@ -300,7 +302,7 @@ function getMovementRank(rank) {
                             v-else
                             class="!align-middle text-teal-500"
                             :icon="faHand"
-                            title="!I'm new"
+                            title="I'm new/returning"
                             transform="rotate-45"
                             fixed-width
                         />

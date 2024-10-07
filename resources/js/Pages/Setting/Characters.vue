@@ -35,7 +35,7 @@ import { Head } from '@inertiajs/vue3';
                         :key="character.id"
                         class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                     >
-                        <td class="w-0">
+                        <td class="w-0 pr-3">
                             <FontAwesomeIcon
                                 class="!align-middle"
                                 :icon="faPerson"
@@ -44,7 +44,7 @@ import { Head } from '@inertiajs/vue3';
                         </td>
 
                         <td
-                            class="truncate pr-2 font-bold text-neutral-500 hover:text-clip hover:whitespace-normal hover:break-all"
+                            class="truncate pr-2 text-neutral-500 hover:text-clip hover:whitespace-normal hover:break-all"
                         >
                             <span class="text-neutral-300">{{
                                 character.name

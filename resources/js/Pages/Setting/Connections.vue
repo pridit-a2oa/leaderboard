@@ -47,7 +47,7 @@ defineProps({
                         </td>
 
                         <td class="p-0">
-                            <span class="font-semibold">
+                            <span>
                                 {{ connection.formatted_name }}
                             </span>
 
