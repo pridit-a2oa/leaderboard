@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { useGrid } from 'vue-screen';
 import { BaseTable } from '@/Components/base';
 import { CopyButton } from '@/Components/buttons';
 import { LinkBadge } from '@/Components/features/character';
@@ -33,7 +32,6 @@ const props = defineProps({
 });
 
 const open = ref(null);
-const grid = useGrid('tailwind');
 
 function toggle(id) {
     open.value = open.value === id ? null : id;
@@ -106,12 +104,17 @@ function getMovementRank(rank) {
                         <span
                             class="truncate"
                             :class="{
-                                'cursor-pointer': character.statistics,
+                                'cursor-pointer':
+                                    character.relations.statistics,
                             }"
-                            @click="character.statistics ? toggle(key) : null"
+                            @click="
+                                character.relations.statistics
+                                    ? toggle(key)
+                                    : null
+                            "
                         >
                             <FontAwesomeIcon
-                                v-if="character.statistics"
+                                v-if="character.relations.statistics"
                                 class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
                                 size="sm"
@@ -121,9 +124,7 @@ function getMovementRank(rank) {
                             <span :title="character.name">
                                 {{ character.name ?? 'Anonymous'
                                 }}<a
-                                    v-if="
-                                        character.guid && !character.is_hidden
-                                    "
+                                    v-if="character.guid"
                                     :href="`https://steamcommunity.com/profiles/${character.guid}`"
                                     target="_blank"
                                     @click.stop
@@ -212,7 +213,7 @@ function getMovementRank(rank) {
                                 <CopyButton
                                     v-else
                                     class="opacity-[.01] transition ease-in-out group-hover:opacity-100"
-                                    :value="character.guid"
+                                    :value="character.guid ?? ''"
                                 />
                             </template>
                         </div>
@@ -224,7 +225,7 @@ function getMovementRank(rank) {
                                 <img
                                     class="select-none self-center rounded-full text-[0rem]"
                                     :src="
-                                        character.user.gravatar_url ??
+                                        character.relations.user.gravatar_url ??
                                         character.avatar_url ??
                                         'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
                                     "
@@ -236,7 +237,8 @@ function getMovementRank(rank) {
 
                             <span
                                 v-if="
-                                    character.user.role === 'supporter' &&
+                                    character.relations.user.role ===
+                                        'supporter' &&
                                     character.is_highest_score
                                 "
                                 class="indicator-item indicator-start indicator-bottom"
@@ -313,9 +315,11 @@ function getMovementRank(rank) {
                     </td>
                 </tr>
 
-                <tr v-if="character.statistics && key === open">
-                    <td class="p-0" :colspan="grid.md ? 3 : 2">
-                        <StatisticsTable :statistics="character.statistics" />
+                <tr v-if="character.relations.statistics && key === open">
+                    <td class="p-0" :colspan="2">
+                        <StatisticsTable
+                            :statistics="character.relations.statistics"
+                        />
                     </td>
                 </tr>
             </template>
