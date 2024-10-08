@@ -104,7 +104,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->missing('characters.data.0.statistics')
+                ->missing('characters.data.0.relations.statistics')
             );
     }
 
@@ -115,7 +115,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data.0.statistics', 1)
+                ->has('characters.data.0.relations.statistics', 1)
             );
     }
 }
