@@ -35,6 +35,8 @@ class CharacterRanks extends Command
         Cache::add(
             'ranking',
             Character::rankable()
+                ->orderByDesc('score')
+                ->orderBy('last_seen_at')
                 ->get()
                 ->pluck('id')
                 ->values()
