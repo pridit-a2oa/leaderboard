@@ -2,8 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Mute;
+use App\Models\User;
+use App\Models\WebhookCall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Number;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
@@ -35,6 +39,11 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'app' => [
                 'name' => config('app.title', config('app.name')),
+                'statistics' => [
+                    'mutes' => Auth::check() && $request->user()->hasRole('admin') ? Number::abbreviate(Mute::count()) : 0,
+                    'users' => Auth::check() && $request->user()->hasRole('admin') ? Number::abbreviate(User::count()) : 0,
+                    'webhooks' => Auth::check() && $request->user()->hasRole('admin') ? Number::abbreviate(WebhookCall::count()) : 0,
+                ],
             ],
             'auth' => [
                 'user' => $request->user(),

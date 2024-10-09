@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\Character\LinkController;
+use App\Http\Controllers\Admin\AdminMuteController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminWebhookController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\CharacterLinkController;
 use App\Http\Controllers\ConnectionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SteamController;
 use App\Http\Controllers\UserPreferenceController;
+use App\Http\Controllers\UserSettingController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -61,10 +64,10 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::name('link.')
                 ->group(function () {
-                    Route::post('link', [LinkController::class, 'store'])
+                    Route::post('link', [CharacterLinkController::class, 'store'])
                         ->name('store');
 
-                    Route::delete('unlink', [LinkController::class, 'destroy'])
+                    Route::delete('unlink', [CharacterLinkController::class, 'destroy'])
                         ->name('destroy');
                 }
                 );
@@ -82,22 +85,32 @@ Route::middleware('auth')->group(function () {
     Route::name('user.setting.')
         ->prefix('settings')
         ->group(function () {
-            Route::get('/account', [SettingController::class, 'showAccount'])
-                ->name('account');
+            Route::controller(UserSettingController::class)->group(function () {
+                Route::get('/account', 'showAccount')->name('account');
+                Route::get('/extras', 'showExtras')->name('extras');
+                Route::get('/delete', 'showDelete')->name('delete');
 
-            Route::get('/extras', [SettingController::class, 'showExtras'])
-                ->name('extras');
-
-            Route::get('/delete', [SettingController::class, 'showDelete'])
-                ->name('delete');
-
-            Route::middleware('verified:user.setting.account')->group(function () {
-                Route::get('/characters', [SettingController::class, 'showCharacters'])
-                    ->name('characters');
-
-                Route::get('/connections', [SettingController::class, 'showConnections'])
-                    ->name('connections');
+                /**
+                 * Verified
+                 */
+                Route::middleware('verified:user.setting.account')->group(function () {
+                    Route::get('/characters', 'showCharacters')->name('characters');
+                    Route::get('/connections', 'showConnections')->name('connections');
+                });
             });
+
+            /** Admin */
+            Route::middleware('role:admin')
+                ->group(function () {
+                    Route::resource('mutes', AdminMuteController::class)
+                        ->only(['index', 'store', 'update', 'destroy']);
+
+                    Route::resource('users', AdminUserController::class)
+                        ->only(['index']);
+
+                    Route::resource('webhooks', AdminWebhookController::class)
+                        ->only(['index']);
+                });
         });
 
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

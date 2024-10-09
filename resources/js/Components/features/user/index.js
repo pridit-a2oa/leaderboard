@@ -1,5 +1,5 @@
 import UserNavigation from './UserNavigation.vue';
+import UserRoleIcon from './UserRoleIcon.vue';
 import UserSettings from './UserSettings.vue';
-import UserSupporterIcon from './UserSupporterIcon.vue';
 
-export { UserNavigation, UserSettings, UserSupporterIcon };
+export { UserNavigation, UserRoleIcon, UserSettings };

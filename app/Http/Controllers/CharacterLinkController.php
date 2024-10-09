@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Character;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
 use Illuminate\Http\RedirectResponse;
 
-class LinkController extends Controller
+class CharacterLinkController extends Controller
 {
     /**
      * Create a character link.

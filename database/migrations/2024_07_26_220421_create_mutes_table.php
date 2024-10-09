@@ -11,11 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('mute_reasons', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->mediumText('description');
+        });
+
         Schema::create('mutes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('reason_id');
             $table->string('guid')->unique();
-            $table->enum('reason', ['advertising', 'disruptive', 'toxic'])->nullable();
             $table->timestamp('created_at')->useCurrent();
+
+            $table->foreign('reason_id')->references('id')->on('mute_reasons');
         });
     }
 
@@ -25,5 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('mutes');
+        Schema::dropIfExists('mute_reasons');
     }
 };

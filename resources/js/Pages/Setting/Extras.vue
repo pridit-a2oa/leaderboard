@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
-import { UserSettings, UserSupporterIcon } from '@/Components/features/user';
+import { UserRoleIcon, UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -38,7 +38,7 @@ const benefits = usePage().props.roles.some((role) =>
             </a>
 
             <div class="indicator w-auto">
-                <UserSupporterIcon />
+                <UserRoleIcon />
 
                 <table class="table table-fixed rounded-md bg-base-200">
                     <tbody>

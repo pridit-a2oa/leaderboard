@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import { AdminMenu } from '@/Components/features/cms';
 import {
     FontAwesomeIcon,
     FontAwesomeLayers,
@@ -48,7 +49,7 @@ const settings = ref([
                     }"
                 >
                     <Link
-                        class="hover:focus:active:!bg-highlight group px-2"
+                        class="group px-2 hover:focus:active:!bg-highlight"
                         :class="{
                             'bg-highlight': $page.component
                                 .toLowerCase()
@@ -72,7 +73,7 @@ const settings = ref([
                                     setting.type === 'connections' &&
                                     verifiedEmail
                                 "
-                                class="group-hover:bg-highlight indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms]"
+                                class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover:bg-highlight"
                                 :class="{
                                     'bg-highlight': $page.component
                                         .toLowerCase()
@@ -110,7 +111,7 @@ const settings = ref([
             <ul class="menu mt-4 w-44 rounded-md bg-base-200">
                 <li>
                     <Link
-                        class="hover:focus:active:bg-highlight pl-2 !text-error"
+                        class="pl-2 !text-error hover:focus:active:bg-highlight"
                         :class="{
                             'bg-highlight': $page.component.includes('Delete'),
                         }"
@@ -122,10 +123,15 @@ const settings = ref([
                     >
                 </li>
             </ul>
+
+            <AdminMenu />
         </div>
 
-        <div class="ml-6 w-full text-neutral-300">
-            <h2>{{ title }}</h2>
+        <div class="ml-4 w-full text-neutral-300">
+            <div class="mb-4 flex items-center">
+                <h2 class="grow">{{ title }}</h2>
+                <slot name="header"></slot>
+            </div>
             <slot />
         </div>
     </div>
@@ -133,6 +139,6 @@ const settings = ref([
 
 <style scoped>
 h2 {
-    @apply mb-4 text-xl font-semibold;
+    @apply text-xl font-semibold;
 }
 </style>

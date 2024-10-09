@@ -1,5 +1,5 @@
 <script setup>
-import { UserSupporterIcon } from '@/Components/features/user';
+import { UserRoleIcon } from '@/Components/features/user';
 import {
     faBars,
     faCaretDown,
@@ -11,7 +11,7 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <div class="indicator ml-auto hidden md:inline-flex">
-        <UserSupporterIcon />
+        <UserRoleIcon />
 
         <div class="dropdown dropdown-bottom">
             <button class="btn" tabindex="0">

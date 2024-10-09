@@ -5,6 +5,7 @@ import BaseError from './BaseError.vue';
 import BaseInput from './BaseInput.vue';
 import BaseLink from './BaseLink.vue';
 import BaseModal from './BaseModal.vue';
+import BaseSelect from './BaseSelect.vue';
 import BaseTable from './BaseTable.vue';
 
 export {
@@ -15,5 +16,6 @@ export {
   BaseInput,
   BaseLink,
   BaseModal,
+  BaseSelect,
   BaseTable,
 };

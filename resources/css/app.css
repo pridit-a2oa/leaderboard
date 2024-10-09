@@ -25,6 +25,10 @@
         @apply !shadow-none !ring-transparent;
     }
 
+    input[readonly] {
+        @apply cursor-not-allowed text-neutral-500;
+    }
+
     [type='text'],
     input:where(:not([type])),
     [type='email'],
@@ -39,8 +43,7 @@
     [type='time'],
     [type='week'],
     [multiple],
-    textarea,
-    select {
+    textarea {
         @apply !pl-0;
     }
 
