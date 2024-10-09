@@ -64,6 +64,22 @@ class Character extends Model
     }
 
     /**
+     * Determine whether the character is the most recently played out of those
+     * associated with a user.
+     */
+    protected function isMostRecent(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attributes) {
+                return self::where('guid', $attributes['guid'])
+                    ->orderByDesc('last_seen_at')
+                    ->first()
+                    ->id === $attributes['id'];
+            }
+        );
+    }
+
+    /**
      * Interact with the character's score.
      */
     protected function formattedScore(): Attribute

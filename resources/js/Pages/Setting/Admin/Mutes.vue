@@ -177,7 +177,7 @@ const form = useForm({
                                     <FontAwesomeLayersText
                                         class="right-1 select-none !text-left font-bold text-warning"
                                         transform="shrink-4 up-1"
-                                        title="Show/hide characters"
+                                        title="Show/hide character(s) affected"
                                         :value="mute.characters_count"
                                     />
                                 </FontAwesomeLayers>
@@ -212,8 +212,21 @@ const form = useForm({
 
                             <span
                                 class="select-none text-xs text-neutral-500"
-                                >{{ mute.formatted_created_at }}</span
+                                title="Last active"
                             >
+                                <template
+                                    v-if="mute.relations.characters.length > 0"
+                                >
+                                    {{
+                                        mute.relations.characters.find(
+                                            (element) =>
+                                                element.is_most_recent === true,
+                                        ).formatted_last_seen_at
+                                    }}
+                                </template>
+
+                                <template v-else>n/a</template>
+                            </span>
                         </td>
 
                         <td class="w-0 pr-9">

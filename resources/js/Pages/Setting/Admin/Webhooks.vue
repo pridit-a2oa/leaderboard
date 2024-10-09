@@ -21,7 +21,7 @@ defineProps({
             <Alert
                 v-if="webhooks.data.length === 0"
                 type="warning"
-                message="No webhooks found"
+                message="No webhook calls found"
             />
 
             <div v-else>
