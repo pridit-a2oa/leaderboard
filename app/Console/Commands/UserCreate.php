@@ -7,10 +7,10 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
-use function Laravel\Prompts\confirm;
-use function Laravel\Prompts\password;
+use function Laravel\Prompts\form;
+use function Laravel\Prompts\outro;
 use function Laravel\Prompts\select;
-use function Laravel\Prompts\text;
+use function Laravel\Prompts\table;
 
 class UserCreate extends Command
 {
@@ -33,24 +33,30 @@ class UserCreate extends Command
      */
     public function handle()
     {
-        $prompt = [
-            'email' => text(
+        $prompt = form()
+            ->text(
                 label: 'Email address',
-                validate: ['email' => 'required|email|unique:users,email']
-            ),
-
-            'email_verified_at' => confirm(
+                validate: ['email' => 'required|email|unique:users,email'],
+                name: 'email'
+            )
+            ->confirm(
                 label: 'Email is verified',
-                default: false
-            ),
-
-            'password' => Hash::make(password(
+                default: false,
+                name: 'email_verified_at'
+            )
+            ->password(
                 label: 'Password',
-                required: true
-            )),
-        ];
+                required: true,
+                transform: fn (string $value) => Hash::make($value),
+                name: 'password'
+            )
+            ->submit();
 
-        $user = User::create($prompt);
+        $user = User::create([
+            'email' => $prompt['email'],
+            'email_verified_at' => $prompt['email_verified_at'] ?: null,
+            'password' => $prompt['password'],
+        ]);
 
         $role = select(
             label: 'Role',
@@ -59,5 +65,12 @@ class UserCreate extends Command
         );
 
         $user->syncRoles($role);
+
+        table(
+            headers: ['id', 'email', 'password'],
+            rows: [$user->only('id', 'email', 'password')]
+        );
+
+        outro('User created');
     }
 }
