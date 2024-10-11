@@ -9,7 +9,10 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <div class="alert mb-6 hidden rounded-lg md:grid" role="alert">
+    <div
+        class="alert mb-6 hidden rounded-lg border-base-200 bg-base-200 md:grid"
+        role="alert"
+    >
         <RewardIcon :user="$page.props.auth.user" />
 
         <div class="text-sm">

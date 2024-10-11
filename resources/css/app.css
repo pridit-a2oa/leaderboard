@@ -63,6 +63,18 @@
         @apply bg-base-300;
     }
 
+    .alert {
+        @apply border-neutral-600 bg-neutral-700 !text-neutral-300;
+    }
+
+    .alert-info {
+        @apply border-sky-700 bg-sky-800;
+    }
+
+    .alert-warning {
+        @apply border-yellow-700 bg-yellow-800;
+    }
+
     .tooltip::before {
         @apply p-2 font-mono;
     }

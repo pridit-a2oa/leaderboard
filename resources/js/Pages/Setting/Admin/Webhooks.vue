@@ -20,7 +20,6 @@ defineProps({
         <UserSettings title="Webhooks">
             <Alert
                 v-if="webhooks.data.length === 0"
-                type="warning"
                 message="No webhook calls found"
             />
 

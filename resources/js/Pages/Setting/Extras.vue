@@ -9,7 +9,7 @@ import { Head, usePage } from '@inertiajs/vue3';
 
 const extras = ref([
     {
-        type: 'Supporter <span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score. If more linked characters have the same score then most recently active is prioritized.">badge</span>',
+        type: 'Supporter <span class="tooltip-benefit" data-tip="Applies once, to the linked character with the most score. If two linked characters have the same score then most recently active is prioritized.">badge</span>',
     },
     {
         type: '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the last 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
@@ -33,7 +33,7 @@ const benefits = usePage().props.roles.some((role) =>
             <a v-if="!benefits" href="https://ko-fi.com/pridit" target="_blank">
                 <Alert
                     type="info"
-                    message="Support on Ko-fi to unlock additional features"
+                    message="Support on Ko-fi to access additional features"
                 />
             </a>
 

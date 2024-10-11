@@ -140,11 +140,7 @@ const form = useForm({
                 </label>
             </template>
 
-            <Alert
-                v-if="mutes.data.length === 0"
-                type="warning"
-                message="No mutes found"
-            />
+            <Alert v-if="mutes.data.length === 0" message="No mutes found" />
 
             <table v-else class="table mt-2 table-fixed rounded-md bg-base-200">
                 <tbody>
