@@ -34,10 +34,10 @@ const submit = () => {
                     <span class="label-text">Email Address</span>
 
                     <span
-                        class="badge badge-outline label-text label-text-alt badge-sm"
+                        class="badge badge-outline badge-sm"
                         :class="
                             $page.props.auth.user.email_verified_at !== null
-                                ? 'badge-success'
+                                ? 'badge-primary'
                                 : 'badge-error'
                         "
                         >{{
@@ -78,7 +78,7 @@ const submit = () => {
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
-                        Save
+                        Update
                     </SuccessButton>
                 </div>
             </label>

@@ -41,7 +41,7 @@ defineProps({
                         <td class="w-0 text-center">
                             <FontAwesomeIcon
                                 :icon="['fab', connection.icon]"
-                                size="2xl"
+                                size="xl"
                                 fixed-width
                             />
                         </td>

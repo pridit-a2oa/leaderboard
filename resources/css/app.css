@@ -63,10 +63,6 @@
         @apply bg-base-300;
     }
 
-    .label-text {
-        @apply font-bold;
-    }
-
     .tooltip::before {
         @apply p-2 font-mono;
     }

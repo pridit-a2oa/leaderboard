@@ -19,7 +19,6 @@ class MuteResource extends JsonResource
             'reason_id' => $this->reason_id,
             'guid' => $this->guid,
             'characters_count' => min($this->characters_count, 99),
-            'formatted_created_at' => $this->formatted_created_at,
             'relations' => [
                 'characters' => CharacterResource::collection($this->whenLoaded('characters')),
                 'reason' => $this->reason,

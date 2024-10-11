@@ -15,7 +15,7 @@ class PreferenceSeeder extends Seeder
         Preference::insert([
             [
                 'name' => 'gravatar',
-                'description' => 'Override <span class="font-bold">Steam</span> avatar with <component-link title="Gravatar" href="https://support.gravatar.com/basic/where-appear/" size="2xs"></component-link> for my linked characters (visible to everyone)',
+                'description' => 'Override avatar with <component-link title="Gravatar" href="https://support.gravatar.com/basic/where-appear/" size="2xs"></component-link> for my linked characters (visible to everyone)',
             ],
         ]);
     }
