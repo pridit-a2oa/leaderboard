@@ -3,7 +3,7 @@ defineProps({
     type: {
         type: String,
         validator(value) {
-            return ['danger', 'info', 'success', 'warning'].includes(value);
+            return ['error', 'info', 'success', 'warning'].includes(value);
         },
     },
     message: {

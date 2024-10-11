@@ -10,10 +10,8 @@
 .container {
     max-width: 590px;
     min-width: 320px;
-}
 
-@media (width <= 767px) {
-    .container {
+    @media (width <= 767px) {
         max-width: 387px;
     }
 }
@@ -53,38 +51,54 @@
 }
 
 @layer components {
-    .btn {
-        @apply border-0;
-    }
-
-    .btn.btn-disabled,
-    .btn[disabled],
-    .btn:disabled {
-        @apply bg-base-300;
-    }
-
     .alert {
         @apply border-neutral-600 bg-neutral-700 !text-neutral-300;
+
+        &-info {
+            @apply border-sky-700 bg-sky-800;
+        }
+
+        &-success {
+            @apply border-green-700 bg-green-800;
+        }
+
+        &-warning {
+            @apply border-yellow-700 bg-yellow-800;
+        }
+
+        &-error {
+            @apply border-red-800 bg-red-900;
+        }
     }
 
-    .alert-info {
-        @apply border-sky-700 bg-sky-800;
+    .btn {
+        @apply border-0;
+
+        &-disabled,
+        &[disabled],
+        &:disabled {
+            @apply bg-base-300;
+        }
+
+        &-success {
+            @apply bg-green-800 text-xs text-neutral-200 hover:bg-green-900;
+        }
     }
 
-    .alert-warning {
-        @apply border-yellow-700 bg-yellow-800;
-    }
+    .tooltip {
+        &::before {
+            @apply p-2 font-mono;
+        }
 
-    .tooltip::before {
-        @apply p-2 font-mono;
-    }
+        &-benefit {
+            @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light;
+        }
 
-    .tooltip-benefit {
-        @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light;
-    }
-
-    .tooltip-error::before {
-        @apply text-neutral-200;
+        &-error {
+            &::before {
+                @apply p-2 font-mono;
+            }
+        }
     }
 
     .underlined-link {

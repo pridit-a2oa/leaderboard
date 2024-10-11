@@ -4,7 +4,7 @@ import { BaseButton } from '@/Components/base';
 
 <template>
     <BaseButton
-        class="no-animation btn-sm bg-green-800 font-normal text-neutral-200 hover:bg-green-700"
+        class="btn-success no-animation btn-sm font-normal"
         v-bind="$attrs"
     >
         <slot />

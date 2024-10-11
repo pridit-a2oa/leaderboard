@@ -19,7 +19,7 @@ const deleteUserRequest = () => {
         <UserSettings title="Delete Account">
             <Alert
                 v-if="form.processing || $page.props.auth.user.delete_token"
-                type="warning"
+                type="success"
                 message="Please check your email for a confirmation link"
             />
 
