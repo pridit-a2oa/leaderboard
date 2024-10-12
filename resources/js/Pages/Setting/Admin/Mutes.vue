@@ -203,7 +203,7 @@ const form = useForm({
                             </span>
 
                             <span>{{
-                                mute.relations.reason.formatted_name
+                                reasons[mute.reason_id - 1].formatted_name
                             }}</span>
 
                             <span
@@ -214,10 +214,20 @@ const form = useForm({
                                     v-if="mute.relations.characters.length > 0"
                                 >
                                     {{
-                                        mute.relations.characters.find(
-                                            (element) =>
-                                                element.is_most_recent === true,
-                                        ).formatted_last_seen_at
+                                        mute.relations.characters.filter(
+                                            (e) =>
+                                                Math.max(
+                                                    ...mute.relations.characters.map(
+                                                        (e) =>
+                                                            new Date(
+                                                                e.last_seen_at,
+                                                            ),
+                                                    ),
+                                                ) ===
+                                                new Date(
+                                                    e.last_seen_at,
+                                                ).getTime(),
+                                        )[0].formatted_last_seen_at
                                     }}
                                 </template>
 

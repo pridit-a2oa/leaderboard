@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { UserRoleIcon, UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
 
@@ -12,7 +12,7 @@ const extras = ref([
         type: 'Supporter <span class="tooltip-benefit" data-tip="Applies once, to the linked character with the most score. If two linked characters have the same score then most recently active is prioritized.">badge</span>',
     },
     {
-        type: '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the last 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
+        type: '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the past 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
     },
     { type: 'Multiple character linking' },
     {
@@ -20,9 +20,11 @@ const extras = ref([
     },
 ]);
 
-const benefits = usePage().props.roles.some((role) =>
-    ['admin', 'supporter'].includes(role),
-);
+const icon = {
+    'member': [faXmark, 'text-error'],
+    'supporter': [faCheck, 'text-success'],
+    'admin': [faMinus, 'text-neutral-500'],
+};
 </script>
 
 <template>
@@ -30,7 +32,11 @@ const benefits = usePage().props.roles.some((role) =>
 
     <DefaultLayout>
         <UserSettings title="Extras">
-            <a v-if="!benefits" href="https://ko-fi.com/pridit" target="_blank">
+            <a
+                v-if="$page.props.roles.includes('member')"
+                href="https://ko-fi.com/pridit"
+                target="_blank"
+            >
                 <Alert
                     type="info"
                     message="Support on Ko-fi to access additional features"
@@ -49,12 +55,8 @@ const benefits = usePage().props.roles.some((role) =>
                             <td class="w-0">
                                 <FontAwesomeIcon
                                     class="!align-middle"
-                                    :class="[
-                                        benefits
-                                            ? 'text-success'
-                                            : 'text-error',
-                                    ]"
-                                    :icon="benefits ? faCheck : faXmark"
+                                    :class="icon[$page.props.roles[0]][1]"
+                                    :icon="icon[$page.props.roles[0]][0]"
                                     size="lg"
                                     transform="shrink-1"
                                 />

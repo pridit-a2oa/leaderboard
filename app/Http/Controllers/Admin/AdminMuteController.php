@@ -19,9 +19,12 @@ class AdminMuteController extends SettingController
     {
         return Inertia::render('Setting/Admin/Mutes', [
             'mutes' => MuteResource::collection(
-                Mute::withCount('characters')->get()->sortByDesc('created_at')
+                Mute::with('characters')
+                    ->withCount('characters')
+                    ->orderByDesc('created_at')
+                    ->get()
             ),
-            'reasons' => MuteReason::get(),
+            'reasons' => MuteReason::all(),
         ]
             + $this->metadata()
         );

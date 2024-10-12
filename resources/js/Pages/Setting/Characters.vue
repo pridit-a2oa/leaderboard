@@ -7,9 +7,13 @@ import {
 } from '@/Components/features/character';
 import { UserSettings } from '@/Components/features/user';
 import { Alert } from '@/Components/ui';
-import { faPerson } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faCircle, faHeart, faPerson } from '@fortawesome/free-solid-svg-icons';
+import {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+} from '@fortawesome/vue-fontawesome';
 import { Head } from '@inertiajs/vue3';
+import { isHighestScore } from '@/utils';
 </script>
 
 <template>
@@ -35,11 +39,34 @@ import { Head } from '@inertiajs/vue3';
                         class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                     >
                         <td class="w-0 pr-3">
-                            <FontAwesomeIcon
-                                class="!align-middle"
-                                :icon="faPerson"
-                                size="lg"
-                            />
+                            <FontAwesomeLayers>
+                                <FontAwesomeIcon :icon="faPerson" size="xl" />
+
+                                <template
+                                    v-if="
+                                        $page.props.roles.includes(
+                                            'supporter',
+                                        ) &&
+                                        isHighestScore(
+                                            $page.props.auth.user.characters,
+                                            character,
+                                        )
+                                    "
+                                >
+                                    <FontAwesomeIcon
+                                        class="z-10 text-role-supporter opacity-80"
+                                        :icon="faHeart"
+                                        transform="right-7 down-11 shrink-6"
+                                    />
+
+                                    <FontAwesomeIcon
+                                        class="text-base-200"
+                                        :icon="faCircle"
+                                        size="sm"
+                                        transform="right-6 down-11"
+                                    />
+                                </template>
+                            </FontAwesomeLayers>
                         </td>
 
                         <td

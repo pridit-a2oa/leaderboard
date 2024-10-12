@@ -45,10 +45,10 @@ Generate an application key:
 sail artisan key:generate
 ```
 
-Run the migrations and seed the database:
+Run the migrations, which will also seed the database:
 
 ```
-sail artisan migrate && sail artisan db:seed
+sail artisan migrate:fresh
 ```
 
 ### Ready
@@ -95,7 +95,7 @@ docker run -d \
     leaderboard
 ```
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will vary depending on other containers or the services you want to use (e.g. Mailgun/managed database).
 
 ## Issues
@@ -132,7 +132,7 @@ While running Dusk tests Selenium can be observed using noVNC via:
 
 -   http://localhost:7900/?autoconnect=1&resize=scale&password=secret
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Dusk will not work with [Vite](http://localhost:5173/) running, so ensure it is off prior to running this test suite.
 
 ## License

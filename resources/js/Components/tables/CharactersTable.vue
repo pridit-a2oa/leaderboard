@@ -23,6 +23,7 @@ import {
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 import { Link } from '@inertiajs/vue3';
+import { isHighestScore } from '@/utils';
 
 const props = defineProps({
     characters: {
@@ -105,16 +106,16 @@ function getMovementRank(rank) {
                             class="truncate"
                             :class="{
                                 'cursor-pointer':
-                                    character.relations.statistics,
+                                    character.relations.statistics.length > 0,
                             }"
                             @click="
-                                character.relations.statistics
+                                character.relations.statistics.length > 0
                                     ? toggle(key)
                                     : null
                             "
                         >
                             <FontAwesomeIcon
-                                v-if="character.relations.statistics"
+                                v-if="character.relations.statistics.length > 0"
                                 class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
                                 size="sm"
@@ -239,7 +240,7 @@ function getMovementRank(rank) {
                                 v-if="
                                     character.relations.user.role ===
                                         'supporter' &&
-                                    character.is_highest_score
+                                    isHighestScore(characters.data, character)
                                 "
                                 class="indicator-item indicator-start indicator-bottom"
                                 title="Supporter"
@@ -315,7 +316,12 @@ function getMovementRank(rank) {
                     </td>
                 </tr>
 
-                <tr v-if="character.relations.statistics && key === open">
+                <tr
+                    v-if="
+                        character.relations.statistics.length > 0 &&
+                        key === open
+                    "
+                >
                     <td class="p-0" :colspan="2">
                         <StatisticsTable
                             :statistics="character.relations.statistics"

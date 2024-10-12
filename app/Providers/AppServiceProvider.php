@@ -4,10 +4,13 @@ namespace App\Providers;
 
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Console\Events\CommandStarting;
+use Illuminate\Database\Events\DatabaseRefreshed;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\PermissionRegistrar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -70,5 +73,15 @@ class AppServiceProvider extends ServiceProvider
                 Log::info(sprintf('[%s] Finished', $event->command));
             }
         });
+
+        if (! $this->app->environment('dusk')) {
+            // Seed database on refreshes
+            Event::listen(DatabaseRefreshed::class, function () {
+                Artisan::call('db:seed');
+
+                // Reset cached roles and permissions
+                $this->app->make(PermissionRegistrar::class)->forgetCachedPermissions();
+            });
+        }
     }
 }

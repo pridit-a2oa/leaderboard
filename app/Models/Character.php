@@ -30,6 +30,15 @@ class Character extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'mute',
+    ];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -39,44 +48,6 @@ class Character extends Model
         return [
             'is_hidden' => 'boolean',
         ];
-    }
-
-    /**
-     * Determine whether the character has the highest score. On clashes,
-     * resolve by basing from last seen.
-     */
-    protected function isHighestScore(): Attribute
-    {
-        return Attribute::make(
-            get: function (mixed $value, array $attributes) {
-                if ($this->user->characters->where('is_hidden', 0)->count() === 0) {
-                    return false;
-                }
-
-                return $this->user->characters
-                    ->where('is_hidden', 0)
-                    ->sortByDesc('last_seen_at')
-                    ->sortByDesc('score')
-                    ->first()
-                    ->id === $attributes['id'];
-            }
-        );
-    }
-
-    /**
-     * Determine whether the character is the most recently played out of those
-     * associated with a user.
-     */
-    protected function isMostRecent(): Attribute
-    {
-        return Attribute::make(
-            get: function (mixed $value, array $attributes) {
-                return self::where('guid', $attributes['guid'])
-                    ->orderByDesc('last_seen_at')
-                    ->first()
-                    ->id === $attributes['id'];
-            }
-        );
     }
 
     /**

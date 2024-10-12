@@ -25,21 +25,25 @@ const deleteUserRequest = () => {
 
             <div class="flex flex-col gap-6 rounded-md bg-base-200 p-4 text-sm">
                 <p>
-                    By performing an account deletion the following will be
-                    impacted:
+                    Be aware that by performing an account deletion the
+                    following will be impacted:
                 </p>
 
                 <ul class="ml-3.5 flex list-outside list-disc flex-wrap">
-                    <li>Your email address can be re-used</li>
-                    <li>Connections will be severed (e.g. Steam)</li>
-                    <li>Linked character(s) will be unlinked</li>
+                    <li>Email address can be re-used</li>
+                    <li v-if="$page.props.auth.user.connections.length > 0">
+                        Connection(s) will be severed
+                    </li>
+                    <li v-if="$page.props.auth.user.characters.length > 0">
+                        Linked character(s) will be unlinked
+                    </li>
                     <li v-if="$page.props.roles.includes('supporter')">
-                        Ko-fi contribution will be unassociated (<span
+                        Ko-fi contribution will be unassociated<br />(<span
                             class="tooltip-benefit"
                             data-tip="Please either reach out directly on Ko-fi or email in to privacy@pridit.co.uk
-                            with proof of contribution (e.g. donation receipt)"
+                            with receipt of donation"
                         >
-                            not deleted</span
+                            I want to delete</span
                         >)
                     </li>
                 </ul>

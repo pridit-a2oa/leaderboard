@@ -3,14 +3,12 @@
 namespace Tests\Unit;
 
 use App\Models\Character;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
 class CharacterTest extends TestCase
 {
-    use RefreshDatabase;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -84,6 +82,19 @@ class CharacterTest extends TestCase
             );
     }
 
+    public function test_can_see_character_last_seen_after_six_weeks_as_supporter(): void
+    {
+        Character::factory()->for(User::factory()->supporter())->create([
+            'last_seen_at' => now()->subDays(43),
+        ]);
+
+        $this->get('/')
+            ->assertInertia(fn (Assert $page) => $page
+                ->component('Home')
+                ->has('characters.data', 1)
+            );
+    }
+
     public function test_cannot_see_character_last_seen_after_six_weeks(): void
     {
         Character::factory()->create([
@@ -97,20 +108,31 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_character_statistics_with_none(): void
+    public function test_cannot_see_character_statistics_with_none_and_not_linked(): void
     {
         Character::factory()->create();
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->missing('characters.data.0.relations.statistics')
+                ->has('characters.data.0.relations.statistics', 0)
             );
     }
 
-    public function test_can_see_character_statistics_with_one(): void
+    public function test_cannot_see_character_statistics_with_one_and_not_linked(): void
     {
         Character::factory()->hasStatistics()->create();
+
+        $this->get('/')
+            ->assertInertia(fn (Assert $page) => $page
+                ->component('Home')
+                ->has('characters.data.0.relations.statistics', 0)
+            );
+    }
+
+    public function test_can_see_character_statistics_with_one_and_linked(): void
+    {
+        Character::factory()->for(User::factory())->hasStatistics()->create();
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
