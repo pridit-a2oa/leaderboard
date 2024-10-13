@@ -1,5 +1,4 @@
 <script setup>
-import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { UserSettings } from '@/Components/features/user';
 import {
     UpdateEmailForm,
@@ -12,13 +11,11 @@ import { Head } from '@inertiajs/vue3';
 <template>
     <Head title="Settings &#x2022; Account" />
 
-    <DefaultLayout>
-        <UserSettings title="Account">
-            <UpdateEmailForm :message="$page.props.flash.message" />
+    <UserSettings title="Account">
+        <UpdateEmailForm :message="$page.props.flash.message" />
 
-            <UpdatePasswordForm />
+        <UpdatePasswordForm />
 
-            <UpdatePreferencesForm v-if="$page.props.preferences.length > 0" />
-        </UserSettings>
-    </DefaultLayout>
+        <UpdatePreferencesForm v-if="$page.props.preferences.length > 0" />
+    </UserSettings>
 </template>

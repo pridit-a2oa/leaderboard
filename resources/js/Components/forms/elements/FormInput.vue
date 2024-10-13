@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
 import { BaseError, BaseInput } from '@/Components/base';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ref } from 'vue';
 
 const passwordVisible = ref(false);
 

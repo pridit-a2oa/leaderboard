@@ -1,10 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
 import { AdminMenu } from '@/Components/features/cms';
-import {
-    FontAwesomeIcon,
-    FontAwesomeLayers,
-} from '@fortawesome/vue-fontawesome';
 import {
     faCircle,
     faCircleUser,
@@ -14,7 +9,12 @@ import {
     faTrashCan,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+} from '@fortawesome/vue-fontawesome';
 import { Link, usePage } from '@inertiajs/vue3';
+import { computed, ref } from 'vue';
 
 defineProps({
     title: {

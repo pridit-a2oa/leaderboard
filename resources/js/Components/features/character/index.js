@@ -4,4 +4,4 @@ import LinkBadge from './LinkBadge.vue';
 import ResetBadge from './ResetBadge.vue';
 import UnlinkBadge from './UnlinkBadge.vue';
 
-export { AnonymiseBadge, DisconnectBadge, ResetBadge, LinkBadge, UnlinkBadge };
+export { AnonymiseBadge, DisconnectBadge, LinkBadge, ResetBadge, UnlinkBadge };

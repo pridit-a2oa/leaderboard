@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from 'vue';
 import { BaseTable } from '@/Components/base';
 import { CopyButton } from '@/Components/buttons';
 import { LinkBadge } from '@/Components/features/character';
 import { StatisticsTable } from '@/Components/tables';
+import { isHighestScore } from '@/utils';
+import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import {
     faAngleDown,
     faAngleUp,
@@ -17,13 +18,12 @@ import {
     faTriangleExclamation,
     faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
-import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import {
     FontAwesomeIcon,
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 import { Link } from '@inertiajs/vue3';
-import { isHighestScore } from '@/utils';
+import { ref } from 'vue';
 
 const props = defineProps({
     characters: {

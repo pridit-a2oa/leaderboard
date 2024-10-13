@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue';
 import {
     faCircleCheck,
     faCircleXmark,
@@ -9,6 +8,7 @@ import {
     FontAwesomeIcon,
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
+import { computed } from 'vue';
 
 const props = defineProps({
     user: {

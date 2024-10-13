@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue';
-import { copyText } from 'vue3-clipboard';
 import {
     faClipboard,
     faClipboardCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ref } from 'vue';
+import { copyText } from 'vue3-clipboard';
 
 const toggled = ref(false);
 

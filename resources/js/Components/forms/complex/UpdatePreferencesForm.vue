@@ -1,9 +1,9 @@
 <script setup>
-import { onBeforeMount } from 'vue';
-import { defineCustomElementSFC } from 'vue-web-component-wrapper';
 import { FormCheckbox } from '@/Components/forms/elements';
 import { NormalLink } from '@/Components/links';
 import { useForm, usePage } from '@inertiajs/vue3';
+import { onBeforeMount } from 'vue';
+import { defineCustomElementSFC } from 'vue-web-component-wrapper';
 
 const form = useForm({
     options: {},

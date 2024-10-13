@@ -1,5 +1,4 @@
 <script setup>
-import { ref, watch } from 'vue';
 import { v4 as uuid } from 'uuid';
 
 defineOptions({

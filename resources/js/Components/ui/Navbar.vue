@@ -1,12 +1,12 @@
 <script setup>
 import { UserNavigation } from '@/Components/features/user';
 import { ButtonLink } from '@/Components/links';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import {
     faBullhorn,
     faHeart,
     faRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 

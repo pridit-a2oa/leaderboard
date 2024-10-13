@@ -1,7 +1,7 @@
 <script setup>
 import { FormCheckbox, FormInput } from '@/Components/forms/elements';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useForm } from '@inertiajs/vue3';
 
 defineProps({

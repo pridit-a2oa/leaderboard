@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
 import { BaseModal } from '@/Components/base';
 import { LinkButton } from '@/Components/buttons';
 import { LoginForm, RegistrationForm } from '@/Components/features/auth';
+import { ref } from 'vue';
 
 const register = ref(false);
 </script>

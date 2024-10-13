@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import {
     faCircleNodes,
     faCommentSlash,
@@ -10,6 +9,7 @@ import {
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 import { Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 defineProps({
     title: {

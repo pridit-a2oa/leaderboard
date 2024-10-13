@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
 import { SuccessButton } from '@/Components/buttons';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const props = defineProps({
     message: {

@@ -57,23 +57,9 @@ You should now be able to access the application via:
 
 -   http://laravel.test
 
-## Bridge
+### Deployment
 
-As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended.
-
-The following tables are used as part of this process:
-
-| Optional | Name                  | Fields                                                                                                                                                                 | Purpose                                       |
-| -------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| ❌       | `characters`          | [guid](https://community.bistudio.com/wiki/getPlayerUID)<br />[name](https://community.bistudio.com/wiki/name)<br />[score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
-| ✔️       | `character_statistic` | character_id<br />statistic_id<br /> value                                                                                                                             | Tracking `statistics`                         |
-| ✔️       | `model_has_roles`     | role_id<br /> model_id                                                                                                                                                 | Feature access based on a permissions library |
-
-For an example on how this has been integrated into an existing mission using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
-
-## Deployment
-
-For ease of use this application can be deployed through [Docker](https://www.docker.com/), as it is already dockerized with support for [SSR](https://inertiajs.com/server-side-rendering#running-the-ssr-server) and a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
+For ease of use this application can be deployed through [Docker](https://www.docker.com/), as it is already dockerized with support for a [Queue Worker](https://laravel.com/docs/11.x/queues#running-the-queue-worker).
 
 > For non-Docker hosting solutions, such as [Forge](https://forge.laravel.com/), please explore these on your own (with the above considerations).
 
@@ -97,6 +83,34 @@ docker run -d \
 
 > [!IMPORTANT]
 > This barebones container does not include mail or database support, and won't work as-is. Check the [.env.example](.env.example) file for applicable environment variables, as this will vary depending on other containers or the services you want to use (e.g. Mailgun/managed database).
+
+## Bridge
+
+As the platform depends on data inserted from an Arma 2: Operation Arrowhead mission there will need to be [SQF](https://community.bistudio.com/wiki/SQF_Syntax) scripting considerations to utilitise the project as intended.
+
+The following tables are used as part of this process:
+
+| Optional | Name                  | Fields                                                                                                                                                                 | Purpose                                       |
+| -------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| ❌       | `characters`          | [guid](https://community.bistudio.com/wiki/getPlayerUID)<br />[name](https://community.bistudio.com/wiki/name)<br />[score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
+| ✔️       | `character_statistic` | character_id<br />statistic_id<br /> value                                                                                                                             | Tracking `statistics`                         |
+| ✔️       | `model_has_roles`     | role_id<br /> model_id                                                                                                                                                 | Feature access based on a permissions library |
+
+For an example on how this has been integrated into an existing mission using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
+
+## SSR
+
+SSR is not fully supported due to outstanding [issues](#issues) and will not work as-is. If you would like to experiment with SSR you can do so by running:
+
+```
+npm run build:ssr
+```
+
+```
+sail artisan inertia:start-ssr
+```
+
+For further information, see [Server-side rendering (SSR) - Inertia.js](https://inertiajs.com/server-side-rendering).
 
 ## Issues
 

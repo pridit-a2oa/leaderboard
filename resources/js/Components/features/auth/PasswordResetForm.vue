@@ -1,8 +1,8 @@
 <script setup>
 import { FormInput } from '@/Components/forms/elements';
-import { useForm } from '@inertiajs/vue3';
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
     title: {
