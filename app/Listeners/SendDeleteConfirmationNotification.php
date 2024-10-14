@@ -23,7 +23,7 @@ class SendDeleteConfirmationNotification
     public function handle(UserRequestDelete $event): void
     {
         if ($event->user instanceof MustVerifyEmail && $event->user->hasVerifiedEmail()) {
-            Mail::to($event->user)->send(new DeleteUser($event->user));
+            Mail::to($event->user)->queue(new DeleteUser($event->user));
         }
     }
 }
