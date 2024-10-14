@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use ProtoneMedia\LaravelVerifyNewEmail\MustVerifyNewEmail;
 use Spatie\Permission\Traits\HasRoles;
@@ -32,6 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $appends = [
         'gravatar_url',
+        'is_deletion_throttled',
     ];
 
     /**
@@ -64,6 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'delete_token',
     ];
 
     /**
@@ -132,6 +135,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeVerified(Builder $query): void
     {
         $query->whereNotNull('email_verified_at');
+    }
+
+    /**
+     * Determine whether the user has recently performed a deletion request.
+     */
+    protected function isDeletionThrottled(): Attribute
+    {
+        return new Attribute(
+            get: fn (mixed $value, array $attributes) => RateLimiter::tooManyAttempts(
+                sprintf('delete-account:%d', $attributes['id']),
+                1
+            )
+        );
     }
 
     /**

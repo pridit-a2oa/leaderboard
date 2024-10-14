@@ -41,7 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('delete', [DeleteUserController::class, 'create'])
-        ->middleware('throttle:1,60')
         ->name('delete');
 
     Route::get('destroy/{token}', [DeleteUserController::class, 'destroy'])

@@ -40,7 +40,7 @@ const settings = ref([
             <ul class="menu w-44 rounded-md bg-base-200">
                 <li
                     v-for="setting in settings"
-                    class="capitalize [&:not(:last-child)]:mb-1"
+                    class="group/parent capitalize [&:not(:last-child)]:mb-1"
                     :class="{
                         'disabled opacity-40':
                             ['characters', 'connections'].includes(
@@ -49,7 +49,7 @@ const settings = ref([
                     }"
                 >
                     <Link
-                        class="group px-2 hover:focus:active:!bg-highlight"
+                        class="group/link px-2 hover:focus:active:!bg-highlight group-[.disabled]/parent:cursor-default"
                         :class="{
                             'bg-highlight': $page.component
                                 .toLowerCase()
@@ -73,7 +73,7 @@ const settings = ref([
                                     setting.type === 'connections' &&
                                     verifiedEmail
                                 "
-                                class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover:bg-highlight"
+                                class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover/link:bg-highlight"
                                 :class="{
                                     'bg-highlight': $page.component
                                         .toLowerCase()

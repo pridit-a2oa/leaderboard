@@ -53,11 +53,9 @@ class AppServiceProvider extends ServiceProvider
 
         // Set differing password rules based on environment
         Password::defaults(function () {
-            $rule = Password::min(8);
-
             return $this->app->isProduction()
-                ? $rule->mixedCase()->uncompromised()
-                : $rule;
+                ? Password::min(8)->mixedCase()->uncompromised()
+                : Password::min(3);
         });
 
         // Monitor command state (starting)

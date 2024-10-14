@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Validator;
 
 class DeleteUserController extends Controller
@@ -19,11 +20,30 @@ class DeleteUserController extends Controller
      */
     public function create(Request $request): RedirectResponse
     {
-        // Generate a user deletion token
-        $request->user()->delete_token = Password::broker()->getRepository()->createNewToken();
-        $request->user()->save();
+        RateLimiter::attempt(
+            sprintf('delete-account:%d', auth()->user()->id),
+            1,
+            function () use ($request) {
+                if (! $request->user()->hasVerifiedEmail()) {
+                    // Soft delete the user (triggers prune)
+                    $request->user()->delete();
 
-        event(new UserRequestDelete($request->user()));
+                    Auth::logout();
+
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+
+                    return redirect()->route('home');
+                }
+
+                // Generate a user deletion token
+                $request->user()->delete_token = Password::broker()->getRepository()->createNewToken();
+                $request->user()->save();
+
+                event(new UserRequestDelete($request->user()));
+            },
+            600
+        );
 
         return redirect(route('user.setting.delete'));
     }

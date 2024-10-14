@@ -16,7 +16,7 @@ const deleteUserRequest = () => {
 
     <UserSettings title="Delete Account">
         <Alert
-            v-if="form.processing || $page.props.auth.user.delete_token"
+            v-if="$page.props.auth.user.is_deletion_throttled"
             type="success"
             message="Please check your email for a confirmation link"
         />
@@ -55,9 +55,10 @@ const deleteUserRequest = () => {
         <div class="mt-4 flex flex-row gap-4 rounded-md bg-base-200 p-4">
             <form @change="deleteUserRequest">
                 <FormCheckbox
-                    :checked="$page.props.auth.user.delete_token !== null"
+                    :checked="$page.props.auth.user.is_deletion_throttled"
                     :disabled="
-                        form.processing || $page.props.auth.user.delete_token
+                        form.processing ||
+                        $page.props.auth.user.is_deletion_throttled
                     "
                 >
                     <span class="ml-1 block">
