@@ -5,12 +5,12 @@ import {
     faRankingStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Link, usePage } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 
 const icon = {
     bars: faBars,
     file: faFile,
-}[usePage().props.icon];
+};
 </script>
 
 <template>
@@ -31,9 +31,9 @@ const icon = {
 
                 <li class="text-neutral-300">
                     <FontAwesomeIcon
-                        v-if="icon"
+                        v-if="icon[$page.props.icon]"
                         class="mr-1.5"
-                        :icon="icon"
+                        :icon="icon[$page.props.icon]"
                         size="sm"
                         fixed-width
                     />
