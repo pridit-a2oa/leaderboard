@@ -156,9 +156,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function gravatarUrl(): Attribute
     {
         return new Attribute(
-            get: fn (mixed $value, array $attributes) => Gravatar::exists($attributes['email'])
-                ? Gravatar::get($attributes['email'])
-                : '',
+            get: fn (mixed $value, array $attributes) => Gravatar::get($attributes['email'])
         );
     }
 
