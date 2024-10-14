@@ -35,7 +35,7 @@ const deleteUserRequest = () => {
                 <li v-if="$page.props.auth.user.characters.length > 0">
                     Linked character(s) will be unlinked
                 </li>
-                <li v-if="$page.props.roles.includes('supporter')">
+                <li v-if="$page.props.auth.role === 'supporter'">
                     Ko-fi contribution will be unassociated<br />(<span
                         class="tooltip-benefit"
                         data-tip="Please either reach out directly on Ko-fi or email in to privacy@pridit.co.uk

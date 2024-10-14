@@ -31,7 +31,7 @@ const icon = {
 
     <UserSettings title="Extras">
         <a
-            v-if="$page.props.roles.includes('member')"
+            v-if="$page.props.auth.role === 'member'"
             href="https://ko-fi.com/pridit"
             target="_blank"
         >
@@ -53,8 +53,8 @@ const icon = {
                         <td class="w-0">
                             <FontAwesomeIcon
                                 class="!align-middle"
-                                :class="icon[$page.props.roles[0]][1]"
-                                :icon="icon[$page.props.roles[0]][0]"
+                                :class="icon[$page.props.auth.role][1]"
+                                :icon="icon[$page.props.auth.role][0]"
                                 size="lg"
                                 transform="shrink-1"
                             />

@@ -20,18 +20,19 @@ const icon = {
     <div
         class="indicator-item cursor-default"
         :title="
-            ($page.props.roles[0] === 'supporter' &&
+            ($page.props.auth.role === 'supporter' &&
                 'Thanks for being a supporter!') ||
             ''
         "
     >
-        <FontAwesomeLayers v-if="icon[$page.props.roles[0]]" fixed-width>
+        <FontAwesomeLayers v-if="icon[$page.props.auth.role]" fixed-width>
             <FontAwesomeIcon
                 class="z-10 text-neutral-600"
                 :class="{
-                    'text-role-supporter': $page.props.roles[0] === 'supporter',
+                    'text-role-supporter':
+                        $page.props.auth.role === 'supporter',
                 }"
-                :icon="icon[$page.props.roles[0]]"
+                :icon="icon[$page.props.auth.role]"
             />
 
             <FontAwesomeIcon

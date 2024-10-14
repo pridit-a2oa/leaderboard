@@ -29,8 +29,7 @@ const copy = () => {
 <template>
     <FontAwesomeIcon
         v-if="
-            $page.props.auth.user !== null &&
-            $page.props.roles.includes('admin')
+            $page.props.auth.user !== null && $page.props.auth.role === 'admin'
         "
         class="ml-2 !align-middle text-neutral-600 hover:text-neutral-400"
         :class="{

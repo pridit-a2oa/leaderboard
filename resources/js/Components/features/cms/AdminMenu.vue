@@ -26,7 +26,7 @@ const settings = ref([
 
 <template>
     <ul
-        v-if="$page.props.roles.includes('admin')"
+        v-if="$page.props.auth.role === 'admin'"
         class="menu mt-4 w-44 rounded-md border-r-4 border-error/75 bg-base-200"
     >
         <li
@@ -70,9 +70,9 @@ const settings = ref([
                 </span>
 
                 <span
-                    v-if="$page.props.app.statistics[setting.type] !== '0'"
+                    v-if="$page.props.auth.model_counts[setting.type] !== '0'"
                     class="outline-solid rounded-full bg-base-300 px-1.5 text-xs outline outline-1 outline-offset-1 outline-neutral-500"
-                    >{{ $page.props.app.statistics[setting.type] }}</span
+                    >{{ $page.props.auth.model_counts[setting.type] }}</span
                 >
             </Link>
         </li>

@@ -177,9 +177,8 @@ function getMovementRank(rank) {
                                 <template v-else>
                                     <Link
                                         v-if="
-                                            $page.props.roles.includes(
-                                                'member',
-                                            ) &&
+                                            $page.props.auth.role ===
+                                                'member' &&
                                             $page.props.auth.user.characters
                                                 .length > 0
                                         "
