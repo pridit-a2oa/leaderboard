@@ -22,7 +22,6 @@ import {
     FontAwesomeIcon,
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
-import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -223,7 +222,7 @@ function getMovementRank(rank) {
                         <div class="indicator align-middle">
                             <div class="h-7 w-7 rounded-full bg-base-100">
                                 <img
-                                    class="select-none self-center rounded-full text-[0rem]"
+                                    class="h-7 w-7 select-none self-center rounded-full text-[0rem]"
                                     :src="
                                         character.relations.user.gravatar_url ??
                                         character.avatar_url ??

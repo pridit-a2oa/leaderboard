@@ -32,6 +32,7 @@ export default {
     },
 
     screens: {
+      '2xs': '320px',
       'xs': '386px',
       'sm': '640px',
       'md': '768px',

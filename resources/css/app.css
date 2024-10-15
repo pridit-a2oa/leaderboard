@@ -102,6 +102,6 @@
     }
 
     .underlined-link {
-        @apply text-neutral-400 opacity-90 hover:!text-neutral-400 hover:underline hover:underline-offset-4;
+        @apply font-bold text-neutral-400 opacity-90 hover:!text-neutral-400 hover:underline hover:underline-offset-4;
     }
 }

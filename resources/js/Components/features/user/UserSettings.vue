@@ -13,7 +13,7 @@ import {
     FontAwesomeIcon,
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
-import { Link, usePage } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 
 defineProps({
@@ -130,8 +130,10 @@ const settings = ref([
         <div class="ml-4 w-full text-neutral-300">
             <div class="mb-4 flex items-center">
                 <h2 class="grow">{{ title }}</h2>
+
                 <slot name="header"></slot>
             </div>
+
             <slot />
         </div>
     </div>

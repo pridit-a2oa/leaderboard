@@ -6,7 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 
 library.add(faSteam);
 

@@ -52,6 +52,7 @@ if (!customElements.get('component-link')) {
                 <FormCheckbox
                     class="no-animation"
                     v-model:checked="form.options[preference.id]"
+                    :disabled="form.processing || form.recentlySuccessful"
                 >
                     <span
                         class="ml-1 block"

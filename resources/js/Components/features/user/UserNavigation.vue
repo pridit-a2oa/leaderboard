@@ -6,7 +6,6 @@ import {
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>

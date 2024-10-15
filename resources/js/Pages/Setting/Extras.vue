@@ -4,20 +4,13 @@ import { Alert } from '@/Components/ui';
 import { faCheck, faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
-import { ref } from 'vue';
 
-const extras = ref([
-    {
-        type: 'Supporter <span class="tooltip-benefit" data-tip="Applies once, to the linked character with the most score. If two linked characters have the same score then most recently active is prioritized.">badge</span>',
-    },
-    {
-        type: '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the past 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
-    },
-    { type: 'Multiple character linking' },
-    {
-        type: `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Statistics</span> tracking (while linked)`,
-    },
-]);
+const extras = [
+    'Supporter <span class="tooltip-benefit" data-tip="Applies once, to the linked character with the most score. If two linked characters have the same score then most recently active is prioritized.">badge</span>',
+    '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the past 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
+    'Multiple character linking',
+    `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}.">Statistics</span> tracking (while linked)`,
+];
 
 const icon = {
     'member': [faXmark, 'text-error'],
@@ -59,7 +52,8 @@ const icon = {
                                 transform="shrink-1"
                             />
                         </td>
-                        <td class="p-0 pl-3" v-html="extra.type"></td>
+
+                        <td class="p-0 pl-3" v-html="extra"></td>
                     </tr>
                 </tbody>
             </table>
