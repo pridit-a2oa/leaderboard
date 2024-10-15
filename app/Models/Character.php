@@ -30,15 +30,6 @@ class Character extends Model
     ];
 
     /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
-    protected $with = [
-        'mute',
-    ];
-
-    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

@@ -18,7 +18,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'email' => $this->email,
-            'role' => Str::title($this->getRoleNames()[0]),
+            'role' => Str::title($this->roles->value('name')),
         ];
     }
 }

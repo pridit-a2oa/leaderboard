@@ -6,9 +6,11 @@ import { Head } from '@inertiajs/vue3';
 <template>
     <Head title="Reset Password" />
 
-    <ResetPasswordModal
-        v-if="$page.props.data"
-        :email="$page.props.data.email"
-        :token="$page.props.data.token"
-    />
+    <Teleport to="body">
+        <ResetPasswordModal
+            v-if="$page.props.data"
+            :email="$page.props.data.email"
+            :token="$page.props.data.token"
+        />
+    </Teleport>
 </template>

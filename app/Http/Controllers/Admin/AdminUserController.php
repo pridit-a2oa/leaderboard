@@ -18,7 +18,7 @@ class AdminUserController extends SettingController
     {
         return Inertia::render('Setting/Admin/Users', [
             'users' => UserResource::collection(
-                User::orderByDesc('created_at')->get()
+                User::with('roles')->orderByDesc('created_at')->get()
             ),
         ]
             + $this->metadata()

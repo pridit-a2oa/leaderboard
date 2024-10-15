@@ -1,4 +1,5 @@
 <script setup>
+import { AccountModal } from '@/Components/features/auth';
 import { RewardBanner } from '@/Components/features/reward';
 import { CharactersTable } from '@/Components/tables';
 import { Navbar, Pagination } from '@/Components/ui';
@@ -29,6 +30,10 @@ defineProps({
             content="https://arma.pridit.co.uk/images/logo.png"
         />
     </Head>
+
+    <Teleport to="body">
+        <AccountModal />
+    </Teleport>
 
     <RewardBanner />
 

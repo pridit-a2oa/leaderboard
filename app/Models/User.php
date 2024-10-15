@@ -27,16 +27,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory, HasRoles, MustVerifyNewEmail, Notifiable, SoftDeletes;
 
     /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'gravatar_url',
-        'is_deletion_throttled',
-    ];
-
-    /**
      * The event map for the model.
      *
      * @var array<string, string>
@@ -75,9 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string>
      */
     protected $with = [
-        'characters',
         'connections',
-        'preferences',
     ];
 
     /**

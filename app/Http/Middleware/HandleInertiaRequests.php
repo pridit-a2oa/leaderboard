@@ -45,7 +45,7 @@ class HandleInertiaRequests extends Middleware
                     'users' => $request->user()?->hasRole('admin') ? Number::abbreviate(User::count()) : null,
                     'webhooks' => $request->user()?->hasRole('admin') ? Number::abbreviate(WebhookCall::count()) : null,
                 ],
-                'role' => $request->user()?->roles->pluck('name')[0],
+                'role' => $request->user()?->roles->value('name'),
                 'user' => $request->user(),
             ],
             'flash' => [

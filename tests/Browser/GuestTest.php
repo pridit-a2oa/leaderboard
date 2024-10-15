@@ -35,7 +35,7 @@ class GuestTest extends DuskTestCase
                 ->type('#password_confirmation', 'password')
                 ->check('conditions')
                 ->press('Create account')
-                ->waitUntilMissing('button[disabled]')
+                ->waitForText('Account')
                 ->assertSee('Account');
         });
     }
@@ -61,7 +61,7 @@ class GuestTest extends DuskTestCase
                 ->type('#email', $user->email)
                 ->type('#password', 'password2')
                 ->press('Sign in to your account')
-                ->waitUntilMissing('button[disabled]')
+                ->waitForText('Account')
                 ->assertSee('Account');
         });
     }
@@ -76,7 +76,7 @@ class GuestTest extends DuskTestCase
                 ->type('#email', $user->email)
                 ->type('#password', 'password')
                 ->press('Sign in to your account')
-                ->waitUntilMissing('button[disabled]')
+                ->waitForText('Account')
                 ->assertSee('Account');
         });
     }

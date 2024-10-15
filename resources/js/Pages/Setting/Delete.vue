@@ -29,12 +29,8 @@ const deleteUserRequest = () => {
 
             <ul class="ml-3.5 flex list-outside list-disc flex-wrap">
                 <li>Email address can be re-used</li>
-                <li v-if="$page.props.auth.user.connections.length > 0">
-                    Connection(s) will be severed
-                </li>
-                <li v-if="$page.props.auth.user.characters.length > 0">
-                    Linked character(s) will be unlinked
-                </li>
+                <li>Connection(s) will be severed</li>
+                <li>Linked character(s) will be unlinked</li>
                 <li v-if="$page.props.auth.role === 'supporter'">
                     Ko-fi contribution will be unassociated<br />(<span
                         class="tooltip-benefit"

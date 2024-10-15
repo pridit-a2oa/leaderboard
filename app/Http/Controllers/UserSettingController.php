@@ -17,6 +17,8 @@ class UserSettingController extends SettingController
      */
     public function showAccount(Request $request): Response
     {
+        $request->user()->load('preferences');
+
         return Inertia::render('Setting/Account', [
             'preferences' => Preference::get(),
         ] + $this->metadata());
@@ -27,6 +29,8 @@ class UserSettingController extends SettingController
      */
     public function showCharacters(Request $request): Response
     {
+        $request->user()->load('characters');
+
         return Inertia::render('Setting/Characters', $this->metadata());
     }
 
@@ -63,6 +67,8 @@ class UserSettingController extends SettingController
      */
     public function showDelete(Request $request): Response
     {
+        $request->user()->append('is_deletion_throttled');
+
         return Inertia::render('Setting/Delete', $this->metadata());
     }
 }

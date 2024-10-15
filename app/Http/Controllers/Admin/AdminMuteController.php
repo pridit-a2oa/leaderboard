@@ -24,7 +24,7 @@ class AdminMuteController extends SettingController
                     ->orderByDesc('created_at')
                     ->get()
             ),
-            'reasons' => MuteReason::all(),
+            'reasons' => MuteReason::get(),
         ]
             + $this->metadata()
         );
