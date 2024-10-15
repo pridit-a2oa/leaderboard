@@ -11,10 +11,6 @@ export default defineConfig({
     }),
     vue({
       template: {
-        compilerOptions: {
-          // Treat all tags with a dash as custom elements.
-          isCustomElement: (tag) => tag.includes('-'),
-        },
         transformAssetUrls: {
           // The Vue plugin will re-write asset URLs, when referenced in Single
           // File Components, to point to the Laravel web server. Setting this

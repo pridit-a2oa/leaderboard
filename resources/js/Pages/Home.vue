@@ -1,5 +1,6 @@
 <script setup>
 import { AccountModal } from '@/Components/features/auth';
+import { Takistan } from '@/Components/features/map';
 import { RewardBanner } from '@/Components/features/reward';
 import { CharactersTable } from '@/Components/tables';
 import { Navbar, Pagination } from '@/Components/ui';
@@ -38,6 +39,8 @@ defineProps({
     <RewardBanner />
 
     <Navbar />
+
+    <Takistan />
 
     <div v-if="characters.data.length > 0" class="mt-4 font-bold">
         <CharactersTable :characters="characters" />
