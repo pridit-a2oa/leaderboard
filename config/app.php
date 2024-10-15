@@ -17,6 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Title
+    |--------------------------------------------------------------------------
+    |
+    | This value is the title of your application, seen by users in the banner.
+    | Used for example if there is a longer, proper name that is too wordy to
+    | be used in emails or page titles.
+    |
+    */
+
+    'title' => env('APP_TITLE', env('APP_NAME')),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

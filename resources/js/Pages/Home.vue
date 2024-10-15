@@ -1,8 +1,9 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
-import AnchorExternal from '@/Components/AnchorExternal.vue';
-import Navigation from '@/Components/Navigation.vue';
-import Pagination from '@/Components/Pagination.vue';
+import { AccountModal } from '@/Components/features/auth';
+import { RewardBanner } from '@/Components/features/reward';
+import { CharactersTable } from '@/Components/tables';
+import { Navbar, Pagination } from '@/Components/ui';
+import { Head } from '@inertiajs/vue3';
 
 defineProps({
     characters: {
@@ -12,131 +13,39 @@ defineProps({
 </script>
 
 <template>
-    <main class="container mx-auto text-neutral-400">
-        <Head title="Leaderboard">
-            <link rel="icon" href="/images/logo.png" />
-        </Head>
+    <Head title="Leaderboard">
+        <meta
+            name="description"
+            content="Track and compare your score with the rest of the community"
+        />
 
-        <Navigation />
+        <!-- Open Graph -->
+        <meta property="og:title" content="Leaderboard" />
+        <meta
+            property="og:description"
+            content="Track and compare your score with the rest of the community"
+        />
+        <meta
+            property="og:image"
+            content="https://arma.pridit.co.uk/images/logo.png"
+        />
+    </Head>
 
-        <div class="mt-6 flex justify-center">
-            <AnchorExternal
-                href="https://dsc.gg/pridit"
-                class="text-[#7289da]"
-                :icon="['brands', 'discord']"
-                >Discord</AnchorExternal
-            >
+    <Teleport to="body">
+        <AccountModal />
+    </Teleport>
 
-            <AnchorExternal
-                class="text-yellow-600"
-                href="https://feedback.pridit.co.uk"
-                :icon="['fas', 'bullhorn']"
-                >Feedback</AnchorExternal
-            >
+    <RewardBanner />
 
-            <AnchorExternal
-                class="text-[#ff5c5a]"
-                href="https://ko-fi.com/pridit"
-                :icon="['fas', 'heart']"
-                >Ko-fi</AnchorExternal
-            >
-        </div>
+    <Navbar />
 
-        <div
-            v-if="characters.data.length > 0"
-            class="mb-8 mt-4 overflow-x-auto font-bold"
-        >
-            <table class="table border-separate border-spacing-y-0.5">
-                <thead>
-                    <tr class="bg-base-100">
-                        <th class="w-0">Rank</th>
-                        <th>Name</th>
-                        <th class="w-0">Score</th>
-                        <th class="hidden w-0 md:table-cell">Last Updated</th>
-                    </tr>
-                </thead>
+    <div v-if="characters.data.length > 0" class="mt-4 font-bold">
+        <CharactersTable :characters="characters" />
+    </div>
 
-                <tbody class="bg-base-300">
-                    <tr
-                        v-for="(character, key) in characters.data"
-                        :key="character.id"
-                    >
-                        <td
-                            v-if="
-                                characters.current_page === 1 &&
-                                key in [0, 1, 2]
-                            "
-                            class="text-center"
-                        >
-                            <font-awesome-icon
-                                :class="{
-                                    'text-gold': key === 0,
-                                    'text-silver': key === 1,
-                                    'text-bronze': key === 2,
-                                }"
-                                :icon="['fas', 'medal']"
-                                size="lg"
-                                fixed-width
-                            />
-                        </td>
+    <div v-else class="mt-8 flex w-full flex-col">
+        <div class="divider">No records found</div>
+    </div>
 
-                        <td v-else class="flex justify-center font-bold">
-                            {{
-                                key +
-                                (characters.current_page - 1) *
-                                    characters.per_page +
-                                1
-                            }}
-                        </td>
-
-                        <td>
-                            <a
-                                :href="`https://steamcommunity.com/profiles/${character.uid}`"
-                                :class="{
-                                    '!text-gold':
-                                        characters.current_page === 1 &&
-                                        key === 0,
-                                    '!text-silver':
-                                        characters.current_page === 1 &&
-                                        key === 1,
-                                    '!text-bronze':
-                                        characters.current_page === 1 &&
-                                        key === 2,
-                                }"
-                                target="_blank"
-                            >
-                                {{ character.name }}
-
-                                <font-awesome-icon
-                                    class="ml-0.5 !align-middle"
-                                    :icon="[
-                                        'fas',
-                                        'arrow-up-right-from-square',
-                                    ]"
-                                    size="2xs"
-                                    fixed-width
-                                />
-                            </a>
-                        </td>
-
-                        <td class="text-center font-bold">
-                            {{ character.score }}
-                        </td>
-
-                        <td
-                            class="hidden whitespace-nowrap text-neutral-500 md:table-cell"
-                        >
-                            {{ character.last_seen }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div v-else class="mt-8 flex w-full flex-col">
-            <div class="divider">No records found</div>
-        </div>
-
-        <Pagination :links="characters.links" />
-    </main>
+    <Pagination :meta="characters.meta" />
 </template>

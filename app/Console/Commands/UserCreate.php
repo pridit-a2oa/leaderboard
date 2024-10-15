@@ -4,10 +4,13 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
-use function Laravel\Prompts\{password,select,text};
+use function Laravel\Prompts\form;
+use function Laravel\Prompts\outro;
+use function Laravel\Prompts\select;
+use function Laravel\Prompts\table;
 
 class UserCreate extends Command
 {
@@ -30,25 +33,30 @@ class UserCreate extends Command
      */
     public function handle()
     {
-        $prompt = [
-            'name' => text(
-                label: 'Name',
-                required: true,
-                default: 'John Doe'
-            ),
-
-            'email' => text(
+        $prompt = form()
+            ->text(
                 label: 'Email address',
-                validate: ['email' => 'required|email|unique:users,email']
-            ),
-
-            'password' => Hash::make(password(
+                validate: ['email' => 'required|email|unique:users,email'],
+                name: 'email'
+            )
+            ->confirm(
+                label: 'Email is verified',
+                default: false,
+                name: 'email_verified_at'
+            )
+            ->password(
                 label: 'Password',
-                required: true
-            ))
-        ];
+                required: true,
+                transform: fn (string $value) => Hash::make($value),
+                name: 'password'
+            )
+            ->submit();
 
-        $user = User::create($prompt);
+        $user = User::create([
+            'email' => $prompt['email'],
+            'email_verified_at' => $prompt['email_verified_at'] ?: null,
+            'password' => $prompt['password'],
+        ]);
 
         $role = select(
             label: 'Role',
@@ -56,6 +64,13 @@ class UserCreate extends Command
             default: 'member'
         );
 
-        $user->assignRole($role);
+        $user->syncRoles($role);
+
+        table(
+            headers: ['id', 'email', 'password'],
+            rows: [$user->only('id', 'email', 'password')]
+        );
+
+        outro('User created');
     }
 }

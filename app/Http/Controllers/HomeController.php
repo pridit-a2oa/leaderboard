@@ -2,31 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CharacterResource;
+use App\Models\Character;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Models\Character;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
-    public function index(): Response
+    /**
+     * Show the home page.
+     */
+    public function index(Request $request): Response
     {
-        $characters = Character::rankable()
-            ->orderByDesc('score')
-            ->orderBy('updated_at')
-            ->paginate(50)
-            ->onEachSide(1)
-            ->through(fn ($item) => [
-                'id' => $item->id,
-                'uid' => $item->uid,
-                'name' => $item->name,
-                'score' => $item->score,
-                'last_seen' => $item->updated_at->diffForHumans()
-            ]);
+        if (auth()->check()) {
+            $request->user()->load('characters');
+        }
 
         return Inertia::render('Home', [
-            'characters' => $characters
+            'characters' => CharacterResource::collection(
+                Character::with(['mute', 'statistics'])
+                    ->with(['user' => function ($query) {
+                        $query->without('connections');
+                    }])
+                    ->when(! auth()->check() || ! auth()->user()->hasRole('admin'), function (Builder $query) {
+                        $query->rankable();
+                    })
+                    ->orderByDesc('score')
+                    ->orderBy('last_seen_at')
+                    ->paginate(50)
+                    ->onEachSide(1)
+            )->additional([
+                'ranking' => Cache::get('ranking', []),
+            ]),
         ]);
     }
 }

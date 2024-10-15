@@ -1,10 +1,15 @@
 FROM node:22.0.0-alpine3.19
 
+# Set the application variables
+ENV APP_NAME=Leaderboard
+
 # Setup document root
 WORKDIR /var/www/html
 
 # Install packages and remove default server definition
 RUN apk add --no-cache \
+    dcron \
+    libcap \
     curl \
     nodejs-current \
     npm \
@@ -33,6 +38,12 @@ RUN apk add --no-cache \
     php83-zip \
     supervisor
 
+# Add a non-root user to prevent files being created with root permissions on host machine
+RUN addgroup -g 1001 laravel \
+    && adduser -u 1001 -G laravel -s /bin/ash -D laravel \
+    && chown laravel:laravel /usr/sbin/crond \
+    && setcap cap_setgid=ep /usr/sbin/crond
+
 # Configure nginx
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
@@ -43,14 +54,20 @@ COPY .docker/php.ini /etc/php83/conf.d/custom.ini
 # Configure supervisord
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Make sure files/folders needed by the processes are accessable when they run under the nobody user
-RUN chown -R nobody.nobody /var/www/html /run /var/lib/nginx /var/log/nginx
+# Configure cron
+COPY .docker/crontab /etc/crontabs
+
+RUN chown -R laravel /etc/crontabs/laravel
+RUN chmod -R 644 /etc/crontabs/laravel
+
+# Make sure files/folders needed by the processes are accessable when they run under the laravel user
+RUN chown -R laravel.laravel /var/www/html /run /var/lib/nginx /var/log/nginx
 
 # Create symlink for php
 RUN ln -s /usr/bin/php83 /usr/bin/php
 
 # Add application
-COPY --chown=nobody . /var/www/html/
+COPY --chown=laravel . /var/www/html/
 
 # Install composer from the official image
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -64,14 +81,17 @@ RUN npm install
 # Build app
 RUN npm run build
 
+# Set entrypoint execution permission
+RUN chmod +x .docker/entrypoint.sh
+
 # Switch to non-root user
-USER nobody
+USER laravel
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
 
 # Let supervisord start nginx & php-fpm
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+ENTRYPOINT [".docker/entrypoint.sh"]
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1

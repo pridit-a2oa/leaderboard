@@ -14,13 +14,17 @@ return new class extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('uid')->nullable();
+            $table->string('guid')->nullable();
             $table->string('name');
+            $table->string('avatar_url')->nullable();
             $table->bigInteger('score')->default(0);
-            $table->boolean('is_linkable')->default(0);
+            $table->boolean('is_hidden')->default(0);
+            $table->timestamp('last_seen_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletesTz('deleted_at', precision: 0);
+
+            $table->unique(['guid', 'name']);
 
             $table->foreign('user_id')->references('id')->on('users');
         });
