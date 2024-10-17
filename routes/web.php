@@ -69,8 +69,7 @@ Route::middleware('auth')->group(function () {
 
                     Route::delete('unlink', [CharacterLinkController::class, 'destroy'])
                         ->name('destroy');
-                }
-                );
+                });
 
             Route::patch('visibility', [CharacterController::class, 'toggleVisibility'])
                 ->name('visibility');
