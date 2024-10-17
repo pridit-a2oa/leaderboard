@@ -16,27 +16,29 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 createServer((page) =>
-  createInertiaApp({
-    page,
-    render: renderToString,
-    title: (title) => `${title}`,
-    resolve: (name) => {
-      const page = resolvePageComponent(
-        `./Pages/${name}.vue`,
-        import.meta.glob('./Pages/**/*.vue'),
-      );
-      page.then((module) => {
-        module.default.layout = module.default.layout || DefaultLayout;
-      });
-      return page;
-    },
-    setup({ App, props, plugin }) {
-      return createSSRApp({ render: () => h(App, props) })
-        .use(plugin)
-        .use(ZiggyVue, {
-          ...page.props.ziggy,
-          location: new URL(page.props.ziggy.location),
-        });
-    },
-  }),
+    createInertiaApp({
+        page,
+        render: renderToString,
+        title: (title) => `${title}`,
+        resolve: (name) => {
+            const page = resolvePageComponent(
+                `./Pages/${name}.vue`,
+                import.meta.glob('./Pages/**/*.vue'),
+            );
+
+            page.then((module) => {
+                module.default.layout = module.default.layout || DefaultLayout;
+            });
+
+            return page;
+        },
+        setup({ App, props, plugin }) {
+            return createSSRApp({ render: () => h(App, props) })
+                .use(plugin)
+                .use(ZiggyVue, {
+                    ...page.props.ziggy,
+                    location: new URL(page.props.ziggy.location),
+                });
+        },
+    }),
 );

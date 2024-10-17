@@ -17,27 +17,27 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 createInertiaApp({
-  title: (title) => `${title}`,
-  resolve: (name) => {
-    const page = resolvePageComponent(
-      `./Pages/${name}.vue`,
-      import.meta.glob('./Pages/**/*.vue'),
-    );
+    title: (title) => `${title}`,
+    resolve: (name) => {
+        const page = resolvePageComponent(
+            `./Pages/${name}.vue`,
+            import.meta.glob('./Pages/**/*.vue'),
+        );
 
-    page.then((module) => {
-      module.default.layout = module.default.layout || DefaultLayout;
-    });
+        page.then((module) => {
+            module.default.layout = module.default.layout || DefaultLayout;
+        });
 
-    return page;
-  },
-  setup({ el, App, props, plugin }) {
-    return createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .use(ZiggyVue)
-      .component('Link', Link)
-      .mount(el);
-  },
-  progress: {
-    color: '#4B5563',
-  },
+        return page;
+    },
+    setup({ el, App, props, plugin }) {
+        return createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(ZiggyVue)
+            .component('Link', Link)
+            .mount(el);
+    },
+    progress: {
+        color: '#4B5563',
+    },
 });
