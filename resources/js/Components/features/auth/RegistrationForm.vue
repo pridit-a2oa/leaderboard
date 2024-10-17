@@ -2,7 +2,7 @@
 import { FormCheckbox, FormInput } from '@/Components/forms/elements';
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from 'laravel-precognition-vue-inertia';
 
 defineProps({
     title: {
@@ -11,19 +11,17 @@ defineProps({
     },
 });
 
-const form = useForm({
-    name: '',
+const form = useForm('post', route('register'), {
     email: '',
     password: '',
     password_confirmation: '',
     conditions: false,
 });
 
-const submit = () => {
-    form.post(route('register'), {
+const submit = () =>
+    form.submit({
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
-};
 </script>
 
 <template>
@@ -40,6 +38,7 @@ const submit = () => {
                 :error="form.errors.email"
                 v-model="form.email"
                 required
+                @blur="form.validate('email')"
             >
                 <FontAwesomeIcon
                     class="text-neutral-500"
@@ -58,6 +57,7 @@ const submit = () => {
                 v-model="form.password"
                 placeholder="Password"
                 required
+                @blur="form.validate('password')"
             >
                 <FontAwesomeIcon
                     class="text-neutral-500"
@@ -115,7 +115,7 @@ const submit = () => {
             <button
                 class="btn no-animation mt-4 w-full"
                 :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
+                :disabled="form.processing || form.hasErrors"
             >
                 Create account
             </button>

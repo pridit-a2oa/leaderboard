@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\Registered;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\RateLimiter;
 
 class RegisteredUserController extends Controller
 {
@@ -18,22 +18,25 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreUserRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'email' => 'required|string|lowercase|email|indisposable|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'conditions' => 'required|accepted:true',
-        ]);
+        $request->validated();
 
-        $user = User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        RateLimiter::attempt(
+            sprintf('register:%s', $request->ip()),
+            1,
+            function () use ($request) {
+                $user = User::create([
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
 
-        event(new Registered($user));
+                event(new Registered($user));
 
-        Auth::login($user);
+                Auth::login($user);
+            },
+            600
+        );
 
         return redirect(route('home', absolute: false));
     }
