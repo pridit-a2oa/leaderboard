@@ -39,7 +39,7 @@ defineProps({
 
     <Navbar />
 
-    <div v-if="characters.data.length > 0" class="mt-4 font-bold">
+    <div v-if="characters.data.length > 0" class="font-bold">
         <CharactersTable :characters="characters" />
     </div>
 

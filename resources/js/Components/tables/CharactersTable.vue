@@ -67,7 +67,7 @@ function getMovementRank(rank) {
 <template>
     <BaseTable dir="rtl">
         <thead>
-            <tr class="bg-base-100">
+            <tr class="bg-base-100 [&>th]:pt-0">
                 <th class="w-0 text-right">Score</th>
                 <th></th>
                 <th class="w-0"></th>
@@ -140,7 +140,7 @@ function getMovementRank(rank) {
                         </span>
 
                         <span
-                            class="mt-0.5 w-max select-none text-xs font-light text-neutral-500"
+                            class="mt-0.5 w-max select-none text-xs font-light text-neutral-500/80"
                             title="Last active"
                             >{{
                                 character.formatted_last_seen_at ?? 'n/a'

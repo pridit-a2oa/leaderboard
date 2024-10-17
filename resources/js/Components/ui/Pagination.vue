@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-    <div v-if="meta.links.length > 3" class="join mt-4 flex">
+    <div v-if="meta.links.length > 3" class="join flex">
         <template v-for="(link, key) in meta.links" :key="key">
             <Link
                 :style="{ order: key }"
