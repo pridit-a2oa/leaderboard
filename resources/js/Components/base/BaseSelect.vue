@@ -1,15 +1,15 @@
 <script setup>
-import { v4 as uuid } from 'uuid';
+import { useId } from 'vue';
 
 defineOptions({
     inheritAttrs: false,
 });
 
-const props = defineProps({
+defineProps({
     id: {
         type: String,
         default() {
-            return `select-input-${uuid()}`;
+            return `select-input-${useId()}`;
         },
     },
 });

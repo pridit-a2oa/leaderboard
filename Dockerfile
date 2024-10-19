@@ -1,4 +1,4 @@
-FROM node:22.0.0-alpine3.19
+FROM node:23.0.0-alpine3.19
 
 # Set the application variables
 ENV APP_NAME=Leaderboard
@@ -73,13 +73,17 @@ COPY --chown=laravel . /var/www/html/
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Run composer install to install the dependencies
-RUN composer install --optimize-autoloader --no-interaction --no-progress
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
-# Run npm install to install node dependencies
-RUN npm install
+# Run yarn install to satisfy build requirements
+RUN yarn install --frozen-lockfile
 
 # Build app
-RUN npm run build
+RUN yarn run build
+
+# Remove dev-only dependencies & clear cache
+RUN yarn install --frozen-lockfile --production && \
+    yarn cache clean
 
 # Set entrypoint execution permission
 RUN chmod +x .docker/entrypoint.sh

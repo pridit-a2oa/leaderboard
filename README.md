@@ -34,7 +34,7 @@ With [laravel/sail](https://laravel.com/docs/11.x/sail) start/build the project'
 Run vite:
 
 ```
-sail npm run dev
+sail yarn run dev
 ```
 
 ### Initial Setup
@@ -103,7 +103,7 @@ For an example on how this has been integrated into an existing mission using [A
 SSR is not fully supported due to outstanding [issues](#issues) and will not work as-is. If you would like to experiment with SSR you can do so by running:
 
 ```
-npm run build:ssr
+yarn run build:ssr
 ```
 
 ```
