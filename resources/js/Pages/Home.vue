@@ -43,9 +43,5 @@ defineProps({
         <CharactersTable :characters="characters" />
     </div>
 
-    <div v-else class="mt-8 flex w-full flex-col">
-        <div class="divider">No records found</div>
-    </div>
-
-    <Pagination :meta="characters.meta" />
+    <Pagination v-if="characters.meta" :meta="characters.meta" />
 </template>

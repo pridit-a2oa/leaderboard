@@ -40,8 +40,8 @@ function toggle(id) {
 function getRank(key, added) {
     return (
         key +
-        ((props.characters.meta.current_page - 1) *
-            props.characters.meta.per_page +
+        ((props.characters.meta?.current_page - 1) *
+            props.characters.meta?.per_page +
             (added ?? 0))
     );
 }
@@ -76,7 +76,13 @@ function getMovementRank(rank) {
             </tr>
         </thead>
 
-        <tbody class="bg-base-300">
+        <tbody
+            class="bg-base-300"
+            :class="{
+                'select-none bg-gradient-to-t from-neutral-800 from-20% to-45% [&>tr:nth-child(n+4)]:opacity-0':
+                    !characters.meta,
+            }"
+        >
             <template
                 v-for="(character, key) in characters.data"
                 :key="character.id"
@@ -86,11 +92,17 @@ function getMovementRank(rank) {
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
                         'text-rank-gold':
-                            characters.meta.current_page === 1 && key === 0,
+                            key === 0 &&
+                            (characters.meta?.current_page === 1 ||
+                                !characters.meta),
                         'text-rank-silver':
-                            characters.meta.current_page === 1 && key === 1,
+                            key === 1 &&
+                            (characters.meta?.current_page === 1 ||
+                                !characters.meta),
                         'text-rank-bronze':
-                            characters.meta.current_page === 1 && key === 2,
+                            key === 2 &&
+                            (characters.meta?.current_page === 1 ||
+                                !characters.meta),
                     }"
                 >
                     <td class="text-right text-lg font-light">
@@ -264,8 +276,9 @@ function getMovementRank(rank) {
 
                     <td
                         v-if="
-                            characters.meta.current_page === 1 &&
-                            key in [0, 1, 2]
+                            key in [0, 1, 2] &&
+                            (characters.meta?.current_page === 1 ||
+                                !characters.meta)
                         "
                         class="text-center"
                     >
@@ -278,7 +291,7 @@ function getMovementRank(rank) {
                     </td>
 
                     <td v-else class="text-center text-[1rem] font-bold">
-                        {{ getRank(key, 1) }}
+                        {{ getRank(key, 1) || key + 1 }}
                     </td>
 
                     <td
@@ -288,7 +301,9 @@ function getMovementRank(rank) {
                         }"
                     >
                         <FontAwesomeIcon
-                            v-if="getCachedRank(character.id)"
+                            v-if="
+                                getCachedRank(character.id) || !characters.meta
+                            "
                             class="!align-middle"
                             :class="
                                 getMovementRank(

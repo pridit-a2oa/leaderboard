@@ -14,15 +14,6 @@ class CharacterTest extends TestCase
         parent::setUp();
     }
 
-    public function test_cannot_see_any_characters(): void
-    {
-        $this->get('/')
-            ->assertInertia(fn (Assert $page) => $page
-                ->component('Home')
-                ->missing('characters.data.0')
-            );
-    }
-
     public function test_can_see_three_characters(): void
     {
         Character::factory(3)->create();

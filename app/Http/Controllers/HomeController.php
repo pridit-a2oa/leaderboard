@@ -21,22 +21,34 @@ class HomeController extends Controller
             $request->user()->load('characters');
         }
 
+        if (Character::count() > 0) {
+            $characters = Character::with(['mute', 'statistics'])
+                ->with(['user' => function ($query) {
+                    $query->without('connections');
+                }])
+                ->when(! auth()->check() || ! auth()->user()->hasRole('admin'), function (Builder $query) {
+                    $query->rankable();
+                })
+                ->orderByDesc('score')
+                ->orderBy('last_seen_at')
+                ->paginate(50)
+                ->onEachSide(1);
+        } else {
+            $characters = Character::factory([
+                'guid' => null,
+                'name' => 'Example',
+            ])
+                ->count(5)
+                ->make()
+                ->sortBy('last_seen_at')
+                ->sortByDesc('score');
+        }
+
         return Inertia::render('Home', [
-            'characters' => CharacterResource::collection(
-                Character::with(['mute', 'statistics'])
-                    ->with(['user' => function ($query) {
-                        $query->without('connections');
-                    }])
-                    ->when(! auth()->check() || ! auth()->user()->hasRole('admin'), function (Builder $query) {
-                        $query->rankable();
-                    })
-                    ->orderByDesc('score')
-                    ->orderBy('last_seen_at')
-                    ->paginate(50)
-                    ->onEachSide(1)
-            )->additional([
-                'ranking' => Cache::get('ranking', []),
-            ]),
+            'characters' => CharacterResource::collection($characters)
+                ->additional([
+                    'ranking' => Cache::get('ranking', []),
+                ]),
         ]);
     }
 }

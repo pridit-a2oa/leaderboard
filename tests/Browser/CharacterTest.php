@@ -13,14 +13,6 @@ class CharacterTest extends DuskTestCase
 {
     use DatabaseTruncation;
 
-    public function test_cannot_see_any_characters(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                ->assertSee('No records found');
-        });
-    }
-
     public function test_can_see_character(): void
     {
         $this->browse(function (Browser $browser) {
