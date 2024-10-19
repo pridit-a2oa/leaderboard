@@ -20,6 +20,7 @@ class CharacterFactory extends Factory
             'guid' => '76561197992228102',
             'name' => ucfirst(fake()->userName()),
             'score' => fake()->randomNumber(5, false),
+            'last_seen_at' => now(),
         ];
     }
 }

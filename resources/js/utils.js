@@ -20,15 +20,5 @@ export function isHighestScore(array, object) {
             !e.is_hidden && e.user_id !== undefined && e.guid === object.guid,
     );
 
-    const score = Math.max(...filter.map((e) => e.score));
-
-    // Highest unique score is associated with one character, so return early
-    if (filter.filter((e) => e.score === score).length === 1)
-        return score === object.score;
-
-    // Multiple characters share the highest score, filter by last seen
-    return (
-        Math.max(...filter.map((e) => new Date(e.last_seen_at))) ===
-        new Date(object.last_seen_at).getTime()
-    );
+    return Math.max(...filter.map((e) => e.max_score)) === object.max_score;
 }

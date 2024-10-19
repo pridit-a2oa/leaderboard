@@ -30,6 +30,15 @@ class Character extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'max_score',
+    ];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -42,12 +51,29 @@ class Character extends Model
     }
 
     /**
+     * Interact with the character's score & last seen at to determine character
+     * having the highest and most recent score.
+     */
+    protected function maxScore(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => (int) sprintf(
+                '%d%d',
+                $attributes['score'],
+                Carbon::parse($attributes['last_seen_at'])->timestamp
+            )
+        );
+    }
+
+    /**
      * Interact with the character's score.
      */
     protected function formattedScore(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes) => number_format($attributes['score'], 0, ',')
+            get: fn (mixed $value, array $attributes) => number_format(
+                $attributes['score'], 0, ','
+            )
         );
     }
 
@@ -104,7 +130,15 @@ class Character extends Model
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->fromRaw('(SELECT *, ROW_NUMBER() OVER (PARTITION BY name ORDER BY score desc, last_seen_at) AS RN FROM characters) characters')
+        $query->fromRaw('
+            (
+                SELECT *, ROW_NUMBER() OVER (
+                    PARTITION BY name
+                    ORDER BY score DESC, last_seen_at
+                )
+                AS RN FROM characters
+            ) characters'
+        )
             ->where('RN', 1)
             ->where('score', '>=', 10)
             ->where(function (Builder $query) {

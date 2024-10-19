@@ -23,9 +23,10 @@ class CharacterResource extends JsonResource
                 'avatar_url' => $this->avatar_url,
                 'score' => $this->score,
                 'last_seen_at' => $this->last_seen_at,
-                'is_muted' => $this->whenLoaded('mute'),
+                'max_score' => $this->max_score,
                 'formatted_score' => $this->formatted_score,
                 'formatted_last_seen_at' => $this->formatted_last_seen_at,
+                'is_muted' => $this->whenLoaded('mute'),
             ]),
             'relations' => [
                 'statistics' => ! $this->is_hidden && $this->user_id !== null ? StatisticResource::collection($this->whenLoaded('statistics')) : [],
