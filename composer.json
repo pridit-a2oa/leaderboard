@@ -28,7 +28,7 @@
         "laravel/breeze": "^2.2.2",
         "laravel/dusk": "^8.2.10",
         "laravel/pint": "^1.18.1",
-        "laravel/sail": "^1.36",
+        "laravel/sail": "^1.37",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.5",
         "phpunit/phpunit": "^11.4.1",
