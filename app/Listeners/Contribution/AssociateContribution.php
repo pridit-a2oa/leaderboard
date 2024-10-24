@@ -4,17 +4,13 @@ namespace App\Listeners\Contribution;
 
 use App\Events\Webhook\WebhookRefresh;
 use App\Models\Contribution;
-use App\Models\User;
 
 class AssociateContribution
 {
     /**
      * Create the event listener.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
@@ -24,7 +20,7 @@ class AssociateContribution
         // Find a contribution from the user email
         $contribution = Contribution::where('email', $event->user->email)->first();
 
-        // No contribution was found
+        // No contribution was found, nothing to do
         if (! $contribution) {
             return;
         }

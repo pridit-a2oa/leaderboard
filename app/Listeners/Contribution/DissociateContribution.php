@@ -3,18 +3,13 @@
 namespace App\Listeners\Contribution;
 
 use App\Events\Webhook\WebhookReset;
-use App\Models\Contribution;
-use App\Models\User;
 
 class DissociateContribution
 {
     /**
      * Create the event listener.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct() {}
 
     /**
      * Handle the event.
@@ -23,7 +18,7 @@ class DissociateContribution
     {
         $user = $event->user;
 
-        // User does not have a contribution
+        // User does not have a contribution, nothing to do
         if (! $user->contribution) {
             return;
         }

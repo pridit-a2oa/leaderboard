@@ -1,4 +1,5 @@
 <script setup>
+import { SuffixText } from '@/Components/text';
 import {
     faCircleNodes,
     faCommentSlash,
@@ -26,7 +27,7 @@ const settings = ref([
 <template>
     <ul
         v-if="$page.props.auth.role === 'admin'"
-        class="menu mt-4 w-44 rounded-md border-r-4 border-error/75 bg-base-200"
+        class="menu mt-4 w-44 rounded-md border-r-4 border-error/60 bg-base-200"
     >
         <li
             v-for="setting in settings"
@@ -68,11 +69,9 @@ const settings = ref([
                     {{ setting.type }}
                 </span>
 
-                <span
-                    v-if="$page.props.auth.model_counts[setting.type] !== '0'"
-                    class="outline-solid rounded-full bg-base-300 px-1.5 text-xs outline outline-1 outline-offset-1 outline-neutral-500"
-                    >{{ $page.props.auth.model_counts[setting.type] }}</span
-                >
+                <SuffixText
+                    :value="$page.props.auth.model_counts[setting.type]"
+                />
             </Link>
         </li>
     </ul>

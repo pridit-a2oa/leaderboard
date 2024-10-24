@@ -41,6 +41,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'auth' => [
                 'model_counts' => [
+                    'characters' => $request->user() ? Number::abbreviate(max($request->user()?->characters->count(), 0)) : null,
                     'mutes' => $request->user()?->hasRole('admin') ? Number::abbreviate(Mute::count()) : null,
                     'users' => $request->user()?->hasRole('admin') ? Number::abbreviate(User::count()) : null,
                     'webhooks' => $request->user()?->hasRole('admin') ? Number::abbreviate(WebhookCall::count()) : null,

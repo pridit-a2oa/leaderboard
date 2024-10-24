@@ -1,5 +1,6 @@
 <script setup>
 import { AdminMenu } from '@/Components/features/cms';
+import { SuffixText } from '@/Components/text';
 import {
     faCircle,
     faCircleUser,
@@ -91,7 +92,14 @@ const settings = ref([
                             />
                         </FontAwesomeLayers>
 
-                        {{ setting.type }}
+                        <span class="truncate">
+                            {{ setting.type }}
+                        </span>
+
+                        <SuffixText
+                            v-if="setting.type === 'characters'"
+                            :value="$page.props.auth.model_counts[setting.type]"
+                        />
 
                         <FontAwesomeIcon
                             v-if="

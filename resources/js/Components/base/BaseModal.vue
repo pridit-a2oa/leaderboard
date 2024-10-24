@@ -1,9 +1,8 @@
 <script setup>
+import { BaseCheckbox } from '@/Components/base';
+
 const props = defineProps({
     id: {
-        type: String,
-    },
-    class: {
         type: String,
     },
     checked: {
@@ -15,14 +14,9 @@ const props = defineProps({
 
 <template>
     <div>
-        <input
-            :id="id"
-            type="checkbox"
-            class="modal-toggle"
-            :checked="checked"
-        />
+        <BaseCheckbox :id="id" class="modal-toggle" :checked="checked" />
 
-        <div class="modal" :class="class" role="dialog">
+        <div class="modal" role="dialog">
             <div
                 class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
             >
@@ -45,8 +39,7 @@ const props = defineProps({
                 :for="id"
                 class="modal-backdrop"
                 @click="$emit('reset')"
-                >Close</label
-            >
+            ></label>
         </div>
     </div>
 </template>
