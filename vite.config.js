@@ -1,9 +1,13 @@
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
+import VueDevTools from 'vite-plugin-vue-devtools';
 
 export default defineConfig({
   plugins: [
+    VueDevTools({
+      appendTo: 'resources/js/app.js',
+    }),
     laravel({
       input: 'resources/js/app.js',
       ssr: 'resources/js/ssr.js',
