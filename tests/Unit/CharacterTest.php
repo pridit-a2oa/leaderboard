@@ -34,29 +34,29 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->missing('characters.data.0')
+                ->missing('characters.meta')
             );
     }
 
     public function test_can_see_highest_scoring_character_first(): void
     {
-        $highestScorer = Character::factory(10)->create()->max('score');
+        $maxScore = Character::factory(10)->create()->max('score');
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->where('characters.data.0.score', $highestScorer)
+                ->where('characters.data.0.score', $maxScore)
             );
     }
 
     public function test_can_see_lowest_scoring_character_last(): void
     {
-        $lowestScorer = Character::factory(10)->create()->min('score');
+        $minScore = Character::factory(10)->create()->min('score');
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->where('characters.data.9.score', $lowestScorer)
+                ->where('characters.data.9.score', $minScore)
             );
     }
 
@@ -69,7 +69,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data', 1)
+                ->has('characters.meta')
             );
     }
 
@@ -82,7 +82,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->has('characters.data', 1)
+                ->has('characters.meta')
             );
     }
 
@@ -95,7 +95,7 @@ class CharacterTest extends TestCase
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->missing('characters.data.0')
+                ->missing('characters.meta')
             );
     }
 
