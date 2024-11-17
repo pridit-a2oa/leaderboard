@@ -4,7 +4,6 @@ import { SuffixText } from '@/Components/text';
 import {
     faCircle,
     faCircleUser,
-    faLock,
     faPlug,
     faStar,
     faTrashCan,
@@ -28,10 +27,10 @@ const verifiedEmail = computed(() => {
 });
 
 const settings = ref([
-    { type: 'account', icon: faCircleUser },
-    { type: 'characters', icon: faUser },
-    { type: 'connections', icon: faPlug },
-    { type: 'extras', icon: faStar },
+    { type: 'account', icon: faCircleUser, disabled: false },
+    { type: 'characters', icon: faUser, disabled: !verifiedEmail.value },
+    { type: 'connections', icon: faPlug, disabled: !verifiedEmail.value },
+    { type: 'extras', icon: faStar, disabled: false },
 ]);
 </script>
 
@@ -43,25 +42,25 @@ const settings = ref([
                     v-for="setting in settings"
                     class="group/parent capitalize [&:not(:last-child)]:mb-1"
                     :class="{
-                        'disabled opacity-40':
-                            ['characters', 'connections'].includes(
-                                setting.type,
-                            ) && !verifiedEmail,
+                        'disabled opacity-60 [&>a>div>svg]:opacity-40':
+                            setting.disabled,
                     }"
                 >
                     <Link
-                        class="group/link px-2 hover:focus:active:!bg-highlight group-[.disabled]/parent:cursor-default"
+                        class="group/link px-2 hover:focus:active:!bg-highlight group-[.disabled]/parent:cursor-not-allowed"
                         :class="{
                             'bg-highlight': $page.component
                                 .toLowerCase()
                                 .includes(setting.type),
                         }"
                         :href="
-                            ['characters', 'connections'].includes(
-                                setting.type,
-                            ) && !verifiedEmail
+                            setting.disabled
                                 ? '#'
                                 : route(`user.setting.${setting.type}`)
+                        "
+                        :title="
+                            (setting.disabled && 'Please verify your email') ||
+                            ''
                         "
                     >
                         <FontAwesomeLayers class="indicator" fixed-width>
@@ -97,20 +96,7 @@ const settings = ref([
                         </span>
 
                         <SuffixText
-                            v-if="setting.type === 'characters'"
                             :value="$page.props.auth.model_counts[setting.type]"
-                        />
-
-                        <FontAwesomeIcon
-                            v-if="
-                                ['characters', 'connections'].includes(
-                                    setting.type,
-                                ) && !verifiedEmail
-                            "
-                            :icon="faLock"
-                            size="sm"
-                            title="Please verify your email"
-                            fixed-width
                         />
                     </Link>
                 </li>

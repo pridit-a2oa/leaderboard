@@ -21,7 +21,7 @@ export default {
           'silver': '#c0c0c0',
         },
         'role': {
-          'supporter': '#ff5c5a',
+          'supporter': '#026bbe',
         },
         'highlight': '#333333',
       },

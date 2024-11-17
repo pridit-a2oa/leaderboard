@@ -98,7 +98,7 @@ defineProps({
                         >
                             <Link
                                 :href="route(`connection.${connection.name}`)"
-                                class="badge badge-success badge-outline select-none font-light uppercase"
+                                class="badge badge-success badge-outline select-none text-xs font-light uppercase"
                             >
                                 Connect
                             </Link>

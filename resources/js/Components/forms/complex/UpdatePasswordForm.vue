@@ -1,5 +1,5 @@
 <script setup>
-import { SuccessButton } from '@/Components/buttons';
+import { BaseButton } from '@/Components/base';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
@@ -94,12 +94,12 @@ const submit = () => {
                         :message="['success', 'Your password was changed']"
                     />
 
-                    <SuccessButton
+                    <BaseButton
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
                         Update
-                    </SuccessButton>
+                    </BaseButton>
                 </div>
             </label>
         </form>

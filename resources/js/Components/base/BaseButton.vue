@@ -1,5 +1,7 @@
 <template>
-    <button class="btn self-center">
+    <button
+        class="btn no-animation btn-sm self-center border border-neutral-600 !bg-neutral-700 font-normal text-neutral-100 opacity-80 hover:border-neutral-600 hover:opacity-100"
+    >
         <slot />
     </button>
 </template>

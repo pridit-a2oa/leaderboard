@@ -1,5 +1,5 @@
 <script setup>
-import { SuccessButton } from '@/Components/buttons';
+import { BaseButton } from '@/Components/base';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
@@ -37,8 +37,8 @@ const submit = () => {
                         class="badge badge-outline badge-sm"
                         :class="
                             $page.props.auth.user.email_verified_at !== null
-                                ? 'badge-primary'
-                                : 'badge-error'
+                                ? 'badge-success'
+                                : 'badge-warning'
                         "
                         >{{
                             $page.props.auth.user.email_verified_at !== null
@@ -74,12 +74,12 @@ const submit = () => {
                         "
                     />
 
-                    <SuccessButton
+                    <BaseButton
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
                         Update
-                    </SuccessButton>
+                    </BaseButton>
                 </div>
             </label>
         </form>
