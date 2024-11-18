@@ -26,7 +26,7 @@ const rewarded = computed(() => {
 </script>
 
 <template>
-    <FontAwesomeLayers class="indicator">
+    <FontAwesomeLayers class="indicator mr-1">
         <FontAwesomeIcon :icon="faPersonRifle" fixed-width />
         <FontAwesomeIcon
             v-show="user !== null"

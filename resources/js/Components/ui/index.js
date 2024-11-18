@@ -4,5 +4,6 @@ import Breadcrumbs from './Breadcrumbs.vue';
 import Footer from './Footer.vue';
 import Navbar from './Navbar.vue';
 import Pagination from './Pagination.vue';
+import Tooltip from './Tooltip.vue';
 
-export { Alert, Banner, Breadcrumbs, Footer, Navbar, Pagination };
+export { Alert, Banner, Breadcrumbs, Footer, Navbar, Pagination, Tooltip };

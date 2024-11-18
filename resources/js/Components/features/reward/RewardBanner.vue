@@ -2,7 +2,7 @@
 import { LinkButton } from '@/Components/buttons';
 import { LinkBadge } from '@/Components/features/character';
 import { RewardIcon } from '@/Components/features/reward';
-import { NormalLink } from '@/Components/links';
+import { Tooltip } from '@/Components/ui';
 import { faGun, faPlug } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
@@ -97,19 +97,18 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                     </ol>
                 </div>
             </div>
-            a character to access the<FontAwesomeIcon
+            a character to access
+            <FontAwesomeIcon
                 class="mx-1 !align-middle text-amber-400"
                 :icon="faGun"
                 size="2xs"
                 fixed-width
             />
-            <strong>gold-plated variant</strong> of the
-            <NormalLink href="https://armedassault.fandom.com/wiki/AKS"
-                >AKS</NormalLink
-            >
+            <strong>gold-plated variants</strong> of the
+            <Tooltip path="/images/gold/aks" alt="Gold AKS">AKS</Tooltip>
             and
-            <NormalLink href="https://armedassault.fandom.com/wiki/Revolver"
-                >Revolver</NormalLink
+            <Tooltip path="/images/gold/revolver" alt="Gold Revolver"
+                >Revolver</Tooltip
             >
         </div>
     </div>
