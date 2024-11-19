@@ -60,8 +60,7 @@ const deleteUserRequest = () => {
                     <span class="ml-1 block">
                         I understand this action is
                         <span class="text-error">irreversible</span> and that my
-                        account <span class="text-warning">cannot</span> be
-                        restored.
+                        account cannot be restored.
                         <span class="font-bold">Continue anyway</span>.
                     </span>
                 </FormCheckbox>

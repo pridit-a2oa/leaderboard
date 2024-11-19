@@ -2,8 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\Registered;
+use App\Events\UserVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\RateLimiter;
 
 class SendEmailVerificationNotification
 {
@@ -15,10 +16,21 @@ class SendEmailVerificationNotification
     /**
      * Handle the event.
      */
-    public function handle(Registered $event): void
+    public function handle(UserVerifyEmail $event): void
     {
-        if ($event->user instanceof MustVerifyEmail && ! $event->user->hasVerifiedEmail()) {
-            $event->user->newEmail($event->user->email);
+        if ($event->user instanceof MustVerifyEmail) {
+            RateLimiter::attempt(
+                sprintf('verification-email:%d', $event->user->id),
+                1,
+                function () use ($event) {
+                    if ($event->email !== $event->user->email) {
+                        $event->user->newEmail($event->email);
+                    } else {
+                        $event->user->resendPendingEmailVerificationMail();
+                    }
+                },
+                600
+            );
         }
     }
 }

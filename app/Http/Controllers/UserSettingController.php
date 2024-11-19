@@ -18,6 +18,7 @@ class UserSettingController extends SettingController
     public function showAccount(Request $request): Response
     {
         $request->user()->load('preferences');
+        $request->user()->append('is_verification_email_throttled');
 
         return Inertia::render('Setting/Account', [
             'preferences' => Preference::get(),

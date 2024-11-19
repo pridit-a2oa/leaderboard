@@ -14,6 +14,10 @@ class UserObserver
     public function created(User $user): void
     {
         $user->assignRole('member');
+
+        if (! $user->hasVerifiedEmail()) {
+            $user->newEmail($user->email);
+        }
     }
 
     /**

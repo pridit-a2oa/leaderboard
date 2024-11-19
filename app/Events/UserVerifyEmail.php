@@ -7,7 +7,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class Registered
+class UserVerifyEmail
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -16,6 +16,6 @@ class Registered
      */
     public function __construct(
         public User $user,
-    ) {
-    }
+        public string $email,
+    ) {}
 }

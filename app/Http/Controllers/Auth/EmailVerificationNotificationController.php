@@ -13,7 +13,7 @@ class EmailVerificationNotificationController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if ($request->user()->hasVerifiedEmail()) {
+        if ($request->user()->hasVerifiedEmail() && $request->user()->getPendingEmail() === null) {
             return redirect()->intended(route('home', absolute: false));
         }
 

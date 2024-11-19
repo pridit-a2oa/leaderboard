@@ -21,7 +21,7 @@ class DeleteUserController extends Controller
     public function create(Request $request): RedirectResponse
     {
         RateLimiter::attempt(
-            sprintf('delete-account:%d', auth()->user()->id),
+            sprintf('delete-account:%d', $request->user()->id),
             1,
             function () use ($request) {
                 if (! $request->user()->hasVerifiedEmail()) {

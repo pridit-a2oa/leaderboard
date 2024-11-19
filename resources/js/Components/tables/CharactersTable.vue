@@ -214,7 +214,7 @@ function getMovementRank(rank) {
                             <template v-else>
                                 <FontAwesomeIcon
                                     v-if="character.is_muted"
-                                    class="ml-2 !align-middle text-warning/75"
+                                    class="ml-2 !align-middle text-warning"
                                     :icon="faTriangleExclamation"
                                     size="lg"
                                     title="This player is chat banned"

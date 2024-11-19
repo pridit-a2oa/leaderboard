@@ -139,6 +139,19 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Determine whether the user has recently been sent a verification email.
+     */
+    protected function isVerificationEmailThrottled(): Attribute
+    {
+        return new Attribute(
+            get: fn (mixed $value, array $attributes) => RateLimiter::tooManyAttempts(
+                sprintf('verification-email:%d', $attributes['id']),
+                1
+            )
+        );
+    }
+
+    /**
      * Get the user's Gravatar URL (if applicable)
      */
     protected function gravatarUrl(): Attribute

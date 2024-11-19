@@ -51,6 +51,7 @@ export default {
           'base-100': '#262626',
           'error': colors.red['500'],
           'success': colors.green['600'],
+          'warning': colors.yellow['600'],
         },
       },
     ],

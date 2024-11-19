@@ -39,7 +39,6 @@ function messageType(type) {
             <FontAwesomeIcon
                 class="mr-0.5 !align-middle"
                 :icon="messageType(message[0])[1]"
-                size="sm"
                 fixed-width
             />
 

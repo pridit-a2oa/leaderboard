@@ -1,7 +1,9 @@
 <script setup>
 import { BaseButton } from '@/Components/base';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
-import { useForm } from '@inertiajs/vue3';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { router, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -24,6 +26,14 @@ const submit = () => {
         onSuccess: () => form.reset('email'),
     });
 };
+
+const spinner = ref(false);
+
+const resend = () => {
+    spinner.value = true;
+
+    setTimeout(() => router.get('/resend-email'), 1800);
+};
 </script>
 
 <template>
@@ -44,8 +54,42 @@ const submit = () => {
                             $page.props.auth.user.email_verified_at !== null
                                 ? 'V'
                                 : 'Unv'
-                        }}erified</span
-                    >
+                        }}erified
+                        <span
+                            v-if="
+                                $page.props.auth.user.email_verified_at === null
+                            "
+                            class="ml-1 cursor-pointer border-l border-warning pl-1"
+                            :class="{
+                                '!cursor-not-allowed':
+                                    $page.props.auth.user
+                                        .is_verification_email_throttled,
+                            }"
+                            :title="
+                                (!$page.props.auth.user
+                                    .is_verification_email_throttled &&
+                                    'Resend verification email') ||
+                                'Please wait'
+                            "
+                            v-on="
+                                !$page.props.auth.user
+                                    .is_verification_email_throttled
+                                    ? { click: resend }
+                                    : {}
+                            "
+                        >
+                            <FontAwesomeIcon
+                                :class="{
+                                    'fa-spin': spinner,
+                                    'opacity-40':
+                                        $page.props.auth.user
+                                            .is_verification_email_throttled,
+                                }"
+                                :icon="faRotateRight"
+                                transform="shrink-2"
+                            />
+                        </span>
+                    </span>
                 </div>
 
                 <FormInput
@@ -69,7 +113,7 @@ const submit = () => {
                                 ? message
                                 : [
                                       'warning',
-                                      'You have been sent a verification link',
+                                      'Check your email for a verification link',
                                   ]
                         "
                     />
