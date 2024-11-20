@@ -23,6 +23,7 @@ let form = useForm({
 const submit = () => {
     form.patch(route('profile.update'), {
         preserveScroll: true,
+        onStart: () => reset(),
         onError: () => emailInput.value.focus(),
         onSuccess: () => form.reset('email'),
     });
@@ -35,10 +36,16 @@ const resend = throttle(() => {
 }, 2000);
 
 onBeforeUnmount(() => {
+    reset();
+});
+
+function reset() {
     resend.cancel();
 
     clearTimeout(timeout.value);
-});
+
+    timeout.value = null;
+}
 </script>
 
 <template>
@@ -74,7 +81,7 @@ onBeforeUnmount(() => {
                                 (!$page.props.auth.user
                                     .is_verification_email_throttled &&
                                     'Resend verification email') ||
-                                'Please wait'
+                                'Please try again later'
                             "
                             v-on="
                                 !$page.props.auth.user

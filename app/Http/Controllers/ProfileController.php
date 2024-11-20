@@ -18,7 +18,7 @@ class ProfileController extends Controller
                 $request->session()
                     ->flash(
                         'message',
-                        ['error', 'Please wait before attempting so soon']
+                        ['error', 'Threshold met, please try again later']
                     );
 
                 return back();
