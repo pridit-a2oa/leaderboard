@@ -27,7 +27,7 @@
         "fakerphp/faker": "^1.24.0",
         "laravel/breeze": "^2.2.5",
         "laravel/dusk": "^8.2.11",
-        "laravel/pint": "^1.18.1",
+        "laravel/pint": "^1.18.2",
         "laravel/sail": "^1.38",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.5",
