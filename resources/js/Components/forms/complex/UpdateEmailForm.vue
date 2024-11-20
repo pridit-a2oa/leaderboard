@@ -4,7 +4,8 @@ import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { router, useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import throttle from 'lodash/throttle';
+import { onBeforeUnmount, ref } from 'vue';
 
 const props = defineProps({
     message: {
@@ -27,13 +28,17 @@ const submit = () => {
     });
 };
 
-const spinner = ref(false);
+const timeout = ref(null);
 
-const resend = () => {
-    spinner.value = true;
+const resend = throttle(() => {
+    timeout.value = setTimeout(() => router.get('/resend-email'), 1800);
+}, 2000);
 
-    setTimeout(() => router.get('/resend-email'), 1800);
-};
+onBeforeUnmount(() => {
+    resend.cancel();
+
+    clearTimeout(timeout.value);
+});
 </script>
 
 <template>
@@ -80,7 +85,7 @@ const resend = () => {
                         >
                             <FontAwesomeIcon
                                 :class="{
-                                    'fa-spin': spinner,
+                                    'fa-spin': timeout,
                                     'opacity-40':
                                         $page.props.auth.user
                                             .is_verification_email_throttled,
