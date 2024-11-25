@@ -31,7 +31,7 @@
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
         "@fortawesome/vue-fontawesome": "^3.0.8",
         "laravel-precognition-vue-inertia": "^0.5.13",
-        "vue-web-component-wrapper": "^1.6.7",
+        "vue-web-component-wrapper": "^1.6.9",
         "vue3-clipboard": "^1.0.0"
     },
     "optionalDependencies": {
