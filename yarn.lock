@@ -1503,26 +1503,26 @@ kolorist@^1.8.0:
   resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.8.0.tgz#edddbbbc7894bc13302cdf740af6374d4a04743c"
   integrity sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==
 
-laravel-precognition-vue-inertia@^0.5.12:
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/laravel-precognition-vue-inertia/-/laravel-precognition-vue-inertia-0.5.12.tgz#151002a9da1f123cc91f1e469c982e50c3c0fe3a"
-  integrity sha512-chTa/LC1HQbqdANqGcQhJSOTIh9j3HPDnGPcY7MKkrFyNMHk9BkQdvSUZ8j6yonFdsIMcDlPlApQFPJNQsP4zg==
+laravel-precognition-vue-inertia@^0.5.13:
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/laravel-precognition-vue-inertia/-/laravel-precognition-vue-inertia-0.5.13.tgz#d55fb8afdcefc7480a40ab273b27631f334f1cb9"
+  integrity sha512-ecQEaF2Cgw9RSn7WCoCWsSnFuQCFeRAu4U0+PmH7QyuuhWEEEsMK6XfabFhA0RASKYqRt7JVgfCgAwK4IP+rQg==
   dependencies:
-    laravel-precognition "0.5.12"
-    laravel-precognition-vue "0.5.12"
+    laravel-precognition "0.5.13"
+    laravel-precognition-vue "0.5.13"
 
-laravel-precognition-vue@0.5.12:
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/laravel-precognition-vue/-/laravel-precognition-vue-0.5.12.tgz#eb76f2769f9887ff9dcf38bb1860a99516058da8"
-  integrity sha512-IHXxZJX8EWaTpUcYkAc4kJEZCARwKWRLFTn8pQbOvw97hNziuNbaOfjybtu8W4nw88jiK0KLT+nwIJQ/3rqSrw==
+laravel-precognition-vue@0.5.13:
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/laravel-precognition-vue/-/laravel-precognition-vue-0.5.13.tgz#dbf92a7cee360be8ab37e7625829c50dcef64830"
+  integrity sha512-F7ftodwHNdc9KJlg4qdHjcGVfNHBzlREv7JET7LJHOmDPuRqhkQJ3KkC9UusijrlO5zeA0zZdxMCGAim1yvBjw==
   dependencies:
-    laravel-precognition "0.5.12"
+    laravel-precognition "0.5.13"
     lodash-es "^4.17.21"
 
-laravel-precognition@0.5.12:
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/laravel-precognition/-/laravel-precognition-0.5.12.tgz#83db85d7586a64ec9e13313d780f6f7ab585d647"
-  integrity sha512-Lv7QOPtW++l2FRduF/Unbvg8c+g6PDKff8MZpCfDjHlBlJeTHNihtW0WbbsuA60RBt7BNlAq1D9NhqPe7PPQOA==
+laravel-precognition@0.5.13:
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/laravel-precognition/-/laravel-precognition-0.5.13.tgz#2c43c5b5b8c23e0606e7d14bdd2e755f13d3f417"
+  integrity sha512-SK7dyyFwnFgbs/maRjlZ1KkF2ZEQuJIQlGCYr79ruwD3Vyu8uRXhxISXfqdbJ8tCuXD8cXoS+Z7E0lCOfgXv3A==
   dependencies:
     axios "^1.4.0"
     lodash-es "^4.17.21"
@@ -1836,7 +1836,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.43, postcss@^8.4.47, postcss@^8.4.49:
+postcss@^8.4.43, postcss@^8.4.47, postcss@^8.4.48, postcss@^8.4.49:
   version "8.4.49"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.49.tgz#4ea479048ab059ab3ae61d082190fabfd994fe19"
   integrity sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==
