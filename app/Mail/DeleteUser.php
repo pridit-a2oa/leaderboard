@@ -18,8 +18,7 @@ class DeleteUser extends Mailable
      */
     public function __construct(
         protected User $user,
-    ) {
-    }
+    ) {}
 
     /**
      * Get the message envelope.

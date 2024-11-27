@@ -16,6 +16,5 @@ class WebhookReset
      */
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 }

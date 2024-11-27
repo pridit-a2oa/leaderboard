@@ -16,6 +16,5 @@ class UserRequestDelete
      */
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 }
