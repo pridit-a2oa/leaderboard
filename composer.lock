@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca0f4ca0aed5c5616d722c21da7a2c56",
+    "content-hash": "bbf26e79b6bfbecc85241778022d0971",
     "packages": [
         {
             "name": "brick/math",
@@ -2895,16 +2895,16 @@
         },
         {
             "name": "propaganistas/laravel-disposable-email",
-            "version": "2.4.7",
+            "version": "2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Disposable-Email.git",
-                "reference": "3ce8c2d70d65e4b749818a5766d7f59d1ee0d5ce"
+                "reference": "07fac9c2fb860c02da1a06f227a5d8ad1b2408c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/3ce8c2d70d65e4b749818a5766d7f59d1ee0d5ce",
-                "reference": "3ce8c2d70d65e4b749818a5766d7f59d1ee0d5ce",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/07fac9c2fb860c02da1a06f227a5d8ad1b2408c0",
+                "reference": "07fac9c2fb860c02da1a06f227a5d8ad1b2408c0",
                 "shasum": ""
             },
             "require": {
@@ -2918,7 +2918,6 @@
                 "php": "^8.1"
             },
             "require-dev": {
-                "larastan/larastan": "^2.9",
                 "laravel/pint": "^1.14",
                 "mockery/mockery": "^1.4.2",
                 "orchestra/testbench": "*",
@@ -2960,7 +2959,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Propaganistas/Laravel-Disposable-Email/issues",
-                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.7"
+                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.8"
             },
             "funding": [
                 {
@@ -2968,7 +2967,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-01T00:48:20+00:00"
+            "time": "2024-12-01T00:56:42+00:00"
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
