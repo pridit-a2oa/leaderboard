@@ -1497,10 +1497,10 @@ laravel-precognition@0.5.13:
     axios "^1.4.0"
     lodash-es "^4.17.21"
 
-laravel-vite-plugin@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-1.0.6.tgz#14c4f33574dda3ff4636ee73c83cd0c5f39e5d09"
-  integrity sha512-B34OqmZc/rV1KvSjst8SsUm/LKHsuDusw8jiZCIhlnTHXbXnK89JUM9pTJuk6E/Vc/1DT2gX7qNfhipak1WS8w==
+laravel-vite-plugin@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-1.1.0.tgz#7f69edf78106bb27c6a6ca8574a2ee26354d6411"
+  integrity sha512-jo0PQGvAxbhUwNPEBKwNV8cS5kEsrCHPKrUtIBAuPrWODNCKcM4a/7dq2Hq4vzHaXdE7qOoasFs6GNQZecfZqw==
   dependencies:
     picocolors "^1.0.0"
     vite-plugin-full-reload "^1.1.0"
