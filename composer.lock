@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bbf26e79b6bfbecc85241778022d0971",
+    "content-hash": "bac526daf064f70719af787548925fcf",
     "packages": [
         {
             "name": "brick/math",
@@ -1176,16 +1176,16 @@
         },
         {
             "name": "inertiajs/inertia-laravel",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "c4026af538c21355a11c4f90f2a9e0bad7abd88d"
+                "reference": "7e6a030ffab315099782a4844a2175455f511c68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/c4026af538c21355a11c4f90f2a9e0bad7abd88d",
-                "reference": "c4026af538c21355a11c4f90f2a9e0bad7abd88d",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/7e6a030ffab315099782a4844a2175455f511c68",
+                "reference": "7e6a030ffab315099782a4844a2175455f511c68",
                 "shasum": ""
             },
             "require": {
@@ -1240,7 +1240,7 @@
             ],
             "support": {
                 "issues": "https://github.com/inertiajs/inertia-laravel/issues",
-                "source": "https://github.com/inertiajs/inertia-laravel/tree/v1.3.1"
+                "source": "https://github.com/inertiajs/inertia-laravel/tree/v1.3.2"
             },
             "funding": [
                 {
@@ -1248,7 +1248,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-14T14:22:48+00:00"
+            "time": "2024-12-05T14:52:50+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2239,16 +2239,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "32e515fdc02cdafbe4593e30a9350d486b125b67"
+                "reference": "aef6ee73a77a66e404dd6540934a9ef1b3c855b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/32e515fdc02cdafbe4593e30a9350d486b125b67",
-                "reference": "32e515fdc02cdafbe4593e30a9350d486b125b67",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/aef6ee73a77a66e404dd6540934a9ef1b3c855b4",
+                "reference": "aef6ee73a77a66e404dd6540934a9ef1b3c855b4",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2326,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/3.8.0"
+                "source": "https://github.com/Seldaek/monolog/tree/3.8.1"
             },
             "funding": [
                 {
@@ -2338,7 +2338,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-12T13:57:08+00:00"
+            "time": "2024-12-05T17:15:07+00:00"
         },
         {
             "name": "nesbot/carbon",
