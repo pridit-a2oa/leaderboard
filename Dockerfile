@@ -1,4 +1,4 @@
-FROM node:23.0.0-alpine3.19
+FROM node:23-alpine3.21
 
 # Set the application variables
 ENV APP_NAME=Leaderboard
@@ -14,28 +14,28 @@ RUN apk add --no-cache \
     nodejs-current \
     npm \
     nginx \
-    php83 \
-    php83-bcmath \
-    php83-ctype \
-    php83-curl \
-    php83-dom \
-    php83-fileinfo \
-    php83-fpm \
-    php83-gd \
-    php83-intl \
-    php83-json \
-    php83-mbstring \
-    php83-opcache \
-    php83-openssl \
-    php83-pdo \
-    php83-pdo_mysql \
-    php83-phar \
-    php83-session \
-    php83-tokenizer \
-    php83-xml \
-    php83-xmlreader \
-    php83-xmlwriter \
-    php83-zip \
+    php84 \
+    php84-bcmath \
+    php84-ctype \
+    php84-curl \
+    php84-dom \
+    php84-fileinfo \
+    php84-fpm \
+    php84-gd \
+    php84-intl \
+    php84-json \
+    php84-mbstring \
+    php84-opcache \
+    php84-openssl \
+    php84-pdo \
+    php84-pdo_mysql \
+    php84-phar \
+    php84-session \
+    php84-tokenizer \
+    php84-xml \
+    php84-xmlreader \
+    php84-xmlwriter \
+    php84-zip \
     supervisor
 
 # Add a non-root user to prevent files being created with root permissions on host machine
@@ -48,8 +48,8 @@ RUN addgroup -g 1001 laravel \
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
-COPY .docker/fpm-pool.conf /etc/php83/php-fpm.d/www.conf
-COPY .docker/php.ini /etc/php83/conf.d/custom.ini
+COPY .docker/fpm-pool.conf /etc/php84/php-fpm.d/www.conf
+COPY .docker/php.ini /etc/php84/conf.d/custom.ini
 
 # Configure supervisord
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -61,10 +61,10 @@ RUN chown -R laravel /etc/crontabs/laravel
 RUN chmod -R 644 /etc/crontabs/laravel
 
 # Make sure files/folders needed by the processes are accessable when they run under the laravel user
-RUN chown -R laravel.laravel /var/www/html /run /var/lib/nginx /var/log/nginx
+RUN chown -R laravel:laravel /var/www/html /run /var/lib/nginx /var/log/nginx
 
 # Create symlink for php
-RUN ln -s /usr/bin/php83 /usr/bin/php
+RUN ln -s /usr/bin/php84 /usr/bin/php
 
 # Add application
 COPY --chown=laravel . /var/www/html/
