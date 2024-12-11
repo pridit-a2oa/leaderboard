@@ -15,7 +15,7 @@
         "laravel/framework": "^11.35.0",
         "laravel/prompts": "^0.3.2",
         "laravel/sanctum": "^4.0.5",
-        "laravel/scout": "^10.11.8",
+        "laravel/scout": "^10.11.9",
         "laravel/tinker": "^2.10",
         "meilisearch/meilisearch-php": "^1.11",
         "propaganistas/laravel-disposable-email": "^2.4.8",
