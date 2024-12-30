@@ -429,22 +429,21 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-3.0.8.tgz#1e8032df151173d8174ac9f5a28da3c0f5a495e4"
   integrity sha512-yyHHAj4G8pQIDfaIsMvQpwKMboIZtcHTUvPqXjOHyldh1O1vZfH4W03VDPv5RvI9P6DLTzJQlmVgj9wCf7c2Fw==
 
-"@inertiajs/core@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-1.3.0.tgz#81f7a24d9f14a428030b14aaeba23d1060d40e92"
-  integrity sha512-TJ8R1eUYY473m9DaKlCPRdHTdznFWTDuy5VvEzXg3t/hohbDQedLj46yn/uAqziJPEUZJrSftZzPI2NMzL9tQA==
+"@inertiajs/core@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-2.0.0.tgz#0cb8df763fead54f57a70ad3c7fcba48d07557e8"
+  integrity sha512-2kvlk731NjwfXUku/ZoXsZNcOzx985icHtTC1dgN+8sAZtJfEg9QBrQ7sBjeLYiWtKgobJdwwpeDaexEneAtLQ==
   dependencies:
     axios "^1.6.0"
     deepmerge "^4.0.0"
-    nprogress "^0.2.0"
     qs "^6.9.0"
 
-"@inertiajs/vue3@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@inertiajs/vue3/-/vue3-1.3.0.tgz#e5114cb16ddbe9d5e60d32e98864a0a468b895bf"
-  integrity sha512-GizqdCM3u4JWunit3uUbW4fEmTLKQTi1W7VvPRdrNy8XDt4Qy2cCmfFjq+aH5tHBSS3fI/ngYuhN7XvwqNaKvw==
+"@inertiajs/vue3@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/vue3/-/vue3-2.0.0.tgz#2c434a7b8e37445e0d6a3b6f8f89e8751aa03264"
+  integrity sha512-U38EM8jqlfX2WmVK/vJWZr+jD71qvnmNPnUuZ+4mS2QNFdNmUeg2M/HbLmvR4WLWsxIl+7GYQySy4sW3tu/uTA==
   dependencies:
-    "@inertiajs/core" "1.3.0"
+    "@inertiajs/core" "2.0.0"
     lodash.clonedeep "^4.5.0"
     lodash.isequal "^4.5.0"
 
@@ -1690,11 +1689,6 @@ npm-run-path@^6.0.0:
   dependencies:
     path-key "^4.0.0"
     unicorn-magic "^0.3.0"
-
-nprogress@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
-  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 object-assign@^4.0.1:
   version "4.1.1"
