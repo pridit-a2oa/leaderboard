@@ -1511,26 +1511,26 @@ kolorist@^1.8.0:
   resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.8.0.tgz#edddbbbc7894bc13302cdf740af6374d4a04743c"
   integrity sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==
 
-laravel-precognition-vue-inertia@^0.5.14:
-  version "0.5.14"
-  resolved "https://registry.yarnpkg.com/laravel-precognition-vue-inertia/-/laravel-precognition-vue-inertia-0.5.14.tgz#292d1cc1f47759a5074317208305eebcbc4f74c0"
-  integrity sha512-UcrAOEVnydzOOXKf6KkjDLBriK66vYTGNOc+X7TIFNsqOxrn5AxgARSb1T0HlnDQgE/klKPZ7h2EIhqlEVCqSw==
+laravel-precognition-vue-inertia@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/laravel-precognition-vue-inertia/-/laravel-precognition-vue-inertia-0.6.0.tgz#b522ad4816c7954655bf29169536a9f2b892eac9"
+  integrity sha512-+GYJmiKeUH/d+x/4/VRwhDjGHN3RTTtS21DBuvqRrqYFkXrYuVgJJkG7CLXh+Ogipn9JUCSvPq893RddNC++/A==
   dependencies:
-    laravel-precognition "0.5.14"
-    laravel-precognition-vue "0.5.14"
+    laravel-precognition "0.6.0"
+    laravel-precognition-vue "0.6.0"
 
-laravel-precognition-vue@0.5.14:
-  version "0.5.14"
-  resolved "https://registry.yarnpkg.com/laravel-precognition-vue/-/laravel-precognition-vue-0.5.14.tgz#359c46712e5e1ad91c0f159e0d434dc5ee615d5b"
-  integrity sha512-ytJ3TfKlEb4etRKtxZVcUerjYVUXchnYQGiBq9P5Gzxb1Hpj4e0+7z7+R0BlLs5lGmxr8YDrrpPjTd6wm5DhgQ==
+laravel-precognition-vue@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/laravel-precognition-vue/-/laravel-precognition-vue-0.6.0.tgz#1ca4cb4c219542a404f36c8139f0f4c957ea961e"
+  integrity sha512-g3R/ULZ4Dlu7KOavrifIMpp7iul+H/qui9yDBa+fsrU0XXqkgJVloZvBgIKn303vlpaYnsG3kgAp95ovrmau/g==
   dependencies:
-    laravel-precognition "0.5.14"
+    laravel-precognition "0.6.0"
     lodash-es "^4.17.21"
 
-laravel-precognition@0.5.14:
-  version "0.5.14"
-  resolved "https://registry.yarnpkg.com/laravel-precognition/-/laravel-precognition-0.5.14.tgz#a0b0f8a8a8ea71f9b19357fe9dc4e4a54b67a936"
-  integrity sha512-1rMRP/fNu/LM3ot02wqZjSNJvIbB/wr5JVQPGn6+3oxWSP2OOYiM5WVrsgWFpWhQ8RXQrZzkvNxZk97WMfg4Tw==
+laravel-precognition@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/laravel-precognition/-/laravel-precognition-0.6.0.tgz#704a46fa53720b41cf46714581adda347be7c6f9"
+  integrity sha512-mdhnZnFqwfOZH6Z4ETyC89eVzuKa3aAxGK7ymJzxgMm/CWwA6tBfB+rjNp+jwfiw24P008beOBcWZ/0E2p7PSw==
   dependencies:
     axios "^1.4.0"
     lodash-es "^4.17.21"
