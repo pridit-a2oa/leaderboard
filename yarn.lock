@@ -429,21 +429,21 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-3.0.8.tgz#1e8032df151173d8174ac9f5a28da3c0f5a495e4"
   integrity sha512-yyHHAj4G8pQIDfaIsMvQpwKMboIZtcHTUvPqXjOHyldh1O1vZfH4W03VDPv5RvI9P6DLTzJQlmVgj9wCf7c2Fw==
 
-"@inertiajs/core@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-2.0.0.tgz#0cb8df763fead54f57a70ad3c7fcba48d07557e8"
-  integrity sha512-2kvlk731NjwfXUku/ZoXsZNcOzx985icHtTC1dgN+8sAZtJfEg9QBrQ7sBjeLYiWtKgobJdwwpeDaexEneAtLQ==
+"@inertiajs/core@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-2.0.2.tgz#0d61f1b08f8b3024ed151e67c52608efa36d8b8c"
+  integrity sha512-G2Rs+Qbt0fnFme9hp3ZkCkXSVrTs2Cw4BcFeBN0BVFoxodRERg5ikp0P1RBfxr8gm3GP3C0SBNaJjhsXqkXUwg==
   dependencies:
     axios "^1.6.0"
     deepmerge "^4.0.0"
     qs "^6.9.0"
 
-"@inertiajs/vue3@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@inertiajs/vue3/-/vue3-2.0.0.tgz#2c434a7b8e37445e0d6a3b6f8f89e8751aa03264"
-  integrity sha512-U38EM8jqlfX2WmVK/vJWZr+jD71qvnmNPnUuZ+4mS2QNFdNmUeg2M/HbLmvR4WLWsxIl+7GYQySy4sW3tu/uTA==
+"@inertiajs/vue3@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@inertiajs/vue3/-/vue3-2.0.2.tgz#ecbb724ef011f93256fe2bcfbcca4f941c4a217a"
+  integrity sha512-9if+h7MuOTK9vryLJLkgm7B6bqoFcwo0OYgvTbjzNVBXyUiE4U4KTmtjmvLfHJ6Msgdty6Ajhyle77oEQL6R/Q==
   dependencies:
-    "@inertiajs/core" "2.0.0"
+    "@inertiajs/core" "2.0.2"
     lodash.clonedeep "^4.5.0"
     lodash.isequal "^4.5.0"
 
