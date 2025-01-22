@@ -9,11 +9,11 @@ This project integrates game server data to drive the display of a leaderboard, 
 
 ## Features
 
--   Full account flow/lifecycle (register, login, recover, update, delete)
--   Support for linking characters to an account and performing actions
--   [Steam](https://store.steampowered.com/) user identifier (via OpenID) associating with an account (to match characters)
--   [Gravatar](https://gravatar.com) support for overriding character avatars with the one driven via user email instead of Steam
--   [Ko-fi](https://ko-fi.com) webhook support to associate contributions and allow users to access a set of permission restricted features
+- Full account flow/lifecycle (register, login, recover, update, delete)
+- Support for linking characters to an account and performing actions
+- [Steam](https://store.steampowered.com/) user identifier (via OpenID) associating with an account (to match characters)
+- [Gravatar](https://gravatar.com) support for overriding character avatars with the one driven via user email instead of Steam
+- [Ko-fi](https://ko-fi.com) webhook support to associate contributions and allow users to access a set of permission restricted features
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ With [laravel/sail](https://laravel.com/docs/11.x/sail) start/build the project'
 Run vite:
 
 ```
-sail yarn run dev
+sail npm run dev
 ```
 
 ### Initial Setup
@@ -55,7 +55,7 @@ sail artisan migrate:fresh
 
 You should now be able to access the application via:
 
--   http://laravel.test
+- http://laravel.test
 
 ### Deployment
 
@@ -103,7 +103,7 @@ For an example on how this has been integrated into an existing mission using [A
 SSR is not fully supported due to outstanding [issues](#issues) and will not work as-is. If you would like to experiment with SSR you can do so by running:
 
 ```
-yarn run build:ssr
+npm run build:ssr
 ```
 
 ```
@@ -144,7 +144,7 @@ sail dusk
 
 While running Dusk tests Selenium can be observed using noVNC via:
 
--   http://localhost:7900/?autoconnect=1&resize=scale&password=secret
+- http://localhost:7900/?autoconnect=1&resize=scale&password=secret
 
 > [!IMPORTANT]
 > Dusk will not work with [Vite](http://localhost:5173/) running, so ensure it is off prior to running this test suite.

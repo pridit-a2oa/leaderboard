@@ -75,15 +75,15 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 # Run composer install to install the dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
-# Run yarn install to satisfy build requirements
-RUN yarn install --frozen-lockfile
+# Run npm install to satisfy build requirements
+RUN npm ci
 
 # Build app
-RUN yarn run build
+RUN npm run build
 
 # Remove dev-only dependencies & clear cache
-RUN yarn install --frozen-lockfile --production && \
-    yarn cache clean
+RUN npm ci --production && \
+    npm cache clean --force
 
 # Set entrypoint execution permission
 RUN chmod +x .docker/entrypoint.sh
