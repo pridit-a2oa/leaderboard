@@ -27,7 +27,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14.10",
         "fakerphp/faker": "^1.24.1",
-        "laravel/breeze": "^2.3.1",
+        "laravel/breeze": "^2.3.2",
         "laravel/dusk": "^8.2.13",
         "laravel/pint": "^1.20.0",
         "laravel/sail": "^1.40.0",
