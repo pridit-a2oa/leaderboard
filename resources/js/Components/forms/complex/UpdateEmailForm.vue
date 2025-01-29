@@ -134,7 +134,7 @@ function reset() {
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
-                        Update
+                        Save
                     </BaseButton>
                 </div>
             </label>

@@ -35,7 +35,7 @@ const icon = {
         </a>
 
         <div class="indicator w-auto">
-            <UserRoleIcon />
+            <UserRoleIcon v-if="$page.props.auth.role !== 'admin'" />
 
             <table class="table table-fixed rounded-md bg-base-200">
                 <tbody>

@@ -50,9 +50,9 @@ import { Head } from '@inertiajs/vue3';
                                 "
                             >
                                 <FontAwesomeIcon
-                                    class="z-10 text-role-supporter opacity-80"
+                                    class="z-10 text-role-supporter"
                                     :icon="faHeart"
-                                    transform="right-7 down-11 shrink-6"
+                                    transform="right-7 down-11 shrink-5"
                                 />
 
                                 <FontAwesomeIcon

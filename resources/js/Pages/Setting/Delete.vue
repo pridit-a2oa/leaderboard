@@ -32,13 +32,15 @@ const deleteUserRequest = () => {
                 <li>Connection(s) will be severed</li>
                 <li>Linked character(s) will be unlinked</li>
                 <li v-if="$page.props.auth.role === 'supporter'">
-                    Ko-fi contribution will be unassociated<br />(<span
+                    Ko-fi contribution will be unassociated
+                    <span
                         class="tooltip-benefit"
-                        data-tip="Please either reach out directly on Ko-fi or email in to privacy@pridit.co.uk
-                            with receipt of donation"
+                        data-tip="If you change your mind
+                    and decide to re-register we'll be able to reassociate
+                    your benefits with a new account"
                     >
-                        I want to delete</span
-                    >)
+                        (?)</span
+                    >
                 </li>
             </ul>
 
