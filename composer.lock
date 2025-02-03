@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c52a5066a731d8851c4d9c479461b59",
+    "content-hash": "881e984275f249f4dbef6ca2c6b9ff70",
     "packages": [
         {
             "name": "brick/math",
@@ -1033,16 +1033,16 @@
         },
         {
             "name": "guzzlehttp/uri-template",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/uri-template.git",
-                "reference": "ecea8feef63bd4fef1f037ecb288386999ecc11c"
+                "reference": "30e286560c137526eccd4ce21b2de477ab0676d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/uri-template/zipball/ecea8feef63bd4fef1f037ecb288386999ecc11c",
-                "reference": "ecea8feef63bd4fef1f037ecb288386999ecc11c",
+                "url": "https://api.github.com/repos/guzzle/uri-template/zipball/30e286560c137526eccd4ce21b2de477ab0676d2",
+                "reference": "30e286560c137526eccd4ce21b2de477ab0676d2",
                 "shasum": ""
             },
             "require": {
@@ -1099,7 +1099,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/uri-template/issues",
-                "source": "https://github.com/guzzle/uri-template/tree/v1.0.3"
+                "source": "https://github.com/guzzle/uri-template/tree/v1.0.4"
             },
             "funding": [
                 {
@@ -1115,7 +1115,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-03T19:50:20+00:00"
+            "time": "2025-02-03T10:55:03+00:00"
         },
         {
             "name": "ilzrv/laravel-steam-auth",
@@ -6373,16 +6373,16 @@
         },
         {
             "name": "tightenco/ziggy",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/ziggy.git",
-                "reference": "2b574ba281546884b7bdde6eefa451ba7e0b52f7"
+                "reference": "40df446f6053787edb245381c3b3d80b031b5fc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/ziggy/zipball/2b574ba281546884b7bdde6eefa451ba7e0b52f7",
-                "reference": "2b574ba281546884b7bdde6eefa451ba7e0b52f7",
+                "url": "https://api.github.com/repos/tighten/ziggy/zipball/40df446f6053787edb245381c3b3d80b031b5fc0",
+                "reference": "40df446f6053787edb245381c3b3d80b031b5fc0",
                 "shasum": ""
             },
             "require": {
@@ -6437,9 +6437,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tighten/ziggy/issues",
-                "source": "https://github.com/tighten/ziggy/tree/v2.5.0"
+                "source": "https://github.com/tighten/ziggy/tree/v2.5.1"
             },
-            "time": "2025-01-23T00:32:18+00:00"
+            "time": "2025-01-31T19:23:01+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
