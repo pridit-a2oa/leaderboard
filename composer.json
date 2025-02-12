@@ -13,7 +13,7 @@
         "ilzrv/laravel-steam-auth": "^3.1",
         "inertiajs/inertia-laravel": "^2.0.0",
         "laravel/framework": "^11.41.3",
-        "laravel/prompts": "^0.3.2",
+        "laravel/prompts": "^0.3.5",
         "laravel/sanctum": "^4.0.8",
         "laravel/scout": "^10.12.2",
         "laravel/tinker": "^2.10",
