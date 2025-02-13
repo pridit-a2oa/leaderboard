@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c149aeeb081b247ee1b6f58cc352220d",
+    "content-hash": "301d61206d9767ef15f4c475031b15c6",
     "packages": [
         {
             "name": "brick/math",
@@ -7046,16 +7046,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v8.2.14",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "28c9fce3900625522afc2468a9117cdf44f919c1"
+                "reference": "41137a3676261a69c05a2329eaa991f2af3232d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/28c9fce3900625522afc2468a9117cdf44f919c1",
-                "reference": "28c9fce3900625522afc2468a9117cdf44f919c1",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/41137a3676261a69c05a2329eaa991f2af3232d0",
+                "reference": "41137a3676261a69c05a2329eaa991f2af3232d0",
                 "shasum": ""
             },
             "require": {
@@ -7072,11 +7072,13 @@
                 "vlucas/phpdotenv": "^5.2"
             },
             "require-dev": {
+                "laravel/framework": "^10.0|^11.0|^12.0",
                 "mockery/mockery": "^1.6",
-                "orchestra/testbench": "^8.19|^9.0|^10.0",
+                "orchestra/testbench-core": "^8.19|^9.0|^10.0",
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^10.1|^11.0",
-                "psy/psysh": "^0.11.12|^0.12"
+                "phpunit/phpunit": "^10.1|^11.0|^12.0.1",
+                "psy/psysh": "^0.11.12|^0.12",
+                "symfony/yaml": "^6.2|^7.0"
             },
             "suggest": {
                 "ext-pcntl": "Used to gracefully terminate Dusk when tests are running."
@@ -7112,9 +7114,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/dusk/issues",
-                "source": "https://github.com/laravel/dusk/tree/v8.2.14"
+                "source": "https://github.com/laravel/dusk/tree/v8.3.0"
             },
-            "time": "2025-01-26T19:36:00+00:00"
+            "time": "2025-02-11T13:22:10+00:00"
         },
         {
             "name": "laravel/pint",
@@ -7398,16 +7400,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
+                "reference": "024473a478be9df5fdaca2c793f2232fe788e414"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
-                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/024473a478be9df5fdaca2c793f2232fe788e414",
+                "reference": "024473a478be9df5fdaca2c793f2232fe788e414",
                 "shasum": ""
             },
             "require": {
@@ -7446,7 +7448,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.0"
             },
             "funding": [
                 {
@@ -7454,7 +7456,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-08T17:47:46+00:00"
+            "time": "2025-02-12T12:17:51+00:00"
         },
         {
             "name": "nunomaduro/collision",
@@ -8063,16 +8065,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.6",
+            "version": "11.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3c3ae14c90f244cdda95028c3e469028e8d1c02c"
+                "reference": "e1cb706f019e2547039ca2c839898cd5f557ee5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3c3ae14c90f244cdda95028c3e469028e8d1c02c",
-                "reference": "3c3ae14c90f244cdda95028c3e469028e8d1c02c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e1cb706f019e2547039ca2c839898cd5f557ee5d",
+                "reference": "e1cb706f019e2547039ca2c839898cd5f557ee5d",
                 "shasum": ""
             },
             "require": {
@@ -8144,7 +8146,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.7"
             },
             "funding": [
                 {
@@ -8160,7 +8162,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-31T07:03:30+00:00"
+            "time": "2025-02-06T16:10:05+00:00"
         },
         {
             "name": "sebastian/cli-parser",
