@@ -17,7 +17,7 @@
         "laravel/sanctum": "^4.0.8",
         "laravel/scout": "^10.13.0",
         "laravel/tinker": "^2.10",
-        "meilisearch/meilisearch-php": "^1.12",
+        "meilisearch/meilisearch-php": "^1.13",
         "propaganistas/laravel-disposable-email": "^2.4.10",
         "protonemedia/laravel-verify-new-email": "^1.12",
         "spatie/laravel-permission": "^6.13.0",
