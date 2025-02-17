@@ -20,7 +20,7 @@
         "meilisearch/meilisearch-php": "^1.13",
         "propaganistas/laravel-disposable-email": "^2.4.10",
         "protonemedia/laravel-verify-new-email": "^1.12",
-        "spatie/laravel-permission": "^6.13.0",
+        "spatie/laravel-permission": "^6.14.0",
         "spatie/laravel-webhook-client": "^3.4.2",
         "tightenco/ziggy": "^2.5.1"
     },
