@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27804b23195227c0b739348cfed5c383",
+    "content-hash": "3e3ded262a7759eccf799bc7b0928154",
     "packages": [
         {
             "name": "brick/math",
@@ -137,36 +137,36 @@
         },
         {
             "name": "creativeorange/gravatar",
-            "version": "v1.0.24",
+            "version": "v1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/creativeorange/gravatar.git",
-                "reference": "ec0d78c7d4ef6d66c3cc09b6a03ab8d53e44379f"
+                "reference": "21ba6cbe125d57965c58468047ea29dfa822b4d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/ec0d78c7d4ef6d66c3cc09b6a03ab8d53e44379f",
-                "reference": "ec0d78c7d4ef6d66c3cc09b6a03ab8d53e44379f",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/21ba6cbe125d57965c58468047ea29dfa822b4d3",
+                "reference": "21ba6cbe125d57965c58468047ea29dfa822b4d3",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^5|^6|^7|^8|^9|^10.0|^11.0",
+                "illuminate/support": "^5|^6|^7|^8|^9|^10.0|^11.0|^12.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
                 "nunomaduro/larastan": "^0.6.2|^2.4",
-                "orchestra/testbench": "^5.4|^8.0|^9.0",
+                "orchestra/testbench": "^5.4|^8.0|^9.0|^10.0",
                 "php": ">=7.2"
             },
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Creativeorange\\Gravatar\\GravatarServiceProvider"
-                    ],
                     "aliases": {
                         "Gravatar": "Creativeorange\\Gravatar\\Facades\\Gravatar"
-                    }
+                    },
+                    "providers": [
+                        "Creativeorange\\Gravatar\\GravatarServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -194,9 +194,9 @@
             ],
             "support": {
                 "issues": "https://github.com/creativeorange/gravatar/issues",
-                "source": "https://github.com/creativeorange/gravatar/tree/v1.0.24"
+                "source": "https://github.com/creativeorange/gravatar/tree/v1.0.25"
             },
-            "time": "2024-02-28T09:23:55+00:00"
+            "time": "2025-02-22T19:11:54+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

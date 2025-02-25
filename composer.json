@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "creativeorange/gravatar": "^1.0.24",
+        "creativeorange/gravatar": "^1.0.25",
         "ilzrv/laravel-steam-auth": "^3.1",
         "inertiajs/inertia-laravel": "^2.0.1",
         "laravel/framework": "^11.43.2",
