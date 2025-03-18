@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c12a10842c236734c8f0559215a748a",
+    "content-hash": "a7e9456829dd43fd47aa60b362ef1243",
     "packages": [
         {
             "name": "brick/math",
@@ -1119,20 +1119,20 @@
         },
         {
             "name": "ilzrv/laravel-steam-auth",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilzrv/laravel-steam-auth.git",
-                "reference": "d9f6ac1bab2e781f81de46386ab4a13d866e0af7"
+                "reference": "75d1a0b0b6071dad44529cc7af8b0e8413246428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilzrv/laravel-steam-auth/zipball/d9f6ac1bab2e781f81de46386ab4a13d866e0af7",
-                "reference": "d9f6ac1bab2e781f81de46386ab4a13d866e0af7",
+                "url": "https://api.github.com/repos/ilzrv/laravel-steam-auth/zipball/75d1a0b0b6071dad44529cc7af8b0e8413246428",
+                "reference": "75d1a0b0b6071dad44529cc7af8b0e8413246428",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^9.0|^10.0|^11.0",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
                 "php": "^8.1",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
@@ -1140,7 +1140,7 @@
             },
             "require-dev": {
                 "orchestra/testbench": "7.x|^8.5",
-                "phpunit/phpunit": "^10.0",
+                "phpunit/phpunit": "^10.0|^11.0",
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^5.12"
             },
@@ -1170,9 +1170,9 @@
             "description": "Steam Auth for Laravel",
             "support": {
                 "issues": "https://github.com/ilzrv/laravel-steam-auth/issues",
-                "source": "https://github.com/ilzrv/laravel-steam-auth/tree/v3.1.0"
+                "source": "https://github.com/ilzrv/laravel-steam-auth/tree/v3.2.0"
             },
-            "time": "2024-03-13T08:04:30+00:00"
+            "time": "2025-03-16T17:09:29+00:00"
         },
         {
             "name": "inertiajs/inertia-laravel",
