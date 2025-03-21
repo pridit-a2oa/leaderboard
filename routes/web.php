@@ -86,16 +86,10 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::controller(UserSettingController::class)->group(function () {
                 Route::get('/account', 'showAccount')->name('account');
+                Route::get('/characters', 'showCharacters')->name('characters');
+                Route::get('/connections', 'showConnections')->name('connections');
                 Route::get('/extras', 'showExtras')->name('extras');
                 Route::get('/delete', 'showDelete')->name('delete');
-
-                /**
-                 * Verified
-                 */
-                Route::middleware('verified:user.setting.account')->group(function () {
-                    Route::get('/characters', 'showCharacters')->name('characters');
-                    Route::get('/connections', 'showConnections')->name('connections');
-                });
             });
 
             /** Admin */

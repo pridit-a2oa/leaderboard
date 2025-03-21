@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\ConnectionUser;
+use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\HttpFactory;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -40,21 +42,23 @@ final class SteamController
             );
         }
 
-        $steamUser = $steamAuthenticator->getSteamUser();
+        $steamIdentifier = $steamAuthenticator->getSteamUser()->getSteamId();
 
-        if (ConnectionUser::where('identifier', $steamUser->getSteamId())->doesntExist()) {
-            Auth::user()->connections()->attach(
+        if (ConnectionUser::where('identifier', $steamIdentifier)->doesntExist()) {
+            $user = User::create();
+
+            $user->connections()->attach(
                 1,
-                ['identifier' => $steamUser->getSteamId()]
+                ['identifier' => $steamIdentifier]
             );
         } else {
-            $request->session()
-                ->flash(
-                    'message',
-                    ['error', 'Steam account is already connected to a user']
-                );
+            $user = User::whereHas('connections', function (Builder $query) use ($steamIdentifier) {
+                $query->where('connection_id', 1)->where('identifier', $steamIdentifier);
+            })->first();
         }
 
-        return redirect(route('user.setting.connections', absolute: false));
+        Auth::login($user, true);
+
+        return redirect(route('home', absolute: false));
     }
 }

@@ -28,8 +28,8 @@ const verifiedEmail = computed(() => {
 
 const settings = ref([
     { type: 'account', icon: faCircleUser, disabled: false },
-    { type: 'characters', icon: faUser, disabled: !verifiedEmail.value },
-    { type: 'connections', icon: faPlug, disabled: !verifiedEmail.value },
+    { type: 'characters', icon: faUser, disabled: false },
+    { type: 'connections', icon: faPlug, disabled: false },
     { type: 'extras', icon: faStar, disabled: false },
 ]);
 </script>
@@ -70,10 +70,7 @@ const settings = ref([
                                 :icon="setting.icon"
                             />
                             <FontAwesomeIcon
-                                v-if="
-                                    setting.type === 'connections' &&
-                                    verifiedEmail
-                                "
+                                v-if="setting.type === 'connections'"
                                 class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover/link:bg-highlight"
                                 :class="{
                                     'bg-highlight': $page.component

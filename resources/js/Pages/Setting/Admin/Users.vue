@@ -32,7 +32,7 @@ defineProps({
                     </td>
 
                     <td>
-                        {{ user.email }}
+                        {{ user.email ?? 'N/A' }}
                     </td>
 
                     <td>

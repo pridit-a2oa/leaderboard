@@ -1,9 +1,9 @@
 <script setup>
-import { LinkButton } from '@/Components/buttons';
 import { LinkBadge } from '@/Components/features/character';
 import { RewardIcon } from '@/Components/features/reward';
+import { NormalLink } from '@/Components/links';
 import { Tooltip } from '@/Components/ui';
-import { faGun, faPlug } from '@fortawesome/free-solid-svg-icons';
+import { faGun } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
@@ -28,50 +28,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                                     $page.props.auth.user !== null,
                             }"
                         >
+                            Sign in through
                             <template v-if="$page.props.auth.user !== null">
-                                Sign up
+                                Steam
                             </template>
-                            <LinkButton v-else class="mx-1">
-                                <label
-                                    for="account-modal"
-                                    class="cursor-pointer"
-                                    >Sign up</label
+                            <template v-else>
+                                <NormalLink
+                                    href="https://store.steampowered.com/"
+                                    >Steam</NormalLink
                                 >
-                            </LinkButton>
-                            for an account
-                        </li>
-
-                        <li
-                            :class="{
-                                'line-through opacity-50':
-                                    $page.props.auth.user !== null &&
-                                    $page.props.auth.user.connections.length >
-                                        0,
-                            }"
-                        >
-                            Create
-                            <template
-                                v-if="
-                                    $page.props.auth.user !== null &&
-                                    $page.props.auth.user.connections.length > 0
-                                "
-                            >
-                                connection
                             </template>
-                            <Link
-                                v-else
-                                class="btn btn-xs mx-0.5 rounded-md bg-base-100 p-0 px-2 align-middle"
-                                :href="
-                                    $page.props.auth.user !== null
-                                        ? route('user.setting.connections')
-                                        : '#'
-                                "
-                            >
-                                <FontAwesomeIcon :icon="faPlug" size="xs" />
-                                Connection
-                            </Link>
-
-                            to Steam
                         </li>
 
                         <li

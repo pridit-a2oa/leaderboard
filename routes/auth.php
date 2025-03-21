@@ -3,31 +3,32 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\DeleteUserController;
-use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\ResendVerificationEmailController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
+use App\Http\Controllers\SteamController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::post('register', [RegisteredUserController::class, 'store'])
-        ->middleware(HandlePrecognitiveRequests::class)
-        ->name('register');
+    // Route::post('register', [RegisteredUserController::class, 'store'])
+    //     ->middleware(HandlePrecognitiveRequests::class)
+    //     ->name('register');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store'])
+    // Route::post('login', [AuthenticatedSessionController::class, 'store'])
+    //     ->name('login');
+
+    // Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+    //     ->name('password.email');
+
+    // Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+    //     ->name('password.reset');
+
+    // Route::post('reset-password', [NewPasswordController::class, 'store'])
+    //     ->name('password.store');
+
+    Route::get('login', SteamController::class)
+        ->middleware('throttle:4,1')
         ->name('login');
-
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-        ->name('password.email');
-
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-        ->name('password.reset');
-
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-        ->name('password.store');
 });
 
 Route::middleware('auth')->group(function () {

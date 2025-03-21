@@ -77,7 +77,7 @@ defineProps({
                         >
                     </td>
 
-                    <td class="text-right">
+                    <td v-if="connection.name !== 'steam'" class="text-right">
                         <div
                             v-if="
                                 $page.props.auth.user.connections.some(

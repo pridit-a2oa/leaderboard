@@ -47,22 +47,6 @@ const settings = ref([
                         class="text-neutral-400"
                         :icon="setting.icon"
                     />
-                    <FontAwesomeIcon
-                        v-if="setting.type === 'connections' && verifiedEmail"
-                        class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover:bg-highlight"
-                        :class="{
-                            'bg-highlight': $page.component
-                                .toLowerCase()
-                                .includes(setting.type),
-                            'text-error':
-                                $page.props.auth.user.connections.length === 0,
-                            'text-success':
-                                $page.props.auth.user.connections.length > 0,
-                        }"
-                        :icon="faCircle"
-                        size="xs"
-                        transform="shrink-6"
-                    />
                 </FontAwesomeLayers>
 
                 <span class="truncate">

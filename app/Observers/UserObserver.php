@@ -15,7 +15,7 @@ class UserObserver
     {
         $user->assignRole('member');
 
-        if (! $user->hasVerifiedEmail()) {
+        if ($user->email && ! $user->hasVerifiedEmail()) {
             $user->newEmail($user->email);
         }
     }

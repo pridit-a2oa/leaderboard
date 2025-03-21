@@ -2,16 +2,14 @@
 import { UserNavigation } from '@/Components/features/user';
 import { ButtonLink } from '@/Components/links';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import {
-    faBullhorn,
-    faHeart,
-    faRightToBracket,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBullhorn, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-    <div class="flex flex-col justify-between gap-3 xs:flex-row">
+    <div
+        class="grid items-center gap-3 md:grid-cols-[auto_auto_auto_1fr] md:justify-start"
+    >
         <ButtonLink href="https://dsc.gg/pridit">
             <FontAwesomeIcon
                 class="text-[#7289da]"
@@ -37,16 +35,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
         <UserNavigation v-if="$page.props.auth.user !== null" />
 
-        <label
+        <Link
             v-else
-            for="account-modal"
-            class="btn no-animation ml-auto hidden md:inline-flex"
-            role="button"
-            tabindex="0"
+            class="hidden select-none justify-self-end pr-0.5 md:inline-grid"
+            :href="route('login')"
             dusk="login-button"
         >
-            <FontAwesomeIcon :icon="faRightToBracket" size="sm" />
-            Sign in
-        </label>
+            <img
+                src="/images/sits_01.png"
+                alt="Sign in through Steam"
+                loading="lazy"
+            />
+        </Link>
     </div>
 </template>

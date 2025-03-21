@@ -21,7 +21,7 @@ class AuthenticatedTest extends DuskTestCase
         ]);
     }
 
-    public function test_can_see_name_as_user(): void
+    public function test_can_see_authenticated_state_as_user(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
@@ -50,7 +50,7 @@ class AuthenticatedTest extends DuskTestCase
                 ->press('Account')
                 ->press('Sign out')
                 ->waitUntilMissing('#nprogress')
-                ->assertSee('Sign in');
+                ->assertPresent('@login-button');
         });
     }
 }

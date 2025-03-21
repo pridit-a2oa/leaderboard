@@ -56,6 +56,7 @@ function reset() {
                     <span class="label-text">Email Address</span>
 
                     <span
+                        v-if="$page.props.auth.user.email"
                         class="badge badge-outline badge-sm"
                         :class="
                             $page.props.auth.user.email_verified_at !== null
@@ -114,7 +115,7 @@ function reset() {
                     required
                     v-model="form.email"
                     :error="form.errors.email"
-                    :placeholder="$page.props.auth.user.email"
+                    :placeholder="$page.props.auth.user.email ?? 'Not Set'"
                 />
 
                 <div class="mt-3 flex justify-end">
