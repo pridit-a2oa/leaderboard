@@ -62,7 +62,6 @@ const settings = ref([
                             (setting.disabled && 'Please verify your email') ||
                             ''
                         "
-                        prefetch
                     >
                         <FontAwesomeLayers class="indicator" fixed-width>
                             <FontAwesomeIcon
@@ -108,7 +107,6 @@ const settings = ref([
                             'bg-highlight': $page.component.includes('Delete'),
                         }"
                         :href="route('user.setting.delete')"
-                        prefetch
                         ><FontAwesomeIcon
                             :icon="faTrashCan"
                             fixed-width

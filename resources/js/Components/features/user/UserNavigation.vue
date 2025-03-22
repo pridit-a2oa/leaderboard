@@ -23,11 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                 tabindex="0"
             >
                 <li class="mb-0.5">
-                    <Link
-                        class="pl-2"
-                        :href="route('user.setting.account')"
-                        prefetch
-                    >
+                    <Link class="pl-2" :href="route('user.setting.account')">
                         <FontAwesomeIcon :icon="faBars" fixed-width />
                         Settings
                     </Link>
