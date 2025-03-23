@@ -13,6 +13,16 @@ use Inertia\Response;
 class AdminMuteController extends SettingController
 {
     /**
+     * Create a new controller instance.
+     */
+    public function __construct(Request $request)
+    {
+        Inertia::share('category', 'admin');
+
+        parent::__construct($request);
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request): Response

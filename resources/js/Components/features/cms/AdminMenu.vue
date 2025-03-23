@@ -53,9 +53,7 @@ const settings = ref([
                     {{ setting.type }}
                 </span>
 
-                <SuffixText
-                    :value="$page.props.auth.model_counts[setting.type]"
-                />
+                <SuffixText :value="$page.props.model_counts[setting.type]" />
             </Link>
         </li>
     </ul>

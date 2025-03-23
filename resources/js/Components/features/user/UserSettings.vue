@@ -22,8 +22,16 @@ defineProps({
     },
 });
 
-const verifiedEmail = computed(() => {
-    return usePage().props.auth.user.email_verified_at !== null;
+const category = ref(usePage().props.category);
+
+const tab = computed({
+    get() {
+        return category;
+    },
+
+    set(value) {
+        category.value = value;
+    },
 });
 
 const settings = ref([
@@ -37,85 +45,106 @@ const settings = ref([
 <template>
     <div class="flex w-full">
         <div>
-            <ul class="menu w-44 rounded-md bg-base-200">
-                <li
-                    v-for="setting in settings"
-                    class="group/parent capitalize [&:not(:last-child)]:mb-1"
+            <div
+                v-if="$page.props.auth.role === 'admin'"
+                role="tablist"
+                class="tabs-boxed tabs mb-4 gap-x-1"
+            >
+                <a
+                    v-for="category in ['user', 'admin']"
+                    role="tab"
+                    class="tab capitalize hover:!bg-highlight"
                     :class="{
-                        'disabled opacity-60 [&>a>div>svg]:opacity-40':
-                            setting.disabled,
+                        'bg-highlight': tab.value === category,
                     }"
+                    @click="tab = category"
+                    >{{ category }}</a
                 >
-                    <Link
-                        class="group/link px-2 hover:focus:active:!bg-highlight group-[.disabled]/parent:cursor-not-allowed"
+            </div>
+
+            <template v-if="tab.value === 'user'">
+                <ul class="menu w-44 rounded-md bg-base-200">
+                    <li
+                        v-for="setting in settings"
+                        class="group/parent capitalize [&:not(:last-child)]:mb-1"
                         :class="{
-                            'bg-highlight': $page.component
-                                .toLowerCase()
-                                .includes(setting.type),
+                            'disabled opacity-60 [&>a>div>svg]:opacity-40':
+                                setting.disabled,
                         }"
-                        :href="
-                            setting.disabled
-                                ? '#'
-                                : route(`user.setting.${setting.type}`)
-                        "
-                        :title="
-                            (setting.disabled && 'Please verify your email') ||
-                            ''
-                        "
                     >
-                        <FontAwesomeLayers class="indicator" fixed-width>
-                            <FontAwesomeIcon
-                                class="text-neutral-400"
-                                :icon="setting.icon"
+                        <Link
+                            class="group/link px-2 hover:focus:active:!bg-highlight group-[.disabled]/parent:cursor-not-allowed"
+                            :class="{
+                                'bg-highlight': $page.component
+                                    .toLowerCase()
+                                    .includes(setting.type),
+                            }"
+                            :href="
+                                setting.disabled
+                                    ? '#'
+                                    : route(`user.setting.${setting.type}`)
+                            "
+                            :title="
+                                (setting.disabled &&
+                                    'Please verify your email') ||
+                                ''
+                            "
+                        >
+                            <FontAwesomeLayers class="indicator" fixed-width>
+                                <FontAwesomeIcon
+                                    class="text-neutral-400"
+                                    :icon="setting.icon"
+                                />
+                                <FontAwesomeIcon
+                                    v-if="setting.type === 'connections'"
+                                    class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover/link:bg-highlight"
+                                    :class="{
+                                        'bg-highlight': $page.component
+                                            .toLowerCase()
+                                            .includes(setting.type),
+                                        'text-error':
+                                            $page.props.auth.user.connections
+                                                .length === 0,
+                                        'text-success':
+                                            $page.props.auth.user.connections
+                                                .length > 0,
+                                    }"
+                                    :icon="faCircle"
+                                    size="xs"
+                                    transform="shrink-6"
+                                />
+                            </FontAwesomeLayers>
+
+                            <span class="truncate">
+                                {{ setting.type }}
+                            </span>
+
+                            <SuffixText
+                                :value="$page.props.model_counts[setting.type]"
                             />
-                            <FontAwesomeIcon
-                                v-if="setting.type === 'connections'"
-                                class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover/link:bg-highlight"
-                                :class="{
-                                    'bg-highlight': $page.component
-                                        .toLowerCase()
-                                        .includes(setting.type),
-                                    'text-error':
-                                        $page.props.auth.user.connections
-                                            .length === 0,
-                                    'text-success':
-                                        $page.props.auth.user.connections
-                                            .length > 0,
-                                }"
-                                :icon="faCircle"
-                                size="xs"
-                                transform="shrink-6"
-                            />
-                        </FontAwesomeLayers>
+                        </Link>
+                    </li>
+                </ul>
 
-                        <span class="truncate">
-                            {{ setting.type }}
-                        </span>
+                <ul class="menu mt-4 w-44 rounded-md bg-base-200">
+                    <li>
+                        <Link
+                            class="pl-2 !text-error hover:focus:active:bg-highlight"
+                            :class="{
+                                'bg-highlight':
+                                    $page.component.includes('Delete'),
+                            }"
+                            :href="route('user.setting.delete')"
+                            ><FontAwesomeIcon
+                                :icon="faTrashCan"
+                                fixed-width
+                            />Delete Account</Link
+                        >
+                    </li>
+                </ul>
+            </template>
 
-                        <SuffixText
-                            :value="$page.props.auth.model_counts[setting.type]"
-                        />
-                    </Link>
-                </li>
-            </ul>
-
-            <ul class="menu mt-4 w-44 rounded-md bg-base-200">
-                <li>
-                    <Link
-                        class="pl-2 !text-error hover:focus:active:bg-highlight"
-                        :class="{
-                            'bg-highlight': $page.component.includes('Delete'),
-                        }"
-                        :href="route('user.setting.delete')"
-                        ><FontAwesomeIcon
-                            :icon="faTrashCan"
-                            fixed-width
-                        />Delete Account</Link
-                    >
-                </li>
-            </ul>
-
-            <AdminMenu />
+            <AdminMenu v-if="tab.value === 'admin'" />
         </div>
 
         <div class="ml-4 w-full text-neutral-300">

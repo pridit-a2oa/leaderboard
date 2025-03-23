@@ -13,6 +13,16 @@ use Inertia\Response;
 class UserSettingController extends SettingController
 {
     /**
+     * Create a new controller instance.
+     */
+    public function __construct(Request $request)
+    {
+        Inertia::share('category', 'user');
+
+        parent::__construct($request);
+    }
+
+    /**
      * Show the account page.
      */
     public function showAccount(Request $request): Response
