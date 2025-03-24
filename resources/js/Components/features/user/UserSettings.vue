@@ -159,7 +159,7 @@ const settings = ref([
     </div>
 </template>
 
-<style scoped>
+<style>
 h2 {
     @apply text-xl font-semibold;
 }

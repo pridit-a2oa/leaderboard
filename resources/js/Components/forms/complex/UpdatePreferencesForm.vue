@@ -2,12 +2,12 @@
 import { FormCheckbox } from '@/Components/forms/elements';
 import { NormalLink } from '@/Components/links';
 import { useForm, usePage } from '@inertiajs/vue3';
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { defineCustomElementSFC } from 'vue-web-component-wrapper';
+import { BaseButton } from '@/Components/base';
+import { FormResponse } from '@/Components/forms/elements';
 
-const form = useForm({
-    options: {},
-});
+const options = {};
 
 onBeforeMount(() => {
     usePage().props.preferences.map((preference) => {
@@ -15,10 +15,18 @@ onBeforeMount(() => {
             (e) => e.id === preference.id,
         );
 
-        form.options[preference['id']] = user[0]
-            ? !!user[0].pivot.value
-            : false;
+        options[preference['id']] = user[0] ? !!user[0].pivot.value : false;
     });
+
+    form.defaults({
+        options: options,
+    });
+
+    form.reset();
+});
+
+const form = useForm({
+    options: {},
 });
 
 if (!customElements.get('component-link')) {
@@ -39,27 +47,50 @@ if (!customElements.get('component-link')) {
 </script>
 
 <template>
-    <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
-        <label class="label !pt-0">
-            <span class="label-text">Preferences</span>
-        </label>
+    <div class="mb-4 flex items-center">
+        <h2 class="grow">Preferences</h2>
+    </div>
 
-        <form @change="form.patch(route('preferences.update'))">
+    <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
+        <form @submit.prevent="form.patch(route('preferences.update'))">
             <template
-                v-for="preference in $page.props.preferences"
+                v-for="(preference, index) in $page.props.preferences"
                 :key="preference.id"
             >
                 <FormCheckbox
                     class="no-animation"
                     v-model:checked="form.options[preference.id]"
-                    :disabled="form.processing || form.recentlySuccessful"
                 >
                     <span
-                        class="ml-1 block"
+                        class="ml-2 block"
                         v-html="preference.description"
                     ></span>
                 </FormCheckbox>
+
+                <div
+                    v-if="index !== $page.props.preferences.length - 1"
+                    class="divider m-0"
+                ></div>
             </template>
+
+            <div class="mt-3 flex justify-end">
+                <FormResponse
+                    v-if="form.wasSuccessful"
+                    :message="['success', 'Your preferences were saved']"
+                />
+
+                <span
+                    v-if="form.processing"
+                    class="loading loading-spinner mr-2"
+                ></span>
+
+                <BaseButton
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing || !form.isDirty"
+                >
+                    Save
+                </BaseButton>
+            </div>
         </form>
     </div>
 </template>

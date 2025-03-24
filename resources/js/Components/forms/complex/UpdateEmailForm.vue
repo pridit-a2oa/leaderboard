@@ -131,6 +131,11 @@ function reset() {
                         "
                     />
 
+                    <span
+                        v-if="form.processing"
+                        class="loading loading-spinner mr-2"
+                    ></span>
+
                     <BaseButton
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"

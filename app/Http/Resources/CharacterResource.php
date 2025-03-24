@@ -18,7 +18,7 @@ class CharacterResource extends JsonResource
             'id' => $this->id,
             $this->mergeWhen(! $this->is_hidden || auth()->user() && auth()->user()->hasRole('admin'), [
                 'user_id' => $this->when($this->user_id, $this->user_id),
-                'guid' => $this->guid,
+                'guid' => $this->when($this->user_id !== auth()->user()?->id && $this->user?->preferences->firstWhere('name', 'steam')?->pivot->value, null, $this->guid),
                 'name' => $this->name,
                 'avatar_url' => $this->avatar_url,
                 'score' => $this->score,
