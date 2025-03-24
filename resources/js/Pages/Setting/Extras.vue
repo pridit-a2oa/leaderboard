@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
 
 const extras = [
-    'Supporter <span class="tooltip-benefit" data-tip="Applies once, to the linked character with the most score. If two linked characters have the same score then most recently active is prioritized.">badge</span>',
-    '<span class="tooltip-benefit" data-tip="By default, characters must gain score within the past 6 weeks to be eligible for ranking.">Inactivity</span> exemption',
+    'Supporter <span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score (and most recently active)">badge</span>',
+    '<span class="tooltip-benefit" data-tip="Bypasses the requirement to have gained score sometime within the past 6 weeks to be eligible for ranking">Inactivity</span> exemption',
     'Multiple character linking',
-    `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}.">Statistics</span> tracking (while linked)`,
+    `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Statistics</span> tracking (while linked)`,
 ];
 
 const icon = {
