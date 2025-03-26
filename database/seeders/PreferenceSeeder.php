@@ -15,12 +15,12 @@ class PreferenceSeeder extends Seeder
         Preference::insert([
             [
                 'name' => 'steam',
-                'description' => 'Hide <component-link title="Steam Community Profile" href="https://steamcommunity.com" size="2xs"></component-link> link associated with own linked characters',
+                'description' => 'Hide public <component-link title="Steam Community" href="https://steamcommunity.com" size="2xs"></component-link> profile link displayed next to my linked characters',
             ],
 
             [
                 'name' => 'gravatar',
-                'description' => 'Override avatar with <component-link title="Gravatar" href="https://support.gravatar.com/basic/where-appear/" size="2xs"></component-link> for own linked characters (requires email)',
+                'description' => 'Override avatar with <component-link title="Gravatar" href="https://support.gravatar.com/basic/where-appear/" size="2xs"></component-link> for my linked characters (requires email)',
             ],
         ]);
     }
