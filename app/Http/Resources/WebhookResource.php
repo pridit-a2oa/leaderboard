@@ -17,9 +17,11 @@ class WebhookResource extends JsonResource
         return [
             'id' => $this->id,
             'url' => parse_url($this->url)['path'],
-            'headers' => $this->headers,
-            'payload' => stripslashes($this->payload),
+            'headers' => json_encode($this->headers),
+            'payload' => json_decode($this->payload['data'] ?? json_encode($this->payload)),
             'exception' => $this->exception,
+            'created_at' => $this->created_at,
+            'formatted_created_at' => $this->formatted_created_at,
             'relations' => [
                 'contribution' => $this->contribution,
             ],

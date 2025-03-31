@@ -51,12 +51,13 @@ const settings = ref([
                 class="tabs-boxed tabs mb-4 gap-x-1"
             >
                 <a
-                    v-for="category in ['user', 'admin']"
+                    v-for="(category, index) in ['user', 'admin']"
                     role="tab"
                     class="tab capitalize hover:!bg-highlight"
-                    :class="{
-                        'bg-highlight': tab.value === category,
-                    }"
+                    :class="[
+                        tab.value === category ? 'bg-highlight' : '',
+                        index === 0 ? '!rounded-e-sm' : '!rounded-s-sm',
+                    ]"
                     @click="tab = category"
                     >{{ category }}</a
                 >

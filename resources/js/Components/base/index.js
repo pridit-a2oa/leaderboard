@@ -7,15 +7,17 @@ import BaseLink from './BaseLink.vue';
 import BaseModal from './BaseModal.vue';
 import BaseSelect from './BaseSelect.vue';
 import BaseTable from './BaseTable.vue';
+import BaseTextarea from './BaseTextarea.vue';
 
 export {
-  BaseBadge,
-  BaseButton,
-  BaseCheckbox,
-  BaseError,
-  BaseInput,
-  BaseLink,
-  BaseModal,
-  BaseSelect,
-  BaseTable,
+    BaseBadge,
+    BaseButton,
+    BaseCheckbox,
+    BaseError,
+    BaseInput,
+    BaseLink,
+    BaseModal,
+    BaseSelect,
+    BaseTable,
+    BaseTextarea,
 };

@@ -1,19 +1,72 @@
 <script setup>
+import { BaseModal } from '@/Components/base';
 import { UserSettings } from '@/Components/features/user';
+import { FormInput, FormTextarea } from '@/Components/forms/elements';
 import { Alert } from '@/Components/ui';
-import { faCircleNodes } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleNodes,
+    faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 
 defineProps({
     webhooks: {
         type: Object,
     },
 });
+
+const form = useForm({
+    headers: '',
+    payload: '',
+    exception: '',
+});
 </script>
 
 <template>
     <Head title="Settings &#x2022; Webhooks" />
+
+    <Teleport to="body">
+        <BaseModal id="webhook-modal">
+            <h2 class="text-lg font-bold">Webhook</h2>
+
+            <form @submit.prevent="submit">
+                <div class="form-control">
+                    <label class="divider divider-end">Headers</label>
+
+                    <FormInput
+                        id="headers"
+                        type="headers"
+                        class="!border-transparent"
+                        readonly="true"
+                        :value="form.headers"
+                    />
+
+                    <label class="divider divider-end">Payload</label>
+
+                    <FormTextarea
+                        id="payload"
+                        type="payload"
+                        class="!cursor-text whitespace-nowrap"
+                        readonly="true"
+                        :value="JSON.stringify(form.payload, null, 2)"
+                        rows="10"
+                        disabled
+                    />
+
+                    <label class="divider divider-end">Exception</label>
+
+                    <FormInput
+                        id="exception"
+                        type="exception"
+                        class="!border-transparent"
+                        readonly="true"
+                        :value="form.exception"
+                    />
+                </div>
+            </form>
+        </BaseModal>
+    </Teleport>
 
     <UserSettings title="Webhooks">
         <Alert
@@ -29,18 +82,52 @@ defineProps({
                         :key="webhook.id"
                         class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                     >
-                        <td class="w-0">
-                            <FontAwesomeIcon :icon="faCircleNodes" size="lg" />
+                        <td class="w-10">
+                            <FontAwesomeIcon
+                                class="!align-middle text-neutral-400"
+                                :icon="faCircleNodes"
+                                size="lg"
+                            />
                         </td>
 
-                        <td>
+                        <td class="w-32">
                             {{ webhook.url }}
                         </td>
 
                         <td
-                            class="truncate hover:text-clip hover:whitespace-normal hover:break-all"
+                            class="w-40 text-right text-xs text-neutral-400"
+                            :title="webhook.created_at"
                         >
-                            {{ webhook.payload }}
+                            {{ webhook.formatted_created_at }}
+                        </td>
+
+                        <td class="w-12 text-right">
+                            <label
+                                for="webhook-modal"
+                                role="button"
+                                tabindex="0"
+                                @click="
+                                    Object.assign(
+                                        form,
+                                        Object.fromEntries(
+                                            Object.entries(webhook).filter(
+                                                ([key]) =>
+                                                    [
+                                                        'headers',
+                                                        'payload',
+                                                        'exception',
+                                                    ].includes(key),
+                                            ),
+                                        ),
+                                    )
+                                "
+                            >
+                                <FontAwesomeIcon
+                                    class="cursor-pointer !align-middle"
+                                    :icon="faMagnifyingGlass"
+                                    fixed-width
+                                />
+                            </label>
                         </td>
                     </tr>
                 </tbody>

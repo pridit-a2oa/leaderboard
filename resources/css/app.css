@@ -40,9 +40,13 @@
     [type='tel'],
     [type='time'],
     [type='week'],
-    [multiple],
-    textarea {
+    [multiple] {
         @apply !pl-0;
+    }
+
+    .modal-box,
+    textarea {
+        scrollbar-width: thin;
     }
 
     tr {

@@ -27,7 +27,7 @@ const settings = ref([
 <template>
     <ul
         v-if="$page.props.auth.role === 'admin'"
-        class="menu mt-4 w-44 rounded-md border-r-4 border-error/60 bg-base-200"
+        class="menu mt-4 w-44 rounded-md bg-base-200"
     >
         <li
             v-for="setting in settings"
