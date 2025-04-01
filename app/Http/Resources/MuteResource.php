@@ -20,7 +20,13 @@ class MuteResource extends JsonResource
             'guid' => $this->guid,
             'characters_count' => min($this->characters_count, 99),
             'relations' => [
-                'characters' => $this->whenLoaded('characters')->map->only('name', 'last_seen_at', 'formatted_last_seen_at'),
+                'characters' => $this->whenLoaded('characters')
+                    ->map
+                    ->only(
+                        'name',
+                        'last_seen_at',
+                        'formatted_last_seen_at'
+                    ),
             ],
         ];
     }

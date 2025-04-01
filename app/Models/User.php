@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\FormattedTimestamp;
 use App\Events\UserDeleted;
 use App\Observers\UserObserver;
 use Creativeorange\Gravatar\Facades\Gravatar;
@@ -78,6 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'formatted_created_at' => FormattedTimestamp::class,
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\FormattedTimestamp;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -48,6 +49,8 @@ class Character extends Model
     {
         return [
             'is_hidden' => 'boolean',
+            'formatted_last_seen_at' => FormattedTimestamp::class,
+            'formatted_created_at' => FormattedTimestamp::class,
         ];
     }
 
@@ -88,22 +91,6 @@ class Character extends Model
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => number_format(
                 $attributes['score'], 0, ','
-            )
-        );
-    }
-
-    /**
-     * Interact with the character's last seen at.
-     */
-    protected function formattedLastSeenAt(): Attribute
-    {
-        return Attribute::make(
-            get: fn (mixed $value, array $attributes) => preg_replace(
-                '/\d+ seconds?/',
-                'less than a minute',
-                Carbon::parse($attributes['last_seen_at'])->diffForHumans([
-                    'options' => Carbon::JUST_NOW,
-                ])
             )
         );
     }
