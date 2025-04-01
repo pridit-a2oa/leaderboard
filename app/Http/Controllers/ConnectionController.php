@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Connection;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ConnectionController extends Controller
 {
@@ -12,15 +15,23 @@ class ConnectionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate([
-            'connection_id' => ['required', 'exists:connections,id'],
+        $validated = $request->validate([
+            'connection_id' => [
+                'required',
+                Rule::exists('connections', 'id')->where(function (Builder $query) {
+                    $query->where('is_sso', 0);
+                })],
         ]);
 
-        // Unassociate all associated characters
-        $request->user()->characters()->update(['user_id' => null]);
+        $connection = Connection::findOrFail($validated['connection_id']);
+
+        // Unassociate all associated characters (Steam)
+        if ($connection->name === 'steam') {
+            $request->user()->characters()->update(['user_id' => null]);
+        }
 
         // Detach the connection type
-        $request->user()->connections()->detach($request->connection_id);
+        $request->user()->connections()->detach($validated['connection_id']);
 
         return redirect(route('user.setting.connections', absolute: false));
     }

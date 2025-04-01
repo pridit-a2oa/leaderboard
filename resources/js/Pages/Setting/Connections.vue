@@ -78,39 +78,37 @@ defineProps({
                     </td>
 
                     <td class="text-right">
-                        <template v-if="connection.name !== 'steam'">
-                            <DisconnectBadge
-                                v-if="
-                                    $page.props.auth.user.connections.some(
-                                        (e) =>
-                                            e.pivot.connection_id ===
-                                            connection.id,
-                                    )
-                                "
-                                :id="connection.id"
-                            />
-
-                            <div
-                                v-else
-                                class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
-                                :data-tip="`You will be redirected to ${connection.formatted_name} to complete this process`"
+                        <template
+                            v-if="
+                                $page.props.auth.user.connections.some(
+                                    (e) =>
+                                        e.pivot.connection_id === connection.id,
+                                )
+                            "
+                        >
+                            <span
+                                v-if="connection.is_sso"
+                                class="badge badge-outline badge-md cursor-not-allowed select-none text-xs font-light uppercase opacity-50"
+                                title="This connection is required for SSO"
                             >
-                                <Link
-                                    :href="
-                                        route(`connection.${connection.name}`)
-                                    "
-                                    class="badge badge-success badge-outline select-none text-xs font-light uppercase"
-                                >
-                                    Connect
-                                </Link>
-                            </div>
+                                Disconnect
+                            </span>
+
+                            <DisconnectBadge v-else :id="connection.id" />
                         </template>
 
-                        <span
+                        <div
                             v-else
-                            class="badge badge-outline badge-md cursor-not-allowed select-none text-xs font-light uppercase opacity-50"
-                            >Disconnect</span
+                            class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
+                            :data-tip="`You will be redirected to ${connection.formatted_name} to complete this process`"
                         >
+                            <Link
+                                :href="route(`connection.${connection.name}`)"
+                                class="badge badge-success badge-outline select-none text-xs font-light uppercase"
+                            >
+                                Connect
+                            </Link>
+                        </div>
                     </td>
                 </tr>
             </tbody>

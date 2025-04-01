@@ -25,5 +25,18 @@ class Connection extends Model
         'name',
         'icon',
         'disclaimer',
+        'is_sso',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'is_sso' => 'boolean',
+        ];
+    }
 }

@@ -21,6 +21,7 @@ class ConnectionResource extends JsonResource
             'formatted_name' => Str::title($this->name),
             'icon' => $this->icon,
             'disclaimer' => $this->whenNotNull($this->disclaimer),
+            'is_sso' => $this->is_sso,
         ];
     }
 }
