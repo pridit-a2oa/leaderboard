@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "272926b7896b8ec00b3f7fe99e00e5fa",
+    "content-hash": "abd6e1ab45a16682179685b876abab18",
     "packages": [
         {
             "name": "brick/math",
@@ -3070,16 +3070,16 @@
         },
         {
             "name": "propaganistas/laravel-disposable-email",
-            "version": "2.4.12",
+            "version": "2.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Disposable-Email.git",
-                "reference": "942fd61cf7e7abfa39c15657d0a50f1b0b4457d9"
+                "reference": "2af64567eb7c77945cb5e29b1965d853ff1f2f2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/942fd61cf7e7abfa39c15657d0a50f1b0b4457d9",
-                "reference": "942fd61cf7e7abfa39c15657d0a50f1b0b4457d9",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/2af64567eb7c77945cb5e29b1965d853ff1f2f2e",
+                "reference": "2af64567eb7c77945cb5e29b1965d853ff1f2f2e",
                 "shasum": ""
             },
             "require": {
@@ -3134,7 +3134,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Propaganistas/Laravel-Disposable-Email/issues",
-                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.12"
+                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.13"
             },
             "funding": [
                 {
@@ -3142,7 +3142,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-01T00:49:51+00:00"
+            "time": "2025-04-01T00:55:04+00:00"
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
