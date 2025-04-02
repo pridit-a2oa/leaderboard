@@ -19,7 +19,7 @@
         "laravel/tinker": "^2.10",
         "meilisearch/meilisearch-php": "^1.13",
         "propaganistas/laravel-disposable-email": "^2.4.13",
-        "protonemedia/laravel-verify-new-email": "^1.12",
+        "protonemedia/laravel-verify-new-email": "^1.13",
         "spatie/laravel-permission": "^6.16.0",
         "spatie/laravel-webhook-client": "^3.4.3",
         "tightenco/ziggy": "^2.5.2"
