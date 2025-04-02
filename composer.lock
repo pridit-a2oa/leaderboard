@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "abd6e1ab45a16682179685b876abab18",
+    "content-hash": "e63649d6ae88f5a87b5fa7586760f2f3",
     "packages": [
         {
             "name": "brick/math",
@@ -2517,16 +2517,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.8.6",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "ff2f20cf83bd4d503720632ce8a426dc747bf7fd"
+                "reference": "6d16a8a015166fe54e22c042e0805c5363aef50d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/ff2f20cf83bd4d503720632ce8a426dc747bf7fd",
-                "reference": "ff2f20cf83bd4d503720632ce8a426dc747bf7fd",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/6d16a8a015166fe54e22c042e0805c5363aef50d",
+                "reference": "6d16a8a015166fe54e22c042e0805c5363aef50d",
                 "shasum": ""
             },
             "require": {
@@ -2619,7 +2619,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-20T17:33:38+00:00"
+            "time": "2025-03-27T12:57:33+00:00"
         },
         {
             "name": "nette/schema",
@@ -3146,16 +3146,16 @@
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
-            "version": "v1.12.0",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protonemedia/laravel-verify-new-email.git",
-                "reference": "c49c24cf76c21a0c384fad7d9802b8a9eb0d8560"
+                "reference": "530db50934fe8c7771483af2dcfbbf9b764b23fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protonemedia/laravel-verify-new-email/zipball/c49c24cf76c21a0c384fad7d9802b8a9eb0d8560",
-                "reference": "c49c24cf76c21a0c384fad7d9802b8a9eb0d8560",
+                "url": "https://api.github.com/repos/protonemedia/laravel-verify-new-email/zipball/530db50934fe8c7771483af2dcfbbf9b764b23fc",
+                "reference": "530db50934fe8c7771483af2dcfbbf9b764b23fc",
                 "shasum": ""
             },
             "require": {
@@ -3198,7 +3198,7 @@
             ],
             "support": {
                 "issues": "https://github.com/protonemedia/laravel-verify-new-email/issues",
-                "source": "https://github.com/protonemedia/laravel-verify-new-email/tree/v1.12.0"
+                "source": "https://github.com/protonemedia/laravel-verify-new-email/tree/v1.13.0"
             },
             "funding": [
                 {
@@ -3206,7 +3206,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-15T22:34:25+00:00"
+            "time": "2025-04-01T19:31:34+00:00"
         },
         {
             "name": "psr/clock",
