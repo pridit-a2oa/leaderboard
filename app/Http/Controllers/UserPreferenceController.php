@@ -21,6 +21,6 @@ class UserPreferenceController extends Controller
             $options->toArray()
         );
 
-        return back();
+        return redirect(route('user.setting.account', absolute: false));
     }
 }

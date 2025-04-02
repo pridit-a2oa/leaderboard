@@ -15,7 +15,7 @@ class ConnectionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
+        $request->validate([
             'connection_id' => [
                 'required',
                 Rule::exists('connections', 'id')->where(function (Builder $query) {
@@ -23,7 +23,7 @@ class ConnectionController extends Controller
                 })],
         ]);
 
-        $connection = Connection::findOrFail($validated['connection_id']);
+        $connection = Connection::findOrFail($request->safe()->connection_id);
 
         // Unassociate all associated characters (Steam)
         if ($connection->name === 'steam') {
@@ -31,7 +31,7 @@ class ConnectionController extends Controller
         }
 
         // Detach the connection type
-        $request->user()->connections()->detach($validated['connection_id']);
+        $request->user()->connections()->detach($request->safe()->connection_id);
 
         return redirect(route('user.setting.connections', absolute: false));
     }

@@ -3,33 +3,25 @@ import { BaseButton } from '@/Components/base';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { router, useForm } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
+import { useForm } from 'laravel-precognition-vue-inertia';
 import throttle from 'lodash/throttle';
 import { onBeforeUnmount, ref } from 'vue';
 
-const props = defineProps({
-    message: {
-        type: Array,
-        default: [],
-    },
-});
+const email = ref(null);
+const timeout = ref(null);
 
-const emailInput = ref(null);
-
-let form = useForm({
+const form = useForm('patch', route('profile.update'), {
     email: '',
 });
 
-const submit = () => {
-    form.patch(route('profile.update'), {
+const submit = () =>
+    form.submit({
         preserveScroll: true,
         onStart: () => reset(),
-        onError: () => emailInput.value.focus(),
+        onError: () => email.value.focus(),
         onSuccess: () => form.reset('email'),
     });
-};
-
-const timeout = ref(null);
 
 const resend = throttle(() => {
     timeout.value = setTimeout(() => router.get('/resend-email'), 1800);
@@ -107,8 +99,8 @@ function reset() {
 
                 <FormInput
                     id="email"
-                    ref="emailInput"
-                    type="name"
+                    ref="email"
+                    type="email"
                     class="!border-transparent"
                     classes="!bg-base-100"
                     autocomplete="email"
@@ -116,19 +108,16 @@ function reset() {
                     v-model="form.email"
                     :error="form.errors.email"
                     :placeholder="$page.props.auth.user.email ?? 'Not Set'"
+                    @blur="form.validate('email')"
                 />
 
                 <div class="mt-3 flex justify-end">
                     <FormResponse
-                        v-if="form.wasSuccessful || message.length > 0"
-                        :message="
-                            message.length > 0
-                                ? message
-                                : [
-                                      'warning',
-                                      'Check your email for a verification link',
-                                  ]
-                        "
+                        v-if="form.wasSuccessful"
+                        :message="[
+                            'warning',
+                            'Check your email for a verification link',
+                        ]"
                     />
 
                     <span
@@ -137,8 +126,11 @@ function reset() {
                     ></span>
 
                     <BaseButton
+                        :title="(!form.isDirty && 'No changes') || ''"
                         :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
+                        :disabled="
+                            form.processing || !form.isDirty || form.hasErrors
+                        "
                     >
                         Save
                     </BaseButton>

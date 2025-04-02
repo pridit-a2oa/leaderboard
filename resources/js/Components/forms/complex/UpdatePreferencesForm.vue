@@ -1,13 +1,14 @@
 <script setup>
-import { FormCheckbox } from '@/Components/forms/elements';
+import { BaseButton } from '@/Components/base';
+import { FormCheckbox, FormResponse } from '@/Components/forms/elements';
 import { NormalLink } from '@/Components/links';
 import { useForm, usePage } from '@inertiajs/vue3';
-import { onBeforeMount, ref } from 'vue';
-import { defineCustomElementSFC } from 'vue-web-component-wrapper';
-import { BaseButton } from '@/Components/base';
-import { FormResponse } from '@/Components/forms/elements';
+import { defineCustomElement, onBeforeMount } from 'vue';
 
 const options = {};
+const form = useForm({
+    options: {},
+});
 
 onBeforeMount(() => {
     usePage().props.preferences.map((preference) => {
@@ -25,25 +26,25 @@ onBeforeMount(() => {
     form.reset();
 });
 
-const form = useForm({
-    options: {},
-});
-
 if (!customElements.get('component-link')) {
     customElements.define(
         'component-link',
-        defineCustomElementSFC(
-            {
-                props: ['title'],
-                components: {
-                    NormalLink,
-                },
-                template: `<NormalLink>{{ title }}</NormalLink>`,
+        defineCustomElement({
+            shadowRoot: false,
+            props: ['title'],
+            components: {
+                NormalLink,
             },
-            { shadowRoot: false },
-        ),
+            template: `<NormalLink>{{ title }}</NormalLink>`,
+        }),
     );
 }
+
+const submit = () => {
+    form.patch(route('preferences.update'), {
+        preserveScroll: true,
+    });
+};
 </script>
 
 <template>
@@ -52,7 +53,7 @@ if (!customElements.get('component-link')) {
     </div>
 
     <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
-        <form @submit.prevent="form.patch(route('preferences.update'))">
+        <form @submit.prevent="submit">
             <template
                 v-for="(preference, index) in $page.props.preferences"
                 :key="preference.id"
@@ -76,7 +77,7 @@ if (!customElements.get('component-link')) {
             <div class="mt-3 flex justify-end">
                 <FormResponse
                     v-if="form.wasSuccessful"
-                    :message="['success', 'Your preferences were saved']"
+                    :message="['success', 'Saved changes']"
                 />
 
                 <span
@@ -85,6 +86,7 @@ if (!customElements.get('component-link')) {
                 ></span>
 
                 <BaseButton
+                    :title="(!form.isDirty && 'No changes') || ''"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing || !form.isDirty"
                 >

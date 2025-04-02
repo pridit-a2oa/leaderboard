@@ -4,6 +4,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ref } from 'vue';
 
+const input = ref(null);
 const passwordVisible = ref(false);
 
 defineProps({
@@ -14,6 +15,8 @@ defineProps({
         type: String,
     },
 });
+
+defineExpose({ focus: () => input.value.focus() });
 </script>
 
 <template>
@@ -24,6 +27,7 @@ defineProps({
         <slot />
 
         <BaseInput
+            ref="input"
             v-bind="$attrs"
             :type="passwordVisible ? 'text' : $attrs['type']"
         />

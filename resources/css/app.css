@@ -81,7 +81,7 @@
         &-disabled,
         &[disabled],
         &:disabled {
-            @apply bg-base-300;
+            @apply pointer-events-auto !cursor-not-allowed !bg-base-100;
         }
 
         &-success {

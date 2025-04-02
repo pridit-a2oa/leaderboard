@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SteamController;
 use App\Http\Controllers\UserPreferenceController;
 use App\Http\Controllers\UserSettingController;
+use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -106,7 +107,10 @@ Route::middleware('auth')->group(function () {
                 });
         });
 
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->middleware(HandlePrecognitiveRequests::class)
+        ->name('profile.update');
+
     Route::patch('/preferences', [UserPreferenceController::class, 'update'])->name('preferences.update');
 });
 

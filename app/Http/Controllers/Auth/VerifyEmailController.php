@@ -15,7 +15,7 @@ class VerifyEmailController extends Controller
      */
     public function __invoke(Request $request, string $token): RedirectResponse
     {
-        $user = app(config('verify-new-email.model'))
+        app(config('verify-new-email.model'))
             ->whereToken($token)
             ->firstOr(['*'], function () {
                 throw new InvalidVerificationLinkException(
@@ -26,10 +26,6 @@ class VerifyEmailController extends Controller
                 $pendingUserEmail->activate();
             })
             ->user;
-
-        $request->session()->flash('message', [
-            'success', 'Your email address was verified',
-        ]);
 
         return redirect(route('user.setting.account', absolute: false));
     }

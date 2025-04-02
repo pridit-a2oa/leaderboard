@@ -34,6 +34,11 @@ const icon = {
             />
         </a>
 
+        <Alert
+            v-if="$page.props.auth.role === 'admin'"
+            message="Some features are inherited due to role override"
+        />
+
         <div class="indicator w-auto">
             <UserRoleIcon v-if="$page.props.auth.role !== 'admin'" />
 

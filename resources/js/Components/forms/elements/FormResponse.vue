@@ -33,16 +33,18 @@ function messageType(type) {
         leave-to-class="opacity-0"
     >
         <span
-            class="flex-1 self-center text-sm font-semibold"
+            class="flex-1 select-none self-center text-xs"
             :class="messageType(message[0])[0]"
         >
             <FontAwesomeIcon
-                class="mr-0.5 !align-middle"
+                size="lg"
                 :icon="messageType(message[0])[1]"
                 fixed-width
             />
 
-            {{ message[1] }}
+            <span class="ml-1 font-semibold">
+                {{ message[1] }}
+            </span>
         </span>
     </Transition>
 </template>

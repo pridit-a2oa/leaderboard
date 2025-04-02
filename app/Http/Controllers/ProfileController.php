@@ -13,15 +13,13 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        if ($request->safe()->only('email')) {
-            if ($request->user()->is_verification_email_throttled) {
-                $request->session()
-                    ->flash(
-                        'message',
-                        ['error', 'Threshold met, please try again later']
-                    );
+        $request->validated();
 
-                return back();
+        if (! is_null($request->safe()->email)) {
+            if ($request->user()->is_verification_email_throttled) {
+                return back()->withErrors([
+                    'email' => 'Please try again later.',
+                ]);
             }
 
             event(new UserVerifyEmail($request->user(), $request->safe()->email));

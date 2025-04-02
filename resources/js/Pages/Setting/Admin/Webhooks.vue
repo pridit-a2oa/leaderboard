@@ -124,6 +124,7 @@ const form = useForm({
                             >
                                 <FontAwesomeIcon
                                     class="cursor-pointer !align-middle"
+                                    title="Inspect"
                                     :icon="faMagnifyingGlass"
                                     fixed-width
                                 />

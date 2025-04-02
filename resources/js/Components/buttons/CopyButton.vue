@@ -37,7 +37,7 @@ const copy = () => {
         }"
         :icon="toggled ? faClipboardCheck : faClipboard"
         size="lg"
-        title="Copy UID"
+        title="Copy GUID"
         fixed-width
         v-on="!toggled ? { click: copy } : {}"
     />

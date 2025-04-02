@@ -13,7 +13,7 @@
         "@vue/server-renderer": "^3.5.13",
         "autoprefixer": "^10.4.20",
         "axios": "^1.8.1",
-        "daisyui": "^4.12.23",
+        "daisyui": "^4.12.24",
         "laravel-vite-plugin": "^1.2.0",
         "lodash": "^4.17.21",
         "postcss": "^8.5.1",
@@ -31,7 +31,6 @@
         "@fortawesome/free-solid-svg-icons": "^6.7.2",
         "@fortawesome/vue-fontawesome": "^3.0.8",
         "laravel-precognition-vue-inertia": "^0.7.2",
-        "vue-web-component-wrapper": "^1.6.9",
         "vue3-clipboard": "^1.0.0"
     },
     "optionalDependencies": {

@@ -10,14 +10,14 @@ import BaseTable from './BaseTable.vue';
 import BaseTextarea from './BaseTextarea.vue';
 
 export {
-    BaseBadge,
-    BaseButton,
-    BaseCheckbox,
-    BaseError,
-    BaseInput,
-    BaseLink,
-    BaseModal,
-    BaseSelect,
-    BaseTable,
-    BaseTextarea,
+  BaseBadge,
+  BaseButton,
+  BaseCheckbox,
+  BaseError,
+  BaseInput,
+  BaseLink,
+  BaseModal,
+  BaseSelect,
+  BaseTable,
+  BaseTextarea,
 };
