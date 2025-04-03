@@ -1,4 +1,4 @@
-![Leaderboard](https://github.com/user-attachments/assets/6e1522eb-d10e-43a8-98d3-a11b4a72c903)
+![Leaderboard](https://github.com/user-attachments/assets/30df66bb-0d42-4a8e-8085-85a9e107e626)
 
 # Leaderboard
 
@@ -9,11 +9,9 @@ This project integrates game server data to drive the display of a leaderboard, 
 
 ## Features
 
-- Full account flow/lifecycle (register, login, recover, update, delete)
-- Support for linking characters to an account and performing actions
-- [Steam](https://store.steampowered.com/) user identifier (via OpenID) associating with an account (to match characters)
-- [Gravatar](https://gravatar.com) support for overriding character avatars with the one driven via user email instead of Steam
-- [Ko-fi](https://ko-fi.com) webhook support to associate contributions and allow users to access a set of permission restricted features
+- [Steam](https://store.steampowered.com/) OAuth to handle account management and associating in-game characters
+- [Gravatar](https://gravatar.com) support for overriding character avatars with the one driven via user email
+- [Ko-fi](https://ko-fi.com) webhook support to associate donations with users, enabling them to access permission restricted features
 
 ## Getting Started
 
