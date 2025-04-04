@@ -27,7 +27,7 @@ class UserObserver
     {
         // User changes email, so either associate or dissociate a contribution
         if ($user->wasChanged('email_verified_at')) {
-            if ($user->contribution && $user->hasRole('supporter')) {
+            if ($user->hasRole('supporter')) {
                 WebhookReset::dispatch($user);
             }
 

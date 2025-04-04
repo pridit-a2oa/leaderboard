@@ -16,35 +16,31 @@ class PruneUser
      */
     public function handle(UserDeleted $event): void
     {
-        $user = $event->user;
-
-        $user->fill([
+        $event->user->fill([
             'email' => null,
             'email_verified_at' => null,
             'delete_token' => null,
         ]);
 
-        // Linked characters are able to be relinked
-        $user->characters()->update([
+        // Any linked characters can be relinked
+        $event->user->characters()->update([
             'user_id' => null,
             'is_hidden' => false,
         ]);
 
-        // Any third-party contribution can be reassociated
-        if ($user->contribution) {
-            $user->contribution->user_id = null;
-            $user->contribution->save();
-        }
+        // Any contributions can be reassociated
+        $event->user->contributions()->update(['user_id' => null]);
 
-        $user->connections()->sync([]);
-        $user->preferences()->sync([]);
+        // Remove user-centric relations
+        $event->user->connections()->sync([]);
+        $event->user->preferences()->sync([]);
 
         // Remove pending email change
-        $user->clearPendingEmail();
+        $event->user->clearPendingEmail();
 
         // Remove role
-        $user->syncRoles();
+        $event->user->syncRoles();
 
-        $user->save();
+        $event->user->save();
     }
 }

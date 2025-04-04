@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -84,15 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the user's contribution.
-     */
-    public function contribution(): HasOne
-    {
-        return $this->hasOne(Contribution::class);
-    }
-
-    /**
-     * Get the characters the user has.
+     * Get the user's characters.
      */
     public function characters(): HasMany
     {
@@ -101,7 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the connections that belong to the user.
+     * Get the user's connections.
      */
     public function connections(): BelongsToMany
     {
@@ -110,7 +101,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the preferences for the user.
+     * Get the user's contributions.
+     */
+    public function contributions(): hasMany
+    {
+        return $this->hasMany(Contribution::class);
+    }
+
+    /**
+     * Get the user's preferences.
      */
     public function preferences(): BelongsToMany
     {

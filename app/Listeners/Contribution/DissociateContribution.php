@@ -16,18 +16,15 @@ class DissociateContribution
      */
     public function handle(WebhookReset $event): void
     {
-        $user = $event->user;
-
-        // User does not have a contribution, nothing to do
-        if (! $user->contribution) {
+        // User does not have any contributions, nothing to do
+        if ($event->user->contributions->count() === 0) {
             return;
         }
 
-        // Dissociate the user's contribution, making it valid for re-use
-        $user->contribution->user_id = null;
-        $user->contribution->save();
+        // Dissociate any contributions
+        $event->user->contributions()->update(['user_id' => null]);
 
         // Revert the user back to a member
-        $user->syncRoles('member');
+        $event->user->syncRoles('member');
     }
 }

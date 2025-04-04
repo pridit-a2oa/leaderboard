@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\Contribution;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob as SpatieProcessWebhookJob;
 
 class ProcessWebhookJob extends SpatieProcessWebhookJob

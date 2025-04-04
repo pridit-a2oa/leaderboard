@@ -17,17 +17,16 @@ class AssociateContribution
      */
     public function handle(WebhookRefresh $event): void
     {
-        // Find a contribution from the user email
-        $contribution = Contribution::where('email', $event->user->email)->first();
+        // Associate any contributions to the user
+        $contributions = Contribution::where('email', $event->user->email)
+            ->update([
+                'user_id' => $event->user->id,
+            ]);
 
-        // No contribution was found, nothing to do
-        if (! $contribution) {
+        // No contributions were associated, nothing to do
+        if ($contributions === 0) {
             return;
         }
-
-        // Associate the contribution to the user
-        $contribution->user()->associate($event->user->id);
-        $contribution->save();
 
         // Assign supporter role
         $event->user->syncRoles('supporter');

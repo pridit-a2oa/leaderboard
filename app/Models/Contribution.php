@@ -22,7 +22,7 @@ class Contribution extends Model
     ];
 
     /**
-     * The user the contribution has.
+     * The contribution's user.
      */
     public function user(): BelongsTo
     {
@@ -30,7 +30,7 @@ class Contribution extends Model
     }
 
     /**
-     * The webhook the contribution has.
+     * The contribution's webhook.
      */
     public function webhook(): BelongsTo
     {
