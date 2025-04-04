@@ -22,7 +22,6 @@ class ProcessWebhookJob extends SpatieProcessWebhookJob
         ]);
 
         $contribution->webhook()->associate($call->id);
-        $contribution->save();
 
         if ($contribution->wasRecentlyCreated) {
             $user = User::where('email', $data->email)
@@ -32,11 +31,12 @@ class ProcessWebhookJob extends SpatieProcessWebhookJob
             if ($user) {
                 // Associate the contribution with the user
                 $contribution->user()->associate($user->id);
-                $contribution->save();
 
                 // Assign supporter role
                 $user->syncRoles('supporter');
             }
         }
+
+        $contribution->save();
     }
 }
