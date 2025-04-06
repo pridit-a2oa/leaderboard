@@ -23,4 +23,16 @@ class CharacterFactory extends Factory
             'last_seen_at' => now()->sub(random_int(1, 14), 'day'),
         ];
     }
+
+    /**
+     * Indicate that the character is inactive.
+     */
+    public function inactive(): Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'last_seen_at' => now()->subDays(43),
+            ];
+        });
+    }
 }

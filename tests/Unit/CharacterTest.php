@@ -62,9 +62,7 @@ class CharacterTest extends TestCase
 
     public function test_can_see_character_last_seen_before_six_weeks(): void
     {
-        Character::factory()->create([
-            'last_seen_at' => now()->subDays(41),
-        ]);
+        Character::factory()->create();
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
@@ -75,9 +73,9 @@ class CharacterTest extends TestCase
 
     public function test_can_see_character_last_seen_after_six_weeks_as_supporter(): void
     {
-        Character::factory()->for(User::factory()->supporter())->create([
-            'last_seen_at' => now()->subDays(43),
-        ]);
+        Character::factory()->for(User::factory()->supporter())
+            ->inactive()
+            ->create();
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
@@ -88,9 +86,7 @@ class CharacterTest extends TestCase
 
     public function test_cannot_see_character_last_seen_after_six_weeks(): void
     {
-        Character::factory()->create([
-            'last_seen_at' => now()->subDays(43),
-        ]);
+        Character::factory()->inactive()->create();
 
         $this->get('/')
             ->assertInertia(fn (Assert $page) => $page
