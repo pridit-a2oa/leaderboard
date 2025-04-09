@@ -17,24 +17,22 @@ class ProcessWebhookJob extends SpatieProcessWebhookJob
 
         $data = json_decode($call->payload['data']);
 
-        $contribution = Contribution::firstOrCreate([
+        $contribution = Contribution::create([
             'email' => $data->email,
         ]);
 
         $contribution->webhook()->associate($call->id);
 
-        if ($contribution->wasRecentlyCreated) {
-            $user = User::where('email', $data->email)
-                ->verified()
-                ->first();
+        $user = User::where('email', $data->email)
+            ->verified()
+            ->first();
 
-            if ($user) {
-                // Associate the contribution with the user
-                $contribution->user()->associate($user->id);
+        if ($user) {
+            // Associate the contribution with the user
+            $contribution->user()->associate($user->id);
 
-                // Assign supporter role
-                $user->syncRoles('supporter');
-            }
+            // Assign supporter role
+            $user->syncRoles('supporter');
         }
 
         $contribution->save();
