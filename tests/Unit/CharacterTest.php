@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Models\Character;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CharacterTest extends TestCase
@@ -14,7 +15,8 @@ class CharacterTest extends TestCase
         parent::setUp();
     }
 
-    public function test_can_see_three_characters(): void
+    #[Test]
+    public function can_see_three_characters(): void
     {
         Character::factory(3)->create();
 
@@ -25,7 +27,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_zero_score_character(): void
+    #[Test]
+    public function cannot_see_zero_score_character(): void
     {
         Character::factory()->create([
             'score' => 0,
@@ -38,7 +41,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_can_see_highest_scoring_character_first(): void
+    #[Test]
+    public function can_see_highest_scoring_character_first(): void
     {
         $maxScore = Character::factory(10)->create()->max('score');
 
@@ -49,7 +53,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_can_see_lowest_scoring_character_last(): void
+    #[Test]
+    public function can_see_lowest_scoring_character_last(): void
     {
         $minScore = Character::factory(10)->create()->min('score');
 
@@ -60,7 +65,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_can_see_character_last_seen_before_six_weeks(): void
+    #[Test]
+    public function can_see_character_last_seen_before_six_weeks(): void
     {
         Character::factory()->create();
 
@@ -71,7 +77,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_can_see_character_last_seen_after_six_weeks_as_supporter(): void
+    #[Test]
+    public function can_see_character_last_seen_after_six_weeks_as_supporter(): void
     {
         Character::factory()->for(User::factory()->supporter())
             ->inactive()
@@ -84,7 +91,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_character_last_seen_after_six_weeks(): void
+    #[Test]
+    public function cannot_see_character_last_seen_after_six_weeks(): void
     {
         Character::factory()->inactive()->create();
 
@@ -95,7 +103,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_character_statistics_with_none_and_not_linked(): void
+    #[Test]
+    public function cannot_see_character_statistics_with_none_and_not_linked(): void
     {
         Character::factory()->create();
 
@@ -106,7 +115,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_cannot_see_character_statistics_with_one_and_not_linked(): void
+    #[Test]
+    public function cannot_see_character_statistics_with_one_and_not_linked(): void
     {
         Character::factory()->hasStatistics()->create();
 
@@ -117,7 +127,8 @@ class CharacterTest extends TestCase
             );
     }
 
-    public function test_can_see_character_statistics_with_one_and_linked(): void
+    #[Test]
+    public function can_see_character_statistics_with_one_and_linked(): void
     {
         Character::factory()->for(User::factory())->hasStatistics()->create();
 
