@@ -34,6 +34,6 @@
         "vue3-clipboard": "^1.0.0"
     },
     "optionalDependencies": {
-        "@rollup/rollup-linux-x64-gnu": "^4.39.0"
+        "@rollup/rollup-linux-x64-gnu": "^4.40.0"
     }
 }
