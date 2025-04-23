@@ -12,7 +12,7 @@
         "creativeorange/gravatar": "^1.0.25",
         "ilzrv/laravel-steam-auth": "^3.2",
         "inertiajs/inertia-laravel": "^2.0.2",
-        "laravel/framework": "^12.9.1",
+        "laravel/framework": "^12.10.1",
         "laravel/prompts": "^0.3.2",
         "laravel/sanctum": "^4.1.0",
         "laravel/scout": "^10.14.1",
