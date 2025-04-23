@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-    <div class="xs:pt-12 z-20 pt-20">
+    <div class="pt-32 md:pt-24">
         <footer class="footer bg-base-200 fixed bottom-0">
             <div
                 class="xs:px-0 container mx-auto flex flex-col items-center gap-y-4 py-4 text-neutral-300 md:flex-row"
             >
-                <div class="flex flex-1 gap-2">
+                <div class="flex flex-1 gap-4">
                     <a
                         href="https://github.com/pridit-a2oa"
                         target="_blank"

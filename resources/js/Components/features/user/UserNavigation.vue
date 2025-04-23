@@ -23,7 +23,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                 tabindex="0"
             >
                 <li class="mb-0.5">
-                    <Link class="pl-2" :href="route('user.setting.account')">
+                    <Link
+                        class="hover:bg-highlight pl-2"
+                        :href="route('user.setting.account')"
+                    >
                         <FontAwesomeIcon :icon="faBars" fixed-width />
                         Settings
                     </Link>
@@ -31,7 +34,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
                 <li>
                     <Link
-                        class="text-error focus:text-error active:!text-error pl-2"
+                        class="text-error focus:text-error hover:bg-highlight active:!text-error pl-2"
                         :href="route('logout')"
                         method="post"
                         as="button"

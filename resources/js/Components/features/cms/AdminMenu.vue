@@ -34,7 +34,7 @@ const settings = ref([
             class="capitalize [&:not(:last-child)]:mb-1"
         >
             <Link
-                class="group hover:focus:active:!bg-highlight px-2"
+                class="group hover:bg-highlight px-2"
                 :class="{
                     'bg-highlight': $page.component
                         .toLowerCase()

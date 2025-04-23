@@ -10,7 +10,7 @@
     --color-silver: #c0c0c0;
     --color-bronze: #cd7f32;
     --color-supporter: #026bbe;
-    --color-highlight: #333333;
+    --color-highlight: var(--color-neutral-800);
 }
 
 :root {
@@ -105,7 +105,13 @@
     }
 
     .menu {
+        --menu-active-bg: var(--color-neutral-800);
         @apply leading-6;
+    }
+
+    .menu a,
+    .menu button {
+        @apply rounded-lg;
     }
 
     .label {
@@ -141,10 +147,6 @@
 
     .underlined-rich {
         @apply cursor-pointer font-semibold underline decoration-dashed underline-offset-4 before:font-light;
-    }
-
-    .menu a {
-        @apply rounded-lg;
     }
 
     .input {

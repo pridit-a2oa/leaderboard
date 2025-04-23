@@ -24,7 +24,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
     <textarea
-        class="textarea bg-base-200 grow resize-none font-mono text-sm placeholder:text-neutral-400"
+        class="textarea bg-base-200 grow resize-none font-mono text-sm placeholder:text-neutral-500"
         :class="{
             'input-error': error,
         }"

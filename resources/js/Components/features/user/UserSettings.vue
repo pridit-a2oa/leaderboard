@@ -76,9 +76,9 @@ const settings = ref([
                         }"
                     >
                         <Link
-                            class="group/link hover:focus:active:!bg-highlight px-2 group-[.menu-disabled]/parent:cursor-not-allowed"
+                            class="group/link hover:bg-highlight px-2 group-[.menu-disabled]/parent:cursor-not-allowed"
                             :class="{
-                                'bg-highlight': $page.component
+                                '!bg-highlight': $page.component
                                     .toLowerCase()
                                     .includes(setting.type),
                             }"
@@ -132,17 +132,16 @@ const settings = ref([
                 <ul class="menu bg-base-200 mt-4 w-44 rounded-md">
                     <li>
                         <Link
-                            class="!text-error hover:focus:active:bg-highlight pl-2"
+                            class="!text-error hover:bg-highlight pl-2"
                             :class="{
                                 'bg-highlight':
                                     $page.component.includes('Delete'),
                             }"
                             :href="route('user.setting.delete')"
-                            ><FontAwesomeIcon
-                                :icon="faTrashCan"
-                                fixed-width
-                            />Delete Account</Link
                         >
+                            <FontAwesomeIcon :icon="faTrashCan" fixed-width />
+                            Delete Account
+                        </Link>
                     </li>
                 </ul>
             </template>
