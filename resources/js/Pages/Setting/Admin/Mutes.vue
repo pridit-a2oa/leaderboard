@@ -125,7 +125,7 @@ const form = useForm({
                     <FontAwesomeIcon :icon="faAddressCard" transform="left-4" />
                     <FontAwesomeIcon
                         :icon="faPlus"
-                        class="indicator-item indicator-end indicator-bottom rounded-full bg-base-100 p-0.5"
+                        class="indicator-item indicator-end indicator-bottom bg-base-100 rounded-full p-0.5"
                         size="xs"
                         transform="shrink-2"
                     />
@@ -135,7 +135,7 @@ const form = useForm({
 
         <Alert v-if="mutes.data.length === 0" message="No mutes found" />
 
-        <table v-else class="table mt-2 table-fixed rounded-md bg-base-200">
+        <table v-else class="bg-base-200 mt-2 table table-fixed rounded-md">
             <tbody>
                 <tr
                     v-for="(mute, key) in mutes.data"
@@ -161,7 +161,7 @@ const form = useForm({
                                     size="lg"
                                 />
                                 <FontAwesomeLayersText
-                                    class="right-1 select-none !text-left font-bold text-warning"
+                                    class="text-warning right-1 !text-left font-bold select-none"
                                     transform="shrink-4 up-1"
                                     title="Show/hide character(s) affected"
                                     :value="mute.characters_count"
@@ -182,7 +182,7 @@ const form = useForm({
 
                         <span
                             v-if="key === open"
-                            class="max-w-auto z-[1] col-span-1 max-h-0 text-xs text-warning"
+                            class="max-w-auto text-warning z-[1] col-span-1 max-h-0 text-xs"
                         >
                             {{
                                 mute.relations.characters
@@ -197,7 +197,7 @@ const form = useForm({
                         }}</span>
 
                         <span
-                            class="select-none text-xs text-neutral-500"
+                            class="text-xs text-neutral-500 select-none"
                             title="Last active"
                         >
                             <template
@@ -234,7 +234,7 @@ const form = useForm({
                             </label>
 
                             <ul
-                                class="menu dropdown-content z-10 mt-1 w-32 rounded-md bg-base-300 p-2 shadow"
+                                class="menu dropdown-content bg-base-300 z-10 mt-1 w-32 rounded-md p-2 shadow"
                                 tabindex="0"
                             >
                                 <li class="mb-0.5">
@@ -269,7 +269,7 @@ const form = useForm({
 
                                 <li>
                                     <label
-                                        class="pl-2 text-error focus:text-error active:!text-error"
+                                        class="text-error focus:text-error active:!text-error pl-2"
                                         method="post"
                                         as="button"
                                     >

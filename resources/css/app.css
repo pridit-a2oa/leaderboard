@@ -1,6 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+    exclude: rootscrollgutter;
+    themes: business --default;
+}
+
+@theme {
+    --color-gold: #d4af37;
+    --color-silver: #c0c0c0;
+    --color-bronze: #cd7f32;
+    --color-supporter: #026bbe;
+    --color-highlight: #333333;
+}
+
+:root {
+    --color-primary: #0084ff;
+    --color-secondary: #d4d4d4;
+    --color-error: #ef4444;
+    --color-success: var(--color-green-600);
+
+    --font-sans:
+        Figtree, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', Segoe UI Symbol, 'Noto Color Emoji';
+}
 
 *,
 :hover {
@@ -17,85 +39,82 @@
 }
 
 @layer base {
-    input[type='text']:focus,
-    input[type='email'],
-    input[type='password'] {
-        @apply !shadow-none !ring-transparent;
-    }
-
     input[readonly] {
         @apply cursor-not-allowed text-neutral-500;
     }
 
-    [type='text'],
-    input:where(:not([type])),
-    [type='email'],
-    [type='url'],
-    [type='password'],
-    [type='number'],
-    [type='date'],
-    [type='datetime-local'],
-    [type='month'],
-    [type='search'],
-    [type='tel'],
-    [type='time'],
-    [type='week'],
-    [multiple] {
-        @apply !pl-0;
-    }
-
-    .modal-box,
     textarea {
+        @apply !w-full;
+
         scrollbar-width: thin;
     }
 
     tr {
-        @apply !border-0;
+        @apply !border-b-0;
     }
 }
 
-@layer components {
+@layer utilities {
     .alert {
         @apply border-neutral-600 bg-neutral-700 !text-neutral-300;
+    }
 
-        &-info {
-            @apply border-sky-700 bg-sky-800;
-        }
+    .alert-info {
+        @apply border-sky-800 bg-sky-900;
+    }
 
-        &-success {
-            @apply border-green-700 bg-green-800;
-        }
+    .alert-success {
+        @apply border-green-700 bg-green-800;
+    }
 
-        &-warning {
-            @apply border-yellow-700 bg-yellow-800;
-        }
+    .alert-warning {
+        @apply border-yellow-700 bg-yellow-800;
+    }
 
-        &-error {
-            @apply border-red-800 bg-red-900;
-        }
+    .alert-error {
+        @apply border-red-800 bg-red-900;
     }
 
     .btn {
-        @apply border-0;
+        @apply !rounded-lg p-4 py-6;
 
-        &-disabled,
         &[disabled],
         &:disabled {
-            @apply pointer-events-auto !cursor-not-allowed !bg-base-100;
+            @apply !bg-base-100 border-base-100 text-neutral-600;
         }
+    }
 
-        &-success {
-            @apply bg-green-800 text-xs text-neutral-200 hover:bg-green-900;
-        }
+    .checkbox:checked {
+        @apply bg-base-100;
+    }
+
+    .btn-success {
+        @apply bg-green-800 text-xs text-neutral-200 hover:bg-green-900;
+    }
+
+    .btn-sm {
+        @apply px-3 py-4 text-sm;
+    }
+
+    .badge {
+        @apply !rounded-lg;
+    }
+
+    .input {
+        @apply w-full;
+    }
+
+    .menu {
+        @apply leading-6;
+    }
+
+    .label {
+        @apply py-2 text-sm whitespace-normal text-neutral-300;
     }
 
     .tooltip {
         &::before {
-            @apply p-2 font-mono;
-        }
-
-        &-benefit {
-            @apply tooltip tooltip-bottom tooltip-secondary cursor-pointer font-semibold underline decoration-dashed decoration-1 underline-offset-4 before:w-[14rem] before:font-light;
+            @apply font-mono;
         }
 
         &-error {
@@ -105,7 +124,52 @@
         }
     }
 
+    .tooltip {
+        & > :where(.tooltip-content),
+        &[data-tip]::before {
+            @apply py-2 leading-[1.5];
+        }
+    }
+
+    .tooltip-benefit {
+        @apply tooltip tooltip-bottom tooltip-secondary;
+    }
+
     .underlined-link {
         @apply text-neutral-400 opacity-90 hover:!text-neutral-400 hover:underline hover:underline-offset-4;
+    }
+
+    .underlined-rich {
+        @apply cursor-pointer font-semibold underline decoration-dashed underline-offset-4 before:font-light;
+    }
+
+    .menu a {
+        @apply rounded-lg;
+    }
+
+    .input {
+        &:focus,
+        &:focus-within {
+            --input-color: color-mix(
+                in oklab,
+                var(--color-base-content) 20%,
+                #0000
+            );
+            outline: none;
+        }
+    }
+
+    .tabs-box {
+        & .tab {
+            border-radius: var(--radius-lg);
+        }
+    }
+
+    .table {
+        & :where(thead, tfoot) {
+            font-size: var(--text-xs);
+            line-height: var(--text-xs--line-height);
+            font-weight: var(--font-weight-bold);
+        }
     }
 }

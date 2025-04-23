@@ -18,7 +18,7 @@ class ProfileController extends Controller
         if (! is_null($request->safe()->email)) {
             if ($request->user()->is_verification_email_throttled) {
                 return back()->withErrors([
-                    'email' => 'Please try again later.',
+                    'email' => 'Rate limited, please try again later',
                 ]);
             }
 

@@ -1,45 +1,23 @@
-<script setup>
-import { BaseCheckbox } from '@/Components/base';
-
-const props = defineProps({
-    id: {
-        type: String,
-    },
-    checked: {
-        type: Boolean,
-        default: false,
-    },
-});
-</script>
-
 <template>
-    <div>
-        <BaseCheckbox :id="id" class="modal-toggle" :checked="checked" />
-
-        <div class="modal" role="dialog">
-            <div
-                class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
-            >
-                <label
-                    v-if="id"
-                    :for="id"
-                    class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-                    @click="$emit('reset')"
+    <dialog class="modal" v-bind="$attrs">
+        <div
+            class="modal-box w-[24rem] justify-center rounded-l-md rounded-r-md text-neutral-300"
+        >
+            <form method="dialog">
+                <button
+                    class="btn btn-circle btn-ghost btn-sm absolute top-2 right-2"
                 >
                     &#x2715;
-                </label>
+                </button>
+            </form>
 
-                <div class="flex flex-col text-sm">
-                    <slot />
-                </div>
+            <div class="flex flex-col text-sm">
+                <slot />
             </div>
-
-            <label
-                v-if="id"
-                :for="id"
-                class="modal-backdrop"
-                @click="$emit('reset')"
-            ></label>
         </div>
-    </div>
+
+        <form method="dialog" class="modal-backdrop">
+            <button class="!cursor-default">Close</button>
+        </form>
+    </dialog>
 </template>

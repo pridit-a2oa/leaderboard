@@ -17,6 +17,7 @@ const form = useForm({
 const linkCharacter = () => {
     form.post(route('character.link.store'), {
         preserveScroll: true,
+        preserveState: false,
     });
 };
 </script>
@@ -24,7 +25,7 @@ const linkCharacter = () => {
 <template>
     <BaseBadge
         dir="ltr"
-        class="badge-success badge-sm"
+        class="badge-success badge-sm !badge-outline cursor-pointer gap-1.5"
         :class="{
             'opacity-25': form.processing,
         }"
@@ -32,8 +33,7 @@ const linkCharacter = () => {
         v-on="id ? { click: linkCharacter } : {}"
         dusk="link-button"
     >
-        <FontAwesomeIcon class="mr-1" :icon="faUser" size="2xs" fixed-width />
-
+        <FontAwesomeIcon :icon="faUser" size="xs" />
         Link
     </BaseBadge>
 </template>

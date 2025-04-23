@@ -9,18 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 <template>
     <div
-        class="alert hidden rounded-lg border-base-200 bg-base-200 md:grid"
+        class="alert !border-base-200 !bg-base-200 hidden rounded-lg py-4 md:grid"
         role="alert"
     >
         <RewardIcon :user="$page.props.auth.user" />
 
         <div class="text-sm">
             <div class="dropdown dropdown-hover">
-                <span class="tooltip-benefit">Link</span>
+                <span class="underlined-rich">Link</span>
 
                 <div class="dropdown-content z-20 w-max">
                     <ol
-                        class="mt-2 flex list-inside list-decimal flex-col gap-3.5 rounded-md border-2 border-base-100 bg-base-200 p-3"
+                        class="border-base-100 bg-base-200 mt-2 flex list-inside list-decimal flex-col gap-3.5 rounded-md border-2 p-3"
                     >
                         <li
                             :class="{
@@ -70,7 +70,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                 size="2xs"
                 fixed-width
             />
-            <strong>gold-plated variants</strong> of the
+            <span class="font-semibold">gold-plated variants</span> of the
             <Tooltip path="/images/gold/aks" alt="Gold AKS">AKS</Tooltip>
             and
             <Tooltip path="/images/gold/revolver" alt="Gold Revolver"

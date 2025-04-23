@@ -26,7 +26,7 @@ const model = defineModel({
             ref="input"
             v-model="model"
             v-bind="{ ...$attrs, class: null }"
-            class="select select-bordered w-full bg-base-200"
+            class="select select-bordered bg-base-200 w-full"
             :class="{ 'input-error': error }"
         >
             <slot />

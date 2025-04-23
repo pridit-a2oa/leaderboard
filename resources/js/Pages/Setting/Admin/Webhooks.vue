@@ -27,7 +27,7 @@ const form = useForm({
     <Head title="Settings &#x2022; Webhooks" />
 
     <Teleport to="body">
-        <BaseModal id="webhook-modal">
+        <BaseModal id="modal_webhook">
             <h2 class="text-lg font-bold">Webhook</h2>
 
             <form @submit.prevent="submit">
@@ -75,7 +75,7 @@ const form = useForm({
         />
 
         <div v-else>
-            <table class="table table-fixed rounded-md bg-base-200">
+            <table class="bg-base-200 table table-fixed rounded-md">
                 <tbody>
                     <tr
                         v-for="webhook in webhooks.data"
@@ -106,6 +106,7 @@ const form = useForm({
                                 for="webhook-modal"
                                 role="button"
                                 tabindex="0"
+                                onclick="modal_webhook.showModal()"
                                 @click="
                                     Object.assign(
                                         form,

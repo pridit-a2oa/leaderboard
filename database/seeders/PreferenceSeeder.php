@@ -15,7 +15,7 @@ class PreferenceSeeder extends Seeder
         Preference::insert([
             [
                 'name' => 'steam',
-                'description' => 'Hide public <component-link title="Steam Community" href="https://steamcommunity.com" size="2xs"></component-link> profile link displayed next to my linked characters',
+                'description' => 'Hide public <component-link title="Steam Community" href="https://steamcommunity.com" size="2xs"></component-link> profile link shown next to my linked characters',
             ],
 
             [

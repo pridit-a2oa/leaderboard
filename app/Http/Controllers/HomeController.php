@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CharacterResource;
 use App\Models\Character;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -47,7 +46,7 @@ class HomeController extends Controller
         }
 
         return Inertia::render('Home', [
-            'characters' => CharacterResource::collection($characters)
+            'characters' => $characters->toResourceCollection()
                 ->additional([
                     'ranking' => Cache::get('ranking', []),
                 ]),

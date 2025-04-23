@@ -27,14 +27,14 @@ const settings = ref([
 <template>
     <ul
         v-if="$page.props.auth.role === 'admin'"
-        class="menu mt-4 w-44 rounded-md bg-base-200"
+        class="menu bg-base-200 mt-4 w-44 rounded-md"
     >
         <li
             v-for="setting in settings"
             class="capitalize [&:not(:last-child)]:mb-1"
         >
             <Link
-                class="group px-2 hover:focus:active:!bg-highlight"
+                class="group hover:focus:active:!bg-highlight px-2"
                 :class="{
                     'bg-highlight': $page.component
                         .toLowerCase()
@@ -61,6 +61,7 @@ const settings = ref([
 
 <style scoped>
 h2 {
-    @apply text-xl font-semibold;
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
 }
 </style>

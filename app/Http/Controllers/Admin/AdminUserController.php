@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\SettingController;
-use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -27,12 +26,11 @@ class AdminUserController extends SettingController
     public function index(): Response
     {
         return Inertia::render('Setting/Admin/Users', [
-            'users' => UserResource::collection(
-                User::with('roles')
-                    ->without('connections')
-                    ->orderByDesc('created_at')
-                    ->get()
-            ),
+            'users' => User::with('roles')
+                ->without('connections')
+                ->orderByDesc('created_at')
+                ->get()
+                ->toResourceCollection(),
         ]
             + $this->metadata()
         );

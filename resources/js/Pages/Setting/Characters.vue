@@ -24,7 +24,7 @@ import { Head } from '@inertiajs/vue3';
             message="You have no linked characters"
         />
 
-        <table class="table table-fixed rounded-md bg-base-200">
+        <table class="bg-base-200 table table-fixed rounded-md">
             <tbody>
                 <tr
                     v-for="character in $page.props.auth.user.characters.sort(
@@ -50,7 +50,7 @@ import { Head } from '@inertiajs/vue3';
                                 "
                             >
                                 <FontAwesomeIcon
-                                    class="z-10 text-role-supporter"
+                                    class="text-supporter z-10"
                                     :icon="faHeart"
                                     transform="right-7 down-11 shrink-5"
                                 />
@@ -66,7 +66,7 @@ import { Head } from '@inertiajs/vue3';
                     </td>
 
                     <td
-                        class="truncate pr-2 text-neutral-500 hover:text-clip hover:whitespace-normal hover:break-all"
+                        class="truncate pr-2 text-neutral-500 hover:break-all hover:text-clip hover:whitespace-normal"
                     >
                         <span class="text-neutral-300">{{
                             character.name
@@ -75,7 +75,7 @@ import { Head } from '@inertiajs/vue3';
 
                     <td class="text-right">
                         <div
-                            class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
+                            class="tooltip tooltip-bottom tooltip-secondary before:!w-[11rem]"
                             data-tip="Toggle whether this character is anonymized publicly"
                         >
                             <AnonymiseBadge
@@ -85,7 +85,7 @@ import { Head } from '@inertiajs/vue3';
                         </div>
 
                         <div
-                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:!w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Unlink this character from your account&#10;(can be relinked at any time)"
                         >
                             <UnlinkBadge :id="character.id" />
@@ -97,7 +97,7 @@ import { Head } from '@inertiajs/vue3';
                                     $page.props.auth.role,
                                 ) && character.statistics_count > 0
                             "
-                            class="tooltip tooltip-bottom tooltip-error ml-3 before:w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom tooltip-error ml-3 before:!w-[11rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Reset statistics for this character&#10;(cannot be reversed)"
                         >
                             <ResetBadge :id="character.id" />

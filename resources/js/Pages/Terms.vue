@@ -1,12 +1,13 @@
 <script setup>
 import { NormalLink } from '@/Components/links';
+import LegalLayout from '@/Layouts/LegalLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 </script>
 
 <template>
     <Head title="Leaderboard &#x2022; Terms of Use" />
 
-    <div class="flex flex-col gap-6">
+    <LegalLayout>
         <h1>Terms of Use</h1>
 
         <p>Last updated: May 16, 2024</p>
@@ -1020,45 +1021,5 @@ import { Head, Link } from '@inertiajs/vue3';
                 </li>
             </ul>
         </div>
-    </div>
+    </LegalLayout>
 </template>
-
-<style scoped>
-h1,
-h2,
-h3 {
-    @apply font-bold;
-}
-
-h1 {
-    @apply text-2xl;
-}
-
-h2 {
-    @apply text-xl;
-}
-
-h3 {
-    @apply text-lg;
-}
-
-h4 {
-    @apply underline;
-}
-
-ul {
-    @apply flex list-inside list-decimal flex-col gap-4 rounded-md bg-base-200 px-3 py-3 pl-4;
-
-    li {
-        @apply flex-1;
-    }
-
-    p {
-        @apply inline;
-    }
-
-    p:not(:first-child) {
-        @apply mt-4 block;
-    }
-}
-</style>

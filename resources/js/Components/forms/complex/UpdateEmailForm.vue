@@ -41,15 +41,15 @@ function reset() {
 </script>
 
 <template>
-    <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
+    <div class="bg-base-200 rounded-md p-4 [&:not(:last-child)]:mb-4">
         <form @submit.prevent="submit">
             <label class="form-control">
-                <div class="label !pt-0">
+                <div class="label w-full !pt-0">
                     <span class="label-text">Email Address</span>
 
                     <span
                         v-if="$page.props.auth.user.email"
-                        class="badge badge-outline badge-sm"
+                        class="badge badge-outline badge-sm ml-auto"
                         :class="
                             $page.props.auth.user.email_verified_at !== null
                                 ? 'badge-success'
@@ -64,7 +64,7 @@ function reset() {
                             v-if="
                                 $page.props.auth.user.email_verified_at === null
                             "
-                            class="ml-1 cursor-pointer border-l border-warning pl-1"
+                            class="border-warning cursor-pointer border-l pl-1"
                             :class="{
                                 '!cursor-not-allowed':
                                     $page.props.auth.user
@@ -74,7 +74,7 @@ function reset() {
                                 (!$page.props.auth.user
                                     .is_verification_email_throttled &&
                                     'Resend verification email') ||
-                                'Please try again later'
+                                'Rate limited, please try again later'
                             "
                             v-on="
                                 !$page.props.auth.user
@@ -91,7 +91,7 @@ function reset() {
                                             .is_verification_email_throttled,
                                 }"
                                 :icon="faRotateRight"
-                                transform="shrink-2"
+                                transform="shrink-1 down-1"
                             />
                         </span>
                     </span>
@@ -107,7 +107,7 @@ function reset() {
                     required
                     v-model="form.email"
                     :error="form.errors.email"
-                    :placeholder="$page.props.auth.user.email ?? 'Not Set'"
+                    :placeholder="$page.props.auth.user.email ?? 'None Set'"
                     @blur="form.validate('email')"
                 />
 

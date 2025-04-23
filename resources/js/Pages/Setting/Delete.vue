@@ -21,7 +21,7 @@ const deleteUserRequest = () => {
             message="Please check your email for a confirmation link"
         />
 
-        <div class="flex flex-col gap-6 rounded-md bg-base-200 p-4 text-sm">
+        <div class="bg-base-200 flex flex-col gap-6 rounded-md p-4 text-sm">
             <p>
                 Be aware that by performing an account deletion the following
                 will be impacted:
@@ -36,7 +36,7 @@ const deleteUserRequest = () => {
                 <li v-if="$page.props.auth.role === 'supporter'">
                     Ko-fi contribution will be unassociated
                     <span
-                        class="tooltip-benefit"
+                        class="underlined-rich tooltip-benefit"
                         data-tip="If you change your mind
                     and decide to re-register we'll be able to reassociate
                     your benefits with a new account"
@@ -52,7 +52,7 @@ const deleteUserRequest = () => {
             </p>
         </div>
 
-        <div class="mt-4 flex flex-row gap-4 rounded-md bg-base-200 p-4">
+        <div class="bg-base-200 mt-4 flex flex-row gap-4 rounded-md p-4">
             <form @change="deleteUserRequest">
                 <FormCheckbox
                     :checked="$page.props.auth.user.is_deletion_throttled"

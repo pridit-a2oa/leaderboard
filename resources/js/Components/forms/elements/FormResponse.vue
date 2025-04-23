@@ -33,7 +33,7 @@ function messageType(type) {
         leave-to-class="opacity-0"
     >
         <span
-            class="flex-1 select-none self-center text-xs"
+            class="flex-1 self-center text-xs select-none"
             :class="messageType(message[0])[0]"
         >
             <FontAwesomeIcon

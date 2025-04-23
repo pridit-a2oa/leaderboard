@@ -1,8 +1,7 @@
 <script setup>
-import { AccountModal } from '@/Components/features/auth';
 import { RewardBanner } from '@/Components/features/reward';
 import { CharactersTable } from '@/Components/tables';
-import { Navbar, Pagination } from '@/Components/ui';
+import { Navbar } from '@/Components/ui';
 import { Head } from '@inertiajs/vue3';
 
 defineProps({
@@ -31,10 +30,6 @@ defineProps({
         />
     </Head>
 
-    <Teleport to="body">
-        <AccountModal />
-    </Teleport>
-
     <RewardBanner />
 
     <Navbar />
@@ -42,6 +37,4 @@ defineProps({
     <div v-if="characters.data.length > 0" class="font-bold">
         <CharactersTable :characters="characters" />
     </div>
-
-    <Pagination v-if="characters.meta" :meta="characters.meta" />
 </template>

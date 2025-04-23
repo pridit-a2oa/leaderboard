@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ConnectionResource;
 use App\Models\Connection;
 use App\Models\Preference;
 use App\Models\Statistic;
@@ -51,9 +50,7 @@ class UserSettingController extends SettingController
     public function showConnections(Request $request): Response
     {
         return Inertia::render('Setting/Connections', [
-            'connections' => ConnectionResource::collection(
-                Connection::get()
-            ),
+            'connections' => Connection::get()->toResourceCollection(),
         ]
             + $this->metadata()
         );
@@ -67,7 +64,8 @@ class UserSettingController extends SettingController
         return Inertia::render('Setting/Extras', [
             'statistics' => Statistic::orderBy('name')
                 ->get()
-                ->pluck('name'),
+                ->pluck('name')
+                ->implode(', '),
         ]
             + $this->metadata()
         );

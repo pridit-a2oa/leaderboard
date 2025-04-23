@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
 
 const extras = [
-    'Supporter <span class="tooltip-benefit" data-tip="Applies to the linked character with the highest score (and most recently active)">badge</span>',
-    '<span class="tooltip-benefit" data-tip="Bypasses the requirement to have gained score sometime within the past 6 weeks to be eligible for ranking">Inactivity</span> exemption',
+    'Supporter <span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[12rem]" data-tip="Applies to one linked character with the highest score (and most recently active)">badge</span>',
+    '<span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[14rem]" data-tip="Bypasses the requirement to have gained score sometime within the past 6 weeks to be eligible for ranking">Inactivity</span> exemption',
     'Multiple character linking',
-    `<span class="tooltip-benefit" data-tip="${usePage().props.statistics.join(', ').toString()}">Statistics</span> tracking (while linked)`,
+    `<span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[14rem]" data-tip="${usePage().props.statistics}">Statistics</span> tracking (per character)`,
 ];
 
 const icon = {
@@ -42,11 +42,11 @@ const icon = {
         <div class="indicator w-auto">
             <UserRoleIcon v-if="$page.props.auth.role !== 'admin'" />
 
-            <table class="table table-fixed rounded-md bg-base-200">
+            <table class="bg-base-200 table table-fixed rounded-md">
                 <tbody>
                     <tr
                         v-for="extra in extras"
-                        class="border-base-100 [&:not(:last-child)]:!border-b-4"
+                        class="border-base-100 [&:not(:first-child)]:!border-t-4"
                     >
                         <td class="w-0">
                             <FontAwesomeIcon

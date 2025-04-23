@@ -19,9 +19,10 @@ class FormattedTimestamp implements CastsAttributes
         return preg_replace(
             '/\d+ seconds?/',
             'less than a minute',
-            Carbon::parse($attributes[Str::replace('formatted_', '', $key)])->diffForHumans([
-                'options' => Carbon::JUST_NOW,
-            ])
+            Carbon::parse($attributes[Str::replace('formatted_', '', $key)])
+                ->diffForHumans([
+                    'options' => Carbon::JUST_NOW,
+                ])
         );
     }
 

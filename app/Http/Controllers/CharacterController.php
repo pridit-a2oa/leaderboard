@@ -34,8 +34,8 @@ class CharacterController extends Controller
 
         $character = Character::findOrFail($request->character_id);
 
-        // Detach all character statistics
-        $character->statistics()->detach();
+        // Remove all character statistics
+        $character->statistics()->sync([]);
 
         return redirect()->back();
     }

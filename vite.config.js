@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
@@ -5,6 +6,7 @@ import VueDevTools from 'vite-plugin-vue-devtools';
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     VueDevTools({
       appendTo: 'resources/js/app.js',
     }),

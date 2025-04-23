@@ -5,34 +5,46 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-    <div class="z-20 pt-20 xs:pt-12">
-        <footer class="footer fixed bottom-0 bg-base-200">
+    <div class="xs:pt-12 z-20 pt-20">
+        <footer class="footer bg-base-200 fixed bottom-0">
             <div
-                class="container mx-auto flex flex-wrap justify-center gap-y-4 px-2 py-4 text-neutral-300 xs:px-0"
+                class="xs:px-0 container mx-auto flex flex-col items-center gap-y-4 py-4 text-neutral-300 md:flex-row"
             >
-                <a
-                    href="https://github.com/pridit-a2oa"
-                    target="_blank"
-                    aria-label="GitHub"
-                >
-                    <FontAwesomeIcon :icon="faGithub" size="lg" fixed-width />
-                </a>
+                <div class="flex flex-1 gap-2">
+                    <a
+                        href="https://github.com/pridit-a2oa"
+                        target="_blank"
+                        aria-label="GitHub"
+                    >
+                        <FontAwesomeIcon
+                            :icon="faGithub"
+                            size="lg"
+                            fixed-width
+                        />
+                    </a>
 
-                <ul class="inline-flex gap-3">
-                    <li>
-                        <Link class="underlined-link" :href="route('terms')">
-                            Terms of Use
-                        </Link>
-                    </li>
+                    <ul class="flex flex-row flex-wrap gap-4">
+                        <li>
+                            <Link
+                                class="underlined-link"
+                                :href="route('terms')"
+                            >
+                                Terms of Use
+                            </Link>
+                        </li>
 
-                    <li>
-                        <Link class="underlined-link" :href="route('privacy')">
-                            Privacy Policy
-                        </Link>
-                    </li>
-                </ul>
+                        <li>
+                            <Link
+                                class="underlined-link"
+                                :href="route('privacy')"
+                            >
+                                Privacy Policy
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
 
-                <div class="self-center xs:ml-auto">
+                <div>
                     <span>&copy; {{ new Date().getFullYear() }}&nbsp;</span>
 
                     <NormalLink href="https://www.pridit.co.uk"

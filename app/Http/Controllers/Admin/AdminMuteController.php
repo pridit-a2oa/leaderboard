@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\SettingController;
-use App\Http\Resources\MuteResource;
 use App\Models\Mute;
 use App\Models\MuteReason;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -28,12 +28,11 @@ class AdminMuteController extends SettingController
     public function index(Request $request): Response
     {
         return Inertia::render('Setting/Admin/Mutes', [
-            'mutes' => MuteResource::collection(
-                Mute::with('characters')
-                    ->withCount('characters')
-                    ->orderByDesc('created_at')
-                    ->get()
-            ),
+            'mutes' => Mute::with('characters')
+                ->withCount('characters')
+                ->orderByDesc('created_at')
+                ->get()
+                ->toResourceCollection(),
             'reasons' => MuteReason::get(),
         ]
             + $this->metadata()

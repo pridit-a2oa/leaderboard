@@ -13,17 +13,12 @@ const icon = {
 </script>
 
 <template>
-    <div v-if="$page.props.name" class="flex bg-base-300 text-sm">
-        <div class="container breadcrumbs mx-auto px-4 py-3 xs:px-0">
+    <div v-if="$page.props.name" class="bg-base-300 flex text-sm">
+        <div class="breadcrumbs xs:px-0 container mx-auto py-3">
             <ul>
                 <li>
                     <Link class="underlined-link" :href="route('home')">
-                        <FontAwesomeIcon
-                            class="mr-1.5"
-                            :icon="faRankingStar"
-                            size="sm"
-                            fixed-width
-                        />
+                        <FontAwesomeIcon :icon="faRankingStar" fixed-width />
                         Leaderboard
                     </Link>
                 </li>
@@ -33,7 +28,6 @@ const icon = {
                         v-if="icon[$page.props.icon]"
                         class="mr-1.5"
                         :icon="icon[$page.props.icon]"
-                        size="sm"
                         fixed-width
                     />
                     {{ $page.props.name }}

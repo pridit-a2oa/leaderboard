@@ -41,7 +41,7 @@ const icon = {
             v-for="statistic in statistics.sort((a, b) =>
                 a.name > b.name ? 1 : -1,
             )"
-            class="bg-base-200 text-xs odd:bg-base-100"
+            class="bg-base-200 odd:bg-base-100 text-xs"
         >
             <td class="text-right">
                 {{ statistic.pivot.formatted_value }}

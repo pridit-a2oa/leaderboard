@@ -43,20 +43,22 @@ const settings = ref([
 </script>
 
 <template>
-    <div class="flex w-full">
+    <div class="flex">
         <div>
             <div
                 v-if="$page.props.auth.role === 'admin'"
                 role="tablist"
-                class="tabs-boxed tabs mb-4 gap-x-1"
+                class="tabs-box tabs mb-4 flex-nowrap gap-x-1"
             >
                 <a
                     v-for="(category, index) in ['user', 'admin']"
                     role="tab"
-                    class="tab capitalize hover:!bg-highlight"
+                    class="tab hover:!bg-highlight h-8 basis-1/2 capitalize"
                     :class="[
-                        tab.value === category ? 'bg-highlight' : '',
-                        index === 0 ? '!rounded-e-sm' : '!rounded-s-sm',
+                        tab.value === category
+                            ? '!bg-highlight tab-active'
+                            : '',
+                        index === 0 ? '!rounded-e-none' : '!rounded-s-none',
                     ]"
                     @click="tab = category"
                     >{{ category }}</a
@@ -64,17 +66,17 @@ const settings = ref([
             </div>
 
             <template v-if="tab.value === 'user'">
-                <ul class="menu w-44 rounded-md bg-base-200">
+                <ul class="menu bg-base-200 w-44 rounded-lg">
                     <li
                         v-for="setting in settings"
                         class="group/parent capitalize [&:not(:last-child)]:mb-1"
                         :class="{
-                            'disabled opacity-60 [&>a>div>svg]:opacity-40':
+                            'menu-disabled opacity-60 [&>a>div>svg]:opacity-40':
                                 setting.disabled,
                         }"
                     >
                         <Link
-                            class="group/link px-2 hover:focus:active:!bg-highlight group-[.disabled]/parent:cursor-not-allowed"
+                            class="group/link hover:focus:active:!bg-highlight px-2 group-[.menu-disabled]/parent:cursor-not-allowed"
                             :class="{
                                 'bg-highlight': $page.component
                                     .toLowerCase()
@@ -98,7 +100,7 @@ const settings = ref([
                                 />
                                 <FontAwesomeIcon
                                     v-if="setting.type === 'connections'"
-                                    class="indicator-item indicator-end indicator-bottom rounded-full bg-base-200 transition delay-[0ms] group-hover/link:bg-highlight"
+                                    class="indicator-item indicator-end indicator-bottom bg-base-200 group-hover/link:bg-highlight rounded-full transition delay-[0ms]"
                                     :class="{
                                         'bg-highlight': $page.component
                                             .toLowerCase()
@@ -127,10 +129,10 @@ const settings = ref([
                     </li>
                 </ul>
 
-                <ul class="menu mt-4 w-44 rounded-md bg-base-200">
+                <ul class="menu bg-base-200 mt-4 w-44 rounded-md">
                     <li>
                         <Link
-                            class="pl-2 !text-error hover:focus:active:bg-highlight"
+                            class="!text-error hover:focus:active:bg-highlight pl-2"
                             :class="{
                                 'bg-highlight':
                                     $page.component.includes('Delete'),
@@ -162,6 +164,7 @@ const settings = ref([
 
 <style>
 h2 {
-    @apply text-xl font-semibold;
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
 }
 </style>

@@ -24,7 +24,7 @@ const resetCharacter = () => {
 
 <template>
     <BaseBadge
-        class="badge-error"
+        class="badge-error w-10"
         :class="{
             'opacity-25': form.processing,
         }"
@@ -32,6 +32,6 @@ const resetCharacter = () => {
         @click="resetCharacter"
         dusk="reset-button"
     >
-        <FontAwesomeIcon :icon="faRotate" size="xs" fixed-width />
+        <FontAwesomeIcon :icon="faRotate" size="sm" />
     </BaseBadge>
 </template>

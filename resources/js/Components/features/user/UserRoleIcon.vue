@@ -1,5 +1,6 @@
 <script setup>
 import {
+    faCircle,
     faCog,
     faHeart,
     faHeartBroken,
@@ -29,17 +30,16 @@ const icon = {
             <FontAwesomeIcon
                 class="z-10 text-neutral-600"
                 :class="{
-                    'text-role-supporter':
-                        $page.props.auth.role === 'supporter',
+                    'text-supporter': $page.props.auth.role === 'supporter',
                 }"
                 :icon="icon[$page.props.auth.role]"
             />
 
             <FontAwesomeIcon
                 class="text-base-100"
-                :icon="faHeart"
+                :icon="faCircle"
                 size="2xl"
-                transform="left-3 down-1"
+                transform="left-2"
             />
         </FontAwesomeLayers>
     </div>

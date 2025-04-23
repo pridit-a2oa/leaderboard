@@ -12,7 +12,11 @@ defineProps({
 </script>
 
 <template>
-    <BaseTextarea class="!textarea-bordered" :class="classes" v-bind="$attrs" />
+    <BaseTextarea
+        class="!border-neutral-700"
+        :class="classes"
+        v-bind="$attrs"
+    />
 
     <BaseError v-if="error" :message="error" />
 </template>

@@ -17,6 +17,7 @@ const props = defineProps({
 <template>
     <a class="group" :href="href" target="_blank">
         <slot />
+
         <FontAwesomeIcon
             class="!align-middle opacity-60 group-[.underlined-link]:mx-1"
             :icon="faArrowUpRightFromSquare"

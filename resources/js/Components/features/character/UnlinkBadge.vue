@@ -25,7 +25,7 @@ const unlinkCharacter = () => {
 
 <template>
     <BaseBadge
-        class="badge-warning"
+        class="badge-warning w-10"
         :class="{
             'opacity-25': form.processing,
         }"
@@ -33,6 +33,6 @@ const unlinkCharacter = () => {
         @click="unlinkCharacter"
         dusk="unlink-button"
     >
-        <FontAwesomeIcon :icon="faUserSlash" size="xs" fixed-width />
+        <FontAwesomeIcon :icon="faUserSlash" size="xs" />
     </BaseBadge>
 </template>

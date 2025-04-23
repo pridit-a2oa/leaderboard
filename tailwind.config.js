@@ -1,8 +1,3 @@
-import forms from '@tailwindcss/forms';
-import defaultTheme from 'tailwindcss/defaultTheme';
-
-const colors = require('tailwindcss/colors');
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -13,24 +8,6 @@ export default {
   ],
 
   theme: {
-    extend: {
-      colors: {
-        'rank': {
-          'bronze': '#cd7f32',
-          'gold': '#d4af37',
-          'silver': '#c0c0c0',
-        },
-        'role': {
-          'supporter': '#026bbe',
-        },
-        'highlight': '#333333',
-      },
-
-      fontFamily: {
-        'sans': ['Figtree', ...defaultTheme.fontFamily.sans],
-      },
-    },
-
     screens: {
       '2xs': '320px',
       'xs': '386px',
@@ -41,21 +18,4 @@ export default {
       '2xl': '1536px',
     },
   },
-
-  daisyui: {
-    themes: [
-      {
-        default: {
-          'primary': '#0084ff',
-          'secondary': '#d4d4d4',
-          'base-100': '#262626',
-          'error': colors.red['500'],
-          'success': colors.green['600'],
-          'warning': colors.yellow['600'],
-        },
-      },
-    ],
-  },
-
-  plugins: [forms, require('daisyui')],
 };

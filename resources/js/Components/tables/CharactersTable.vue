@@ -79,7 +79,7 @@ function getMovementRank(rank) {
         <tbody
             class="bg-base-300"
             :class="{
-                'select-none bg-gradient-to-t from-neutral-800 from-20% to-45% [&>tr:nth-child(n+4)]:opacity-0':
+                'bg-gradient-to-t from-[#202020] from-20% to-45% select-none [&>tr:nth-child(n+4)]:opacity-0':
                     !characters.meta,
             }"
         >
@@ -88,18 +88,18 @@ function getMovementRank(rank) {
                 :key="character.id"
             >
                 <tr
-                    class="group !border-b-4 border-base-100 [&:not(:first-child)]:!border-t-4"
+                    class="group border-base-100 [&:not(:first-child)]:!border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
-                        'text-rank-gold':
+                        'text-gold':
                             key === 0 &&
                             (characters.meta?.current_page === 1 ||
                                 !characters.meta),
-                        'text-rank-silver':
+                        'text-silver':
                             key === 1 &&
                             (characters.meta?.current_page === 1 ||
                                 !characters.meta),
-                        'text-rank-bronze':
+                        'text-bronze':
                             key === 2 &&
                             (characters.meta?.current_page === 1 ||
                                 !characters.meta),
@@ -127,9 +127,9 @@ function getMovementRank(rank) {
                         >
                             <FontAwesomeIcon
                                 v-if="character.relations.statistics.length > 0"
-                                class="mr-1.5 rounded-sm border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
+                                class="bg-base-100 mr-1.5 border border-neutral-700 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
-                                size="sm"
+                                size="xs"
                                 fixed-width
                             />
 
@@ -152,7 +152,7 @@ function getMovementRank(rank) {
                         </span>
 
                         <span
-                            class="mt-0.5 w-max select-none text-xs font-light text-neutral-500/80"
+                            class="mt-0.5 w-max text-xs font-light text-neutral-500/80 select-none"
                             title="Last active"
                             >{{
                                 character.formatted_last_seen_at ?? 'n/a'
@@ -179,7 +179,7 @@ function getMovementRank(rank) {
                                             (e) => e.id === character.id,
                                         )
                                     "
-                                    class="badge badge-primary badge-outline badge-sm select-none font-light uppercase"
+                                    class="badge badge-primary badge-soft badge-sm font-light uppercase select-none"
                                     :href="route('user.setting.characters')"
                                 >
                                     You
@@ -194,14 +194,12 @@ function getMovementRank(rank) {
                                                 .length > 0
                                         "
                                         dir="ltr"
-                                        class="badge badge-error badge-outline badge-sm select-none font-light uppercase"
+                                        class="badge badge-error badge-soft badge-sm gap-1.5 font-light uppercase select-none"
                                         :href="route('user.setting.extras')"
                                     >
                                         <FontAwesomeIcon
-                                            class="mr-1"
                                             :icon="faLock"
-                                            size="2xs"
-                                            fixed-width
+                                            size="xs"
                                         />
 
                                         Link
@@ -214,7 +212,7 @@ function getMovementRank(rank) {
                             <template v-else>
                                 <FontAwesomeIcon
                                     v-if="character.is_muted"
-                                    class="ml-2 !align-middle text-warning"
+                                    class="text-warning ml-2 !align-middle"
                                     :icon="faTriangleExclamation"
                                     size="lg"
                                     title="This player is chat banned"
@@ -232,9 +230,9 @@ function getMovementRank(rank) {
 
                     <td dir="ltr" class="px-1.5">
                         <div class="indicator align-middle">
-                            <div class="h-7 w-7 rounded-full bg-base-100">
+                            <div class="bg-base-100 h-7 w-7 rounded-full">
                                 <img
-                                    class="h-7 w-7 select-none self-center rounded-full text-[0rem]"
+                                    class="h-7 w-7 self-center rounded-full text-[0rem] select-none"
                                     :src="
                                         character.relations.user.gravatar_url ??
                                         character.avatar_url ??
@@ -252,22 +250,21 @@ function getMovementRank(rank) {
                                         'supporter' &&
                                     isHighestScore(characters.data, character)
                                 "
-                                class="indicator-item indicator-start indicator-bottom"
+                                class="indicator-item indicator-bottom indicator-center"
                                 title="Supporter"
                             >
                                 <FontAwesomeLayers>
                                     <FontAwesomeIcon
-                                        class="z-10 text-role-supporter opacity-80"
+                                        class="text-supporter z-10 opacity-80"
                                         :icon="faHeart"
                                         size="lg"
-                                        transform="right-8 shrink-6"
+                                        transform="shrink-6"
                                     />
 
                                     <FontAwesomeIcon
                                         class="text-base-300"
                                         :icon="faCircle"
                                         size="lg"
-                                        transform="right-8"
                                     />
                                 </FontAwesomeLayers>
                             </span>
@@ -297,7 +294,7 @@ function getMovementRank(rank) {
                     <td
                         class="hidden md:table-cell"
                         :class="{
-                            'bg-base-200/75': !character.is_hidden,
+                            'bg-base-200': !character.is_hidden,
                         }"
                     >
                         <FontAwesomeIcon

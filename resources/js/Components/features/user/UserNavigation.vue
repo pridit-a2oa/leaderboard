@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
             </button>
 
             <ul
-                class="menu dropdown-content z-10 mt-1 w-32 rounded-md bg-base-200 p-2 shadow"
+                class="menu dropdown-content bg-base-200 z-10 mt-1 w-32 rounded-md p-2 shadow"
                 tabindex="0"
             >
                 <li class="mb-0.5">
@@ -31,7 +31,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
                 <li>
                     <Link
-                        class="pl-2 text-error focus:text-error active:!text-error"
+                        class="text-error focus:text-error active:!text-error pl-2"
                         :href="route('logout')"
                         method="post"
                         as="button"

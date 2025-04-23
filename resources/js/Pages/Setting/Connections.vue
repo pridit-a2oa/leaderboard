@@ -27,7 +27,7 @@ defineProps({
             :message="$page.props.flash.message[1]"
         />
 
-        <table class="table border-collapse rounded-md bg-base-200">
+        <table class="bg-base-200 table border-collapse rounded-md">
             <tbody>
                 <tr
                     v-for="connection in connections.data.sort((a, b) =>
@@ -88,7 +88,7 @@ defineProps({
                         >
                             <span
                                 v-if="connection.is_sso"
-                                class="badge badge-outline badge-md cursor-not-allowed select-none text-xs font-light uppercase opacity-50"
+                                class="badge badge-soft badge-md cursor-not-allowed text-xs font-light uppercase opacity-50 select-none"
                                 title="This connection is required for SSO"
                             >
                                 Disconnect
@@ -104,7 +104,7 @@ defineProps({
                         >
                             <Link
                                 :href="route(`connection.${connection.name}`)"
-                                class="badge badge-success badge-outline select-none text-xs font-light uppercase"
+                                class="badge badge-success badge-soft text-xs font-light uppercase select-none"
                             >
                                 Connect
                             </Link>

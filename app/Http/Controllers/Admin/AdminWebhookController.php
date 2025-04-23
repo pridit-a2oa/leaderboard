@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\SettingController;
-use App\Http\Resources\WebhookResource;
 use App\Models\WebhookCall;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -27,9 +26,9 @@ class AdminWebhookController extends SettingController
     public function index(): Response
     {
         return Inertia::render('Setting/Admin/Webhooks', [
-            'webhooks' => WebhookResource::collection(
-                WebhookCall::orderByDesc('created_at')->get()
-            ),
+            'webhooks' => WebhookCall::orderByDesc('created_at')
+                ->get()
+                ->toResourceCollection(),
         ]
             + $this->metadata()
         );
