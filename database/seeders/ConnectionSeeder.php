@@ -16,7 +16,7 @@ class ConnectionSeeder extends Seeder
             [
                 'name' => 'steam',
                 'icon' => 'steam',
-                'disclaimer' => 'With Steam we can verify your in-game identity by matching a 17-digit unique identifier, enabling character linking',
+                'description' => 'To verify your in-game identity we match a 17-digit unique identifier via <component-link title="Steam" href="https://store.steampowered.com/" size="2xs"></component-link>, enabling character linking.',
                 'is_sso' => 1,
             ],
         ]);

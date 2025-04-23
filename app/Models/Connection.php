@@ -24,7 +24,7 @@ class Connection extends Model
     protected $fillable = [
         'name',
         'icon',
-        'disclaimer',
+        'description',
         'is_sso',
     ];
 

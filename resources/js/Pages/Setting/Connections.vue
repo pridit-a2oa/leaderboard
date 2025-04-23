@@ -1,12 +1,13 @@
 <script setup>
 import { DisconnectBadge } from '@/Components/features/character';
 import { UserSettings } from '@/Components/features/user';
+import { NormalLink } from '@/Components/links';
 import { Alert } from '@/Components/ui';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
-import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head } from '@inertiajs/vue3';
+import { defineCustomElement } from 'vue';
 
 library.add(faSteam);
 
@@ -15,6 +16,20 @@ defineProps({
         type: Object,
     },
 });
+
+if (!customElements.get('component-link')) {
+    customElements.define(
+        'component-link',
+        defineCustomElement({
+            shadowRoot: false,
+            props: ['title'],
+            components: {
+                NormalLink,
+            },
+            template: `<NormalLink>{{ title }}</NormalLink>`,
+        }),
+    );
+}
 </script>
 
 <template>
@@ -27,91 +42,89 @@ defineProps({
             :message="$page.props.flash.message[1]"
         />
 
-        <table class="bg-base-200 table border-collapse rounded-md">
-            <tbody>
-                <tr
-                    v-for="connection in connections.data.sort((a, b) =>
-                        a.name > b.name ? 1 : -1,
-                    )"
-                    :key="connection.id"
-                    class="border-base-100 [&:not(:last-child)]:!border-b-4"
-                >
-                    <td class="w-0 text-center">
-                        <FontAwesomeIcon
-                            :icon="['fab', connection.icon]"
-                            size="xl"
-                            fixed-width
-                        />
-                    </td>
-
-                    <td class="p-0">
-                        <span>
-                            {{ connection.formatted_name }}
-                        </span>
-
-                        <span
-                            v-if="connection.disclaimer"
-                            class="tooltip tooltip-bottom tooltip-secondary ml-1 cursor-pointer rounded-full text-neutral-400 before:w-[16rem]"
-                            :data-tip="connection.disclaimer"
-                        >
+        <template
+            v-for="connection in connections.data.sort((a, b) =>
+                a.name > b.name ? 1 : -1,
+            )"
+            :key="connection.id"
+        >
+            <table class="bg-base-200 mb-2 table table-fixed rounded-md">
+                <tbody>
+                    <tr>
+                        <td class="w-0 text-center">
                             <FontAwesomeIcon
-                                class="!align-middle"
-                                :icon="faCircleQuestion"
+                                :icon="['fab', connection.icon]"
+                                size="xl"
                                 fixed-width
                             />
-                        </span>
+                        </td>
 
-                        <span
-                            class="block text-sm font-normal text-neutral-600"
-                        >
-                            {{
-                                $page.props.auth.user.connections
-                                    .filter(
+                        <td class="p-0 pl-6">
+                            <span>
+                                {{ connection.formatted_name }}
+                            </span>
+
+                            <span
+                                class="block text-sm font-normal text-neutral-600"
+                            >
+                                {{
+                                    $page.props.auth.user.connections
+                                        .filter(
+                                            (e) =>
+                                                e.pivot.connection_id ===
+                                                connection.id,
+                                        )
+                                        .map((e) => e.pivot.identifier)
+                                        .toString()
+                                }}
+                            </span>
+                        </td>
+
+                        <td class="text-right">
+                            <template
+                                v-if="
+                                    $page.props.auth.user.connections.some(
                                         (e) =>
                                             e.pivot.connection_id ===
                                             connection.id,
                                     )
-                                    .map((e) => e.pivot.identifier)
-                                    .toString()
-                            }}</span
-                        >
-                    </td>
-
-                    <td class="text-right">
-                        <template
-                            v-if="
-                                $page.props.auth.user.connections.some(
-                                    (e) =>
-                                        e.pivot.connection_id === connection.id,
-                                )
-                            "
-                        >
-                            <span
-                                v-if="connection.is_sso"
-                                class="badge badge-soft badge-md cursor-not-allowed text-xs font-light uppercase opacity-50 select-none"
-                                title="This connection is required for SSO"
+                                "
                             >
-                                Disconnect
-                            </span>
+                                <span
+                                    v-if="connection.is_sso"
+                                    class="badge badge-soft badge-md cursor-not-allowed text-xs font-light uppercase opacity-50 select-none"
+                                    title="This connection is required to sign in"
+                                >
+                                    Disconnect
+                                </span>
 
-                            <DisconnectBadge v-else :id="connection.id" />
-                        </template>
+                                <DisconnectBadge v-else :id="connection.id" />
+                            </template>
 
-                        <div
-                            v-else
-                            class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
-                            :data-tip="`You will be redirected to ${connection.formatted_name} to complete this process`"
-                        >
-                            <Link
-                                :href="route(`connection.${connection.name}`)"
-                                class="badge badge-success badge-soft text-xs font-light uppercase select-none"
+                            <div
+                                v-else
+                                class="tooltip tooltip-bottom tooltip-secondary before:w-[12rem]"
+                                :data-tip="`You will be redirected to ${connection.formatted_name} to complete this process`"
                             >
-                                Connect
-                            </Link>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                <Link
+                                    :href="
+                                        route(`connection.${connection.name}`)
+                                    "
+                                    class="badge badge-success badge-soft text-xs font-light uppercase select-none"
+                                >
+                                    Connect
+                                </Link>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr v-if="connection.description">
+                        <td :colspan="3" class="bg-base-300 rounded-b-md">
+                            <span v-html="connection.description"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </template>
     </UserSettings>
 </template>

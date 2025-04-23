@@ -23,6 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('contributions', function (Blueprint $table) {
+            $table->dropIndex('contributions_webhook_id_foreign');
+
+            $table->dropColumn('webhook_id');
+        });
     }
 };
