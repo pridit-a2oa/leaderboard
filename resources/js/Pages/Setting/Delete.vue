@@ -61,7 +61,7 @@ const deleteUserRequest = () => {
                         $page.props.auth.user.is_deletion_throttled
                     "
                 >
-                    <span class="ml-1 block">
+                    <span class="block">
                         I understand this action is
                         <span class="text-error">irreversible</span> and that my
                         account cannot be restored.
