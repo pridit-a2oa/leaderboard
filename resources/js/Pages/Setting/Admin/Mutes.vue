@@ -162,7 +162,7 @@ const form = useForm({
                                 />
                                 <FontAwesomeLayersText
                                     class="text-warning right-1 !text-left font-bold select-none"
-                                    transform="shrink-4 up-1"
+                                    transform="shrink-4"
                                     title="Show/hide character(s) affected"
                                     :value="mute.characters_count"
                                 />

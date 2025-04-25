@@ -229,7 +229,10 @@ function getMovementRank(rank) {
                     </td>
 
                     <td dir="ltr" class="px-1.5">
-                        <div class="indicator align-middle">
+                        <div
+                            v-if="!character.is_hidden"
+                            class="indicator align-middle"
+                        >
                             <div class="bg-base-100 h-7 w-7 rounded-full">
                                 <img
                                     class="h-7 w-7 self-center rounded-full text-[0rem] select-none"
@@ -332,7 +335,7 @@ function getMovementRank(rank) {
                         key === open
                     "
                 >
-                    <td class="p-0" :colspan="2">
+                    <td class="p-0" colspan="2">
                         <StatisticsTable
                             :statistics="character.relations.statistics"
                         />

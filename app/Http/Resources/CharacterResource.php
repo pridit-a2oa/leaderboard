@@ -16,7 +16,7 @@ class CharacterResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            $this->mergeWhen(! $this->is_hidden || auth()->user() && auth()->user()->hasRole('admin'), [
+            $this->mergeWhen(! $this->is_hidden || auth()->user() && (auth()->user()->id === $this->user_id || auth()->user()->hasRole('admin')), [
                 'user_id' => $this->when($this->user_id, $this->user_id),
                 'guid' => $this->when($this->user_id !== auth()->user()?->id && $this->user?->preferences->firstWhere('name', 'steam')?->pivot->value, null, $this->guid),
                 'name' => $this->name,
@@ -28,6 +28,7 @@ class CharacterResource extends JsonResource
                 'formatted_last_seen_at' => $this->formatted_last_seen_at,
                 'is_muted' => $this->whenLoaded('mute'),
             ]),
+            'is_hidden' => $this->is_hidden,
             'relations' => [
                 'statistics' => ! $this->is_hidden && $this->user_id !== null ? StatisticResource::collection($this->whenLoaded('statistics')) : [],
                 'user' => [
@@ -37,7 +38,6 @@ class CharacterResource extends JsonResource
                     ]),
                 ],
             ],
-            'is_hidden' => $this->is_hidden,
         ];
     }
 }

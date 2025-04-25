@@ -111,7 +111,7 @@
 
     .menu a,
     .menu button {
-        @apply rounded-lg;
+        @apply rounded-lg shadow-[unset];
     }
 
     .label {

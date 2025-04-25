@@ -119,7 +119,10 @@ if (!customElements.get('component-link')) {
                     </tr>
 
                     <tr v-if="connection.description">
-                        <td :colspan="3" class="bg-base-300 rounded-b-md">
+                        <td
+                            colspan="3"
+                            class="bg-base-300/50 border-base-300 rounded-b-md border-t-1 pt-2.5"
+                        >
                             <span v-html="connection.description"></span>
                         </td>
                     </tr>

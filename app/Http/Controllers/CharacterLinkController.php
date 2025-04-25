@@ -17,8 +17,8 @@ class CharacterLinkController extends Controller
 
         // Ineligible to associate more than one character as a member
         if (
-            $request->user()->characters()->exists()
-            && $request->user()->hasRole('member')
+            $request->user()->hasRole('member')
+            && $request->user()->characters()->exists()
         ) {
             return back();
         }

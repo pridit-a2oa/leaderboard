@@ -31,13 +31,16 @@ const setVisibility = () => {
 <template>
     <BaseBadge
         class="w-10"
-        :class="{
-            'opacity-60': hidden,
-        }"
         :disabled="form.processing"
         @click="setVisibility"
         dusk="visibility-button"
     >
-        <FontAwesomeIcon :icon="hidden ? faEyeSlash : faEye" size="sm" />
+        <FontAwesomeIcon
+            :class="{
+                'opacity-60': hidden,
+            }"
+            :icon="hidden ? faEyeSlash : faEye"
+            size="sm"
+        />
     </BaseBadge>
 </template>
