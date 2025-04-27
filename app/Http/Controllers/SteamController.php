@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\SteamConnectionMissingException;
+use App\Models\Connection;
 use App\Models\ConnectionUser;
 use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\HttpFactory;
 use GuzzleHttp\Psr7\Uri;
-use Illuminate\Auth\AuthManager;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,6 +19,7 @@ use Ilzrv\LaravelSteamAuth\Exceptions\Authentication\SteamResponseNotValidAuthen
 use Ilzrv\LaravelSteamAuth\Exceptions\Validation\ValidationException;
 use Ilzrv\LaravelSteamAuth\SteamAuthenticator;
 use Inertia\Inertia;
+use JsonException;
 
 final class SteamController
 {
@@ -26,7 +27,6 @@ final class SteamController
         Request $request,
         Client $client,
         HttpFactory $httpFactory,
-        AuthManager $authManager,
     ): Response|RedirectResponse {
         $steamAuthenticator = new SteamAuthenticator(
             new Uri($request->getUri()),
@@ -36,28 +36,47 @@ final class SteamController
 
         try {
             $steamAuthenticator->auth();
-        } catch (ValidationException|SteamResponseNotValidAuthenticationException) {
+        } catch (
+            ValidationException
+            |SteamResponseNotValidAuthenticationException
+            |JsonException
+            $exception
+        ) {
+            report($exception);
+
             return Inertia::location(
                 $steamAuthenticator->buildAuthUrl()
             );
         }
 
-        $steamIdentifier = $steamAuthenticator->getSteamUser()->getSteamId();
+        $steamId = $steamAuthenticator->getSteamUser()->getSteamId();
 
-        if (ConnectionUser::where('identifier', $steamIdentifier)->doesntExist()) {
-            $user = User::create();
+        try {
+            $connectionId = Connection::where('name', 'steam')->first()?->id;
 
-            $user->connections()->attach(
-                1,
-                ['identifier' => $steamIdentifier]
-            );
-        } else {
-            $user = User::whereHas('connections', function (Builder $query) use ($steamIdentifier) {
-                $query->where('connection_id', 1)->where('identifier', $steamIdentifier);
-            })->first();
+            if (! $connectionId) {
+                throw new SteamConnectionMissingException;
+            }
+        } catch (SteamConnectionMissingException $exception) {
+            report($exception);
+
+            return redirect(route('home', absolute: false));
         }
 
-        Auth::login($user, true);
+        $connection = ConnectionUser::where('connection_id', $connectionId)
+            ->where('identifier', $steamId)
+            ->first();
+
+        $user = $connection
+            ? $connection->user
+            : tap(User::create(), function ($user) use ($connectionId, $steamId) {
+                $user->connections()->attach(
+                    $connectionId,
+                    ['identifier' => $steamId]
+                );
+            });
+
+        Auth::login($user, remember: true);
 
         return redirect(route('home', absolute: false));
     }
