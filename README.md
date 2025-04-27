@@ -1,4 +1,4 @@
-![Leaderboard](https://github.com/user-attachments/assets/30df66bb-0d42-4a8e-8085-85a9e107e626)
+![Leaderboard](https://github.com/user-attachments/assets/d1ef0d90-50fa-48d5-a9c9-21833020b6dd)
 
 # Leaderboard
 
@@ -88,11 +88,11 @@ As the platform depends on data inserted from an Arma 2: Operation Arrowhead mis
 
 The following tables are used as part of this process:
 
-| Optional | Name                  | Fields                                                                                                                                                                 | Purpose                                       |
+| Required | Name                  | Fields                                                                                                                                                                 | Purpose                                       |
 | -------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| ❌       | `characters`          | [guid](https://community.bistudio.com/wiki/getPlayerUID)<br />[name](https://community.bistudio.com/wiki/name)<br />[score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
-| ✔️       | `character_statistic` | character_id<br />statistic_id<br /> value                                                                                                                             | Tracking `statistics`                         |
-| ✔️       | `model_has_roles`     | role_id<br /> model_id                                                                                                                                                 | Feature access based on a permissions library |
+| ✔️       | `characters`          | [guid](https://community.bistudio.com/wiki/getPlayerUID)<br />[name](https://community.bistudio.com/wiki/name)<br />[score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
+| ❌       | `character_statistic` | character_id<br />statistic_id<br /> value                                                                                                                             | Tracking `statistics`                         |
+| ❌       | `model_has_roles`     | role_id<br /> model_id                                                                                                                                                 | Feature access based on a permissions library |
 
 For an example on how this has been integrated into an existing mission using [Arma2NETMySQL](https://arma2netmysqlplugin.readthedocs.io/en/latest/), see the repo [pridit-a2oa/co40_Domination.Takistan](https://github.com/pridit-a2oa/co40_Domination.Takistan).
 
