@@ -64,6 +64,7 @@ class CharacterTest extends DuskTestCase
                 ->visit('/settings/characters')
                 ->click('@visibility-button')
                 ->waitUntilMissing('#nprogress')
+                ->loginAs(User::create())
                 ->visit('/')
                 ->assertSee('Anonymous');
         });
