@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class, 'index'])
 /**
  * Terms of Use
  */
-Route::get('/terms', function (): Response {
+Route::get('/terms-of-use', function (): Response {
     return Inertia::render('Terms', [
         'name' => 'Terms of Use',
         'icon' => 'file',
@@ -35,7 +35,7 @@ Route::get('/terms', function (): Response {
 /**
  * Privacy Policy
  */
-Route::get('/privacy', function (): Response {
+Route::get('/privacy-policy', function (): Response {
     return Inertia::render('Privacy', [
         'name' => 'Privacy Policy',
         'icon' => 'file',

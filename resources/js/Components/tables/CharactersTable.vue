@@ -67,7 +67,7 @@ function getMovementRank(rank) {
 <template>
     <BaseTable dir="rtl">
         <thead>
-            <tr class="bg-base-100 [&>th]:pt-0">
+            <tr class="select-none [&>th]:pt-0">
                 <th class="w-0 text-right">Score</th>
                 <th></th>
                 <th class="w-0"></th>

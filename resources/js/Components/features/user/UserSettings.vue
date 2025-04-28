@@ -4,10 +4,10 @@ import { SuffixText } from '@/Components/text';
 import {
     faCircle,
     faCircleUser,
+    faPersonRifle,
     faPlug,
     faStar,
-    faTrashCan,
-    faUser,
+    faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     FontAwesomeIcon,
@@ -36,7 +36,7 @@ const tab = computed({
 
 const settings = ref([
     { type: 'account', icon: faCircleUser, disabled: false },
-    { type: 'characters', icon: faUser, disabled: false },
+    { type: 'characters', icon: faPersonRifle, disabled: false },
     { type: 'connections', icon: faPlug, disabled: false },
     { type: 'extras', icon: faStar, disabled: false },
 ]);
@@ -139,7 +139,10 @@ const settings = ref([
                             }"
                             :href="route('user.setting.delete')"
                         >
-                            <FontAwesomeIcon :icon="faTrashCan" fixed-width />
+                            <FontAwesomeIcon
+                                :icon="faTriangleExclamation"
+                                fixed-width
+                            />
                             Delete Account
                         </Link>
                     </li>
