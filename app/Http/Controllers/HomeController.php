@@ -29,7 +29,7 @@ class HomeController extends Controller
             })
             ->orderByDesc('score')
             ->orderBy('last_seen_at')
-            ->paginate(50)
+            ->paginate(25)
             ->onEachSide(1);
 
         if ($characters->isEmpty()) {
@@ -46,10 +46,11 @@ class HomeController extends Controller
         }
 
         return Inertia::render('Home', [
-            'characters' => $characters->toResourceCollection()
+            'characters' => Inertia::deepMerge($characters->toResourceCollection()
                 ->additional([
                     'ranking' => Cache::get('ranking', []),
-                ]),
+                ])
+            ),
         ]);
     }
 }

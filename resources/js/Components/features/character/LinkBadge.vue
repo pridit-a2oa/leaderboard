@@ -1,7 +1,5 @@
 <script setup>
 import { BaseBadge } from '@/Components/base';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -33,7 +31,6 @@ const linkCharacter = () => {
         v-on="id ? { click: linkCharacter } : {}"
         dusk="link-button"
     >
-        <FontAwesomeIcon :icon="faUser" size="xs" />
         Link
     </BaseBadge>
 </template>

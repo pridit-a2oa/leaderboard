@@ -20,7 +20,7 @@ class CharacterLinkController extends Controller
             $request->user()->hasRole('member')
             && $request->user()->characters()->exists()
         ) {
-            return back();
+            return redirect(route('user.setting.extras', absolute: false));
         }
 
         $character = Character::findOrFail($request->character_id);
@@ -29,7 +29,7 @@ class CharacterLinkController extends Controller
         $character->user()->associate($request->user()->id);
         $character->save();
 
-        return back();
+        return redirect(route('user.setting.characters', absolute: false));
     }
 
     /**

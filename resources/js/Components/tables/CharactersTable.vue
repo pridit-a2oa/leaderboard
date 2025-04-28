@@ -13,7 +13,6 @@ import {
     faCircle,
     faHand,
     faHeart,
-    faLock,
     faMinus,
     faTriangleExclamation,
     faTrophy,
@@ -35,15 +34,6 @@ const open = ref(null);
 
 function toggle(id) {
     open.value = open.value === id ? null : id;
-}
-
-function getRank(key, added) {
-    return (
-        key +
-        ((props.characters.meta?.current_page - 1) *
-            props.characters.meta?.per_page +
-            (added ?? 0))
-    );
 }
 
 function getCachedRank(id) {
@@ -91,18 +81,9 @@ function getMovementRank(rank) {
                     class="group border-base-100 [&:not(:first-child)]:!border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
-                        'text-gold':
-                            key === 0 &&
-                            (characters.meta?.current_page === 1 ||
-                                !characters.meta),
-                        'text-silver':
-                            key === 1 &&
-                            (characters.meta?.current_page === 1 ||
-                                !characters.meta),
-                        'text-bronze':
-                            key === 2 &&
-                            (characters.meta?.current_page === 1 ||
-                                !characters.meta),
+                        'text-gold': key === 0,
+                        'text-silver': key === 1,
+                        'text-bronze': key === 2,
                     }"
                 >
                     <td class="text-right text-lg font-light">
@@ -197,11 +178,6 @@ function getMovementRank(rank) {
                                         class="badge badge-error badge-soft badge-sm gap-1.5 font-light uppercase select-none"
                                         :href="route('user.setting.extras')"
                                     >
-                                        <FontAwesomeIcon
-                                            :icon="faLock"
-                                            size="xs"
-                                        />
-
                                         Link
                                     </Link>
 
@@ -274,14 +250,7 @@ function getMovementRank(rank) {
                         </div>
                     </td>
 
-                    <td
-                        v-if="
-                            key in [0, 1, 2] &&
-                            (characters.meta?.current_page === 1 ||
-                                !characters.meta)
-                        "
-                        class="text-center"
-                    >
+                    <td v-if="key in [0, 1, 2]" class="text-center">
                         <FontAwesomeIcon
                             class="!align-middle"
                             :icon="faTrophy"
@@ -291,7 +260,7 @@ function getMovementRank(rank) {
                     </td>
 
                     <td v-else class="text-center text-[1rem] font-bold">
-                        {{ getRank(key, 1) || key + 1 }}
+                        {{ key + 1 }}
                     </td>
 
                     <td
@@ -307,12 +276,12 @@ function getMovementRank(rank) {
                             class="!align-middle"
                             :class="
                                 getMovementRank(
-                                    getCachedRank(character.id) - getRank(key),
+                                    getCachedRank(character.id) - key,
                                 )[0]
                             "
                             :icon="
                                 getMovementRank(
-                                    getCachedRank(character.id) - getRank(key),
+                                    getCachedRank(character.id) - key,
                                 )[1]
                             "
                             fixed-width

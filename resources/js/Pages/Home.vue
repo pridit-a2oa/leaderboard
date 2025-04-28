@@ -2,7 +2,7 @@
 import { RewardBanner } from '@/Components/features/reward';
 import { CharactersTable } from '@/Components/tables';
 import { Navbar } from '@/Components/ui';
-import { Head } from '@inertiajs/vue3';
+import { Head, WhenVisible } from '@inertiajs/vue3';
 
 defineProps({
     characters: {
@@ -36,5 +36,21 @@ defineProps({
 
     <div v-if="characters.data.length > 0" class="font-bold">
         <CharactersTable :characters="characters" />
+
+        <WhenVisible
+            v-if="
+                characters.meta &&
+                characters.data.length < characters.meta.total
+            "
+            :always="characters.meta.current_page < characters.meta.last_page"
+            :buffer="300"
+            :params="{
+                data: {
+                    page: characters.meta.current_page + 1,
+                },
+                only: ['characters'],
+                preserveUrl: true,
+            }"
+        />
     </div>
 </template>
