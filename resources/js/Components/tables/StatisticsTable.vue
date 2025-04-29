@@ -41,20 +41,22 @@ const icon = {
             v-for="statistic in statistics.sort((a, b) =>
                 a.name > b.name ? 1 : -1,
             )"
-            class="bg-base-200 odd:bg-base-100 text-xs"
+            class="odd:bg-base-200 bg-base-100 text-xs"
         >
-            <td class="text-right">
+            <td class="text-right font-bold">
                 {{ statistic.pivot.formatted_value }}
             </td>
 
-            <td dir="ltr" class="text-left">
+            <td dir="ltr" class="text-left font-light tracking-wide">
                 <FontAwesomeIcon
                     v-if="icon[statistic.icon]"
-                    class="pr-2 text-neutral-500"
+                    class="pr-3 text-neutral-500"
                     :icon="icon[statistic.icon]"
                     fixed-width
                 />{{ statistic.name }}
             </td>
+
+            <td class="bg-base-100 table-cell md:hidden"></td>
         </tr>
     </BaseTable>
 </template>

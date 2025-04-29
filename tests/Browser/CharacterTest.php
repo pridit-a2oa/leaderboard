@@ -41,6 +41,7 @@ class CharacterTest extends DuskTestCase
                 ->visit('/')
                 ->assertPresent('@link-button')
                 ->press('LINK')
+                ->visit('/')
                 ->waitForText('YOU')
                 ->assertSee('YOU');
         });
@@ -94,6 +95,7 @@ class CharacterTest extends DuskTestCase
                 ->visit('/')
                 ->assertPresent('@link-button')
                 ->press('LINK')
+                ->visit('/')
                 ->waitForText('YOU')
                 ->assertSee('YOU');
         });
@@ -146,7 +148,7 @@ class CharacterTest extends DuskTestCase
                 ->visit('/')
                 ->press('LINK')
                 ->waitUntilMissing('#nprogress')
-                ->assertPathIs('/');
+                ->assertPathIs('/settings/characters');
         });
     }
 

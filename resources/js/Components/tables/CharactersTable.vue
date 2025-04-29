@@ -1,6 +1,5 @@
 <script setup>
 import { BaseTable } from '@/Components/base';
-import { CopyButton } from '@/Components/buttons';
 import { LinkBadge } from '@/Components/features/character';
 import { StatisticsTable } from '@/Components/tables';
 import { isHighestScore } from '@/utils';
@@ -14,7 +13,6 @@ import {
     faHand,
     faHeart,
     faMinus,
-    faTriangleExclamation,
     faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -60,6 +58,7 @@ function getMovementRank(rank) {
             <tr class="select-none [&>th]:pt-0">
                 <th class="w-0 text-right">Score</th>
                 <th></th>
+                <th class="hidden md:table-cell"></th>
                 <th class="w-0"></th>
                 <th class="w-0">Rank</th>
                 <th class="hidden w-0 md:table-cell"></th>
@@ -78,7 +77,7 @@ function getMovementRank(rank) {
                 :key="character.id"
             >
                 <tr
-                    class="group border-base-100 [&:not(:first-child)]:!border-t-4"
+                    class="border-base-100 [&:not(:first-child)]:!border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
                         'text-gold': key === 0,
@@ -86,26 +85,92 @@ function getMovementRank(rank) {
                         'text-bronze': key === 2,
                     }"
                 >
-                    <td class="text-right text-lg font-light">
+                    <td
+                        class="text-right text-lg font-light"
+                        :class="{
+                            'select-none': !character.formatted_score,
+                        }"
+                    >
                         {{ character.formatted_score ?? '&dash;' }}
+                    </td>
+
+                    <td class="hidden w-10 md:table-cell">
+                        <a
+                            v-if="
+                                character.guid &&
+                                ($page.props.auth.user === null ||
+                                    $page.props.auth.user.connections.find(
+                                        (e) =>
+                                            e.pivot.identifier !==
+                                            character.guid,
+                                    ))
+                            "
+                            :href="`https://steamcommunity.com/profiles/${character.guid}`"
+                            target="_blank"
+                        >
+                            <FontAwesomeIcon
+                                class="!align-middle text-neutral-400 opacity-30 transition ease-in-out hover:opacity-100"
+                                :icon="faSteam"
+                                size="xl"
+                                title="Steam Community Profile"
+                            />
+                        </a>
+
+                        <template
+                            v-if="
+                                $page.props.auth.user !== null &&
+                                $page.props.auth.user.connections.some(
+                                    (e) =>
+                                        e.pivot.identifier === character.guid,
+                                )
+                            "
+                        >
+                            <Link
+                                v-if="
+                                    $page.props.auth.user !== null &&
+                                    $page.props.auth.user.characters.some(
+                                        (e) => e.id === character.id,
+                                    )
+                                "
+                                class="badge badge-primary badge-soft badge-sm font-light uppercase select-none"
+                                :href="route('user.setting.characters')"
+                            >
+                                You
+                            </Link>
+
+                            <template v-else>
+                                <Link
+                                    v-if="
+                                        $page.props.auth.role === 'member' &&
+                                        $page.props.auth.user.characters
+                                            .length > 0
+                                    "
+                                    dir="ltr"
+                                    class="badge badge-error badge-soft badge-sm gap-1.5 font-light uppercase select-none"
+                                    :href="route('user.setting.extras')"
+                                >
+                                    Link
+                                </Link>
+
+                                <LinkBadge v-else :id="character.id" />
+                            </template>
+                        </template>
                     </td>
 
                     <td
                         dir="ltr"
                         class="grid grid-flow-col grid-cols-1 grid-rows-2 p-0 px-2 py-3 text-left"
+                        :class="{
+                            'cursor-pointer':
+                                character.relations.statistics.length > 0,
+                        }"
+                        @click="
+                            character.relations.statistics.length > 0
+                                ? toggle(key)
+                                : null
+                        "
                     >
-                        <span
-                            class="truncate"
-                            :class="{
-                                'cursor-pointer':
-                                    character.relations.statistics.length > 0,
-                            }"
-                            @click="
-                                character.relations.statistics.length > 0
-                                    ? toggle(key)
-                                    : null
-                            "
-                        >
+                        <span class="truncate">
                             <FontAwesomeIcon
                                 v-if="character.relations.statistics.length > 0"
                                 class="bg-base-100 mr-1.5 border border-neutral-700 !align-middle text-neutral-400"
@@ -114,21 +179,15 @@ function getMovementRank(rank) {
                                 fixed-width
                             />
 
-                            <span :title="character.name">
-                                {{ character.name ?? 'Anonymous'
-                                }}<a
-                                    v-if="character.guid"
-                                    :href="`https://steamcommunity.com/profiles/${character.guid}`"
-                                    target="_blank"
-                                    @click.stop
-                                >
-                                    <FontAwesomeIcon
-                                        class="ml-1 !align-middle text-neutral-400 opacity-0 transition ease-in-out group-hover:opacity-100"
-                                        :icon="faSteam"
-                                        title="Steam Community Profile"
-                                        fixed-width
-                                    />
-                                </a>
+                            <span
+                                :class="{
+                                    'select-none':
+                                        character.relations.statistics.length >
+                                        0,
+                                }"
+                                :title="character.name"
+                            >
+                                {{ character.name ?? 'Anonymous' }}
                             </span>
                         </span>
 
@@ -139,69 +198,6 @@ function getMovementRank(rank) {
                                 character.formatted_last_seen_at ?? 'n/a'
                             }}</span
                         >
-
-                        <div
-                            class="col-span-1 row-span-2 ml-4 hidden self-center md:table-cell"
-                        >
-                            <template
-                                v-if="
-                                    $page.props.auth.user !== null &&
-                                    $page.props.auth.user.connections.some(
-                                        (e) =>
-                                            e.pivot.identifier ===
-                                            character.guid,
-                                    )
-                                "
-                            >
-                                <Link
-                                    v-if="
-                                        $page.props.auth.user !== null &&
-                                        $page.props.auth.user.characters.some(
-                                            (e) => e.id === character.id,
-                                        )
-                                    "
-                                    class="badge badge-primary badge-soft badge-sm font-light uppercase select-none"
-                                    :href="route('user.setting.characters')"
-                                >
-                                    You
-                                </Link>
-
-                                <template v-else>
-                                    <Link
-                                        v-if="
-                                            $page.props.auth.role ===
-                                                'member' &&
-                                            $page.props.auth.user.characters
-                                                .length > 0
-                                        "
-                                        dir="ltr"
-                                        class="badge badge-error badge-soft badge-sm gap-1.5 font-light uppercase select-none"
-                                        :href="route('user.setting.extras')"
-                                    >
-                                        Link
-                                    </Link>
-
-                                    <LinkBadge v-else :id="character.id" />
-                                </template>
-                            </template>
-
-                            <template v-else>
-                                <FontAwesomeIcon
-                                    v-if="character.is_muted"
-                                    class="text-warning ml-2 !align-middle"
-                                    :icon="faTriangleExclamation"
-                                    size="lg"
-                                    title="This player is chat banned"
-                                    fixed-width
-                                />
-
-                                <CopyButton
-                                    v-else
-                                    class="opacity-[.01] transition ease-in-out group-hover:opacity-100"
-                                    :value="character.guid ?? ''"
-                                />
-                            </template>
-                        </div>
                     </td>
 
                     <td dir="ltr" class="px-1.5">
@@ -304,7 +300,7 @@ function getMovementRank(rank) {
                         key === open
                     "
                 >
-                    <td class="p-0" colspan="2">
+                    <td class="bg-base-100 p-0 pl-2" colspan="3">
                         <StatisticsTable
                             :statistics="character.relations.statistics"
                         />
