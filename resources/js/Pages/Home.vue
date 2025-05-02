@@ -43,7 +43,7 @@ defineProps({
                 characters.data.length < characters.meta.total
             "
             :always="characters.meta.current_page < characters.meta.last_page"
-            :buffer="300"
+            :buffer="400"
             :params="{
                 data: {
                     page: characters.meta.current_page + 1,
