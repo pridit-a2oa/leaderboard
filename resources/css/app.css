@@ -100,10 +100,6 @@
         @apply !rounded-lg;
     }
 
-    .input {
-        @apply w-full;
-    }
-
     .menu {
         --menu-active-bg: var(--color-neutral-800);
         @apply leading-6;
@@ -150,6 +146,8 @@
     }
 
     .input {
+        @apply w-full;
+
         &:focus,
         &:focus-within {
             --input-color: color-mix(
