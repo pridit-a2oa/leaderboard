@@ -86,7 +86,7 @@ function getMovementRank(rank) {
                     }"
                 >
                     <td
-                        class="text-right text-lg font-light"
+                        class="text-right text-lg font-light tabular-nums"
                         :class="{
                             'select-none': !character.formatted_score,
                         }"
@@ -192,7 +192,7 @@ function getMovementRank(rank) {
                         </span>
 
                         <span
-                            class="mt-0.5 w-max text-xs font-light text-neutral-500/80 select-none"
+                            class="mt-0.5 w-max text-xs font-light text-neutral-600 select-none"
                             title="Last active"
                             >{{
                                 character.formatted_last_seen_at ?? 'n/a'
@@ -255,7 +255,7 @@ function getMovementRank(rank) {
                         />
                     </td>
 
-                    <td v-else class="text-center text-[1rem] font-bold">
+                    <td v-else class="text-center text-base tabular-nums">
                         {{ key + 1 }}
                     </td>
 

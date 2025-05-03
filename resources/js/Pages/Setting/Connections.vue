@@ -65,7 +65,7 @@ if (!customElements.get('component-link')) {
                             </span>
 
                             <span
-                                class="block text-sm font-normal text-neutral-600"
+                                class="block text-xs font-normal text-neutral-600 tabular-nums"
                             >
                                 {{
                                     $page.props.auth.user.connections
