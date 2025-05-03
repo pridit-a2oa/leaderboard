@@ -22,6 +22,7 @@ RUN apk add --no-cache \
     php84-fileinfo \
     php84-fpm \
     php84-gd \
+    php84-iconv \
     php84-intl \
     php84-json \
     php84-mbstring \
@@ -82,7 +83,7 @@ RUN npm ci
 RUN npm run build
 
 # Remove dev-only dependencies & clear cache
-RUN npm ci --production && \
+RUN npm ci --omit=dev && \
     npm cache clean --force
 
 # Set entrypoint execution permission
