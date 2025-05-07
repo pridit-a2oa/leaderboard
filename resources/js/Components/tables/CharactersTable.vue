@@ -164,7 +164,22 @@ function getMovementRank(rank) {
                             'cursor-pointer':
                                 character.relations.statistics.length > 0,
                         }"
+                        :role="
+                            character.relations.statistics.length > 0 === false
+                                ? undefined
+                                : 'button'
+                        "
+                        :tabindex="
+                            character.relations.statistics.length > 0 === false
+                                ? undefined
+                                : 0
+                        "
                         @click="
+                            character.relations.statistics.length > 0
+                                ? toggle(key)
+                                : null
+                        "
+                        @keydown.enter="
                             character.relations.statistics.length > 0
                                 ? toggle(key)
                                 : null

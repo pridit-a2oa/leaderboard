@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
         <RewardIcon :user="$page.props.auth.user" />
 
         <div class="text-sm">
-            <div class="dropdown dropdown-hover">
+            <div class="dropdown dropdown-hover" role="link" tabindex="0">
                 <span class="underlined-rich">Link</span>
 
                 <div class="dropdown-content z-20 w-max">

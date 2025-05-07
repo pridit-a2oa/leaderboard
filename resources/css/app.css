@@ -126,6 +126,10 @@
         }
     }
 
+    .text-error {
+        @apply focus-visible:!text-error active:!text-error;
+    }
+
     .tooltip {
         & > :where(.tooltip-content),
         &[data-tip]::before {
