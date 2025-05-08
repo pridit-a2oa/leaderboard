@@ -25,7 +25,7 @@ class Connection extends Model
         'name',
         'icon',
         'description',
-        'is_sso',
+        'is_oauth',
     ];
 
     /**
@@ -36,7 +36,7 @@ class Connection extends Model
     protected function casts(): array
     {
         return [
-            'is_sso' => 'boolean',
+            'is_oauth' => 'boolean',
         ];
     }
 }

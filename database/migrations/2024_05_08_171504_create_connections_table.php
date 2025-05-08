@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('icon');
             $table->mediumText('description')->nullable();
-            $table->boolean('is_sso')->default(0);
+            $table->boolean('is_oauth')->default(0);
         });
     }
 

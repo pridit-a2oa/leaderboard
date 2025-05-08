@@ -19,7 +19,7 @@ class ConnectionController extends Controller
             'connection_id' => [
                 'required',
                 Rule::exists('connections', 'id')->where(function (Builder $query) {
-                    $query->where('is_sso', 0);
+                    $query->where('is_oauth', 0);
                 })],
         ]);
 

@@ -91,7 +91,7 @@ if (!customElements.get('component-link')) {
                                 "
                             >
                                 <span
-                                    v-if="connection.is_sso"
+                                    v-if="connection.is_oauth"
                                     class="badge badge-soft badge-md cursor-not-allowed text-xs font-light uppercase opacity-50 select-none"
                                     title="This connection is required to sign in"
                                 >
