@@ -75,7 +75,7 @@ import { Head } from '@inertiajs/vue3';
 
                     <td class="text-right">
                         <div
-                            class="tooltip tooltip-bottom tooltip-secondary before:!w-[11rem]"
+                            class="tooltip tooltip-bottom tooltip-secondary before:!w-[12rem]"
                             data-tip="Toggle whether this character is anonymized publicly"
                         >
                             <AnonymiseBadge
@@ -85,7 +85,7 @@ import { Head } from '@inertiajs/vue3';
                         </div>
 
                         <div
-                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:!w-[13rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:!w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Unlink this character from your account&#10;(can be relinked at any time)"
                         >
                             <UnlinkBadge :id="character.id" />

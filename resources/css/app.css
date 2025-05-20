@@ -114,16 +114,8 @@
         @apply py-2 text-sm whitespace-normal text-neutral-300;
     }
 
-    .tooltip {
-        &::before {
-            @apply font-mono;
-        }
-
-        &-error {
-            &::before {
-                @apply p-2 font-mono;
-            }
-        }
+    .tooltip::before {
+        @apply font-mono;
     }
 
     .text-error {
