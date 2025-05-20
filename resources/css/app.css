@@ -149,7 +149,8 @@
         @apply cursor-pointer font-semibold underline decoration-dashed underline-offset-4 before:font-light;
     }
 
-    .input {
+    .input,
+    .select {
         @apply w-full;
 
         &:focus,

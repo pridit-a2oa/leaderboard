@@ -6,6 +6,7 @@ use App\Models\Character;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -20,13 +21,21 @@ class HomeController extends Controller
             $request->user()->load('characters');
         }
 
+        $request->validate([
+            'filter' => ['sometimes', Rule::in(['all', 'active'])],
+        ]);
+
         $characters = Character::with(['mute', 'statistics'])
             ->with(['user' => function ($query) {
                 $query->without('connections');
             }])
-            ->when(! auth()->check() || ! auth()->user()->hasRole('admin'), function (Builder $query) {
-                $query->rankable();
-            })
+            ->when(
+                ! auth()->check()
+                || ! auth()->user()->hasRole('admin')
+                || (auth()->user()->hasRole('admin') && $request->query('filter') === 'active'),
+                function (Builder $query) {
+                    $query->rankable();
+                })
             ->orderByDesc('score')
             ->orderBy('last_seen_at')
             ->paginate(25)
@@ -51,6 +60,7 @@ class HomeController extends Controller
                     'ranking' => Cache::get('ranking', []),
                 ])
             ),
+            'filter' => $request->query('filter'),
         ]);
     }
 }

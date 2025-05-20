@@ -6,10 +6,28 @@ import {
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useForm, usePage } from '@inertiajs/vue3';
+
+const form = useForm({
+    filter: usePage().props.filter ?? 'all',
+});
 </script>
 
 <template>
-    <div class="indicator ml-auto hidden md:inline-flex">
+    <div class="indicator ml-auto hidden gap-x-3 md:inline-flex">
+        <form
+            v-if="$page.props.auth.role === 'admin'"
+            @change="form.get(route('home'))"
+        >
+            <select
+                class="select bg-base-300 h-full text-xs"
+                v-model="form.filter"
+            >
+                <option value="all">(All)</option>
+                <option value="active">Active</option>
+            </select>
+        </form>
+
         <UserRoleIcon />
 
         <div class="dropdown dropdown-bottom">
