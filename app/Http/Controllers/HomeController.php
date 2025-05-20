@@ -6,7 +6,6 @@ use App\Models\Character;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -22,7 +21,7 @@ class HomeController extends Controller
         }
 
         $request->validate([
-            'filter' => ['sometimes', Rule::in(['all', 'active'])],
+            'filter' => 'sometimes|in:active',
         ]);
 
         $characters = Character::with(['mute', 'statistics'])

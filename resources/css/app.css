@@ -141,9 +141,13 @@
         @apply cursor-pointer font-semibold underline decoration-dashed underline-offset-4 before:font-light;
     }
 
+    .select {
+        @apply cursor-pointer;
+    }
+
     .input,
     .select {
-        @apply w-full;
+        @apply w-full rounded-md;
 
         &:focus,
         &:focus-within {
