@@ -38,7 +38,12 @@ const form = useForm({
             <UserRoleIcon />
 
             <div class="dropdown dropdown-bottom">
-                <div class="btn" role="button" tabindex="0">
+                <div
+                    class="btn"
+                    role="button"
+                    tabindex="0"
+                    dusk="account-button"
+                >
                     Account
                     <FontAwesomeIcon
                         class="text-neutral-600"

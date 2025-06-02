@@ -35,7 +35,7 @@ class AuthenticatedTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/')
-                ->press('Account')
+                ->press('@account-button')
                 ->clickLink('Settings')
                 ->waitUntilMissing('#nprogress')
                 ->assertSee('Account');
@@ -47,7 +47,7 @@ class AuthenticatedTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/')
-                ->press('Account')
+                ->press('@account-button')
                 ->press('Sign out')
                 ->waitUntilMissing('#nprogress')
                 ->assertPresent('@login-button');
