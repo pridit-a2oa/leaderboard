@@ -27,7 +27,7 @@ Route::middleware('guest')->group(function () {
     //     ->name('password.store');
 
     Route::get('login', SteamController::class)
-        ->middleware('throttle:4,1')
+        ->middleware('throttle:10,1')
         ->name('login');
 });
 

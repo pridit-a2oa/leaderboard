@@ -53,4 +53,23 @@ defineProps({
             }"
         />
     </div>
+
+    <div
+        v-if="
+            $page.props.ziggy.query.length === 0 &&
+            characters.data.length !== characters.total &&
+            characters.meta.current_page === characters.meta.last_page
+        "
+        class="mt-2 text-center text-sm font-light text-neutral-400"
+    >
+        <span>
+            <span class="font-bold tabular-nums">{{
+                characters.total - characters.data.length
+            }}</span>
+            character(s) omitted (<span class="font-bold tabular-nums"
+                ><50</span
+            >
+            score)</span
+        >
+    </div>
 </template>

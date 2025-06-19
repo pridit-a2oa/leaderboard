@@ -19,6 +19,7 @@ import {
     FontAwesomeIcon,
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
+import { usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -50,6 +51,36 @@ function getMovementRank(rank) {
             return ['text-neutral-700', faMinus];
     }
 }
+
+const filterCharacter = (character) => {
+    const { filter } = usePage().props.ziggy.query;
+
+    switch (filter) {
+        case 'active':
+            const lastSeenAt = new Date(character.last_seen_at);
+
+            return (
+                new Date() <=
+                new Date(
+                    Date.UTC(
+                        lastSeenAt.getUTCFullYear(),
+                        lastSeenAt.getUTCMonth(),
+                        lastSeenAt.getUTCDate() + 28,
+                        8,
+                        5,
+                        0,
+                        0,
+                    ),
+                )
+            );
+        case 'me':
+            return usePage().props.auth.user.connections.some(
+                (e) => e.pivot.identifier === character.guid,
+            );
+        default:
+            return true;
+    }
+};
 </script>
 
 <template>
@@ -77,6 +108,7 @@ function getMovementRank(rank) {
                 :key="character.id"
             >
                 <tr
+                    v-show="filterCharacter(character)"
                     class="border-base-100 [&:not(:first-child)]:!border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
@@ -132,7 +164,7 @@ function getMovementRank(rank) {
                                         (e) => e.id === character.id,
                                     )
                                 "
-                                class="badge badge-primary badge-soft badge-sm font-light uppercase select-none"
+                                class="badge badge-primary badge-soft badge-outline badge-sm font-light uppercase select-none"
                                 :href="route('user.setting.characters')"
                             >
                                 You
@@ -146,7 +178,7 @@ function getMovementRank(rank) {
                                             .length > 0
                                     "
                                     dir="ltr"
-                                    class="badge badge-error badge-soft badge-sm gap-1.5 font-light uppercase select-none"
+                                    class="badge badge-error badge-soft badge-outline badge-sm gap-1.5 font-light uppercase select-none"
                                     :href="route('user.setting.extras')"
                                 >
                                     Link

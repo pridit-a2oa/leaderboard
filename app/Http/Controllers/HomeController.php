@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
@@ -21,23 +20,28 @@ class HomeController extends Controller
         }
 
         $request->validate([
-            'filter' => 'sometimes|in:active',
+            'filter' => [
+                'sometimes',
+                function ($attribute, $value, $fail) {
+                    if (! auth()->check()) {
+                        $fail('Must be authenticated to apply filtering.');
+                    }
+
+                    if (! in_array($value, ['active', 'me'])) {
+                        $fail('Must be a valid selection to apply filtering.');
+                    }
+                },
+            ],
         ]);
 
         $characters = Character::with(['mute', 'statistics'])
             ->with(['user' => function ($query) {
                 $query->without('connections');
             }])
-            ->when(
-                ! auth()->check()
-                || ! auth()->user()->hasRole('admin')
-                || (auth()->user()->hasRole('admin') && $request->query('filter') === 'active'),
-                function (Builder $query) {
-                    $query->rankable();
-                })
+            ->rankable()
             ->orderByDesc('score')
             ->orderBy('last_seen_at')
-            ->paginate(25)
+            ->paginate(50)
             ->onEachSide(1);
 
         if ($characters->isEmpty()) {
@@ -57,6 +61,7 @@ class HomeController extends Controller
             'characters' => Inertia::deepMerge($characters->toResourceCollection()
                 ->additional([
                     'ranking' => Cache::get('ranking', []),
+                    'total' => Character::count(),
                 ])
             ),
             'filter' => $request->query('filter'),

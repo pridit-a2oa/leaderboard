@@ -7,7 +7,6 @@ import { Head, usePage } from '@inertiajs/vue3';
 
 const extras = [
     'Supporter <span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[12rem]" data-tip="Applies to one linked character with the highest score (and most recently active)">badge</span>',
-    '<span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[14rem]" data-tip="Bypasses the requirement to have gained score sometime within the past 6 weeks to be eligible for ranking">Inactivity</span> exemption',
     'Multiple character linking',
     `<span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[14rem]" data-tip="${usePage().props.statistics}">Statistics</span> tracking (per character)`,
 ];

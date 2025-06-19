@@ -125,9 +125,6 @@ class Character extends Model
     /**
      * Scope a query to only include characters with sufficient score, filtering
      * uniquely based on highest score and, if clashing, recently active.
-     *
-     * Additionally impose a 6 week (inactivity state) condition unless the
-     * character's linked user is exempt based on role.
      */
     public function scopeRankable(Builder $query): void
     {
@@ -141,17 +138,7 @@ class Character extends Model
             ) characters'
         )
             ->where('RN', 1)
-            ->where('score', '>=', 10)
-            ->where(function (Builder $query) {
-                $query->whereRaw(
-                    'NOW() <= TIMESTAMP(
-                        DATE(last_seen_at) + INTERVAL 42 DAY, "08:05:00"
-                    )'
-                )
-                    ->orWhereHas('user.roles', function (Builder $query) {
-                        $query->whereIn('role_id', [2, 3]);
-                    });
-            });
+            ->where('score', '>=', 50);
     }
 
     /**

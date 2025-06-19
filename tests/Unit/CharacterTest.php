@@ -66,44 +66,6 @@ class CharacterTest extends TestCase
     }
 
     #[Test]
-    public function can_see_character_last_seen_before_six_weeks(): void
-    {
-        Character::factory()->create();
-
-        $this->get('/')
-            ->assertInertia(fn (Assert $page) => $page
-                ->component('Home')
-                ->has('characters.meta')
-            );
-    }
-
-    #[Test]
-    public function can_see_character_last_seen_after_six_weeks_as_supporter(): void
-    {
-        Character::factory()->for(User::factory()->supporter())
-            ->inactive()
-            ->create();
-
-        $this->get('/')
-            ->assertInertia(fn (Assert $page) => $page
-                ->component('Home')
-                ->has('characters.meta')
-            );
-    }
-
-    #[Test]
-    public function cannot_see_character_last_seen_after_six_weeks(): void
-    {
-        Character::factory()->inactive()->create();
-
-        $this->get('/')
-            ->assertInertia(fn (Assert $page) => $page
-                ->component('Home')
-                ->missing('characters.meta')
-            );
-    }
-
-    #[Test]
     public function cannot_see_character_statistics_with_none_and_not_linked(): void
     {
         Character::factory()->create();

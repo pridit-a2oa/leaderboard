@@ -18,7 +18,7 @@ const form = useForm({
         class="indicator hidden w-full gap-x-3 text-right md:inline-grid md:grid-cols-[1fr_1fr]"
     >
         <form
-            v-if="$page.props.auth.role === 'admin'"
+            v-if="$page.props.auth.user !== null"
             @change="form.get(route('home'))"
         >
             <select
@@ -27,6 +27,7 @@ const form = useForm({
             >
                 <option :value="undefined">(All)</option>
                 <option value="active">Active</option>
+                <option value="me">Me</option>
             </select>
         </form>
 

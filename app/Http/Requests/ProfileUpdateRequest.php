@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\App;
 
 class ProfileUpdateRequest extends FormRequest
 {
@@ -18,7 +19,7 @@ class ProfileUpdateRequest extends FormRequest
                 'nullable',
                 'lowercase',
                 'email',
-                ...$this->isPrecognitive() ? [] : ['indisposable'],
+                ...$this->isPrecognitive() || App::isLocal() ? [] : ['indisposable'],
             ],
         ];
     }
