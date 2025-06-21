@@ -10,7 +10,6 @@
     "require": {
         "php": "^8.4",
         "creativeorange/gravatar": "^1.0.25",
-        "ilzrv/laravel-steam-auth": "^3.2",
         "inertiajs/inertia-laravel": "^2.0.3",
         "laravel/framework": "^12.19.3",
         "laravel/prompts": "^0.3.2",
@@ -22,7 +21,8 @@
         "protonemedia/laravel-verify-new-email": "^1.13",
         "spatie/laravel-permission": "^6.20.0",
         "spatie/laravel-webhook-client": "^3.4.3",
-        "tightenco/ziggy": "^2.5.3"
+        "tightenco/ziggy": "^2.5.3",
+        "xpaw/steam-openid": "^3.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.15.4",

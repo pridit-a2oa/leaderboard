@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2d428f783e6c41bf03a424322eb206c",
+    "content-hash": "d33fac8a2459c0a68bcb1959c7536fdf",
     "packages": [
         {
             "name": "brick/math",
@@ -1116,63 +1116,6 @@
                 }
             ],
             "time": "2025-02-03T10:55:03+00:00"
-        },
-        {
-            "name": "ilzrv/laravel-steam-auth",
-            "version": "v3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ilzrv/laravel-steam-auth.git",
-                "reference": "75d1a0b0b6071dad44529cc7af8b0e8413246428"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ilzrv/laravel-steam-auth/zipball/75d1a0b0b6071dad44529cc7af8b0e8413246428",
-                "reference": "75d1a0b0b6071dad44529cc7af8b0e8413246428",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
-                "php": "^8.1",
-                "psr/http-client": "^1.0",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^2.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "7.x|^8.5",
-                "phpunit/phpunit": "^10.0|^11.0",
-                "roave/security-advisories": "dev-latest",
-                "vimeo/psalm": "^5.12"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Ilzrv\\LaravelSteamAuth\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ilzrv\\LaravelSteamAuth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ilia Lazarev",
-                    "email": "me@ilzrv.com"
-                }
-            ],
-            "description": "Steam Auth for Laravel",
-            "support": {
-                "issues": "https://github.com/ilzrv/laravel-steam-auth/issues",
-                "source": "https://github.com/ilzrv/laravel-steam-auth/tree/v3.2.0"
-            },
-            "time": "2025-03-16T17:09:29+00:00"
         },
         {
             "name": "inertiajs/inertia-laravel",
@@ -6684,6 +6627,51 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "xpaw/steam-openid",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xPaw/SteamOpenID.php.git",
+                "reference": "a6c2992abda9ace89705f5ef46750ca1c22459b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xPaw/SteamOpenID.php/zipball/a6c2992abda9ace89705f5ef46750ca1c22459b3",
+                "reference": "a6c2992abda9ace89705f5ef46750ca1c22459b3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^11"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xPaw\\Steam\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A correct and simple implementation of OpenID authentication for Steam",
+            "homepage": "https://github.com/xPaw/SteamOpenID.php",
+            "keywords": [
+                "OpenId",
+                "steam",
+                "steamcommunity",
+                "valve"
+            ],
+            "support": {
+                "issues": "https://github.com/xPaw/SteamOpenID.php/issues",
+                "source": "https://github.com/xPaw/SteamOpenID.php/tree/v3.1.1"
+            },
+            "time": "2025-06-07T19:07:43+00:00"
         }
     ],
     "packages-dev": [
@@ -9550,12 +9538,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.4"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }

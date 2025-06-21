@@ -8,48 +8,32 @@ use App\Exceptions\SteamConnectionMissingException;
 use App\Models\Connection;
 use App\Models\ConnectionUser;
 use App\Models\User;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\HttpFactory;
-use GuzzleHttp\Psr7\Uri;
+use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Ilzrv\LaravelSteamAuth\Exceptions\Authentication\SteamResponseNotValidAuthenticationException;
-use Ilzrv\LaravelSteamAuth\Exceptions\Validation\ValidationException;
-use Ilzrv\LaravelSteamAuth\SteamAuthenticator;
 use Inertia\Inertia;
-use JsonException;
+use xPaw\Steam\SteamOpenID;
 
 final class SteamController
 {
-    public function __invoke(
-        Request $request,
-        Client $client,
-        HttpFactory $httpFactory,
-    ): Response|RedirectResponse {
-        $steamAuthenticator = new SteamAuthenticator(
-            new Uri($request->getUri()),
-            $client,
-            $httpFactory,
-        );
+    public function __invoke(): Response|RedirectResponse
+    {
+        $SteamOpenID = new SteamOpenID(url('/login'));
 
-        try {
-            $steamAuthenticator->auth();
-        } catch (
-            ValidationException
-            |SteamResponseNotValidAuthenticationException
-            |JsonException
-            $exception
-        ) {
-            report($exception);
+        if ($SteamOpenID->ShouldValidate()) {
+            try {
+                $steamId = $SteamOpenID->Validate();
+            } catch (Exception $exception) {
+                report($exception);
 
+                return redirect(route('home', absolute: false));
+            }
+        } else {
             return Inertia::location(
-                $steamAuthenticator->buildAuthUrl()
+                $SteamOpenID->GetAuthUrl()
             );
         }
-
-        $steamId = $steamAuthenticator->getSteamUser()->getSteamId();
 
         try {
             $connectionId = Connection::where('name', 'steam')->first()?->id;
