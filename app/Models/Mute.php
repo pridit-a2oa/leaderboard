@@ -15,7 +15,7 @@ class Mute extends Model
      */
     protected $fillable = [
         'reason_id',
-        'guid',
+        'id64',
     ];
 
     /**
@@ -23,7 +23,7 @@ class Mute extends Model
      */
     public function characters(): HasMany
     {
-        return $this->hasMany(Character::class, 'guid', 'guid');
+        return $this->hasMany(Character::class, 'id64', 'id64');
     }
 
     /**

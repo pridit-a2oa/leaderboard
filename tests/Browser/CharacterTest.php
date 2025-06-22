@@ -26,15 +26,15 @@ class CharacterTest extends DuskTestCase
     public function test_can_link_linkable_character(): void
     {
         $this->browse(function (Browser $browser) {
-            $guid = 1;
+            $id64 = 1;
 
             Character::factory()->create([
-                'guid' => $guid,
+                'id64' => $id64,
             ]);
 
             $user = User::factory()->hasAttached(
                 Connection::factory(),
-                ['identifier' => $guid]
+                ['identifier' => $id64]
             )->create();
 
             $browser->loginAs($user)
@@ -50,14 +50,14 @@ class CharacterTest extends DuskTestCase
     public function test_can_toggle_visibility_of_character(): void
     {
         $this->browse(function (Browser $browser) {
-            $guid = 1;
+            $id64 = 1;
 
             $user = User::factory()->hasCharacters([
-                'guid' => $guid,
+                'id64' => $id64,
             ])
                 ->hasAttached(
                     Connection::factory(),
-                    ['identifier' => $guid]
+                    ['identifier' => $id64]
                 )
                 ->create();
 
@@ -74,14 +74,14 @@ class CharacterTest extends DuskTestCase
     public function test_can_unlink_then_relink_character(): void
     {
         $this->browse(function (Browser $browser) {
-            $guid = 1;
+            $id64 = 1;
 
             $user = User::factory()->hasCharacters([
-                'guid' => $guid,
+                'id64' => $id64,
             ])
                 ->hasAttached(
                     Connection::factory(),
-                    ['identifier' => $guid]
+                    ['identifier' => $id64]
                 )
                 ->create();
 
@@ -104,16 +104,16 @@ class CharacterTest extends DuskTestCase
     public function test_cannot_link_two_characters_as_user(): void
     {
         $this->browse(function (Browser $browser) {
-            $guid = 1;
+            $id64 = 1;
 
             Character::factory()->create([
-                'guid' => $guid,
+                'id64' => $id64,
             ]);
 
             $user = User::factory()->hasCharacters()
                 ->hasAttached(
                     Connection::factory(),
-                    ['identifier' => $guid]
+                    ['identifier' => $id64]
                 )
                 ->create();
 
@@ -128,18 +128,18 @@ class CharacterTest extends DuskTestCase
     public function test_can_link_two_characters_as_supporter(): void
     {
         $this->browse(function (Browser $browser) {
-            $guid = 1;
+            $id64 = 1;
 
             Character::factory()->create([
-                'guid' => $guid,
+                'id64' => $id64,
             ]);
 
             $user = User::factory()->hasCharacters([
-                'guid' => $guid,
+                'id64' => $id64,
             ])
                 ->hasAttached(
                     Connection::factory(),
-                    ['identifier' => $guid]
+                    ['identifier' => $id64]
                 )
                 ->create()
                 ->syncRoles('supporter');
@@ -155,15 +155,15 @@ class CharacterTest extends DuskTestCase
     public function test_can_reset_character_statistics_as_supporter(): void
     {
         $this->browse(function (Browser $browser) {
-            $guid = 1;
+            $id64 = 1;
 
             $user = User::factory()->has(
-                Character::factory(['guid' => $guid])
+                Character::factory(['id64' => $id64])
                     ->hasStatistics()
             )
                 ->hasAttached(
                     Connection::factory(),
-                    ['identifier' => $guid]
+                    ['identifier' => $id64]
                 )
                 ->create()
                 ->syncRoles('supporter');

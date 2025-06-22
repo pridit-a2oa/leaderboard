@@ -90,7 +90,7 @@ The following tables are used as part of this process:
 
 | Required | Name                  | Fields                                                                                                                                                                 | Purpose                                       |
 | -------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| ✔️       | `characters`          | [guid](https://community.bistudio.com/wiki/getPlayerUID)<br />[name](https://community.bistudio.com/wiki/name)<br />[score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
+| ✔️       | `characters`          | [id64](https://community.bistudio.com/wiki/getPlayerUID)<br />[name](https://community.bistudio.com/wiki/name)<br />[score](https://community.bistudio.com/wiki/score) | Stores the main data                          |
 | ❌       | `character_statistic` | character_id<br />statistic_id<br /> value                                                                                                                             | Tracking `statistics`                         |
 | ❌       | `model_has_roles`     | role_id<br /> model_id                                                                                                                                                 | Feature access based on a permissions library |
 

@@ -46,7 +46,7 @@ class HomeController extends Controller
 
         if ($characters->isEmpty()) {
             $characters = Character::factory([
-                'guid' => null,
+                'id64' => null,
                 'name' => 'Example',
             ])
                 ->count(5)

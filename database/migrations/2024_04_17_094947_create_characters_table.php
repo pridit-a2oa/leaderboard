@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('id64')->nullable();
             $table->string('guid')->nullable();
             $table->string('name');
             $table->string('avatar_url')->nullable();
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletesTz('deleted_at', precision: 0);
 
-            $table->unique(['guid', 'name']);
+            $table->unique(['id64', 'name']);
 
             $table->foreign('user_id')->references('id')->on('users');
         });

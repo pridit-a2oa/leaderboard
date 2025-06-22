@@ -15,7 +15,7 @@ class CharacterFeatureRequest extends FormRequest
         return $this->user()->hasRole(['admin', 'supporter'])
             && Character::findOrFail($this->character_id)
                 ->whereIn(
-                    'guid',
+                    'id64',
                     $this->user()->connections()->pluck('identifier')->all()
                 )
                 ->exists();

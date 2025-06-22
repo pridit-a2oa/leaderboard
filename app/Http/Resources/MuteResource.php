@@ -17,7 +17,7 @@ class MuteResource extends JsonResource
         return [
             'id' => $this->id,
             'reason_id' => $this->reason_id,
-            'guid' => $this->guid,
+            'id64' => $this->id64,
             'characters_count' => min($this->characters_count, 99),
             'relations' => [
                 'characters' => $this->whenLoaded('characters')

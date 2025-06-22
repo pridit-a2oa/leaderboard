@@ -27,7 +27,9 @@ const form = useForm({
             >
                 <option :value="undefined">(All)</option>
                 <option value="active">Active</option>
-                <option value="me">Me</option>
+                <option v-if="$page.props.characters.meta" value="me">
+                    Me
+                </option>
             </select>
         </form>
 

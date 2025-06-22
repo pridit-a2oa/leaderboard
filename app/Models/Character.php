@@ -24,6 +24,7 @@ class Character extends Model
      */
     protected $fillable = [
         'user_id',
+        'id64',
         'guid',
         'name',
         'score',
@@ -63,6 +64,7 @@ class Character extends Model
     {
         return [
             'id' => (int) $this->id,
+            'id64' => $this->id64,
             'guid' => $this->guid,
             'name' => $this->name,
         ];
@@ -115,11 +117,11 @@ class Character extends Model
     }
 
     /**
-     * The mute associated with the character's GUID.
+     * The mute associated with the character's ID64.
      */
     public function mute(): HasOne
     {
-        return $this->hasOne(Mute::class, 'guid', 'guid');
+        return $this->hasOne(Mute::class, 'id64', 'id64');
     }
 
     /**

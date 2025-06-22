@@ -15,7 +15,7 @@ class CharacterLinkRequest extends FormRequest
     {
         return [
             'id' => ['required', 'exists:characters,id'],
-            'guid' => ['required', 'exists:characters,guid'],
+            'id64' => ['required', 'exists:characters,id64'],
         ];
     }
 }

@@ -58,6 +58,7 @@ defineProps({
         v-if="
             $page.props.ziggy.query.length === 0 &&
             characters.data.length !== characters.total &&
+            characters.meta &&
             characters.meta.current_page === characters.meta.last_page
         "
         class="mt-2 text-center text-sm font-light text-neutral-400"

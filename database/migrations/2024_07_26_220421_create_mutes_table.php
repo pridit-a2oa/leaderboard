@@ -20,7 +20,7 @@ return new class extends Migration
         Schema::create('mutes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reason_id');
-            $table->string('guid')->unique();
+            $table->string('id64')->unique();
             $table->timestamp('created_at')->useCurrent();
 
             $table->foreign('reason_id')->references('id')->on('mute_reasons');

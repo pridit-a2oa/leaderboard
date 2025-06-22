@@ -75,7 +75,7 @@ const filterCharacter = (character) => {
             );
         case 'me':
             return usePage().props.auth.user.connections.some(
-                (e) => e.pivot.identifier === character.guid,
+                (e) => e.pivot.identifier === character.id64,
             );
         default:
             return true;
@@ -129,15 +129,15 @@ const filterCharacter = (character) => {
                     <td class="hidden w-10 md:table-cell">
                         <a
                             v-if="
-                                character.guid &&
+                                character.id64 &&
                                 ($page.props.auth.user === null ||
                                     $page.props.auth.user.connections.find(
                                         (e) =>
                                             e.pivot.identifier !==
-                                            character.guid,
+                                            character.id64,
                                     ))
                             "
-                            :href="`https://steamcommunity.com/profiles/${character.guid}`"
+                            :href="`https://steamcommunity.com/profiles/${character.id64}`"
                             target="_blank"
                         >
                             <FontAwesomeIcon
@@ -153,7 +153,7 @@ const filterCharacter = (character) => {
                                 $page.props.auth.user !== null &&
                                 $page.props.auth.user.connections.some(
                                     (e) =>
-                                        e.pivot.identifier === character.guid,
+                                        e.pivot.identifier === character.id64,
                                 )
                             "
                         >
