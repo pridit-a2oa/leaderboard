@@ -14,14 +14,18 @@ class RoleSeeder extends Seeder
     {
         Role::create([
             'name' => 'member',
+            'icon' => 'fa-heart-broken',
         ]);
 
         Role::create([
             'name' => 'supporter',
+            'icon' => 'fa-heart',
+            'color' => '#026bbe',
         ]);
 
         Role::create([
             'name' => 'admin',
+            'icon' => 'fa-cog',
         ]);
     }
 }

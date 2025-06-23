@@ -33,7 +33,7 @@ class CharacterTest extends DuskTestCase
             ]);
 
             $user = User::factory()->hasAttached(
-                Connection::factory(),
+                Connection::factory()->steam(),
                 ['identifier' => $id64]
             )->create();
 
@@ -56,7 +56,7 @@ class CharacterTest extends DuskTestCase
                 'id64' => $id64,
             ])
                 ->hasAttached(
-                    Connection::factory(),
+                    Connection::factory()->steam(),
                     ['identifier' => $id64]
                 )
                 ->create();
@@ -80,7 +80,7 @@ class CharacterTest extends DuskTestCase
                 'id64' => $id64,
             ])
                 ->hasAttached(
-                    Connection::factory(),
+                    Connection::factory()->steam(),
                     ['identifier' => $id64]
                 )
                 ->create();
@@ -112,7 +112,7 @@ class CharacterTest extends DuskTestCase
 
             $user = User::factory()->hasCharacters()
                 ->hasAttached(
-                    Connection::factory(),
+                    Connection::factory()->steam(),
                     ['identifier' => $id64]
                 )
                 ->create();
@@ -138,7 +138,7 @@ class CharacterTest extends DuskTestCase
                 'id64' => $id64,
             ])
                 ->hasAttached(
-                    Connection::factory(),
+                    Connection::factory()->steam(),
                     ['identifier' => $id64]
                 )
                 ->create()
@@ -162,7 +162,7 @@ class CharacterTest extends DuskTestCase
                     ->hasStatistics()
             )
                 ->hasAttached(
-                    Connection::factory(),
+                    Connection::factory()->steam(),
                     ['identifier' => $id64]
                 )
                 ->create()

@@ -20,7 +20,7 @@ class CharacterFactory extends Factory
             'id64' => '76561197992228102',
             'name' => ucfirst(fake()->userName()),
             'score' => fake()->randomNumber(4, false),
-            'last_seen_at' => now()->sub(random_int(1, 14), 'day'),
+            'last_seen_at' => now()->sub(random_int(1, 16), 'week'),
         ];
     }
 

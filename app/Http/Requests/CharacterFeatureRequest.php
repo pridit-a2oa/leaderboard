@@ -14,9 +14,9 @@ class CharacterFeatureRequest extends FormRequest
     {
         return $this->user()->hasRole(['admin', 'supporter'])
             && Character::findOrFail($this->character_id)
-                ->whereIn(
+                ->where(
                     'id64',
-                    $this->user()->connections()->pluck('identifier')->all()
+                    $this->user()->connections->firstWhere('name', 'steam')->pivot->identifier
                 )
                 ->exists();
     }

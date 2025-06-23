@@ -109,7 +109,7 @@ const filterCharacter = (character) => {
             >
                 <tr
                     v-show="filterCharacter(character)"
-                    class="border-base-100 [&:not(:first-child)]:!border-t-4"
+                    class="border-base-100 border-t-4"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
                         'text-gold': key === 0,
@@ -173,7 +173,8 @@ const filterCharacter = (character) => {
                             <template v-else>
                                 <Link
                                     v-if="
-                                        $page.props.auth.role === 'member' &&
+                                        $page.props.auth.role.name ===
+                                            'member' &&
                                         $page.props.auth.user.characters
                                             .length > 0
                                     "

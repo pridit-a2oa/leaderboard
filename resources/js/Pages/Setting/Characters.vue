@@ -42,7 +42,8 @@ import { Head } from '@inertiajs/vue3';
 
                             <template
                                 v-if="
-                                    $page.props.auth.role === 'supporter' &&
+                                    $page.props.auth.role.name ===
+                                        'supporter' &&
                                     isHighestScore(
                                         $page.props.auth.user.characters,
                                         character,
@@ -94,7 +95,7 @@ import { Head } from '@inertiajs/vue3';
                         <div
                             v-if="
                                 ['admin', 'supporter'].includes(
-                                    $page.props.auth.role,
+                                    $page.props.auth.role.name,
                                 ) && character.statistics_count > 0
                             "
                             class="tooltip tooltip-bottom tooltip-error ml-3 before:!w-[11rem] before:whitespace-pre-line before:content-[attr(data-tip)]"

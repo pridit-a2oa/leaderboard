@@ -30,6 +30,15 @@ class HomeController extends Controller
                     if (! in_array($value, ['active', 'me'])) {
                         $fail('Must be a valid selection to apply filtering.');
                     }
+
+                    if ($value === 'me' && Character::where(
+                        'id64',
+                        auth()->user()->connections->firstWhere('name', 'steam')?->pivot->identifier
+                    )
+                        ->count() === 0
+                    ) {
+                        $fail('Must have linkable or linked characters for this filter selection.');
+                    }
                 },
             ],
         ]);

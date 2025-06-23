@@ -46,7 +46,7 @@ const settings = ref([
     <div class="flex">
         <div>
             <div
-                v-if="$page.props.auth.role === 'admin'"
+                v-if="$page.props.auth.role.name === 'admin'"
                 role="tablist"
                 class="tabs-box tabs mb-4 flex-nowrap gap-x-1"
             >
@@ -66,10 +66,10 @@ const settings = ref([
             </div>
 
             <template v-if="tab.value === 'user'">
-                <ul class="menu bg-base-200 w-44 rounded-lg">
+                <ul class="menu bg-base-200 w-44 gap-1 rounded-lg">
                     <li
                         v-for="setting in settings"
-                        class="group/parent capitalize [&:not(:last-child)]:mb-1"
+                        class="group/parent capitalize"
                         :class="{
                             'menu-disabled opacity-60 [&>a>div>svg]:opacity-40':
                                 setting.disabled,

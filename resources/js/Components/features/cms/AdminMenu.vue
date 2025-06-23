@@ -26,13 +26,10 @@ const settings = ref([
 
 <template>
     <ul
-        v-if="$page.props.auth.role === 'admin'"
-        class="menu bg-base-200 mt-4 w-44 rounded-md"
+        v-if="$page.props.auth.role.name === 'admin'"
+        class="menu bg-base-200 mt-4 w-44 gap-1 rounded-md"
     >
-        <li
-            v-for="setting in settings"
-            class="capitalize [&:not(:last-child)]:mb-1"
-        >
+        <li v-for="setting in settings" class="capitalize">
             <Link
                 class="group hover:bg-highlight px-2"
                 :class="{

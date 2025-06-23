@@ -1,4 +1,5 @@
 <script setup>
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faCircle,
     faCog,
@@ -10,29 +11,23 @@ import {
     FontAwesomeLayers,
 } from '@fortawesome/vue-fontawesome';
 
-const icon = {
-    'member': faHeartBroken,
-    'supporter': faHeart,
-    'admin': faCog,
-};
+library.add(faCog, faHeart, faHeartBroken);
 </script>
 
 <template>
     <div
         class="indicator-item cursor-default"
         :title="
-            ($page.props.auth.role === 'supporter' &&
+            ($page.props.auth.role.name === 'supporter' &&
                 'Thanks for being a supporter!') ||
             ''
         "
     >
-        <FontAwesomeLayers v-if="icon[$page.props.auth.role]" fixed-width>
+        <FontAwesomeLayers v-if="$page.props.auth.role.icon" fixed-width>
             <FontAwesomeIcon
-                class="z-10 text-neutral-600"
-                :class="{
-                    'text-supporter': $page.props.auth.role === 'supporter',
-                }"
-                :icon="icon[$page.props.auth.role]"
+                class="z-10 text-neutral-500"
+                :style="{ color: $page.props.auth.role.color }"
+                :icon="$page.props.auth.role.icon"
             />
 
             <FontAwesomeIcon

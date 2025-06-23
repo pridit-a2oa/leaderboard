@@ -23,7 +23,7 @@ const icon = {
 
     <UserSettings title="Extras">
         <a
-            v-if="$page.props.auth.role === 'member'"
+            v-if="$page.props.auth.role.name === 'member'"
             href="https://ko-fi.com/pridit"
             target="_blank"
         >
@@ -34,12 +34,12 @@ const icon = {
         </a>
 
         <Alert
-            v-if="$page.props.auth.role === 'admin'"
+            v-if="$page.props.auth.role.name === 'admin'"
             message="Some features are inherited due to role override"
         />
 
         <div class="indicator w-auto">
-            <UserRoleIcon v-if="$page.props.auth.role !== 'admin'" />
+            <UserRoleIcon v-if="$page.props.auth.role.name !== 'admin'" />
 
             <table class="bg-base-200 table table-fixed rounded-md">
                 <tbody>
@@ -50,8 +50,8 @@ const icon = {
                         <td class="w-0">
                             <FontAwesomeIcon
                                 class="!align-middle"
-                                :class="icon[$page.props.auth.role][1]"
-                                :icon="icon[$page.props.auth.role][0]"
+                                :class="icon[$page.props.auth.role.name][1]"
+                                :icon="icon[$page.props.auth.role.name][0]"
                                 size="lg"
                                 transform="shrink-1"
                             />

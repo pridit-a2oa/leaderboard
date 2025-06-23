@@ -33,7 +33,7 @@ const deleteUserRequest = () => {
                 </li>
                 <li>Connections will be severed</li>
                 <li>Any linked characters will be unlinked</li>
-                <li v-if="$page.props.auth.role === 'supporter'">
+                <li v-if="$page.props.auth.role.name === 'supporter'">
                     Ko-fi contribution will be unassociated
                     <span
                         class="underlined-rich tooltip-benefit"

@@ -13,9 +13,9 @@ class CharacterRequest extends FormRequest
     public function authorize(): bool
     {
         return Character::findOrFail($this->character_id)
-            ->whereIn(
+            ->where(
                 'id64',
-                $this->user()->connections()->pluck('identifier')->all()
+                $this->user()->connections->firstWhere('name', 'steam')->pivot->identifier
             )
             ->exists();
     }

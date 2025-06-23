@@ -36,7 +36,7 @@ class HandleInertiaRequests extends Middleware
                 'name' => config('app.title', config('app.name')),
             ],
             'auth' => [
-                'role' => $request->user()?->roles->value('name'),
+                'role' => $request->user()?->roles->flatMap->only('name', 'icon', 'color'),
                 'user' => $request->user(),
             ],
             'flash' => [

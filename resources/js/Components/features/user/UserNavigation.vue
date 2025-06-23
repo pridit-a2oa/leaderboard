@@ -24,18 +24,17 @@ const form = useForm({
             <select
                 class="select select-sm bg-base-300 h-full"
                 v-model="form.filter"
+                :disabled="!$page.props.characters.meta"
             >
                 <option :value="undefined">(All)</option>
                 <option value="active">Active</option>
-                <option v-if="$page.props.characters.meta" value="me">
-                    Me
-                </option>
+                <option value="me">Me</option>
             </select>
         </form>
 
         <div
             :class="{
-                'col-start-2': $page.props.auth.role !== 'admin',
+                'col-start-2': $page.props.auth.role.name !== 'admin',
             }"
         >
             <UserRoleIcon />
@@ -55,9 +54,9 @@ const form = useForm({
                 </div>
 
                 <ul
-                    class="menu dropdown-content bg-base-200 z-10 mt-1 w-32 rounded-md p-2 shadow"
+                    class="menu dropdown-content bg-base-200 z-10 mt-1 w-32 gap-1 rounded-md p-2 shadow"
                 >
-                    <li class="mb-0.5">
+                    <li>
                         <Link
                             class="hover:bg-highlight pl-2"
                             :href="route('user.setting.account')"
@@ -69,7 +68,7 @@ const form = useForm({
 
                     <li>
                         <Link
-                            class="text-error hover:bg-highlight pl-2"
+                            class="text-error hover:bg-highlight pl-2 focus:cursor-pointer"
                             :href="route('logout')"
                             method="post"
                             as="button"
