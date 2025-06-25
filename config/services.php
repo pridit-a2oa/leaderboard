@@ -31,4 +31,8 @@ return [
         ],
     ],
 
+    'steam' => [
+        'key' => env('STEAM_API_KEY'),
+    ],
+
 ];

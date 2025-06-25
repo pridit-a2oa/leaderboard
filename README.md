@@ -74,7 +74,7 @@ docker run -d \
     --name leaderboard \
     --restart unless-stopped \
     -e KOFI_TOKEN=<OPTIONAL> \
-    -e STEAM_AUTH_API_KEYS=<OPTIONAL> \
+    -e STEAM_API_KEY=<OPTIONAL> \
     -p 8080:8080 \
     leaderboard
 ```

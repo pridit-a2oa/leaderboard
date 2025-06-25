@@ -29,7 +29,7 @@ class SteamAvatars extends Command
      */
     public function handle()
     {
-        if (empty(config('steam-auth.api_keys')[0])) {
+        if (empty(config('services.steam.key'))) {
             $this->fail('No Steam API key specified.');
         }
 
@@ -38,7 +38,7 @@ class SteamAvatars extends Command
         })->chunkById(25, function (Collection $characters) {
             $response = Http::get(sprintf(
                 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=%s&steamids=%s',
-                config('steam-auth.api_keys')[0],
+                config('services.steam.key'),
                 implode(',', $characters->pluck('id64')->toArray())
             ));
 
