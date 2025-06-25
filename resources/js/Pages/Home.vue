@@ -4,6 +4,8 @@ import { CharactersTable } from '@/Components/tables';
 import { Navbar } from '@/Components/ui';
 import { Head, WhenVisible } from '@inertiajs/vue3';
 
+const minScore = Number(import.meta.env.VITE_CHARACTER_MIN_SCORE) || 50;
+
 defineProps({
     characters: {
         type: Object,
@@ -63,12 +65,12 @@ defineProps({
         "
         class="mt-2 text-center text-sm font-light text-neutral-400"
     >
-        <span>
+        <span v-if="minScore > 0">
             <span class="font-bold tabular-nums">{{
                 characters.total - characters.data.length
             }}</span>
             character(s) omitted (<span class="font-bold tabular-nums"
-                ><50</span
+                ><{{ minScore }}</span
             >
             score)</span
         >

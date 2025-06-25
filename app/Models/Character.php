@@ -140,7 +140,7 @@ class Character extends Model
             ) characters'
         )
             ->where('RN', 1)
-            ->where('score', '>=', 50);
+            ->where('score', '>=', (int) env('VITE_CHARACTER_MIN_SCORE', 50));
     }
 
     /**
