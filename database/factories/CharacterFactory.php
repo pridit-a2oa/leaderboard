@@ -17,8 +17,8 @@ class CharacterFactory extends Factory
     public function definition(): array
     {
         return [
-            'id64' => '76561197992228102',
-            'name' => ucfirst(fake()->userName()),
+            'id64' => fake()->regexify('7656119\d{10}'),
+            'name' => ucfirst(fake()->unique()->userName()),
             'score' => fake()->randomNumber(4, false),
             'last_seen_at' => now()->sub(random_int(1, 16), 'week'),
         ];

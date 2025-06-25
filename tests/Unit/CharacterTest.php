@@ -42,6 +42,21 @@ class CharacterTest extends TestCase
     }
 
     #[Test]
+    public function can_see_highest_scoring_duplicate_name_character_only(): void
+    {
+        $maxScore = Character::factory(2)->create([
+            'name' => 'Test',
+        ])->max('score');
+
+        $this->get('/')
+            ->assertInertia(fn (Assert $page) => $page
+                ->component('Home')
+                ->has('characters.data', 1)
+                ->where('characters.data.0.score', $maxScore)
+            );
+    }
+
+    #[Test]
     public function can_see_highest_scoring_character_first(): void
     {
         $maxScore = Character::factory(10)->create()->max('score');
