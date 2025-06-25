@@ -19,7 +19,7 @@ class HomeController extends Controller
             $request->user()->load('characters');
         }
 
-        $request->validate([
+        $validated = $request->validate([
             'filter' => [
                 'sometimes',
                 function ($attribute, $value, $fail) {
@@ -43,14 +43,16 @@ class HomeController extends Controller
             ],
         ]);
 
-        $characters = Character::with(['mute', 'statistics'])
+        $count = Character::count();
+
+        $characters = Character::with(['statistics'])
             ->with(['user' => function ($query) {
                 $query->without('connections');
             }])
             ->rankable()
             ->orderByDesc('score')
             ->orderBy('last_seen_at')
-            ->paginate(50)
+            ->paginate(count($validated) === 1 ? $count : 50)
             ->onEachSide(1);
 
         if ($characters->isEmpty()) {
@@ -70,7 +72,7 @@ class HomeController extends Controller
             'characters' => Inertia::deepMerge($characters->toResourceCollection()
                 ->additional([
                     'ranking' => Cache::get('ranking', []),
-                    'total' => Character::count(),
+                    'total' => $count,
                 ])
             ),
             'filter' => $request->query('filter'),
