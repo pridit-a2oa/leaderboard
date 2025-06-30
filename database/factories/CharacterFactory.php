@@ -19,7 +19,7 @@ class CharacterFactory extends Factory
         return [
             'id64' => fake()->regexify('7656119\d{10}'),
             'name' => ucfirst(fake()->unique()->userName()),
-            'score' => fake()->randomNumber(4, false),
+            'score' => max(fake()->randomNumber(4, false), 50),
             'last_seen_at' => now()->sub(random_int(1, 16), 'week'),
         ];
     }
