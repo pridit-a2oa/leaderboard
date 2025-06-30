@@ -128,7 +128,7 @@ For style fixing [laravel/pint](https://laravel.com/docs/11.x/pint) can be used.
 
 > Create a new MySQL database called `testing`
 
-Run the unit/feature tests:
+Run the unit/feature tests supported by [pestphp/pest](https://pestphp.com/):
 
 ```
 sail artisan test
