@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "673ea04ae905d4a48d540c0d50dd3511",
+    "content-hash": "3960486ca46460e166fc98c3a8d461c8",
     "packages": [
         {
             "name": "brick/math",
@@ -3005,16 +3005,16 @@
         },
         {
             "name": "propaganistas/laravel-disposable-email",
-            "version": "2.4.15",
+            "version": "2.4.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Disposable-Email.git",
-                "reference": "0f2afe45304735dd924e61f834fbca2cf55958d5"
+                "reference": "bc0b62f8f523da28dbeaf911c7eb860e17c83072"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/0f2afe45304735dd924e61f834fbca2cf55958d5",
-                "reference": "0f2afe45304735dd924e61f834fbca2cf55958d5",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/bc0b62f8f523da28dbeaf911c7eb860e17c83072",
+                "reference": "bc0b62f8f523da28dbeaf911c7eb860e17c83072",
                 "shasum": ""
             },
             "require": {
@@ -3069,7 +3069,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Propaganistas/Laravel-Disposable-Email/issues",
-                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.15"
+                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.16"
             },
             "funding": [
                 {
@@ -3077,7 +3077,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-01T01:03:08+00:00"
+            "time": "2025-07-01T01:00:15+00:00"
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
@@ -10503,12 +10503,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.4"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
