@@ -47,7 +47,7 @@ class UserFactory extends Factory
     public function supporter(): static
     {
         return $this->afterCreating(function (User $user) {
-            $user->assignRole('supporter');
+            $user->syncRoles('supporter');
         });
     }
 }
