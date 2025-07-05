@@ -1,4 +1,4 @@
-FROM node:23-alpine3.21
+FROM node:24-alpine3.22
 
 # Set the application variables
 ENV APP_NAME=Leaderboard
