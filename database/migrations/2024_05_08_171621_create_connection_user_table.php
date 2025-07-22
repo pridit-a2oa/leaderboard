@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('connection_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('connection_id');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('connection_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->string('identifier')->nullable();
             $table->timestamp('created_at')->useCurrent();
 
             $table->unique(['connection_id', 'user_id']);
-
-            $table->foreign('connection_id')->references('id')->on('connections');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

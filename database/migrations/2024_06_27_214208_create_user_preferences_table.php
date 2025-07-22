@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('preference_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('preference_id');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('preference_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->boolean('value')->default(0);
 
             $table->unique(['preference_id', 'user_id']);
-
-            $table->foreign('preference_id')->references('id')->on('preferences');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

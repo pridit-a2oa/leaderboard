@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('id64')->nullable();
             $table->string('guid')->nullable();
             $table->string('name');
@@ -26,8 +26,6 @@ return new class extends Migration
             $table->softDeletesTz('deleted_at', precision: 0);
 
             $table->unique(['id64', 'name']);
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

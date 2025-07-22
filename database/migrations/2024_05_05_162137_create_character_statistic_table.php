@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('character_statistic', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('character_id');
-            $table->unsignedBigInteger('statistic_id');
+            $table->foreignId('character_id')->constrained();
+            $table->foreignId('statistic_id')->constrained();
             $table->bigInteger('value')->default(1);
 
             $table->unique(['character_id', 'statistic_id']);
-
-            $table->foreign('character_id')->references('id')->on('characters');
-            $table->foreign('statistic_id')->references('id')->on('statistics');
         });
     }
 

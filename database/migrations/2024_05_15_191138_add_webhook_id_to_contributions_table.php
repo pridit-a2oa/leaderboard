@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('contributions', function (Blueprint $table) {
-            $table->unsignedBigInteger('webhook_id')->nullable()->after('user_id');
-
-            $table->foreign('webhook_id')->references('id')->on('webhook_calls');
+            $table->foreignId('webhook_id')->nullable()->after('user_id')->constrained(
+                table: 'webhook_calls'
+            );
         });
     }
 
