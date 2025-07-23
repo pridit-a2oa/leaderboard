@@ -13,7 +13,7 @@
         "@vitejs/plugin-vue": "^6.0.0",
         "@vue/server-renderer": "^3.5.17",
         "autoprefixer": "^10.4.21",
-        "axios": "^1.10.0",
+        "axios": "^1.11.0",
         "daisyui": "^5.0.46",
         "laravel-vite-plugin": "^2.0.0",
         "lodash": "^4.17.21",
