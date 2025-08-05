@@ -36,11 +36,7 @@ function messageType(type) {
             class="flex-1 self-center text-xs select-none"
             :class="messageType(message[0])[0]"
         >
-            <FontAwesomeIcon
-                size="lg"
-                :icon="messageType(message[0])[1]"
-                fixed-width
-            />
+            <FontAwesomeIcon size="lg" :icon="messageType(message[0])[1]" />
 
             <span class="ml-1 font-semibold">
                 {{ message[1] }}

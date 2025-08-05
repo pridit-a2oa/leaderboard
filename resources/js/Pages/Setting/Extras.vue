@@ -47,7 +47,7 @@ const icon = {
                         v-for="extra in extras"
                         class="border-base-100 [&:not(:first-child)]:!border-t-4"
                     >
-                        <td class="w-0">
+                        <td class="w-0 pl-3">
                             <FontAwesomeIcon
                                 class="!align-middle"
                                 :class="icon[$page.props.auth.role.name][1]"

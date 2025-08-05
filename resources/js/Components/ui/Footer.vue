@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                     target="_blank"
                     aria-label="GitHub"
                 >
-                    <FontAwesomeIcon :icon="faGithub" size="lg" fixed-width />
+                    <FontAwesomeIcon :icon="faGithub" size="lg" />
                 </a>
 
                 <ul class="flex flex-row flex-wrap gap-4">

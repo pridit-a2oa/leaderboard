@@ -39,7 +39,7 @@ const settings = ref([
                 }"
                 :href="route(`user.setting.${setting.type}.index`)"
             >
-                <FontAwesomeLayers class="indicator" fixed-width>
+                <FontAwesomeLayers class="indicator">
                     <FontAwesomeIcon
                         class="text-neutral-400"
                         :icon="setting.icon"

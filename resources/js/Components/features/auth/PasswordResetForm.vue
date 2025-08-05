@@ -54,7 +54,6 @@ const submit = () => {
                     class="text-neutral-500"
                     :icon="faEnvelope"
                     size="sm"
-                    fixed-width
                 />
             </FormInput>
 
@@ -72,7 +71,6 @@ const submit = () => {
                     class="text-neutral-500"
                     :icon="faKey"
                     size="sm"
-                    fixed-width
                 />
             </FormInput>
 
@@ -90,7 +88,6 @@ const submit = () => {
                     class="text-neutral-500"
                     :icon="faKey"
                     size="sm"
-                    fixed-width
                 />
             </FormInput>
 

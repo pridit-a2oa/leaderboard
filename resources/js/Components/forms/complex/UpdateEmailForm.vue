@@ -60,39 +60,42 @@ function reset() {
                                 ? 'V'
                                 : 'Unv'
                         }}erified
-                        <span
-                            v-if="
-                                $page.props.auth.user.email_verified_at === null
-                            "
-                            class="border-warning cursor-pointer border-l pl-1"
-                            :class="{
-                                '!cursor-not-allowed':
-                                    $page.props.auth.user
-                                        .is_verification_email_throttled,
-                            }"
-                            :title="
-                                (!$page.props.auth.user
-                                    .is_verification_email_throttled &&
-                                    'Resend verification email') ||
-                                'Rate limited, please try again later'
-                            "
-                            v-on="
-                                !$page.props.auth.user
-                                    .is_verification_email_throttled
-                                    ? { click: resend }
-                                    : {}
-                            "
-                        >
-                            <FontAwesomeIcon
+                        <span class="border-l pl-1.5">
+                            <span
+                                v-if="
+                                    $page.props.auth.user.email_verified_at ===
+                                    null
+                                "
+                                class="border-warning cursor-pointer"
                                 :class="{
-                                    'fa-spin': timeout,
-                                    'opacity-40':
+                                    '!cursor-not-allowed':
                                         $page.props.auth.user
                                             .is_verification_email_throttled,
                                 }"
-                                :icon="faRotateRight"
-                                transform="shrink-1 down-1"
-                            />
+                                :title="
+                                    (!$page.props.auth.user
+                                        .is_verification_email_throttled &&
+                                        'Resend verification email') ||
+                                    'Rate limited, please try again later'
+                                "
+                                v-on="
+                                    !$page.props.auth.user
+                                        .is_verification_email_throttled
+                                        ? { click: resend }
+                                        : {}
+                                "
+                            >
+                                <FontAwesomeIcon
+                                    :class="{
+                                        'loading-bars loading mt-1': timeout,
+                                        'opacity-40':
+                                            $page.props.auth.user
+                                                .is_verification_email_throttled,
+                                    }"
+                                    :icon="faRotateRight"
+                                    transform="down-1 shrink-1"
+                                />
+                            </span>
                         </span>
                     </span>
                 </div>

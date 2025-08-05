@@ -36,9 +36,9 @@ import { Head } from '@inertiajs/vue3';
                     :key="character.id"
                     class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                 >
-                    <td class="w-0 pr-3">
+                    <td class="w-0 pl-3">
                         <FontAwesomeLayers>
-                            <FontAwesomeIcon :icon="faPerson" size="xl" />
+                            <FontAwesomeIcon :icon="faPerson" size="lg" />
 
                             <template
                                 v-if="
@@ -53,14 +53,15 @@ import { Head } from '@inertiajs/vue3';
                                 <FontAwesomeIcon
                                     class="text-supporter z-10"
                                     :icon="faHeart"
-                                    transform="right-7 down-11 shrink-5"
+                                    size="lg"
+                                    transform="shrink-8 right-5 down-8"
                                 />
 
                                 <FontAwesomeIcon
                                     class="text-base-200"
                                     :icon="faCircle"
-                                    size="sm"
-                                    transform="right-6 down-11"
+                                    size="lg"
+                                    transform="down-8 right-5 shrink-3"
                                 />
                             </template>
                         </FontAwesomeLayers>

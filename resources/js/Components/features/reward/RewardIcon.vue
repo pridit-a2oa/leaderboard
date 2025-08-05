@@ -26,15 +26,14 @@ const rewarded = computed(() => {
 </script>
 
 <template>
-    <FontAwesomeLayers class="indicator mr-1">
-        <FontAwesomeIcon :icon="faPersonRifle" size="lg" fixed-width />
+    <FontAwesomeLayers class="indicator">
+        <FontAwesomeIcon :icon="faPersonRifle" size="lg" />
         <FontAwesomeIcon
             v-show="user !== null"
             :icon="rewarded ? faCircleCheck : faCircleXmark"
             class="indicator-item indicator-end indicator-bottom bg-base-200 rounded-full p-0 py-0.5"
             :class="rewarded ? 'text-success' : 'text-error'"
             transform="shrink-2"
-            fixed-width
         />
     </FontAwesomeLayers>
 </template>

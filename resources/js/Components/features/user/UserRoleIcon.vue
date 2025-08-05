@@ -23,7 +23,7 @@ library.add(faCog, faHeart, faHeartBroken);
             ''
         "
     >
-        <FontAwesomeLayers v-if="$page.props.auth.role.icon" fixed-width>
+        <FontAwesomeLayers v-if="$page.props.auth.role.icon">
             <FontAwesomeIcon
                 class="z-10 text-neutral-500"
                 :style="{ color: $page.props.auth.role.color }"
@@ -34,7 +34,7 @@ library.add(faCog, faHeart, faHeartBroken);
                 class="text-base-100"
                 :icon="faCircle"
                 size="2xl"
-                transform="left-2"
+                transform="left-4"
             />
         </FontAwesomeLayers>
     </div>

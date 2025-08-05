@@ -52,7 +52,6 @@ const icon = {
                     v-if="icon[statistic.icon]"
                     class="pr-3 text-neutral-500"
                     :icon="icon[statistic.icon]"
-                    fixed-width
                 />{{ statistic.name }}
             </td>
 

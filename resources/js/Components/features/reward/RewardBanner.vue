@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     >
         <RewardIcon :user="$page.props.auth.user" />
 
-        <div class="text-sm">
+        <div class="m-auto text-sm">
             <div class="dropdown dropdown-hover" role="link" tabindex="0">
                 <span class="underlined-rich">Link</span>
 
@@ -68,7 +68,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                 class="mx-1 !align-middle text-amber-400"
                 :icon="faGun"
                 size="2xs"
-                fixed-width
             />
             <span class="font-semibold">gold-plated variants</span> of the
             <Tooltip path="/images/gold/aks" alt="Gold AKS">AKS</Tooltip>

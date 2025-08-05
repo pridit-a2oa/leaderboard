@@ -224,7 +224,6 @@ const filterCharacter = (character) => {
                                 class="bg-base-100 mr-1.5 border border-neutral-700 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
                                 size="xs"
-                                fixed-width
                             />
 
                             <span
@@ -299,7 +298,6 @@ const filterCharacter = (character) => {
                             class="!align-middle"
                             :icon="faTrophy"
                             size="xl"
-                            fixed-width
                         />
                     </td>
 
@@ -328,7 +326,6 @@ const filterCharacter = (character) => {
                                     getCachedRank(character.id) - key,
                                 )[1]
                             "
-                            fixed-width
                         />
 
                         <FontAwesomeIcon
@@ -337,7 +334,6 @@ const filterCharacter = (character) => {
                             :icon="faHand"
                             title="I'm new/returning"
                             transform="rotate-45"
-                            fixed-width
                         />
                     </td>
                 </tr>

@@ -50,6 +50,7 @@ const form = useForm({
                     <FontAwesomeIcon
                         class="text-neutral-600"
                         :icon="faCaretDown"
+                        size="sm"
                     />
                 </div>
 
@@ -61,7 +62,7 @@ const form = useForm({
                             class="hover:bg-highlight pl-2"
                             :href="route('user.setting.account')"
                         >
-                            <FontAwesomeIcon :icon="faBars" fixed-width />
+                            <FontAwesomeIcon :icon="faBars" />
                             Settings
                         </Link>
                     </li>
@@ -73,10 +74,7 @@ const form = useForm({
                             method="post"
                             as="button"
                         >
-                            <FontAwesomeIcon
-                                :icon="faRightFromBracket"
-                                fixed-width
-                            />
+                            <FontAwesomeIcon :icon="faRightFromBracket" />
                             Sign out
                         </Link>
                     </li>

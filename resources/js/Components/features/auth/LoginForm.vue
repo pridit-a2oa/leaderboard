@@ -56,7 +56,6 @@ const reset = () => {
                     class="text-neutral-500"
                     :icon="faEnvelope"
                     size="sm"
-                    fixed-width
                 />
             </FormInput>
 
@@ -75,7 +74,6 @@ const reset = () => {
                     class="text-neutral-500"
                     :icon="faKey"
                     size="sm"
-                    fixed-width
                 />
             </FormInput>
 

@@ -34,7 +34,6 @@ defineExpose({ focus: () => input.value.focus() });
             class="cursor-pointer text-neutral-400"
             :icon="passwordVisible ? faEye : faEyeSlash"
             size="sm"
-            fixed-width
             @click="
                 $event.preventDefault();
                 passwordVisible = !passwordVisible;

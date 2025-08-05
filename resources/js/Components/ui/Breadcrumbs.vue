@@ -18,7 +18,7 @@ const icon = {
             <ul>
                 <li>
                     <Link class="underlined-link" :href="route('home')">
-                        <FontAwesomeIcon :icon="faRankingStar" fixed-width />
+                        <FontAwesomeIcon :icon="faRankingStar" />
                         Leaderboard
                     </Link>
                 </li>
@@ -26,9 +26,8 @@ const icon = {
                 <li class="text-neutral-300">
                     <FontAwesomeIcon
                         v-if="icon[$page.props.icon]"
-                        class="mr-1.5"
+                        class="mr-1.5 !cursor-default"
                         :icon="icon[$page.props.icon]"
-                        fixed-width
                     />
                     {{ $page.props.name }}
                 </li>

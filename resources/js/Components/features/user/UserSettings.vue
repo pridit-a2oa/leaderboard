@@ -93,7 +93,7 @@ const settings = ref([
                                 ''
                             "
                         >
-                            <FontAwesomeLayers class="indicator" fixed-width>
+                            <FontAwesomeLayers class="indicator">
                                 <FontAwesomeIcon
                                     class="text-neutral-400"
                                     :icon="setting.icon"
@@ -139,10 +139,7 @@ const settings = ref([
                             }"
                             :href="route('user.setting.delete')"
                         >
-                            <FontAwesomeIcon
-                                :icon="faTriangleExclamation"
-                                fixed-width
-                            />
+                            <FontAwesomeIcon :icon="faTriangleExclamation" />
                             Delete Account
                         </Link>
                     </li>

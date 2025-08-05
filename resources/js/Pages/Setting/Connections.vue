@@ -55,7 +55,6 @@ if (!customElements.get('component-link')) {
                             <FontAwesomeIcon
                                 :icon="['fab', connection.icon]"
                                 size="xl"
-                                fixed-width
                             />
                         </td>
 
