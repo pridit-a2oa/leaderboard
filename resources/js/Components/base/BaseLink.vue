@@ -19,7 +19,7 @@ const props = defineProps({
         <slot />
 
         <FontAwesomeIcon
-            class="!align-middle opacity-60 group-[.underlined-link]:mx-1"
+            class="!mr-0 !align-middle opacity-60 group-[.underlined-link]:mx-1"
             :icon="faArrowUpRightFromSquare"
             :size="size"
         />

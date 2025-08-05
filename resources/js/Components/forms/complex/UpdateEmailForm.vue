@@ -3,10 +3,10 @@ import { BaseButton } from '@/Components/base';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { router } from '@inertiajs/vue3';
+import { router, usePage, usePoll } from '@inertiajs/vue3';
 import { useForm } from 'laravel-precognition-vue-inertia';
 import throttle from 'lodash/throttle';
-import { onBeforeUnmount, ref } from 'vue';
+import { onBeforeUnmount, ref, watch } from 'vue';
 
 const email = ref(null);
 const timeout = ref(null);
@@ -14,6 +14,29 @@ const timeout = ref(null);
 const form = useForm('patch', route('profile.update'), {
     email: '',
 });
+
+if (usePage().props.auth.user.email_verified_at === null) {
+    const { start, stop } = usePoll(
+        5000,
+        {},
+        {
+            autoStart:
+                usePage().props.auth.user.is_verification_email_throttled,
+        },
+    );
+
+    watch(
+        () => usePage().props.auth.user.is_verification_email_throttled,
+        (isThrottled) => {
+            if (!isThrottled) {
+                stop();
+            } else {
+                start();
+            }
+        },
+        { immediate: true },
+    );
+}
 
 const submit = () =>
     form.submit({
@@ -77,7 +100,7 @@ function reset() {
                                     (!$page.props.auth.user
                                         .is_verification_email_throttled &&
                                         'Resend verification email') ||
-                                    'Rate limited, please try again later'
+                                    'Too soon to resend, please try again later'
                                 "
                                 v-on="
                                     !$page.props.auth.user

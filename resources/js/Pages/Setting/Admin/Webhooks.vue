@@ -105,6 +105,7 @@ const form = useForm({
                             <label
                                 for="webhook-modal"
                                 role="button"
+                                title="Inspect"
                                 tabindex="0"
                                 onclick="modal_webhook.showModal()"
                                 @click="
@@ -127,7 +128,6 @@ const form = useForm({
                                     class="cursor-pointer !align-middle"
                                     title="Inspect"
                                     :icon="faMagnifyingGlass"
-                                    fixed-width
                                 />
                             </label>
                         </td>

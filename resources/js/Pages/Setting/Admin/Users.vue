@@ -27,7 +27,6 @@ defineProps({
                             class="!align-middle"
                             :icon="faCircleUser"
                             size="lg"
-                            fixed-width
                         />
                     </td>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\UserVerifyEmail;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\RateLimiter;
 
 class ProfileController extends Controller
 {
@@ -25,6 +26,13 @@ class ProfileController extends Controller
             event(new UserVerifyEmail($request->user(), $request->safe()->email));
 
             if (! $request->user()->hasVerifiedEmail()) {
+                // Since the user is adding an email for the first time, allow
+                // an immediate re-attempt for either resending or reentering as
+                // a better UX in case of a mistake or otherwise
+                if ($request->user()->email === null) {
+                    RateLimiter::clear(sprintf('verification-email:%d', $request->user()->id));
+                }
+
                 $request->user()->update(['email' => $request->safe()->email]);
             }
         }

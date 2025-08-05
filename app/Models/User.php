@@ -134,7 +134,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return new Attribute(
             get: fn (mixed $value, array $attributes) => RateLimiter::tooManyAttempts(
                 sprintf('delete-account:%d', $attributes['id']),
-                1
+                maxAttempts: 1
             )
         );
     }
@@ -147,7 +147,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return new Attribute(
             get: fn (mixed $value, array $attributes) => RateLimiter::tooManyAttempts(
                 sprintf('verification-email:%d', $attributes['id']),
-                2
+                maxAttempts: 1,
             )
         );
     }

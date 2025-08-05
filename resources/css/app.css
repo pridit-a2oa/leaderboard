@@ -161,6 +161,8 @@
     }
 
     .tabs-box {
+        @apply !p-2;
+
         & .tab {
             border-radius: var(--radius-lg);
         }

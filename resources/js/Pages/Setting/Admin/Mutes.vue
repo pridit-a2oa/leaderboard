@@ -66,7 +66,6 @@ const form = useForm({
                             class="text-neutral-500"
                             :icon="faAddressCard"
                             size="sm"
-                            fixed-width
                         />
                     </FormInput>
 
@@ -121,7 +120,7 @@ const form = useForm({
                     form.reset();
                 "
             >
-                <FontAwesomeLayers class="indicator mr-0.5" fixed-width>
+                <FontAwesomeLayers class="indicator mr-0.5">
                     <FontAwesomeIcon :icon="faAddressCard" transform="left-4" />
                     <FontAwesomeIcon
                         :icon="faPlus"
@@ -146,12 +145,11 @@ const form = useForm({
                     }"
                 >
                     <td class="w-10">
-                        <FontAwesomeLayers class="indicator" fixed-width>
+                        <FontAwesomeLayers class="indicator">
                             <FontAwesomeIcon :icon="faAddressCard" size="lg" />
                             <FontAwesomeLayers
                                 v-if="mute.characters_count"
                                 class="indicator-item indicator-end indicator-bottom cursor-pointer rounded-full"
-                                fixed-width
                                 @click="toggle(key)"
                             >
                                 <FontAwesomeIcon
@@ -162,7 +160,7 @@ const form = useForm({
                                 />
                                 <FontAwesomeLayersText
                                     class="text-warning right-1 !text-left font-bold select-none"
-                                    transform="shrink-4"
+                                    transform="shrink-4 right-2"
                                     title="Show/hide character(s) affected"
                                     :value="mute.characters_count"
                                 />
@@ -171,13 +169,14 @@ const form = useForm({
                     </td>
 
                     <td
-                        class="grid grid-flow-col auto-rows-fr grid-cols-2 grid-rows-2 gap-x-8 text-neutral-300"
+                        class="grid min-w-max grid-flow-col auto-rows-fr grid-cols-2 grid-rows-2 gap-x-6 text-neutral-300"
                     >
                         <span
+                            class="tabular-nums"
                             :class="{
                                 'row-span-2 self-center': key !== open,
                             }"
-                            >{{ mute.guid }}</span
+                            >{{ mute.id64 }}</span
                         >
 
                         <span
@@ -226,11 +225,7 @@ const form = useForm({
                     <td class="w-0 pr-9">
                         <div class="dropdown dropdown-bottom">
                             <label class="cursor-pointer" tabindex="0">
-                                <FontAwesomeIcon
-                                    :icon="faEllipsis"
-                                    size="lg"
-                                    fixed-width
-                                />
+                                <FontAwesomeIcon :icon="faEllipsis" size="lg" />
                             </label>
 
                             <ul
@@ -259,24 +254,18 @@ const form = useForm({
                                             );
                                         "
                                     >
-                                        <FontAwesomeIcon
-                                            :icon="faPencil"
-                                            fixed-width
-                                        />
+                                        <FontAwesomeIcon :icon="faPencil" />
                                         Edit
                                     </label>
                                 </li>
 
                                 <li>
                                     <label
-                                        class="text-error focus:text-error active:!text-error pl-2"
+                                        class="text-error pl-2"
                                         method="post"
                                         as="button"
                                     >
-                                        <FontAwesomeIcon
-                                            :icon="faTrash"
-                                            fixed-width
-                                        />
+                                        <FontAwesomeIcon :icon="faTrash" />
                                         Delete
                                     </label>
                                 </li>

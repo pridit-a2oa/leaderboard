@@ -114,7 +114,7 @@ const settings = ref([
                                     }"
                                     :icon="faCircle"
                                     size="xs"
-                                    transform="shrink-6"
+                                    transform="shrink-6 left-2"
                                 />
                             </FontAwesomeLayers>
 
