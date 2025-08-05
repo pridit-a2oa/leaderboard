@@ -60,12 +60,13 @@ function reset() {
                                 ? 'V'
                                 : 'Unv'
                         }}erified
-                        <span class="border-l pl-1.5">
+                        <span
+                            v-if="
+                                $page.props.auth.user.email_verified_at === null
+                            "
+                            class="border-l pl-1.5"
+                        >
                             <span
-                                v-if="
-                                    $page.props.auth.user.email_verified_at ===
-                                    null
-                                "
                                 class="border-warning cursor-pointer"
                                 :class="{
                                     '!cursor-not-allowed':
