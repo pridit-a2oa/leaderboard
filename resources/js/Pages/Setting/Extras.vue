@@ -19,7 +19,7 @@ const icon = {
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Extras" />
+    <Head title="Settings &dash; Extras" />
 
     <UserSettings title="Extras">
         <a

@@ -4,7 +4,7 @@ import { Head, Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Leaderboard &#x2022; Privacy Policy" />
+    <Head title="Leaderboard &dash; Privacy Policy" />
 
     <LegalLayout>
         <h1>Privacy Policy</h1>

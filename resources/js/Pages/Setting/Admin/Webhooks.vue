@@ -24,7 +24,7 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Webhooks" />
+    <Head title="Settings &dash; Webhooks" />
 
     <Teleport to="body">
         <BaseModal id="modal_webhook">

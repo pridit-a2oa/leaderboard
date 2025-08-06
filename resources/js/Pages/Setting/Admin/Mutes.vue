@@ -43,7 +43,7 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Mutes" />
+    <Head title="Settings &dash; Mutes" />
 
     <Teleport to="body">
         <BaseModal id="mute-modal" @reset="modal = false">

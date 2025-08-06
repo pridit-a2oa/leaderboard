@@ -16,7 +16,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Characters" />
+    <Head title="Settings &dash; Characters" />
 
     <UserSettings title="Characters">
         <Alert

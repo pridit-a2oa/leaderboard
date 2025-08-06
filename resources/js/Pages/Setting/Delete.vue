@@ -12,7 +12,7 @@ const deleteUserRequest = () => {
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Delete Account" />
+    <Head title="Settings &dash; Delete Account" />
 
     <UserSettings title="Delete Account">
         <Alert

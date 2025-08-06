@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Users" />
+    <Head title="Settings &dash; Users" />
 
     <UserSettings title="Users">
         <table class="bg-base-200 mt-2 table table-fixed rounded-md">

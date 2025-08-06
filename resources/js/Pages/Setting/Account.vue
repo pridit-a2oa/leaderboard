@@ -8,7 +8,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Account" />
+    <Head title="Settings &dash; Account" />
 
     <UserSettings title="Account">
         <UpdateEmailForm />

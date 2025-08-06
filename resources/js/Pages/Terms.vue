@@ -5,7 +5,7 @@ import { Head, Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Leaderboard &#x2022; Terms of Use" />
+    <Head title="Leaderboard &dash; Terms of Use" />
 
     <LegalLayout>
         <h1>Terms of Use</h1>

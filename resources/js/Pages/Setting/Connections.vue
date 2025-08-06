@@ -33,7 +33,7 @@ if (!customElements.get('component-link')) {
 </script>
 
 <template>
-    <Head title="Settings &#x2022; Connections" />
+    <Head title="Settings &dash; Connections" />
 
     <UserSettings title="Connections">
         <Alert
