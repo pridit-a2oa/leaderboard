@@ -2,6 +2,7 @@
 
 use App\Console\Commands\Cache\CharacterRanks;
 use App\Console\Commands\Import\SteamAvatars;
+use App\Console\Commands\UpdateMetrics;
 use Illuminate\Support\Facades\Schedule;
 use Propaganistas\LaravelDisposableEmail\Console\UpdateDisposableDomainsCommand;
 
@@ -10,6 +11,10 @@ use Propaganistas\LaravelDisposableEmail\Console\UpdateDisposableDomainsCommand;
  */
 Schedule::command(CharacterRanks::class)
     ->dailyAt('08:05');
+
+Schedule::command(UpdateMetrics::class)
+    ->everyTwoHours()
+    ->runInBackground();
 
 Schedule::command(SteamAvatars::class)
     ->daily()

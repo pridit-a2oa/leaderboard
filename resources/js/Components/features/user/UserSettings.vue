@@ -50,18 +50,22 @@ const settings = ref([
                 role="tablist"
                 class="tabs-box tabs mb-4 flex-nowrap gap-x-1"
             >
-                <a
+                <Link
                     v-for="(category, index) in ['user', 'admin']"
                     role="tab"
                     class="tab hover:!bg-highlight h-8 basis-1/2 capitalize"
+                    :href="
+                        tab.value === 'user'
+                            ? route('user.setting.dashboard.index')
+                            : route('user.setting.account')
+                    "
                     :class="[
                         tab.value === category
                             ? '!bg-highlight tab-active'
                             : '',
                         index === 0 ? '!rounded-e-none' : '!rounded-s-none',
                     ]"
-                    @click="tab = category"
-                    >{{ category }}</a
+                    >{{ category }}</Link
                 >
             </div>
 

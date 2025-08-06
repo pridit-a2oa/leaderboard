@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminMuteController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminWebhookController;
@@ -96,6 +97,9 @@ Route::middleware('auth')->group(function () {
             /** Admin */
             Route::middleware('role:admin')
                 ->group(function () {
+                    Route::resource('dashboard', AdminDashboardController::class)
+                        ->only(['index']);
+
                     Route::resource('mutes', AdminMuteController::class)
                         ->only(['index', 'store', 'update', 'destroy']);
 

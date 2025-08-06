@@ -1,6 +1,7 @@
 <script setup>
 import { SuffixText } from '@/Components/text';
 import {
+    faChartLine,
     faCircleNodes,
     faCommentSlash,
     faUsers,
@@ -18,6 +19,7 @@ defineProps({
 });
 
 const settings = ref([
+    { type: 'dashboard', icon: faChartLine },
     { type: 'mutes', icon: faCommentSlash },
     { type: 'users', icon: faUsers },
     { type: 'webhooks', icon: faCircleNodes },
