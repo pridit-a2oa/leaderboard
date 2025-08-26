@@ -23,7 +23,7 @@
         "tailwindcss": "^4.1.12",
         "vite": "^7.1.2",
         "vite-plugin-vue-devtools": "^8.0.0",
-        "vue": "^3.5.18"
+        "vue": "^3.5.20"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^7.0.0",
