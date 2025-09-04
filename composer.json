@@ -17,7 +17,7 @@
         "laravel/scout": "^10.19.0",
         "laravel/tinker": "^2.10",
         "meilisearch/meilisearch-php": "^1.15",
-        "propaganistas/laravel-disposable-email": "^2.4.17",
+        "propaganistas/laravel-disposable-email": "^2.4.18",
         "protonemedia/laravel-verify-new-email": "^1.13",
         "spatie/laravel-permission": "^6.21.0",
         "spatie/laravel-webhook-client": "^3.4.4",
