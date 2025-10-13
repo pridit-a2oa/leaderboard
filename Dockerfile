@@ -83,7 +83,7 @@ RUN npm ci
 RUN npm run build
 
 # Remove dev-only dependencies & clear cache
-RUN npm ci --omit=dev && \
+RUN npm prune --omit=dev && \
     npm cache clean --force
 
 # Set entrypoint execution permission
