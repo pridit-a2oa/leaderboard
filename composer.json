@@ -19,7 +19,7 @@
         "meilisearch/meilisearch-php": "^1.16",
         "propaganistas/laravel-disposable-email": "^2.4.19",
         "protonemedia/laravel-verify-new-email": "^1.13",
-        "spatie/laravel-permission": "^6.21.0",
+        "spatie/laravel-permission": "^6.22.0",
         "spatie/laravel-webhook-client": "^3.4.4",
         "tightenco/ziggy": "^2.6.0",
         "xpaw/steam-openid": "^3.1"
