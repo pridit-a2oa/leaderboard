@@ -12,7 +12,7 @@
         "creativeorange/gravatar": "^1.0.25",
         "inertiajs/inertia-laravel": "^2.0.10",
         "laravel/framework": "^12.39.0",
-        "laravel/prompts": "^0.3.2",
+        "laravel/prompts": "^0.3.8",
         "laravel/sanctum": "^4.2.0",
         "laravel/scout": "^10.22.0",
         "laravel/tinker": "^2.10",
