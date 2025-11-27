@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "817f00ea9d1f6768626e75dde06bdc96",
+    "content-hash": "04a425b0a3e134164acaf0490dc40d57",
     "packages": [
         {
             "name": "brick/math",
@@ -1528,16 +1528,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v10.22.0",
+            "version": "v10.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "5f629471eed80c97a1fa2f12a2fb213c7e09f729"
+                "reference": "13ed8e0eeaddd894bf360b85cb873980de19dbaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/5f629471eed80c97a1fa2f12a2fb213c7e09f729",
-                "reference": "5f629471eed80c97a1fa2f12a2fb213c7e09f729",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/13ed8e0eeaddd894bf360b85cb873980de19dbaf",
+                "reference": "13ed8e0eeaddd894bf360b85cb873980de19dbaf",
                 "shasum": ""
             },
             "require": {
@@ -1558,10 +1558,9 @@
                 "algolia/algoliasearch-client-php": "^3.2|^4.0",
                 "meilisearch/meilisearch-php": "^1.0",
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^7.31|^8.11|^9.0|^10.0",
+                "orchestra/testbench": "^7.31|^8.36|^9.15|^10.8",
                 "php-http/guzzle7-adapter": "^1.0",
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.3|^10.4|^11.5",
                 "typesense/typesense-php": "^4.9.3"
             },
             "suggest": {
@@ -1605,7 +1604,7 @@
                 "issues": "https://github.com/laravel/scout/issues",
                 "source": "https://github.com/laravel/scout"
             },
-            "time": "2025-11-12T17:00:55+00:00"
+            "time": "2025-11-25T15:19:35+00:00"
         },
         {
             "name": "laravel/serializable-closure",
