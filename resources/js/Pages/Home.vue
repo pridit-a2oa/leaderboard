@@ -66,13 +66,9 @@ defineProps({
         class="mt-2 text-center text-sm font-light text-neutral-400"
     >
         <span v-if="minScore > 0">
-            <span class="font-bold tabular-nums">{{
-                characters.total - characters.data.length
-            }}</span>
-            character(s) omitted (<span class="font-bold tabular-nums"
-                ><{{ minScore }}</span
-            >
-            score)</span
+            (minimum score of
+            <span class="font-bold tabular-nums">{{ minScore }}</span>
+            required to be eligible for ranking)</span
         >
     </div>
 </template>
