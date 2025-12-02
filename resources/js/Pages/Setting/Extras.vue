@@ -53,7 +53,7 @@ const icon = {
                                 :class="icon[$page.props.auth.role.name][1]"
                                 :icon="icon[$page.props.auth.role.name][0]"
                                 size="lg"
-                                transform="shrink-1"
+                                transform="shrink-2 up-1"
                             />
                         </td>
 

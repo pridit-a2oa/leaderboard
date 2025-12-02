@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@plugin "daisyui" {
+@plugin 'daisyui' {
     exclude: rootscrollgutter;
     themes: business --default;
 }
@@ -169,6 +169,12 @@
     }
 
     .table {
+        @apply border-collapse;
+
+        & :where(thead tr :is(td, th), tbody tr:not(:last-child) :is(td, th)) {
+            @apply border-b-0;
+        }
+
         & :where(thead, tfoot) {
             font-size: var(--text-xs);
             line-height: var(--text-xs--line-height);

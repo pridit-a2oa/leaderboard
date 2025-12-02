@@ -36,9 +36,9 @@ const deleteUserRequest = () => {
                 <li v-if="$page.props.auth.role.name === 'supporter'">
                     Ko-fi contribution will be unassociated
                     <span
-                        class="underlined-rich tooltip-benefit"
-                        data-tip="If you change your mind
-                    and decide to re-register we'll be able to reassociate
+                        class="underlined-rich tooltip-benefit before:!w-[14rem]"
+                        data-tip="Should you change your mind
+                    and decide to register again we'll be able to reassociate
                     your benefits with a new account"
                     >
                         (?)</span
