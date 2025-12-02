@@ -23,6 +23,9 @@ const form = useForm({
         >
             <select
                 class="select select-sm bg-base-300 h-full"
+                :class="{
+                    '!cursor-not-allowed': !$page.props.characters.meta,
+                }"
                 v-model="form.filter"
                 :disabled="!$page.props.characters.meta"
             >
