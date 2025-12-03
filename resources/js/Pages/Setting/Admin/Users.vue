@@ -22,19 +22,19 @@ defineProps({
                     :key="user.id"
                     class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                 >
-                    <td class="w-10">
+                    <td class="w-0">
                         <FontAwesomeIcon
-                            class="!align-middle"
+                            class="!align-text-top"
                             :icon="faCircleUser"
                             size="lg"
                         />
                     </td>
 
                     <td>
-                        {{ user.email ?? 'N/A' }}
+                        {{ user.email ?? user.uuid }}
                     </td>
 
-                    <td>
+                    <td class="w-22 text-right text-xs text-neutral-400">
                         {{ user.role }}
                     </td>
                 </tr>
