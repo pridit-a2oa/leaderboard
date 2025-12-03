@@ -1,16 +1,17 @@
-@component('mail::message')
-# Delete Account Confirmation
+<x-mail::message>
+# Delete your account
 
-Please click the button below to proceed with your account deletion.
+This message confirms that we've received your request to delete your account. Once the deletion is complete, all associated data will be permanently removed and cannot be recovered.
 
-@component('mail::button', ['url' => $url])
+Use the button below to process the deletion. This will expire in 1 hour.
+
+<x-mail::button :url="$url">
 Delete Account
-@endcomponent
+</x-mail::button>
 
-This deletion confirmation link will expire in 60 minutes.
+<x-mail::panel>
+Or paste this link into your browser: {{ $url }}
+</x-mail::panel>
 
-If you did not make this request please change your password immediately.
-
-Thanks,<br>
 {{ config('app.name') }}
-@endcomponent
+</x-mail::message>

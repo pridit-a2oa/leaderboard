@@ -26,7 +26,7 @@ class DeleteUser extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirm your deletion',
+            subject: 'Delete your account',
         );
     }
 

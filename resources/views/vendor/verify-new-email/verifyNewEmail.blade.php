@@ -1,14 +1,15 @@
 @component('mail::message')
-# Verify New Email Address
+# Verify your email address
 
-Please click the button below to verify your new email address.
+Please confirm that you want to use this email address with your account.
 
 @component('mail::button', ['url' => $url])
-Verify New Email Address
+Verify Email
 @endcomponent
 
-If you did not update your email address, no further action is required.
+@component('mail::panel')
+Or paste this link into your browser: {{ $url }}
+@endcomponent
 
-Thanks,<br>
 {{ config('app.name') }}
 @endcomponent
