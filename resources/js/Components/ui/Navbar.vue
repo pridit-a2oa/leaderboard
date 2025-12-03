@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     >
         <ButtonLink href="https://dsc.gg/pridit">
             <FontAwesomeIcon
-                class="text-[#7289da]"
+                class="pr-0.5 text-[#7289da]"
                 :icon="faDiscord"
                 size="sm"
             />
@@ -21,7 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
         <ButtonLink href="https://feedback.pridit.co.uk">
             <FontAwesomeIcon
-                class="text-yellow-600"
+                class="pr-0.5 text-yellow-600"
                 :icon="faBullhorn"
                 size="sm"
             />
@@ -29,7 +29,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
         </ButtonLink>
 
         <ButtonLink href="https://ko-fi.com/pridit">
-            <FontAwesomeIcon class="text-[#ff6433]" :icon="faHeart" size="sm" />
+            <FontAwesomeIcon
+                class="pr-0.5 text-[#ff6433]"
+                :icon="faHeart"
+                size="sm"
+            />
             Ko-fi
         </ButtonLink>
 

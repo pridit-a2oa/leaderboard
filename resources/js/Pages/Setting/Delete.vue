@@ -27,7 +27,7 @@ const deleteUserRequest = () => {
                 will be impacted:
             </p>
 
-            <ul class="ml-3.5 flex list-outside list-disc flex-wrap">
+            <ul class="ml-3.5 list-outside list-disc">
                 <li v-if="$page.props.auth.user.email">
                     Email address can be re-used
                 </li>
@@ -63,7 +63,7 @@ const deleteUserRequest = () => {
                 >
                     <span class="block">
                         I understand this action is
-                        <span class="text-error">irreversible</span> and that my
+                        <span class="text-error">irreversible</span> and my
                         account cannot be restored.
                         <span class="font-bold">Continue anyway</span>.
                     </span>

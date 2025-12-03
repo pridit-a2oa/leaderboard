@@ -30,7 +30,7 @@
 }
 
 .container {
-    max-width: 590px;
+    max-width: 615px;
     min-width: 320px;
 
     @media (width <= 767px) {

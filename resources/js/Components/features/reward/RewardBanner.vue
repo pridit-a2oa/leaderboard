@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 <template>
     <div
-        class="alert !border-base-200 !bg-base-200 hidden rounded-lg py-4 md:grid"
+        class="alert !border-base-200 !bg-base-200 hidden rounded-lg py-4 tracking-wide md:grid"
         role="alert"
     >
         <RewardIcon :user="$page.props.auth.user" />
