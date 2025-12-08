@@ -1,4 +1,4 @@
-![Leaderboard](https://github.com/user-attachments/assets/d1ef0d90-50fa-48d5-a9c9-21833020b6dd)
+![Leaderboard](https://github.com/user-attachments/assets/094f5049-dc9e-429c-8ed2-367d2848a7fa)
 
 # Leaderboard
 
