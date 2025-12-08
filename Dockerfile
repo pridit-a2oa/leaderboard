@@ -1,4 +1,4 @@
-FROM node:25-alpine
+FROM node:25-alpine3.23
 
 # Set the application variables
 ENV APP_NAME=Leaderboard
@@ -14,29 +14,28 @@ RUN apk add --no-cache \
     nodejs-current \
     npm \
     nginx \
-    php84 \
-    php84-bcmath \
-    php84-ctype \
-    php84-curl \
-    php84-dom \
-    php84-fileinfo \
-    php84-fpm \
-    php84-gd \
-    php84-iconv \
-    php84-intl \
-    php84-json \
-    php84-mbstring \
-    php84-opcache \
-    php84-openssl \
-    php84-pdo \
-    php84-pdo_mysql \
-    php84-phar \
-    php84-session \
-    php84-tokenizer \
-    php84-xml \
-    php84-xmlreader \
-    php84-xmlwriter \
-    php84-zip \
+    php85 \
+    php85-bcmath \
+    php85-ctype \
+    php85-curl \
+    php85-dom \
+    php85-fileinfo \
+    php85-fpm \
+    php85-gd \
+    php85-iconv \
+    php85-intl \
+    php85-json \
+    php85-mbstring \
+    php85-openssl \
+    php85-pdo \
+    php85-pdo_mysql \
+    php85-phar \
+    php85-session \
+    php85-tokenizer \
+    php85-xml \
+    php85-xmlreader \
+    php85-xmlwriter \
+    php85-zip \
     supervisor
 
 # Add a non-root user to prevent files being created with root permissions on host machine
@@ -49,8 +48,8 @@ RUN addgroup -g 1001 laravel \
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
-COPY .docker/fpm-pool.conf /etc/php84/php-fpm.d/www.conf
-COPY .docker/php.ini /etc/php84/conf.d/custom.ini
+COPY .docker/fpm-pool.conf /etc/php85/php-fpm.d/www.conf
+COPY .docker/php.ini /etc/php85/conf.d/custom.ini
 
 # Configure supervisord
 COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -65,7 +64,7 @@ RUN chmod -R 644 /etc/crontabs/laravel
 RUN chown -R laravel:laravel /var/www/html /run /var/lib/nginx /var/log/nginx
 
 # Create symlink for php
-RUN ln -s /usr/bin/php84 /usr/bin/php
+RUN ln -s /usr/bin/php85 /usr/bin/php
 
 # Add application
 COPY --chown=laravel . /var/www/html/
