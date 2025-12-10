@@ -1,4 +1,5 @@
 {
+    "$schema": "https://www.schemastore.org/package.json",
     "private": true,
     "type": "module",
     "scripts": {
@@ -10,6 +11,7 @@
         "lint": "eslint . --fix"
     },
     "devDependencies": {
+        "@eslint/js": "^9.19.0",
         "@inertiajs/vue3": "^2.2.19",
         "@tailwindcss/postcss": "^4.1.17",
         "@tailwindcss/vite": "^4.1.17",
@@ -17,11 +19,16 @@
         "@vue/server-renderer": "^3.5.22",
         "autoprefixer": "^10.4.22",
         "axios": "^1.13.2",
+        "concurrently": "^9.0.1",
         "daisyui": "^5.5.8",
+        "eslint": "^9.17.0",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-vue": "^9.32.0",
         "laravel-vite-plugin": "^2.0.1",
         "lodash": "^4.17.21",
         "postcss": "^8.5.6",
         "prettier": "^3.6.2",
+        "prettier-plugin-organize-imports": "^4.1.0",
         "prettier-plugin-tailwindcss": "^0.7.2",
         "tailwindcss": "^4.1.17",
         "vite": "^7.2.7",
