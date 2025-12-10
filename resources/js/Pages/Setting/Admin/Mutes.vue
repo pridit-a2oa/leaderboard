@@ -98,7 +98,7 @@ const form = useForm({
                     </div>
 
                     <button
-                        class="btn no-animation mt-4 w-full"
+                        class="no-animation btn mt-4 w-full"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
@@ -124,7 +124,7 @@ const form = useForm({
                     <FontAwesomeIcon :icon="faAddressCard" transform="left-4" />
                     <FontAwesomeIcon
                         :icon="faPlus"
-                        class="indicator-item indicator-end indicator-bottom bg-base-100 rounded-full p-0.5"
+                        class="indicator-item rounded-full bg-base-100 p-0.5 indicator-end indicator-bottom"
                         size="xs"
                         transform="shrink-2"
                     />
@@ -134,7 +134,7 @@ const form = useForm({
 
         <Alert v-if="mutes.data.length === 0" message="No mutes found" />
 
-        <table v-else class="bg-base-200 mt-2 table table-fixed rounded-md">
+        <table v-else class="table mt-2 table-fixed rounded-md bg-base-200">
             <tbody>
                 <tr
                     v-for="(mute, key) in mutes.data"
@@ -149,7 +149,7 @@ const form = useForm({
                             <FontAwesomeIcon :icon="faAddressCard" size="lg" />
                             <FontAwesomeLayers
                                 v-if="mute.characters_count"
-                                class="indicator-item indicator-end indicator-bottom cursor-pointer rounded-full"
+                                class="indicator-item cursor-pointer rounded-full indicator-end indicator-bottom"
                                 @click="toggle(key)"
                             >
                                 <FontAwesomeIcon
@@ -159,7 +159,7 @@ const form = useForm({
                                     size="lg"
                                 />
                                 <FontAwesomeLayersText
-                                    class="text-warning right-1 !text-left font-bold select-none"
+                                    class="right-1 !text-left font-bold text-warning select-none"
                                     transform="shrink-4 right-2"
                                     title="Show/hide character(s) affected"
                                     :value="mute.characters_count"
@@ -181,7 +181,7 @@ const form = useForm({
 
                         <span
                             v-if="key === open"
-                            class="max-w-auto text-warning z-[1] col-span-1 max-h-0 text-xs"
+                            class="max-w-auto z-[1] col-span-1 max-h-0 text-xs text-warning"
                         >
                             {{
                                 mute.relations.characters
@@ -229,7 +229,7 @@ const form = useForm({
                             </label>
 
                             <ul
-                                class="menu dropdown-content bg-base-300 z-10 mt-1 w-32 rounded-md p-2 shadow"
+                                class="dropdown-content menu z-10 mt-1 w-32 rounded-md bg-base-300 p-2 shadow"
                                 tabindex="0"
                             >
                                 <li class="mb-0.5">
@@ -261,7 +261,7 @@ const form = useForm({
 
                                 <li>
                                     <label
-                                        class="text-error pl-2"
+                                        class="pl-2 text-error"
                                         method="post"
                                         as="button"
                                     >

@@ -75,22 +75,22 @@ const form = useForm({
         />
 
         <div v-else>
-            <table class="bg-base-200 table table-fixed rounded-md">
+            <table class="table table-fixed rounded-md bg-base-200">
                 <tbody>
                     <tr
                         v-for="webhook in webhooks.data"
                         :key="webhook.id"
                         class="border-base-100 [&:not(:first-child)]:!border-t-4 [&:not(:last-child)]:!border-b-4"
                     >
-                        <td class="w-10">
+                        <td class="w-0">
                             <FontAwesomeIcon
-                                class="!align-middle text-neutral-400"
+                                class="!align-middle"
                                 :icon="faCircleNodes"
                                 size="lg"
                             />
                         </td>
 
-                        <td class="w-32">
+                        <td>
                             {{ webhook.url }}
                         </td>
 

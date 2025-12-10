@@ -84,7 +84,7 @@ const options = {
             enabled: true,
             callbacks: {
                 footer: (tooltipItems) => {
-                    let total = tooltipItems.reduce(
+                    const total = tooltipItems.reduce(
                         (a, e) => a + parseInt(e.raw),
                         0,
                     );
@@ -113,7 +113,7 @@ const options = {
     <Head title="Settings &dash; Dashboard" />
 
     <UserSettings title="Dashboard">
-        <div class="bg-base-200 rounded-md p-4 [&:not(:last-child)]:mb-4">
+        <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
             <Line :data="data" :options="options" />
         </div>
     </UserSettings>

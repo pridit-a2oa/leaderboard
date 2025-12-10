@@ -5,9 +5,9 @@ import RegistrationForm from './RegistrationForm.vue';
 import ResetPasswordModal from './ResetPasswordModal.vue';
 
 export {
-  AccountModal,
-  LoginForm,
-  PasswordResetForm,
-  RegistrationForm,
-  ResetPasswordModal,
+    AccountModal,
+    LoginForm,
+    PasswordResetForm,
+    RegistrationForm,
+    ResetPasswordModal,
 };

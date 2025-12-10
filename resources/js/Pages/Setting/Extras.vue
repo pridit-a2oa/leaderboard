@@ -12,9 +12,9 @@ const extras = [
 ];
 
 const icon = {
-    'member': [faXmark, 'text-error'],
-    'supporter': [faCheck, 'text-success'],
-    'admin': [faMinus, 'text-neutral-500'],
+    member: [faXmark, 'text-error'],
+    supporter: [faCheck, 'text-success'],
+    admin: [faMinus, 'text-neutral-500'],
 };
 </script>
 
@@ -41,7 +41,7 @@ const icon = {
         <div class="indicator w-auto">
             <UserRoleIcon v-if="$page.props.auth.role.name !== 'admin'" />
 
-            <table class="bg-base-200 table table-fixed rounded-md">
+            <table class="table table-fixed rounded-md bg-base-200">
                 <tbody>
                     <tr
                         v-for="extra in extras"

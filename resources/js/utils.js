@@ -12,12 +12,13 @@
  *                      the conditions.
  */
 export function isHighestScore(array, object) {
-  if (object.is_hidden) return false;
+    if (object.is_hidden) return false;
 
-  // Filter relevant characters (visible, linked, matching ID64)
-  const filter = array.filter(
-    (e) => !e.is_hidden && e.user_id !== undefined && e.id64 === object.id64,
-  );
+    // Filter relevant characters (visible, linked, matching ID64)
+    const filter = array.filter(
+        (e) =>
+            !e.is_hidden && e.user_id !== undefined && e.id64 === object.id64,
+    );
 
-  return Math.max(...filter.map((e) => e.max_score)) === object.max_score;
+    return Math.max(...filter.map((e) => e.max_score)) === object.max_score;
 }

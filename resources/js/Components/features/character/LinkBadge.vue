@@ -23,7 +23,7 @@ const linkCharacter = () => {
 <template>
     <BaseBadge
         dir="ltr"
-        class="badge-success badge-sm !badge-outline cursor-pointer gap-1.5"
+        class="cursor-pointer gap-1.5 !badge-outline badge-sm badge-success"
         :class="{
             'opacity-25': form.processing,
         }"

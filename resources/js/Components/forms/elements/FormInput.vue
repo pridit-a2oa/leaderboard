@@ -20,7 +20,7 @@ defineExpose({ focus: () => input.value.focus() });
 </script>
 
 <template>
-    <label class="input bg-base-200 flex items-center gap-3" :class="classes">
+    <label class="input flex items-center gap-3 bg-base-200" :class="classes">
         <slot />
 
         <BaseInput

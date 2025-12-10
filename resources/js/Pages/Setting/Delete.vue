@@ -21,7 +21,7 @@ const deleteUserRequest = () => {
             message="Please check your email for a confirmation link"
         />
 
-        <div class="bg-base-200 flex flex-col gap-6 rounded-md p-4 text-sm">
+        <div class="flex flex-col gap-6 rounded-md bg-base-200 p-4 text-sm">
             <p>
                 Be aware that by performing an account deletion the following
                 will be impacted:
@@ -52,7 +52,7 @@ const deleteUserRequest = () => {
             </p>
         </div>
 
-        <div class="bg-base-200 mt-4 flex flex-row gap-4 rounded-md p-4">
+        <div class="mt-4 flex flex-row gap-4 rounded-md bg-base-200 p-4">
             <form @change="deleteUserRequest">
                 <FormCheckbox
                     :checked="$page.props.auth.user.is_deletion_throttled"

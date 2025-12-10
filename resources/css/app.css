@@ -80,7 +80,7 @@
 
         &[disabled],
         &:disabled {
-            @apply !bg-base-100 border-base-100 text-neutral-600;
+            @apply border-base-100 !bg-base-100 text-neutral-600;
         }
     }
 

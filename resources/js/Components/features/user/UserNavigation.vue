@@ -22,7 +22,7 @@ const form = useForm({
             @change="form.get(route('home'))"
         >
             <select
-                class="select select-sm bg-base-300 h-full"
+                class="select h-full bg-base-300 select-sm"
                 :class="{
                     '!cursor-not-allowed': !$page.props.characters.meta,
                 }"
@@ -58,11 +58,11 @@ const form = useForm({
                 </div>
 
                 <ul
-                    class="menu dropdown-content bg-base-200 z-10 mt-1 w-32 gap-1 rounded-md p-2 shadow"
+                    class="dropdown-content menu z-10 mt-1 w-32 gap-1 rounded-md bg-base-200 p-2 shadow"
                 >
                     <li>
                         <Link
-                            class="hover:bg-highlight pl-2"
+                            class="pl-2 hover:bg-highlight"
                             :href="route('user.setting.account')"
                         >
                             <FontAwesomeIcon :icon="faBars" />
@@ -72,7 +72,7 @@ const form = useForm({
 
                     <li>
                         <Link
-                            class="text-error hover:bg-highlight pl-2 focus:cursor-pointer"
+                            class="pl-2 text-error hover:bg-highlight focus:cursor-pointer"
                             :href="route('logout')"
                             method="post"
                             as="button"

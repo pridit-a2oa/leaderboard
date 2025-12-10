@@ -24,7 +24,7 @@ import { Head } from '@inertiajs/vue3';
             message="You have no linked characters"
         />
 
-        <table class="bg-base-200 table table-fixed rounded-md">
+        <table class="table table-fixed rounded-md bg-base-200">
             <tbody>
                 <tr
                     v-for="character in $page.props.auth.user.characters.sort(
@@ -51,7 +51,7 @@ import { Head } from '@inertiajs/vue3';
                                 "
                             >
                                 <FontAwesomeIcon
-                                    class="text-supporter z-10"
+                                    class="z-10 text-supporter"
                                     :icon="faHeart"
                                     size="lg"
                                     transform="shrink-8 right-5 down-8"
@@ -87,7 +87,7 @@ import { Head } from '@inertiajs/vue3';
                         </div>
 
                         <div
-                            class="tooltip tooltip-bottom tooltip-warning ml-3 before:!w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom ml-3 tooltip-warning before:!w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Unlink this character from your account&#10;(can be relinked at any time)"
                         >
                             <UnlinkBadge :id="character.id" />
@@ -99,7 +99,7 @@ import { Head } from '@inertiajs/vue3';
                                     $page.props.auth.role.name,
                                 ) && character.statistics_count > 0
                             "
-                            class="tooltip tooltip-bottom tooltip-error ml-3 before:!w-[11rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-bottom ml-3 tooltip-error before:!w-[11rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
                             data-tip="Reset statistics for this character&#10;(cannot be reversed)"
                         >
                             <ResetBadge :id="character.id" />

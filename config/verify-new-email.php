@@ -1,41 +1,85 @@
 <?php
 
 return [
-    /**
-     * Here you can specify the name of a custom route to handle the verification.
-     */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Verification Route
+    |--------------------------------------------------------------------------
+    |
+    | The name of the route that handles the email verification process.
+    |
+    */
+
     'route' => 'verification.verify',
 
-    /**
-     * Here you can specify the path to redirect to after verification.
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Post-Verification Redirect
+    |--------------------------------------------------------------------------
+    |
+    | The path the user should be redirected to after completing verification.
+    |
+    */
+
     'redirect_to' => '/settings/account',
 
-    /**
-     * Whether to login the user after successfully verifying its email.
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Auto-Login After Verification
+    |--------------------------------------------------------------------------
+    |
+    | Indicates whether the user should be logged in automatically after their
+    | email address has been successfully verified.
+    |
+    */
+
     'login_after_verification' => true,
 
-    /**
-     * Should the user be permanently "remembered" by the application.
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Remember User
+    |--------------------------------------------------------------------------
+    |
+    | Determines whether the user should be permanently remembered after login.
+    |
+    */
+
     'login_remember' => false,
 
-    /**
-     * Model class that will be used to store and retrieve the tokens.
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Token Model
+    |--------------------------------------------------------------------------
+    |
+    | The model responsible for storing and retrieving pending email tokens.
+    |
+    */
+
     'model' => \ProtoneMedia\LaravelVerifyNewEmail\PendingUserEmail::class,
 
-    /**
-     * The Mailable that will be sent when the User wants to verify
-     * its initial email address (that got used with registering).
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | First Email Verification Mailable
+    |--------------------------------------------------------------------------
+    |
+    | The mailable sent when verifying the user's initial email address used
+    | during registration.
+    |
+    */
+
     'mailable_for_first_verification' => \ProtoneMedia\LaravelVerifyNewEmail\Mail\VerifyFirstEmail::class,
 
-    /**
-     * The Mailable that will be sent when the User wants to verify
-     * a new email address, for example when the User wants to
-     * update its email address.
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | New Email Verification Mailable
+    |--------------------------------------------------------------------------
+    |
+    | The mailable sent when verifying a newly requested email address,
+    | such as during an email update.
+    |
+    */
+
     'mailable_for_new_email' => \ProtoneMedia\LaravelVerifyNewEmail\Mail\VerifyNewEmail::class,
+
 ];

@@ -48,12 +48,12 @@ const settings = ref([
             <div
                 v-if="$page.props.auth.role.name === 'admin'"
                 role="tablist"
-                class="tabs-box tabs mb-4 flex-nowrap gap-x-1"
+                class="tabs-box mb-4 tabs flex-nowrap gap-x-1"
             >
                 <Link
                     v-for="(category, index) in ['user', 'admin']"
                     role="tab"
-                    class="tab hover:!bg-highlight h-8 basis-1/2 capitalize"
+                    class="tab h-8 basis-1/2 capitalize hover:!bg-highlight"
                     :href="
                         tab.value === 'user'
                             ? route('user.setting.dashboard.index')
@@ -61,7 +61,7 @@ const settings = ref([
                     "
                     :class="[
                         tab.value === category
-                            ? '!bg-highlight tab-active'
+                            ? 'tab-active !bg-highlight'
                             : '',
                         index === 0 ? '!rounded-e-none' : '!rounded-s-none',
                     ]"
@@ -70,7 +70,7 @@ const settings = ref([
             </div>
 
             <template v-if="tab.value === 'user'">
-                <ul class="menu bg-base-200 w-44 gap-1 rounded-lg">
+                <ul class="menu w-44 gap-1 rounded-lg bg-base-200">
                     <li
                         v-for="setting in settings"
                         class="group/parent capitalize"
@@ -80,7 +80,7 @@ const settings = ref([
                         }"
                     >
                         <Link
-                            class="group/link hover:bg-highlight px-2 group-[.menu-disabled]/parent:cursor-not-allowed"
+                            class="group/link px-2 group-[.menu-disabled]/parent:cursor-not-allowed hover:bg-highlight"
                             :class="{
                                 '!bg-highlight': $page.component
                                     .toLowerCase()
@@ -104,7 +104,7 @@ const settings = ref([
                                 />
                                 <FontAwesomeIcon
                                     v-if="setting.type === 'connections'"
-                                    class="indicator-item indicator-end indicator-bottom bg-base-200 group-hover/link:bg-highlight rounded-full transition delay-[0ms]"
+                                    class="indicator-item rounded-full bg-base-200 transition delay-[0ms] indicator-end indicator-bottom group-hover/link:bg-highlight"
                                     :class="{
                                         'bg-highlight': $page.component
                                             .toLowerCase()
@@ -133,10 +133,10 @@ const settings = ref([
                     </li>
                 </ul>
 
-                <ul class="menu bg-base-200 mt-4 w-44 rounded-md">
+                <ul class="menu mt-4 w-44 rounded-md bg-base-200">
                     <li>
                         <Link
-                            class="!text-error hover:bg-highlight pl-2"
+                            class="pl-2 !text-error hover:bg-highlight"
                             :class="{
                                 'bg-highlight':
                                     $page.component.includes('Delete'),

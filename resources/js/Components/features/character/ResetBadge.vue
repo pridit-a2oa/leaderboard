@@ -24,7 +24,7 @@ const resetCharacter = () => {
 
 <template>
     <BaseBadge
-        class="badge-error w-10"
+        class="w-10 badge-error"
         :class="{
             'opacity-25': form.processing,
         }"

@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Commands to ignore logging of start/stop points.
      *
-     * @var array
+     * @var array<string>
      */
     protected $ignored = [
         'db:seed',

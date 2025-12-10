@@ -97,7 +97,7 @@ const reset = () => {
             </div>
 
             <button
-                class="btn no-animation mt-4 w-full"
+                class="no-animation btn mt-4 w-full"
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
                 @click="login"

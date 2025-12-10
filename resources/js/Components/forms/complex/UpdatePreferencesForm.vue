@@ -52,7 +52,7 @@ const submit = () => {
         <h2 class="grow">Preferences</h2>
     </div>
 
-    <div class="bg-base-200 rounded-md p-4 [&:not(:last-child)]:mb-4">
+    <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
         <form @submit.prevent="submit">
             <template
                 v-for="(preference, index) in $page.props.preferences"
@@ -76,7 +76,7 @@ const submit = () => {
 
                 <span
                     v-if="form.processing"
-                    class="loading loading-spinner mr-2"
+                    class="loading mr-2 loading-spinner"
                 ></span>
 
                 <BaseButton

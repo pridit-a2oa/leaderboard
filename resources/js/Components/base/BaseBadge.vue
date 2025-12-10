@@ -1,6 +1,6 @@
 <template>
     <button
-        class="badge badge-soft cursor-pointer font-light uppercase select-none"
+        class="badge cursor-pointer badge-soft font-light uppercase select-none"
     >
         <slot />
     </button>

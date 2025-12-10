@@ -9,18 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 <template>
     <div
-        class="alert !border-base-200 !bg-base-200 hidden rounded-lg py-4 tracking-wide md:grid"
+        class="alert hidden rounded-lg !border-base-200 !bg-base-200 py-4 tracking-wide md:grid"
         role="alert"
     >
         <RewardIcon :user="$page.props.auth.user" />
 
         <div class="m-auto text-sm">
-            <div class="dropdown dropdown-hover" role="link" tabindex="0">
+            <div class="dropdown-hover dropdown" role="link" tabindex="0">
                 <span class="underlined-rich">Link</span>
 
                 <div class="dropdown-content z-20 w-max">
                     <ol
-                        class="border-base-100 bg-base-200 mt-2 flex list-inside list-decimal flex-col gap-3.5 rounded-md border-2 p-3"
+                        class="mt-2 flex list-inside list-decimal flex-col gap-3.5 rounded-md border-2 border-base-100 bg-base-200 p-3"
                     >
                         <li
                             :class="{

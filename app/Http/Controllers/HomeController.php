@@ -31,11 +31,12 @@ class HomeController extends Controller
                         $fail('Must be a valid selection to apply filtering.');
                     }
 
-                    if ($value === 'me' && Character::where(
-                        'id64',
-                        auth()->user()->connections->firstWhere('name', 'steam')?->pivot->identifier
-                    )
-                        ->count() === 0
+                    if (
+                        $value === 'me' && Character::where(
+                            'id64',
+                            auth()->user()->connections->firstWhere('name', 'steam')?->pivot->identifier
+                        )
+                            ->count() === 0
                     ) {
                         $fail('Must have linkable or linked characters for this filter selection.');
                     }
@@ -69,11 +70,12 @@ class HomeController extends Controller
         }
 
         return Inertia::render('Home', [
-            'characters' => Inertia::deepMerge($characters->toResourceCollection()
-                ->additional([
-                    'ranking' => Cache::get('ranking', []),
-                    'total' => $count,
-                ])
+            'characters' => Inertia::deepMerge(
+                $characters->toResourceCollection()
+                    ->additional([
+                        'ranking' => Cache::get('ranking', []),
+                        'total' => $count,
+                    ])
             ),
             'filter' => $request->query('filter'),
         ]);

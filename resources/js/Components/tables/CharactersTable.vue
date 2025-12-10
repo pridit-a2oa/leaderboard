@@ -86,7 +86,7 @@ const filterCharacter = (character) => {
 <template>
     <BaseTable dir="rtl">
         <thead>
-            <tr class="select-none [&>th]:pt-0">
+            <tr class="select-none [&>th]:pt-0 [&>th]:pb-2">
                 <th class="w-0 text-right">Score</th>
                 <th></th>
                 <th class="hidden md:table-cell"></th>
@@ -109,7 +109,7 @@ const filterCharacter = (character) => {
             >
                 <tr
                     v-show="filterCharacter(character)"
-                    class="border-base-100 border-t-4"
+                    class="border-t-4 border-base-100"
                     :class="{
                         'bg-base-100 opacity-50': character.is_hidden,
                         'text-gold': key === 0,
@@ -164,7 +164,7 @@ const filterCharacter = (character) => {
                                         (e) => e.id === character.id,
                                     )
                                 "
-                                class="badge badge-primary badge-soft badge-outline badge-sm font-light uppercase select-none"
+                                class="badge badge-soft badge-outline badge-sm font-light uppercase badge-primary select-none"
                                 :href="route('user.setting.characters')"
                             >
                                 You
@@ -179,7 +179,7 @@ const filterCharacter = (character) => {
                                             .length > 0
                                     "
                                     dir="ltr"
-                                    class="badge badge-error badge-soft badge-outline badge-sm gap-1.5 font-light uppercase select-none"
+                                    class="badge gap-1.5 badge-soft badge-outline badge-sm font-light uppercase badge-error select-none"
                                     :href="route('user.setting.extras')"
                                 >
                                     Link
@@ -221,7 +221,7 @@ const filterCharacter = (character) => {
                         <span class="truncate">
                             <FontAwesomeIcon
                                 v-if="character.relations.statistics.length > 0"
-                                class="bg-base-100 mr-1.5 border border-neutral-700 !align-middle text-neutral-400"
+                                class="mr-1.5 border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
                                 size="xs"
                             />
@@ -252,7 +252,7 @@ const filterCharacter = (character) => {
                             v-if="!character.is_hidden"
                             class="indicator align-middle"
                         >
-                            <div class="bg-base-100 h-7 w-7 rounded-full">
+                            <div class="h-7 w-7 rounded-full bg-base-100">
                                 <img
                                     class="h-7 w-7 self-center rounded-full text-[0rem] select-none"
                                     :src="
@@ -272,12 +272,12 @@ const filterCharacter = (character) => {
                                         'supporter' &&
                                     isHighestScore(characters.data, character)
                                 "
-                                class="indicator-item indicator-bottom indicator-center"
+                                class="indicator-item indicator-center indicator-bottom"
                                 title="Supporter"
                             >
                                 <FontAwesomeLayers>
                                     <FontAwesomeIcon
-                                        class="text-supporter z-10 opacity-80"
+                                        class="z-10 text-supporter opacity-80"
                                         :icon="faHeart"
                                         size="lg"
                                         transform="shrink-6"

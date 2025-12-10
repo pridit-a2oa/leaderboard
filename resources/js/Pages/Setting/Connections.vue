@@ -48,7 +48,7 @@ if (!customElements.get('component-link')) {
             )"
             :key="connection.id"
         >
-            <table class="bg-base-200 mb-2 table table-fixed rounded-md">
+            <table class="table mb-2 table-fixed rounded-md bg-base-200">
                 <tbody>
                     <tr>
                         <td class="w-0 text-center">
@@ -91,7 +91,7 @@ if (!customElements.get('component-link')) {
                             >
                                 <span
                                     v-if="connection.is_oauth"
-                                    class="badge badge-soft badge-md cursor-not-allowed text-xs font-light uppercase opacity-50 select-none"
+                                    class="badge cursor-not-allowed badge-soft text-xs badge-md font-light uppercase opacity-50 select-none"
                                     title="This connection is required to sign in"
                                 >
                                     Disconnect
@@ -109,7 +109,7 @@ if (!customElements.get('component-link')) {
                                     :href="
                                         route(`connection.${connection.name}`)
                                     "
-                                    class="badge badge-success badge-soft text-xs font-light uppercase select-none"
+                                    class="badge badge-soft text-xs font-light uppercase badge-success select-none"
                                 >
                                     Connect
                                 </Link>
@@ -120,7 +120,7 @@ if (!customElements.get('component-link')) {
                     <tr v-if="connection.description">
                         <td
                             colspan="3"
-                            class="bg-base-300/50 border-base-300 rounded-b-md border-t-1 pt-2.5"
+                            class="rounded-b-md border-t-1 border-base-300 bg-base-300/50 pt-2.5"
                         >
                             <span v-html="connection.description"></span>
                         </td>

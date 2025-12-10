@@ -22,7 +22,7 @@ const disconnect = () => {
 
 <template>
     <BaseBadge
-        class="badge-error badge-md text-xs"
+        class="text-xs badge-md badge-error"
         :class="{
             'opacity-25': form.processing,
         }"

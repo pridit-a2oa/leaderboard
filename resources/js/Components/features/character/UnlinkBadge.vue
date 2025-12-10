@@ -25,7 +25,7 @@ const unlinkCharacter = () => {
 
 <template>
     <BaseBadge
-        class="badge-warning w-10"
+        class="w-10 badge-warning"
         :class="{
             'opacity-25': form.processing,
         }"

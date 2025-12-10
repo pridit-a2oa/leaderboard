@@ -15,7 +15,7 @@ defineProps({
     <Head title="Settings &dash; Users" />
 
     <UserSettings title="Users">
-        <table class="bg-base-200 mt-2 table table-fixed rounded-md">
+        <table class="table mt-2 table-fixed rounded-md bg-base-200">
             <tbody>
                 <tr
                     v-for="user in users.data"

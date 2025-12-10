@@ -29,11 +29,11 @@ const settings = ref([
 <template>
     <ul
         v-if="$page.props.auth.role.name === 'admin'"
-        class="menu bg-base-200 mt-4 w-44 gap-1 rounded-md"
+        class="menu mt-4 w-44 gap-1 rounded-md bg-base-200"
     >
         <li v-for="setting in settings" class="capitalize">
             <Link
-                class="group hover:bg-highlight px-2"
+                class="group px-2 hover:bg-highlight"
                 :class="{
                     'bg-highlight': $page.component
                         .toLowerCase()

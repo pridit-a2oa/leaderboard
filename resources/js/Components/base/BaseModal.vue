@@ -5,7 +5,7 @@
         >
             <form method="dialog">
                 <button
-                    class="btn btn-circle btn-ghost btn-sm absolute top-2 right-2"
+                    class="btn absolute top-2 right-2 btn-circle btn-ghost btn-sm"
                 >
                     &#x2715;
                 </button>

@@ -64,7 +64,7 @@ function reset() {
 </script>
 
 <template>
-    <div class="bg-base-200 rounded-md p-4 [&:not(:last-child)]:mb-4">
+    <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
         <form @submit.prevent="submit">
             <label class="form-control">
                 <div class="label w-full !pt-0">
@@ -72,7 +72,7 @@ function reset() {
 
                     <span
                         v-if="$page.props.auth.user.email"
-                        class="badge badge-outline badge-sm ml-auto"
+                        class="ml-auto badge badge-outline badge-sm"
                         :class="
                             $page.props.auth.user.email_verified_at !== null
                                 ? 'badge-success'
@@ -90,7 +90,7 @@ function reset() {
                             class="border-l pl-1.5"
                         >
                             <span
-                                class="border-warning cursor-pointer"
+                                class="cursor-pointer border-warning"
                                 :class="{
                                     '!cursor-not-allowed':
                                         $page.props.auth.user
@@ -111,7 +111,7 @@ function reset() {
                             >
                                 <FontAwesomeIcon
                                     :class="{
-                                        'loading-bars loading mt-1': timeout,
+                                        'loading mt-1 loading-bars': timeout,
                                         'opacity-40':
                                             $page.props.auth.user
                                                 .is_verification_email_throttled,
@@ -149,7 +149,7 @@ function reset() {
 
                     <span
                         v-if="form.processing"
-                        class="loading loading-spinner mr-2"
+                        class="loading mr-2 loading-spinner"
                     ></span>
 
                     <BaseButton

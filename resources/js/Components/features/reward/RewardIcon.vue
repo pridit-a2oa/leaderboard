@@ -1,7 +1,6 @@
 <script setup>
 import {
     faCircleCheck,
-    faCircleXmark,
     faPersonRifle,
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -29,10 +28,9 @@ const rewarded = computed(() => {
     <FontAwesomeLayers class="indicator">
         <FontAwesomeIcon :icon="faPersonRifle" size="lg" />
         <FontAwesomeIcon
-            v-show="user !== null"
-            :icon="rewarded ? faCircleCheck : faCircleXmark"
-            class="indicator-item indicator-end indicator-bottom bg-base-200 rounded-full p-0 py-0.5"
-            :class="rewarded ? 'text-success' : 'text-error'"
+            v-show="user !== null && rewarded"
+            :icon="faCircleCheck"
+            class="indicator-item rounded-full bg-base-200 p-0 py-0.5 text-success indicator-end indicator-bottom"
             transform="shrink-2"
         />
     </FontAwesomeLayers>
