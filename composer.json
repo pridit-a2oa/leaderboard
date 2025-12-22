@@ -104,6 +104,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "platform": {
+            "ext-sockets": "0"
         }
     },
     "minimum-stability": "stable",
