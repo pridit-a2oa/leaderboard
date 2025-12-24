@@ -47,7 +47,7 @@ const form = useForm({
                     <FormTextarea
                         id="payload"
                         type="payload"
-                        class="!cursor-text whitespace-nowrap"
+                        class="!cursor-text"
                         readonly="true"
                         :value="JSON.stringify(form.payload, null, 2)"
                         rows="10"
