@@ -26,6 +26,11 @@ const form = useForm({
                 :class="{
                     '!cursor-not-allowed': !$page.props.characters.meta,
                 }"
+                :title="
+                    ($page.props.characters.meta &&
+                        'Select an option to filter by') ||
+                    ''
+                "
                 v-model="form.filter"
                 :disabled="!$page.props.characters.meta"
             >
@@ -44,7 +49,7 @@ const form = useForm({
 
             <div class="dropdown dropdown-bottom">
                 <div
-                    class="btn"
+                    class="btn font-normal"
                     role="button"
                     tabindex="0"
                     dusk="account-button"
