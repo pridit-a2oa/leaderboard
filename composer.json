@@ -11,7 +11,7 @@
     "require": {
         "php": "^8.4",
         "creativeorange/gravatar": "^1.0.25",
-        "inertiajs/inertia-laravel": "^2.0.18",
+        "inertiajs/inertia-laravel": "^2.0.19",
         "laravel/framework": "^12.47",
         "laravel/prompts": "^0.3.8",
         "laravel/sanctum": "^4.2.3",
