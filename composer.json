@@ -23,7 +23,7 @@
         "spatie/laravel-permission": "^6.24.0",
         "spatie/laravel-webhook-client": "^3.4.5",
         "tightenco/ziggy": "^2.6.0",
-        "xpaw/steam-openid": "^3.1.1"
+        "xpaw/steam-openid": "^4.0.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24.1",

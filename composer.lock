@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b35fa8ce3a0e5dbfdfb31db9f0c1fa2",
+    "content-hash": "290b5a69f4a545810d6ba4a2643834a3",
     "packages": [
         {
             "name": "brick/math",
@@ -6944,24 +6944,24 @@
         },
         {
             "name": "xpaw/steam-openid",
-            "version": "v3.1.1",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xPaw/SteamOpenID.php.git",
-                "reference": "a6c2992abda9ace89705f5ef46750ca1c22459b3"
+                "reference": "5ec7720a0e0f77d20950d2ff0016df6828e7b71c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xPaw/SteamOpenID.php/zipball/a6c2992abda9ace89705f5ef46750ca1c22459b3",
-                "reference": "a6c2992abda9ace89705f5ef46750ca1c22459b3",
+                "url": "https://api.github.com/repos/xPaw/SteamOpenID.php/zipball/5ec7720a0e0f77d20950d2ff0016df6828e7b71c",
+                "reference": "5ec7720a0e0f77d20950d2ff0016df6828e7b71c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": ">=8.2"
+                "php": ">=8.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^11"
+                "phpunit/phpunit": "^12"
             },
             "type": "library",
             "autoload": {
@@ -6983,9 +6983,15 @@
             ],
             "support": {
                 "issues": "https://github.com/xPaw/SteamOpenID.php/issues",
-                "source": "https://github.com/xPaw/SteamOpenID.php/tree/v3.1.1"
+                "source": "https://github.com/xPaw/SteamOpenID.php/tree/v4.0.0"
             },
-            "time": "2025-06-07T19:07:43+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/xPaw",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-29T10:56:44+00:00"
         }
     ],
     "packages-dev": [
