@@ -16,7 +16,7 @@
         "@tailwindcss/postcss": "^4.1.18",
         "@tailwindcss/vite": "^4.1.18",
         "@vitejs/plugin-vue": "^6.0.4",
-        "@vue/server-renderer": "^3.5.27",
+        "@vue/server-renderer": "^3.5.28",
         "autoprefixer": "^10.4.24",
         "axios": "^1.13.4",
         "concurrently": "^9.0.1",
