@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84289ad83067dcfdd7706a1011dbf064",
+    "content-hash": "4d833bf8dd9fc1d2547485bf07e3e663",
     "packages": [
         {
             "name": "brick/math",
@@ -3930,16 +3930,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "7.0.0",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "f2a55b4fae0e44ffb1f1411ed3c7573cdd251a59"
+                "reference": "34bf23c9e541a5434e0898c7172fb6647d23889d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/f2a55b4fae0e44ffb1f1411ed3c7573cdd251a59",
-                "reference": "f2a55b4fae0e44ffb1f1411ed3c7573cdd251a59",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/34bf23c9e541a5434e0898c7172fb6647d23889d",
+                "reference": "34bf23c9e541a5434e0898c7172fb6647d23889d",
                 "shasum": ""
             },
             "require": {
@@ -3947,7 +3947,7 @@
                 "illuminate/container": "^12.0",
                 "illuminate/contracts": "^12.0",
                 "illuminate/database": "^12.0",
-                "php": "^8.4",
+                "php": "^8.3",
                 "spatie/laravel-package-tools": "^1.0"
             },
             "require-dev": {
@@ -4005,7 +4005,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/7.0.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/7.1.0"
             },
             "funding": [
                 {
@@ -4013,7 +4013,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-11T08:43:07+00:00"
+            "time": "2026-02-14T17:17:28+00:00"
         },
         {
             "name": "spatie/laravel-webhook-client",
