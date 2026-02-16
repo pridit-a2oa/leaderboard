@@ -23,7 +23,7 @@
         "daisyui": "^5.5.18",
         "eslint": "^10.0.0",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-vue": "^10.7.0",
+        "eslint-plugin-vue": "^10.8.0",
         "laravel-vite-plugin": "^2.1.0",
         "lodash": "^4.17.23",
         "postcss": "^8.5.6",
