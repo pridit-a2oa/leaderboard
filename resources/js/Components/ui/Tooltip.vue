@@ -31,7 +31,7 @@ defineProps({
         </span>
 
         <picture
-            class="absolute top-6 left-2/4 z-50 hidden w-72 -translate-x-2/4 p-2 px-4 drop-shadow-lg peer-hover:!block peer-focus:!block"
+            class="absolute top-10 left-2/4 z-50 hidden w-54 -translate-x-2/4 scale-x-[-1] rounded-lg bg-base-300 p-2 px-4 drop-shadow-lg peer-hover:!block peer-focus:!block"
         >
             <source type="image/webp" :srcset="`${path}.webp`" />
             <img :src="`${path}.png`" :alt="alt" loading="lazy" />
