@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PreferenceSeeder::class,
             StatisticSeeder::class,
             MuteReasonSeeder::class,
+            RankSeeder::class,
         ]);
     }
 }

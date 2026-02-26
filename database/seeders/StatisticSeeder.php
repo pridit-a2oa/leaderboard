@@ -14,13 +14,13 @@ class StatisticSeeder extends Seeder
     {
         Statistic::factory()->forEachSequence(
             [
-                'name' => 'Airdrop Requests',
-                'icon' => 'parachute-box',
+                'name' => 'Camp Captures',
+                'icon' => 'tents',
             ],
 
             [
-                'name' => 'Camp Captures',
-                'icon' => 'tents',
+                'name' => 'Crossroad Requests',
+                'icon' => 'parachute-box',
             ],
 
             [
@@ -62,6 +62,16 @@ class StatisticSeeder extends Seeder
                 'name' => 'Wreck Collections',
                 'icon' => 'car-burst',
             ],
+
+            [
+                'name' => 'Optional Objectives',
+                'icon' => null,
+            ],
+
+            [
+                'name' => 'Roadblocks Destroyed',
+                'icon' => null,
+            ]
         )->create();
     }
 }
