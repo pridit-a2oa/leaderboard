@@ -30,7 +30,7 @@ class CharacterResource extends JsonResource
             ]),
             'is_hidden' => $this->is_hidden,
             'relations' => [
-                'statistics' => ! $this->is_hidden && $this->user_id !== null ? StatisticResource::collection($this->whenLoaded('statistics')) : [],
+                'statistics' => ! $this->is_hidden && $this->user_id !== null && in_array($this->user?->roles->value('name'), ['supporter', 'admin']) ? StatisticResource::collection($this->whenLoaded('statistics')) : [],
                 'user' => [
                     $this->mergeWhen(! $this->is_hidden, [
                         'gravatar_url' => $this->when($this->user?->preferences->firstWhere('name', 'gravatar')?->pivot->value, $this->user?->gravatar_url),

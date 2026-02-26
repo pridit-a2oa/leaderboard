@@ -112,6 +112,7 @@ class Character extends Model
     {
         return $this->belongsToMany(Statistic::class)
             ->using(CharacterStatistic::class)
+            ->whereNotNull('icon')
             ->withPivot('value')
             ->having('value', '>', 0);
     }

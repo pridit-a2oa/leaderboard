@@ -49,10 +49,12 @@ class UserSettingController extends SettingController
      */
     public function showConnections(Request $request): Response
     {
-        return Inertia::render('Setting/Connections', [
-            'connections' => Connection::get()->toResourceCollection(),
-        ]
-            + $this->metadata()
+        return Inertia::render(
+            'Setting/Connections',
+            [
+                'connections' => Connection::get()->toResourceCollection(),
+            ]
+                + $this->metadata()
         );
     }
 
@@ -61,13 +63,16 @@ class UserSettingController extends SettingController
      */
     public function showExtras(Request $request): Response
     {
-        return Inertia::render('Setting/Extras', [
-            'statistics' => Statistic::orderBy('name')
-                ->get()
-                ->pluck('name')
-                ->implode(', '),
-        ]
-            + $this->metadata()
+        return Inertia::render(
+            'Setting/Extras',
+            [
+                'statistics' => Statistic::orderBy('name')
+                    ->whereNotNull('icon')
+                    ->get()
+                    ->pluck('name')
+                    ->implode(', '),
+            ]
+                + $this->metadata()
         );
     }
 

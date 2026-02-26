@@ -195,7 +195,9 @@ const filterCharacter = (character) => {
                         class="grid grid-flow-col grid-cols-1 grid-rows-2 p-0 px-2 py-3 text-left"
                         :class="{
                             'cursor-pointer':
-                                character.relations.statistics.length > 0,
+                                ['admin', 'supporter'].includes(
+                                    character.relations.user.role,
+                                ) && character.relations.statistics.length > 0,
                         }"
                         :role="
                             character.relations.statistics.length > 0 === false
@@ -220,7 +222,12 @@ const filterCharacter = (character) => {
                     >
                         <span class="truncate">
                             <FontAwesomeIcon
-                                v-if="character.relations.statistics.length > 0"
+                                v-if="
+                                    ['admin', 'supporter'].includes(
+                                        character.relations.user.role,
+                                    ) &&
+                                    character.relations.statistics.length > 0
+                                "
                                 class="mr-1.5 border border-neutral-700 bg-base-100 !align-middle text-neutral-400"
                                 :icon="key === open ? faAngleUp : faAngleDown"
                                 size="xs"
@@ -229,8 +236,11 @@ const filterCharacter = (character) => {
                             <span
                                 :class="{
                                     'select-none':
+                                        ['admin', 'supporter'].includes(
+                                            character.relations.user.role,
+                                        ) &&
                                         character.relations.statistics.length >
-                                        0,
+                                            0,
                                 }"
                                 :title="character.name"
                             >
@@ -262,7 +272,10 @@ const filterCharacter = (character) => {
                                     "
                                     alt="Avatar"
                                     loading="lazy"
-                                    onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"
+                                    onerror="
+                                        this.src =
+                                            'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+                                    "
                                 />
                             </div>
 
@@ -340,6 +353,9 @@ const filterCharacter = (character) => {
 
                 <tr
                     v-if="
+                        ['admin', 'supporter'].includes(
+                            character.relations.user.role,
+                        ) &&
                         character.relations.statistics.length > 0 &&
                         key === open
                     "

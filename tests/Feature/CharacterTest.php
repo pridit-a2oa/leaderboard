@@ -7,10 +7,11 @@ use Inertia\Testing\AssertableInertia;
 describe('characters', function () {
     test('can see placeholders', function () {
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->has('characters.data', 5)
-                ->where('characters.data.0.id64', null)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data', 5)
+                    ->where('characters.data.0.id64', null)
             );
     });
 
@@ -18,9 +19,10 @@ describe('characters', function () {
         Character::factory(3)->create();
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->has('characters.data', 3)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data', 3)
             );
     });
 });
@@ -32,9 +34,10 @@ describe('score', function () {
         ]);
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->missing('characters.meta')
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->missing('characters.meta')
             );
     });
 
@@ -44,10 +47,11 @@ describe('score', function () {
         ])->max('score');
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->has('characters.data', 1)
-                ->where('characters.data.0.score', $maxScore)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data', 1)
+                    ->where('characters.data.0.score', $maxScore)
             );
     });
 
@@ -55,9 +59,10 @@ describe('score', function () {
         $maxScore = Character::factory(10)->create()->max('score');
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->where('characters.data.0.score', $maxScore)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->where('characters.data.0.score', $maxScore)
             );
     });
 
@@ -65,41 +70,56 @@ describe('score', function () {
         $minScore = Character::factory(10)->create()->min('score');
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->where('characters.data.9.score', $minScore)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->where('characters.data.9.score', $minScore)
             );
     });
 });
 
 describe('statistics', function () {
-    test('none when none and not linked', function () {
+    test('none when empty', function () {
         Character::factory()->create();
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->has('characters.data.0.relations.statistics', 0)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data.0.relations.statistics', 0)
             );
     });
 
-    test('none when one and not linked', function () {
+    test('none when some and not linked', function () {
         Character::factory()->hasStatistics()->create();
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->has('characters.data.0.relations.statistics', 0)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data.0.relations.statistics', 0)
             );
     });
 
-    test('one when linked', function () {
+    test('none when some and linked member', function () {
         Character::factory()->for(User::factory())->hasStatistics()->create();
 
         $this->get('/')
-            ->assertInertia(fn (AssertableInertia $page) => $page
-                ->component('Home')
-                ->has('characters.data.0.relations.statistics', 1)
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data.0.relations.statistics', 0)
+            );
+    });
+
+    test('one when some and linked supporter', function () {
+        Character::factory()->for(User::factory()->supporter())->hasStatistics()->create();
+
+        $this->get('/')
+            ->assertInertia(
+                fn (AssertableInertia $page) => $page
+                    ->component('Home')
+                    ->has('characters.data.0.relations.statistics', 1)
             );
     });
 });
