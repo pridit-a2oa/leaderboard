@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('character_statistic', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('character_id')->constrained();
             $table->foreignId('statistic_id')->constrained();
-            $table->bigInteger('value')->default(1);
+            $table->unsignedSmallInteger('value')->default(1);
 
             $table->unique(['character_id', 'statistic_id']);
         });

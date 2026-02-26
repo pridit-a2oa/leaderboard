@@ -25,12 +25,14 @@ class AdminWebhookController extends SettingController
      */
     public function index(): Response
     {
-        return Inertia::render('Setting/Admin/Webhooks', [
-            'webhooks' => WebhookCall::orderByDesc('created_at')
-                ->get()
-                ->toResourceCollection(),
-        ]
-            + $this->metadata()
+        return Inertia::render(
+            'Setting/Admin/Webhooks',
+            [
+                'webhooks' => WebhookCall::orderByDesc('created_at')
+                    ->get()
+                    ->toResourceCollection(),
+            ]
+                + $this->metadata()
         );
     }
 }

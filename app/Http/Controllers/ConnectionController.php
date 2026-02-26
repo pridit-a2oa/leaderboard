@@ -20,7 +20,8 @@ class ConnectionController extends Controller
                 'required',
                 Rule::exists('connections', 'id')->where(function (Builder $query) {
                     $query->where('is_oauth', 0);
-                })],
+                }),
+            ],
         ]);
 
         $connection = Connection::findOrFail($request->safe()->connection_id);

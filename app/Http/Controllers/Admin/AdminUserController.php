@@ -25,14 +25,16 @@ class AdminUserController extends SettingController
      */
     public function index(): Response
     {
-        return Inertia::render('Setting/Admin/Users', [
-            'users' => User::with('roles')
-                ->without('connections')
-                ->orderByDesc('created_at')
-                ->get()
-                ->toResourceCollection(),
-        ]
-            + $this->metadata()
+        return Inertia::render(
+            'Setting/Admin/Users',
+            [
+                'users' => User::with('roles')
+                    ->without('connections')
+                    ->orderByDesc('created_at')
+                    ->get()
+                    ->toResourceCollection(),
+            ]
+                + $this->metadata()
         );
     }
 }

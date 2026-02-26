@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('game', function (Blueprint $table) {
             $table->string('key')->primary();
-            $table->mediumText('data');
+            $table->json('data');
             $table->integer('expiration')->nullable();
         });
     }

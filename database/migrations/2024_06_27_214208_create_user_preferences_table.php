@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('preference_user', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('preference_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->boolean('value')->default(0);

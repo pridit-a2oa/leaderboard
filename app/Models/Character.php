@@ -92,7 +92,9 @@ class Character extends Model
     {
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => number_format(
-                $attributes['score'], 0, ','
+                $attributes['score'],
+                0,
+                ','
             )
         );
     }
@@ -131,7 +133,8 @@ class Character extends Model
      */
     public function scopeRankable(Builder $query): void
     {
-        $query->fromRaw('
+        $query->fromRaw(
+            '
             (
                 SELECT *, ROW_NUMBER() OVER (
                     PARTITION BY name
