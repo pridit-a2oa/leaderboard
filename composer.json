@@ -22,7 +22,7 @@
         "protonemedia/laravel-verify-new-email": "^1.13",
         "spatie/laravel-permission": "^7.2.3",
         "spatie/laravel-webhook-client": "^3.5.0",
-        "tightenco/ziggy": "^2.6.1",
+        "tightenco/ziggy": "^2.6.2",
         "xpaw/steam-openid": "^4.0.0"
     },
     "require-dev": {
