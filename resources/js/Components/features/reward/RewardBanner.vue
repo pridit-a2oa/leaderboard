@@ -18,9 +18,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
             <div class="dropdown-hover dropdown" role="link" tabindex="0">
                 <span class="underlined-rich">Link</span>
 
-                <div class="dropdown-content z-20 w-max">
+                <div class="dropdown-content top-10 z-20 w-max drop-shadow-lg">
                     <ol
-                        class="mt-2 flex list-inside list-decimal flex-col gap-3.5 rounded-md border-2 border-base-100 bg-base-200 p-3"
+                        class="flex list-inside list-decimal flex-col gap-3.5 rounded-md bg-base-300 p-3"
                     >
                         <li
                             :class="{
