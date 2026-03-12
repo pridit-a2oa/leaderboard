@@ -3,8 +3,17 @@
         <div class="navbar justify-center bg-base-200 text-neutral-300">
             <h1 class="text-xl">
                 <Link
-                    class="inline-flex items-center py-4"
+                    class="inline-flex items-center py-4 select-none"
+                    :class="{
+                        'pointer-events-none':
+                            $page.props.ziggy.location === route('home'),
+                    }"
                     :href="route('home')"
+                    :as="
+                        $page.props.ziggy.location === route('home')
+                            ? 'div'
+                            : 'a'
+                    "
                 >
                     <picture
                         class="mr-4 h-10 w-10 rounded-full bg-base-100 select-none"
