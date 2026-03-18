@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "662b7742e8273af09b7b5d11f80a9442",
+    "content-hash": "cb3c09d884756029f93168f0ad42a01a",
     "packages": [
         {
             "name": "brick/math",
@@ -3049,26 +3049,26 @@
         },
         {
             "name": "propaganistas/laravel-disposable-email",
-            "version": "2.4.24",
+            "version": "2.4.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Disposable-Email.git",
-                "reference": "16a63c55e7b23267d300abab5ffeb66314975f31"
+                "reference": "bb8c4ed72f8e920190e484fab86a010df06f2e78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/16a63c55e7b23267d300abab5ffeb66314975f31",
-                "reference": "16a63c55e7b23267d300abab5ffeb66314975f31",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/bb8c4ed72f8e920190e484fab86a010df06f2e78",
+                "reference": "bb8c4ed72f8e920190e484fab86a010df06f2e78",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/cache": "^10.0|^11.0|^12.0",
-                "illuminate/config": "^10.0|^11.0|^12.0",
-                "illuminate/console": "^10.0|^11.0|^12.0",
-                "illuminate/contracts": "^10.0|^11.0|^12.0",
-                "illuminate/support": "^10.0|^11.0|^12.0",
-                "illuminate/validation": "^10.0|^11.0|^12.0",
+                "illuminate/cache": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/config": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/console": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/validation": "^10.0|^11.0|^12.0|^13.0",
                 "php": "^8.1"
             },
             "require-dev": {
@@ -3113,7 +3113,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Propaganistas/Laravel-Disposable-Email/issues",
-                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.24"
+                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.25"
             },
             "funding": [
                 {
@@ -3121,7 +3121,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-01T01:16:14+00:00"
+            "time": "2026-03-18T07:06:48+00:00"
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
