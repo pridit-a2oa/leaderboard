@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "creativeorange/gravatar": "^1.0.25",
+        "creativeorange/gravatar": "^1.0.26",
         "inertiajs/inertia-laravel": "^2.0.22",
         "laravel/framework": "^12.55",
         "laravel/prompts": "^0.3.13",
