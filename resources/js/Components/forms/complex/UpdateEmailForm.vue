@@ -3,17 +3,16 @@ import { BaseButton } from '@/Components/base';
 import { FormInput, FormResponse } from '@/Components/forms/elements';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { router, usePage, usePoll } from '@inertiajs/vue3';
-import { useForm } from 'laravel-precognition-vue-inertia';
+import { router, useForm, usePage, usePoll } from '@inertiajs/vue3';
 import throttle from 'lodash/throttle';
 import { onBeforeUnmount, ref, watch } from 'vue';
 
 const email = ref(null);
 const timeout = ref(null);
 
-const form = useForm('patch', route('profile.update'), {
+const form = useForm({
     email: '',
-});
+}).withPrecognition('patch', route('profile.update'));
 
 if (usePage().props.auth.user.email_verified_at === null) {
     const { start, stop } = usePoll(

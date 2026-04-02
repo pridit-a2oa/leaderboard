@@ -29,6 +29,12 @@ With [laravel/sail](https://laravel.com/docs/11.x/sail) start/build the project'
 
 > For the remaining steps `sail` acts as an alias of `./vendor/bin/sail`
 
+Install dependencies:
+
+```
+sail npm install
+```
+
 Run vite:
 
 ```

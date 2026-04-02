@@ -2,7 +2,7 @@
 import { FormCheckbox, FormInput } from '@/Components/forms/elements';
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { useForm } from 'laravel-precognition-vue-inertia';
+import { useForm } from '@inertiajs/vue3';
 
 defineProps({
     title: {
@@ -11,12 +11,12 @@ defineProps({
     },
 });
 
-const form = useForm('post', route('register'), {
+const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
     conditions: false,
-});
+}).withPrecognition('post', route('register'));
 
 const submit = () =>
     form.submit({
