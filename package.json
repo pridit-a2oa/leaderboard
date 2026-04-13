@@ -46,6 +46,6 @@
         "vue3-clipboard": "^1.0.0"
     },
     "optionalDependencies": {
-        "@rolldown/binding-linux-x64-gnu": "^1.0.0-rc.13"
+        "@rolldown/binding-linux-x64-gnu": "^1.0.0-rc.15"
     }
 }
