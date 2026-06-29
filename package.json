@@ -39,7 +39,7 @@
         "@fortawesome/fontawesome-svg-core": "^7.2.0",
         "@fortawesome/free-brands-svg-icons": "^7.2.0",
         "@fortawesome/free-regular-svg-icons": "^7.2.0",
-        "@fortawesome/free-solid-svg-icons": "^7.2.0",
+        "@fortawesome/free-solid-svg-icons": "^7.3.0",
         "@fortawesome/vue-fontawesome": "^3.2.0",
         "@inertiajs/vite": "^3.4.0",
         "vue-chartjs": "^5.3.3",
