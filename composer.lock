@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c372c97ba0b663165925bfedfcbb4020",
+    "content-hash": "1b97243ee34dd425eb378a769a258102",
     "packages": [
         {
             "name": "brick/math",
@@ -3944,16 +3944,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "8.1.0",
+            "version": "8.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "754db00705dc98f9d79ace30dbb553837581571e"
+                "reference": "e97b03679f1767af7d181c14efce2dd8cb242e57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/754db00705dc98f9d79ace30dbb553837581571e",
-                "reference": "754db00705dc98f9d79ace30dbb553837581571e",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/e97b03679f1767af7d181c14efce2dd8cb242e57",
+                "reference": "e97b03679f1767af7d181c14efce2dd8cb242e57",
                 "shasum": ""
             },
             "require": {
@@ -4019,7 +4019,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/8.1.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/8.2.0"
             },
             "funding": [
                 {
@@ -4027,7 +4027,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-27T19:35:14+00:00"
+            "time": "2026-07-02T23:59:17+00:00"
         },
         {
             "name": "spatie/laravel-webhook-client",
