@@ -1,5 +1,9 @@
 <?php
 
+use ProtoneMedia\LaravelVerifyNewEmail\Mail\VerifyFirstEmail;
+use ProtoneMedia\LaravelVerifyNewEmail\Mail\VerifyNewEmail;
+use ProtoneMedia\LaravelVerifyNewEmail\PendingUserEmail;
+
 return [
 
     /*
@@ -56,7 +60,7 @@ return [
     |
     */
 
-    'model' => \ProtoneMedia\LaravelVerifyNewEmail\PendingUserEmail::class,
+    'model' => PendingUserEmail::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +72,7 @@ return [
     |
     */
 
-    'mailable_for_first_verification' => \ProtoneMedia\LaravelVerifyNewEmail\Mail\VerifyFirstEmail::class,
+    'mailable_for_first_verification' => VerifyFirstEmail::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -80,6 +84,6 @@ return [
     |
     */
 
-    'mailable_for_new_email' => \ProtoneMedia\LaravelVerifyNewEmail\Mail\VerifyNewEmail::class,
+    'mailable_for_new_email' => VerifyNewEmail::class,
 
 ];

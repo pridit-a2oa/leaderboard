@@ -103,7 +103,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the user's contributions.
      */
-    public function contributions(): hasMany
+    public function contributions(): HasMany
     {
         return $this->hasMany(Contribution::class);
     }
