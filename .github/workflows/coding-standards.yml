@@ -21,9 +21,10 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
-
-      - name: Install Pint
-        run: composer global require laravel/pint
+          tools: pint
 
       - name: Run Pint
         run: pint
+
+      - name: Commit linted files
+        uses: stefanzweifel/git-auto-commit-action@v6
