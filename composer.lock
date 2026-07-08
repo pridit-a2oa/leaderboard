@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9799829ec2311eafa32de069f9dbc84c",
+    "content-hash": "9918b47c1a8ed10ff941bfe506a725ba",
     "packages": [
         {
             "name": "brick/math",
@@ -1195,16 +1195,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.62.0",
+            "version": "v12.63.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f7e61eb1e0e06a38996802b769bce9127aec227c"
+                "reference": "7adfddbf4738f2e6cae5419b0e6bc46d4cccfbcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f7e61eb1e0e06a38996802b769bce9127aec227c",
-                "reference": "f7e61eb1e0e06a38996802b769bce9127aec227c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7adfddbf4738f2e6cae5419b0e6bc46d4cccfbcf",
+                "reference": "7adfddbf4738f2e6cae5419b0e6bc46d4cccfbcf",
                 "shasum": ""
             },
             "require": {
@@ -1413,7 +1413,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-06-09T13:50:13+00:00"
+            "time": "2026-07-07T14:16:35+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -3052,16 +3052,16 @@
         },
         {
             "name": "propaganistas/laravel-disposable-email",
-            "version": "2.4.29",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Disposable-Email.git",
-                "reference": "7a6596e72d4ecf2831fc90ac1f21f3c941210b02"
+                "reference": "f26fef96f9673441bf59799399965296513a5c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/7a6596e72d4ecf2831fc90ac1f21f3c941210b02",
-                "reference": "7a6596e72d4ecf2831fc90ac1f21f3c941210b02",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Disposable-Email/zipball/f26fef96f9673441bf59799399965296513a5c8c",
+                "reference": "f26fef96f9673441bf59799399965296513a5c8c",
                 "shasum": ""
             },
             "require": {
@@ -3116,7 +3116,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Propaganistas/Laravel-Disposable-Email/issues",
-                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.4.29"
+                "source": "https://github.com/Propaganistas/Laravel-Disposable-Email/tree/2.5.0"
             },
             "funding": [
                 {
@@ -3124,7 +3124,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-01T02:28:53+00:00"
+            "time": "2026-07-08T09:02:45+00:00"
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
