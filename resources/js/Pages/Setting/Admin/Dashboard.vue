@@ -96,17 +96,39 @@ const options = {
     scales: {
         y: {
             beginAtZero: true,
+            stacked: true,
             ticks: {
                 display: props.data.length !== 0,
                 precision: 0,
                 callback: function (value) {
                     return Number.isInteger(value) ? value : null;
                 },
-                stepSize: 1,
+                stepSize: 10,
+                maxTicksLimit: 5,
             },
+            suggestedMax: getMaxScale(data.datasets),
         },
     },
 };
+
+function getMaxScale(datasets) {
+    let max = 0;
+
+    if (datasets[0].data === undefined) return max;
+
+    const numPoints = datasets[0].data.length;
+
+    for (let i = 0; i < numPoints; i++) {
+        const total = datasets.reduce(
+            (sum, ds) => sum + parseInt(ds.data[i] || 0),
+            0,
+        );
+
+        if (total > max) max = total;
+    }
+
+    return Math.ceil((max + 10) / 10) * 10;
+}
 </script>
 
 <template>
