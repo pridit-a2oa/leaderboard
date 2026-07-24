@@ -6,11 +6,13 @@
                     class="inline-flex items-center py-4 select-none"
                     :class="{
                         'pointer-events-none':
-                            $page.props.ziggy.location === route('home'),
+                            $page.props.ziggy.location === route('home') &&
+                            !$page.props.ziggy.query,
                     }"
                     :href="route('home')"
                     :as="
-                        $page.props.ziggy.location === route('home')
+                        $page.props.ziggy.location === route('home') &&
+                        !$page.props.ziggy.query
                             ? 'div'
                             : 'a'
                     "
