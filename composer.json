@@ -21,7 +21,7 @@
         "propaganistas/laravel-disposable-email": "^2.5.0",
         "protonemedia/laravel-verify-new-email": "^1.13",
         "spatie/laravel-permission": "^8.3.0",
-        "spatie/laravel-webhook-client": "^3.6.3",
+        "spatie/laravel-webhook-client": "^3.7.0",
         "tightenco/ziggy": "^2.6.3",
         "xpaw/steam-openid": "^4.0.0"
     },
