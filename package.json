@@ -41,7 +41,7 @@
         "@fortawesome/free-regular-svg-icons": "^7.3.0",
         "@fortawesome/free-solid-svg-icons": "^7.3.0",
         "@fortawesome/vue-fontawesome": "^3.3.0",
-        "@inertiajs/vite": "^3.4.0",
+        "@inertiajs/vite": "^3.6.1",
         "vue-chartjs": "^5.3.4",
         "vue3-clipboard": "^1.0.0"
     },
