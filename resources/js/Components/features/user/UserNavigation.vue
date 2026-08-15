@@ -63,7 +63,7 @@ const form = useForm({
                 </div>
 
                 <ul
-                    class="dropdown-content menu z-10 mt-1 w-32 gap-1 rounded-md bg-base-200 p-2 shadow"
+                    class="menu dropdown-content z-10 mt-1 w-32 gap-1 rounded-md bg-base-200 p-2 shadow"
                 >
                     <li>
                         <Link

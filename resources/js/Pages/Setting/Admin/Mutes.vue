@@ -229,7 +229,7 @@ const form = useForm({
                             </label>
 
                             <ul
-                                class="dropdown-content menu z-10 mt-1 w-32 rounded-md bg-base-300 p-2 shadow"
+                                class="menu dropdown-content z-10 mt-1 w-32 rounded-md bg-base-300 p-2 shadow"
                                 tabindex="0"
                             >
                                 <li class="mb-0.5">

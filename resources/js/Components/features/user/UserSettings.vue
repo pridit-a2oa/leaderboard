@@ -48,7 +48,7 @@ const settings = ref([
             <div
                 v-if="$page.props.auth.role.name === 'admin'"
                 role="tablist"
-                class="tabs-box mb-4 tabs flex-nowrap gap-x-1"
+                class="tabs tabs-box mb-4 flex-nowrap gap-x-1"
             >
                 <Link
                     v-for="(category, index) in ['user', 'admin']"

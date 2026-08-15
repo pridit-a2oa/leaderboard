@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="dropdown-hover dropdown" role="link" tabindex="0">
+    <div class="dropdown dropdown-hover" role="link" tabindex="0">
         <span class="underlined-rich">
             <slot />
             <FontAwesomeIcon
