@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         'serve',
         'schedule:run',
         'schedule:work',
+        'test',
         'tinker',
     ];
 
