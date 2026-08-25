@@ -33,7 +33,7 @@
         "laravel/pail": "^1.2.7",
         "laravel/pint": "^1.30.5",
         "laravel/sail": "^1.67.0",
-        "mockery/mockery": "^1.6.13",
+        "mockery/mockery": "^1.6.15",
         "nunomaduro/collision": "^8.9.5",
         "pestphp/pest": "^4.7.5",
         "pestphp/pest-plugin-browser": "^4.3",
