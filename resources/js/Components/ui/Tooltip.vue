@@ -30,8 +30,18 @@ defineProps({
             <picture
                 class="dropdown-content top-10 left-2/4 z-20 w-54 -translate-x-2/4 scale-x-[-1] rounded-lg bg-base-300 p-2 px-4 drop-shadow-lg"
             >
-                <source type="image/webp" :srcset="`${path}.webp`" />
-                <img :src="`${path}.png`" :alt="alt" loading="lazy" />
+                <div class="relative aspect-2/1">
+                    <div class="absolute inset-0 skeleton"></div>
+
+                    <picture>
+                        <source :srcset="`${path}.webp`" type="image/webp" />
+                        <img
+                            :src="`${path}.png`"
+                            loading="lazy"
+                            class="absolute bg-base-300"
+                        />
+                    </picture>
+                </div>
             </picture>
         </div>
     </div>
