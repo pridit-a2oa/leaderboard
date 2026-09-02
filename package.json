@@ -19,7 +19,7 @@
         "@vue/server-renderer": "^3.5.39",
         "autoprefixer": "^10.5.4",
         "axios": "^1.18.1",
-        "concurrently": "^10.0.4",
+        "concurrently": "^10.0.5",
         "daisyui": "^5.7.21",
         "eslint": "^10.9.0",
         "eslint-config-prettier": "^10.1.8",
