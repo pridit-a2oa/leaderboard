@@ -17,7 +17,7 @@
         "@tailwindcss/vite": "^4.3.3",
         "@vitejs/plugin-vue": "^6.0.8",
         "@vue/server-renderer": "^3.5.39",
-        "autoprefixer": "^10.5.4",
+        "autoprefixer": "^10.6.0",
         "axios": "^1.20.0",
         "concurrently": "^10.0.5",
         "daisyui": "^5.7.21",
