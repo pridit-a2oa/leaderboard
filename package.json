@@ -20,7 +20,7 @@
         "autoprefixer": "^10.6.0",
         "axios": "^1.20.0",
         "concurrently": "^10.0.5",
-        "daisyui": "^5.7.21",
+        "daisyui": "^5.7.37",
         "eslint": "^10.10.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-vue": "^10.9.2",
