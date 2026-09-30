@@ -28,36 +28,36 @@ const path = {
             ''
         "
     >
-        <Link
-            :class="{
-                'pointer-events-none': [
-                    path[$page.props.auth.role.name],
-                    path.default,
-                ].includes($page.props.ziggy.location),
-            }"
-            :href="path[$page.props.auth.role.name] ?? path.default"
-            :as="
-                [path[$page.props.auth.role.name], path.default].includes(
-                    $page.props.ziggy.location,
-                )
-                    ? 'div'
-                    : 'a'
-            "
-        >
-            <FontAwesomeLayers v-if="$page.props.auth.role.icon">
+        <FontAwesomeLayers v-if="$page.props.auth.role.icon">
+            <Link
+                :class="{
+                    'pointer-events-none': [
+                        path[$page.props.auth.role.name],
+                        path.default,
+                    ].includes($page.props.ziggy.location),
+                }"
+                :href="path[$page.props.auth.role.name] ?? path.default"
+                :as="
+                    [path[$page.props.auth.role.name], path.default].includes(
+                        $page.props.ziggy.location,
+                    )
+                        ? 'div'
+                        : 'a'
+                "
+            >
                 <FontAwesomeIcon
                     class="z-10 text-neutral-500"
                     :style="{ color: $page.props.auth.role.color }"
                     :icon="$page.props.auth.role.icon"
                 />
+            </Link>
 
-                <FontAwesomeIcon
-                    class="text-base-100"
-                    :icon="faCircle"
-                    size="2xl"
-                    transform="left-4"
-                />
-            </FontAwesomeLayers>
-        </Link>
+            <FontAwesomeIcon
+                class="text-base-100"
+                :icon="faCircle"
+                size="2xl"
+                transform="left-4"
+            />
+        </FontAwesomeLayers>
     </div>
 </template>

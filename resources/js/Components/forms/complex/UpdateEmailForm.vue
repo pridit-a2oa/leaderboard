@@ -133,7 +133,7 @@ function reset() {
                     required
                     v-model="form.email"
                     :error="form.errors.email"
-                    :placeholder="$page.props.auth.user.email ?? 'None Set'"
+                    :placeholder="$page.props.auth.user.email ?? 'None'"
                     @blur="form.validate('email')"
                 />
 
