@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 defineProps({
     webhooks: {
@@ -21,13 +22,29 @@ const form = useForm({
     payload: '',
     exception: '',
 });
+
+const modal = ref(null);
+const payload = ref(null);
+
+const openModal = async (webhook) => {
+    Object.assign(
+        form,
+        Object.fromEntries(
+            Object.entries(webhook).filter(([key]) =>
+                ['headers', 'payload', 'exception'].includes(key),
+            ),
+        ),
+    );
+    payload.value.$el.nextElementSibling.scrollTop = 0;
+    modal.value.$el.showModal();
+};
 </script>
 
 <template>
     <Head title="Settings &dash; Webhooks" />
 
     <Teleport to="body">
-        <BaseModal id="modal_webhook">
+        <BaseModal ref="modal" id="modal_webhook">
             <h2 class="text-lg font-bold">Webhook</h2>
 
             <form @submit.prevent="submit">
@@ -45,6 +62,7 @@ const form = useForm({
                     <label class="divider divider-end">Payload</label>
 
                     <FormTextarea
+                        ref="payload"
                         id="payload"
                         type="payload"
                         class="!cursor-text"
@@ -95,41 +113,21 @@ const form = useForm({
                         </td>
 
                         <td
-                            class="w-40 text-right text-xs text-neutral-400"
+                            class="relative text-right text-xs text-neutral-400"
                             :title="webhook.created_at"
                         >
-                            {{ webhook.formatted_created_at }}
-                        </td>
+                            <span class="mr-10">{{
+                                webhook.formatted_created_at
+                            }}</span>
 
-                        <td class="w-12 text-right">
-                            <label
-                                for="webhook-modal"
-                                role="button"
+                            <button
+                                class="btn absolute top-1/2 right-4 size-7 -translate-y-1/2 border-none btn-soft !p-0 btn-sm hover:!bg-highlight"
                                 title="Inspect"
-                                tabindex="0"
-                                onclick="modal_webhook.showModal()"
-                                @click="
-                                    Object.assign(
-                                        form,
-                                        Object.fromEntries(
-                                            Object.entries(webhook).filter(
-                                                ([key]) =>
-                                                    [
-                                                        'headers',
-                                                        'payload',
-                                                        'exception',
-                                                    ].includes(key),
-                                            ),
-                                        ),
-                                    )
-                                "
+                                aria-label="Inspect"
+                                @click="openModal(webhook)"
                             >
-                                <FontAwesomeIcon
-                                    class="cursor-pointer !align-middle"
-                                    title="Inspect"
-                                    :icon="faMagnifyingGlass"
-                                />
-                            </label>
+                                <FontAwesomeIcon :icon="faMagnifyingGlass" />
+                            </button>
                         </td>
                     </tr>
                 </tbody>
