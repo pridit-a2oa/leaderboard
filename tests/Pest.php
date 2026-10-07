@@ -14,7 +14,13 @@ use Tests\TestCase;
 */
 
 pest()->extend(TestCase::class)
+    ->beforeEach(function () {
+        $this->withoutVite();
+    })
     ->in('Feature');
+
+pest()->extend(TestCase::class)
+    ->in('Browser');
 
 /*
 |--------------------------------------------------------------------------

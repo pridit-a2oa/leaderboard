@@ -134,7 +134,7 @@ function getMaxScale(datasets) {
 <template>
     <Head title="Settings &dash; Dashboard" />
 
-    <UserSettings title="Dashboard">
+    <UserSettings heading="Dashboard">
         <div class="rounded-md bg-base-200 p-4 [&:not(:last-child)]:mb-4">
             <Line :data="data" :options="options" />
         </div>

@@ -86,7 +86,7 @@ const openModal = async (webhook) => {
         </BaseModal>
     </Teleport>
 
-    <UserSettings title="Webhooks">
+    <UserSettings heading="Webhooks">
         <Alert
             v-if="webhooks.data.length === 0"
             message="No webhook calls found"

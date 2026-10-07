@@ -17,12 +17,12 @@ import { usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 
 defineProps({
-    title: {
+    heading: {
         type: String,
     },
 });
 
-const category = ref(usePage().props.category);
+const category = computed(() => usePage().props.category);
 
 const tab = computed({
     get() {
@@ -155,7 +155,7 @@ const settings = ref([
 
         <div class="ml-4 w-full text-neutral-300">
             <div class="mb-4 flex items-center">
-                <h2 class="grow">{{ title }}</h2>
+                <h2 class="grow">{{ heading }}</h2>
 
                 <slot name="header"></slot>
             </div>

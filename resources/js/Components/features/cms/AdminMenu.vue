@@ -12,12 +12,6 @@ import {
 } from '@fortawesome/vue-fontawesome';
 import { ref } from 'vue';
 
-defineProps({
-    title: {
-        type: String,
-    },
-});
-
 const settings = ref([
     { type: 'dashboard', icon: faChartLine },
     { type: 'mutes', icon: faCommentSlash },

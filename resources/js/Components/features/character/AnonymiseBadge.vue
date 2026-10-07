@@ -33,7 +33,7 @@ const setVisibility = () => {
         class="w-10"
         :disabled="form.processing"
         @click="setVisibility"
-        dusk="visibility-button"
+        data-test="visibility"
     >
         <FontAwesomeIcon
             :class="{

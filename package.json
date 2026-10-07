@@ -8,7 +8,8 @@
         "dev": "vite",
         "format": "prettier --write resources/",
         "format:check": "prettier --check resources/",
-        "lint": "eslint . --fix"
+        "lint": "eslint . --fix",
+        "postinstall": "npx playwright install --with-deps"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
@@ -26,6 +27,7 @@
         "eslint-plugin-vue": "^10.11.1",
         "laravel-vite-plugin": "^3.2.0",
         "lodash": "^4.18.1",
+        "playwright": "^1.63.0",
         "postcss": "^8.5.28",
         "prettier": "^3.9.9",
         "prettier-plugin-organize-imports": "^4.3.0",

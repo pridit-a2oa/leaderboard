@@ -109,7 +109,7 @@ const form = useForm({
         </BaseModal>
     </Teleport>
 
-    <UserSettings title="Mutes">
+    <UserSettings heading="Mutes">
         <template #header>
             <label
                 for="mute-modal"

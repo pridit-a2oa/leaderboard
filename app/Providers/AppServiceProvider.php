@@ -21,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     protected $ignored = [
         'db:seed',
-        'dusk',
         'migrate',
         'migrate:fresh',
         'optimize:clear',
@@ -73,7 +72,7 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        if (! $this->app->environment('dusk')) {
+        if (! $this->app->environment('testing')) {
             // Seed database on refreshes
             Event::listen(DatabaseRefreshed::class, function () {
                 Artisan::call('db:seed');

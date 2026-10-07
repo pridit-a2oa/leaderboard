@@ -31,11 +31,11 @@ if (!customElements.get('component-link')) {
         'component-link',
         defineCustomElement({
             shadowRoot: false,
-            props: ['title'],
+            props: ['label'],
             components: {
                 NormalLink,
             },
-            template: `<NormalLink>{{ title }}</NormalLink>`,
+            template: `<NormalLink>{{ label }}</NormalLink>`,
         }),
     );
 }
@@ -58,7 +58,10 @@ const submit = () => {
                 v-for="(preference, index) in $page.props.preferences"
                 :key="preference.id"
             >
-                <FormCheckbox v-model:checked="form.options[preference.id]">
+                <FormCheckbox
+                    v-model:checked="form.options[preference.id]"
+                    :name="preference.name"
+                >
                     <span v-html="preference.description"></span>
                 </FormCheckbox>
 
@@ -83,6 +86,7 @@ const submit = () => {
                     :title="(!form.isDirty && 'No changes') || ''"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing || !form.isDirty"
+                    data-test="save-preferences"
                 >
                     Save
                 </BaseButton>

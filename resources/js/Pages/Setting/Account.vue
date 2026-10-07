@@ -10,7 +10,7 @@ import { Head } from '@inertiajs/vue3';
 <template>
     <Head title="Settings &dash; Account" />
 
-    <UserSettings title="Account">
+    <UserSettings heading="Account">
         <UpdateEmailForm />
 
         <!-- <UpdatePasswordForm /> -->

@@ -14,7 +14,7 @@ const deleteUserRequest = () => {
 <template>
     <Head title="Settings &dash; Delete Account" />
 
-    <UserSettings title="Delete Account">
+    <UserSettings heading="Delete Account">
         <Alert
             v-if="$page.props.auth.user.is_deletion_throttled"
             type="success"
@@ -55,6 +55,7 @@ const deleteUserRequest = () => {
         <div class="mt-4 flex flex-row gap-4 rounded-md bg-base-200 p-4">
             <form @change="deleteUserRequest">
                 <FormCheckbox
+                    name="confirm"
                     :checked="$page.props.auth.user.is_deletion_throttled"
                     :disabled="
                         form.processing ||

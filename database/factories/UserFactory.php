@@ -32,6 +32,16 @@ class UserFactory extends Factory
     }
 
     /**
+     * Configure the model factory.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->refresh();
+        });
+    }
+
+    /**
      * Indicate that the model's email address should be verified.
      */
     public function verified(): static

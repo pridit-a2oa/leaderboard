@@ -21,7 +21,7 @@ const icon = {
 <template>
     <Head title="Settings &dash; Extras" />
 
-    <UserSettings title="Extras">
+    <UserSettings heading="Extras">
         <a
             v-if="$page.props.auth.role.name === 'member'"
             href="https://ko-fi.com/pridit"

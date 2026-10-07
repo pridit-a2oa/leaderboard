@@ -43,7 +43,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
             v-else
             class="hidden justify-self-end pr-0.5 select-none md:inline-grid"
             :href="route('login')"
-            dusk="login-button"
+            data-test="login"
         >
             <img
                 src="/images/sits_01.png"

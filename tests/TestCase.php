@@ -4,6 +4,7 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Spatie\Permission\PermissionRegistrar;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -13,6 +14,7 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->withoutVite();
+        $this->seed();
+        $this->app->make(PermissionRegistrar::class)->forgetCachedPermissions();
     }
 }

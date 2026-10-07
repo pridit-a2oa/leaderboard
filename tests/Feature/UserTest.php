@@ -3,21 +3,21 @@
 use App\Models\Contribution;
 use App\Models\User;
 
-describe('role', function () {
-    test('assigned member by default', function () {
-        $user = User::factory()->create();
+beforeEach(function () {
+    $this->user = User::factory()->create();
+});
 
-        expect($user->hasRole('member'))->toBe(true);
+describe('role', function () {
+    test('member by default', function () {
+        $this->assertTrue($this->user->hasRole('member'));
     });
 
-    test('assigned supporter when contributed and verifies email', function () {
-        $user = User::factory()->create();
+    test('supporter when contributed and verifies email', function () {
+        Contribution::factory(['email' => $this->user->email])->create();
 
-        Contribution::factory(['email' => $user->email])->create();
+        $this->user->email_verified_at = now();
+        $this->user->save();
 
-        $user->email_verified_at = now();
-        $user->save();
-
-        expect($user->hasRole('supporter'))->toBe(true);
+        $this->assertTrue($this->user->hasRole('supporter'));
     });
 });

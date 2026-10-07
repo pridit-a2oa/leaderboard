@@ -22,11 +22,11 @@ if (!customElements.get('component-link')) {
         'component-link',
         defineCustomElement({
             shadowRoot: false,
-            props: ['title'],
+            props: ['label'],
             components: {
                 NormalLink,
             },
-            template: `<NormalLink>{{ title }}</NormalLink>`,
+            template: `<NormalLink>{{ label }}</NormalLink>`,
         }),
     );
 }
@@ -35,7 +35,7 @@ if (!customElements.get('component-link')) {
 <template>
     <Head title="Settings &dash; Connections" />
 
-    <UserSettings title="Connections">
+    <UserSettings heading="Connections">
         <Alert
             v-if="$page.props.flash.message.length > 0"
             :type="$page.props.flash.message[0]"

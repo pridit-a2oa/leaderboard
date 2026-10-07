@@ -14,7 +14,7 @@ defineProps({
 <template>
     <Head title="Settings &dash; Users" />
 
-    <UserSettings title="Users">
+    <UserSettings heading="Users">
         <table class="table mt-2 table-fixed rounded-md bg-base-200">
             <tbody>
                 <tr

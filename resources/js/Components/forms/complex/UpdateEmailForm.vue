@@ -157,6 +157,7 @@ function reset() {
                         :disabled="
                             form.processing || !form.isDirty || form.hasErrors
                         "
+                        data-test="save-email"
                     >
                         Save
                     </BaseButton>

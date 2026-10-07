@@ -1,4 +1,4 @@
-![Leaderboard](https://github.com/user-attachments/assets/094f5049-dc9e-429c-8ed2-367d2848a7fa)
+<img width="1280" height="640" alt="Leaderboard" src="https://github.com/user-attachments/assets/5943dad0-a10a-4bba-82aa-e737bcbf2291" />
 
 # Leaderboard
 
@@ -132,26 +132,22 @@ For style fixing [laravel/pint](https://laravel.com/docs/11.x/pint) can be used.
 
 ## Testing
 
+> [!IMPORTANT]
 > Create a new MySQL database called `testing`
 
-Run the unit/feature tests supported by [pestphp/pest](https://pestphp.com/):
+Run the feature tests supported by [Pest](https://pestphp.com/):
 
 ```
 sail artisan test
 ```
 
-Run the browser tests supported by [laravel/dusk](https://laravel.com/docs/11.x/dusk):
+Run the browser tests supported by [Playwright](https://playwright.dev/) (bypassing sail, as the host needs dependencies):
 
 ```
-sail dusk
+php artisan test -c phpunit.browser.xml
 ```
 
-While running Dusk tests Selenium can be observed using noVNC via:
-
-- http://localhost:7900/?autoconnect=1&resize=scale&password=secret
-
-> [!IMPORTANT]
-> Dusk will not work with [Vite](http://localhost:5173/) running, so ensure it is off prior to running this test suite.
+> To observe or for debugging, headed mode can be used by appending `--debug` to the above.
 
 ## License
 

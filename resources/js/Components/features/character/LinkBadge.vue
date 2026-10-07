@@ -29,7 +29,6 @@ const linkCharacter = () => {
         }"
         :disabled="form.processing"
         v-on="id ? { click: linkCharacter } : {}"
-        dusk="link-button"
     >
         Link
     </BaseBadge>

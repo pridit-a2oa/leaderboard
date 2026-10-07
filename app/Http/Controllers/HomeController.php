@@ -59,9 +59,11 @@ class HomeController extends Controller
         if ($characters->isEmpty()) {
             $characters = Character::factory([
                 'id64' => null,
-                'name' => 'Example',
             ])
                 ->count(5)
+                ->state(function () {
+                    return ['name' => fake()->unique()->firstName()];
+                })
                 ->make()
                 ->sortBy([
                     ['score', 'desc'],

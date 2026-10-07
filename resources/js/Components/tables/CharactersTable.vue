@@ -181,11 +181,16 @@ const filterCharacter = (character) => {
                                     dir="ltr"
                                     class="badge gap-1.5 badge-soft badge-outline badge-sm font-light uppercase badge-error select-none"
                                     :href="route('user.setting.extras')"
+                                    data-test="link"
                                 >
                                     Link
                                 </Link>
 
-                                <LinkBadge v-else :id="character.id" />
+                                <LinkBadge
+                                    v-else
+                                    :id="character.id"
+                                    data-test="link"
+                                />
                             </template>
                         </template>
                     </td>

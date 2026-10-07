@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('connections', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('icon');
             $table->mediumText('description')->nullable();
             $table->boolean('is_oauth')->default(0);

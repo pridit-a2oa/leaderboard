@@ -18,7 +18,7 @@ import { Head } from '@inertiajs/vue3';
 <template>
     <Head title="Settings &dash; Characters" />
 
-    <UserSettings title="Characters">
+    <UserSettings heading="Characters">
         <Alert
             v-if="$page.props.auth.user.characters.length === 0"
             message="You have no linked characters"

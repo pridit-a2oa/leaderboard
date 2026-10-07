@@ -1,183 +1,192 @@
 <?php
 
-namespace Tests\Browser;
-
 use App\Models\Character;
 use App\Models\Connection;
 use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTruncation;
-use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
 
-class CharacterTest extends DuskTestCase
-{
-    use DatabaseTruncation;
+test('has home', function () {
+    $this->get('/')
+        ->assertStatus(200);
+});
 
-    public function test_can_see_character(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $character = Character::factory()->create();
+test('has a character', function () {
+    $character = Character::factory()->create();
 
-            $browser->visit('/')
-                ->assertSee($character->name);
-        });
-    }
+    $this->visit('/')
+        ->assertSee($character->name);
+});
 
-    public function test_can_link_linkable_character(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $id64 = 1;
+test('can link character', function () {
+    $id64 = 1;
 
-            Character::factory()->create([
-                'id64' => $id64,
-            ]);
+    Character::factory()->create([
+        'id64' => $id64,
+    ]);
 
-            $user = User::factory()->hasAttached(
-                Connection::factory()->steam(),
-                ['identifier' => $id64]
-            )->create();
+    $user = User::factory()
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->fresh('connections');
 
-            $browser->loginAs($user)
-                ->visit('/')
-                ->assertPresent('@link-button')
-                ->press('LINK')
-                ->visit('/')
-                ->waitForText('YOU')
-                ->assertSee('YOU');
-        });
-    }
+    $this->actingAs($user)
+        ->visit('/')
+        ->assertPresent('@link')
+        ->click('@link')
+        ->assertPathIs('/settings/characters')
+        ->navigate('/')
+        ->assertSee('YOU');
+});
 
-    public function test_can_toggle_visibility_of_character(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $id64 = 1;
+test('can anonymize character', function () {
+    $id64 = 1;
 
-            $user = User::factory()->hasCharacters([
-                'id64' => $id64,
-            ])
-                ->hasAttached(
-                    Connection::factory()->steam(),
-                    ['identifier' => $id64]
-                )
-                ->create();
+    $user = User::factory()->hasCharacters([
+        'id64' => $id64,
+    ])
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->fresh('connections');
 
-            $browser->loginAs($user)
-                ->visit('/settings/characters')
-                ->click('@visibility-button')
-                ->waitUntilMissing('#nprogress')
-                ->loginAs(User::create())
-                ->visit('/')
-                ->assertSee('Anonymous');
-        });
-    }
+    $this->actingAs($user)
+        ->visit('/settings/characters')
+        ->assertPresent('@visibility')
+        ->press('@visibility')
+        ->navigate('/')
+        ->click('Account')
+        ->click('Sign out')
+        ->assertSee('Anonymous');
 
-    public function test_can_unlink_then_relink_character(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $id64 = 1;
+    $this->assertGuest();
+});
 
-            $user = User::factory()->hasCharacters([
-                'id64' => $id64,
-            ])
-                ->hasAttached(
-                    Connection::factory()->steam(),
-                    ['identifier' => $id64]
-                )
-                ->create();
+test('can relink character', function () {
+    $id64 = 1;
 
-            $browser->loginAs($user)
-                ->visit('/')
-                ->assertMissing('@link-button')
-                ->visit('/settings/characters')
-                ->click('@unlink-button')
-                ->waitUntilMissing('#nprogress')
-                ->assertSee('You have no linked characters')
-                ->visit('/')
-                ->assertPresent('@link-button')
-                ->press('LINK')
-                ->visit('/')
-                ->waitForText('YOU')
-                ->assertSee('YOU');
-        });
-    }
+    $user = User::factory()->hasCharacters([
+        'id64' => $id64,
+    ])
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->fresh('connections');
 
-    public function test_cannot_link_two_characters_as_user(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $id64 = 1;
+    $this->actingAs($user)
+        ->visit('/')
+        ->assertMissing('@link')
+        ->navigate('/settings/characters')
+        ->assertPresent('@unlink')
+        ->click('@unlink')
+        ->assertSee('You have no linked characters')
+        ->navigate('/')
+        ->assertPresent('@link')
+        ->click('@link')
+        ->navigate('/')
+        ->assertSee('YOU');
+});
 
-            Character::factory()->create([
-                'id64' => $id64,
-            ]);
+test('cannot link multiple characters', function () {
+    $id64 = 1;
 
-            $user = User::factory()->hasCharacters()
-                ->hasAttached(
-                    Connection::factory()->steam(),
-                    ['identifier' => $id64]
-                )
-                ->create();
+    Character::factory()->create([
+        'id64' => $id64,
+    ]);
 
-            $browser->loginAs($user)
-                ->visit('/')
-                ->clickLink('Link')
-                ->waitUntilMissing('#nprogress')
-                ->assertPathIs('/settings/extras');
-        });
-    }
+    $user = User::factory()->hasCharacters()
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->fresh('connections');
 
-    public function test_can_link_two_characters_as_supporter(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $id64 = 1;
+    $this->actingAs($user)
+        ->visit('/')
+        ->assertPresent('@link')
+        ->click('@link')
+        ->assertPathIs('/settings/extras');
+});
 
-            Character::factory()->create([
-                'id64' => $id64,
-            ]);
+test('can link multiple characters as supporter', function () {
+    $id64 = 1;
 
-            $user = User::factory()->hasCharacters([
-                'id64' => $id64,
-            ])
-                ->hasAttached(
-                    Connection::factory()->steam(),
-                    ['identifier' => $id64]
-                )
-                ->create()
-                ->syncRoles('supporter');
+    Character::factory()->create([
+        'id64' => $id64,
+    ]);
 
-            $browser->loginAs($user)
-                ->visit('/')
-                ->press('LINK')
-                ->waitUntilMissing('#nprogress')
-                ->assertPathIs('/settings/characters');
-        });
-    }
+    $user = User::factory()->hasCharacters([
+        'id64' => $id64,
+    ])
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->syncRoles('supporter')
+        ->fresh('connections');
 
-    public function test_can_reset_character_statistics_as_supporter(): void
-    {
-        $this->browse(function (Browser $browser) {
-            $id64 = 1;
+    $this->actingAs($user)
+        ->visit('/')
+        ->assertPresent('@link')
+        ->click('@link')
+        ->assertPathIs('/settings/characters');
+});
 
-            $user = User::factory()->has(
-                Character::factory(['id64' => $id64])
-                    ->hasStatistics()
-            )
-                ->hasAttached(
-                    Connection::factory()->steam(),
-                    ['identifier' => $id64]
-                )
-                ->create()
-                ->syncRoles('supporter');
+test('cannot reset character statistics', function () {
+    $id64 = 1;
 
-            $character = $user->characters->first()->name;
+    $user = User::factory()->has(
+        Character::factory(['id64' => $id64])
+            ->hasStatistics()
+    )
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->fresh('connections');
 
-            $browser->loginAs($user)
-                ->visit('/')
-                ->assertSee($character)
-                ->visit('/settings/characters')
-                ->assertPresent('@reset-button')
-                ->click('@reset-button')
-                ->waitUntilMissing('#nprogress')
-                ->assertMissing('@reset-button');
-        });
-    }
-}
+    $this->actingAs($user)
+        ->visit('/')
+        ->assertSee($user->characters->first()->name)
+        ->navigate('/settings/characters')
+        ->assertMissing('@reset');
+});
+
+test('can reset character statistics as supporter', function () {
+    $id64 = 1;
+
+    $user = User::factory()->has(
+        Character::factory(['id64' => $id64])
+            ->hasStatistics()
+    )
+        ->hasAttached(
+            Connection::firstWhere('name', 'steam'),
+            ['identifier' => $id64],
+            'connections'
+        )
+        ->create()
+        ->syncRoles('supporter')
+        ->fresh('connections');
+
+    $this->actingAs($user)
+        ->visit('/')
+        ->assertSee($user->characters->first()->name)
+        ->navigate('/settings/characters')
+        ->assertPresent('@reset')
+        ->click('@reset')
+        ->assertMissing('@reset');
+});

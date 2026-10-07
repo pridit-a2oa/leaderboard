@@ -52,7 +52,7 @@ const form = useForm({
                     class="btn font-normal"
                     role="button"
                     tabindex="0"
-                    dusk="account-button"
+                    data-test="account"
                 >
                     Account
                     <FontAwesomeIcon

@@ -20,7 +20,7 @@ class ProfileUpdateRequest extends FormRequest
                 'lowercase',
                 'email',
                 'unique:users,email',
-                ...$this->isPrecognitive() || app()->isLocal() ? [] : ['indisposable'],
+                ...$this->isPrecognitive() || app()->isLocal() || app()->runningUnitTests() ? [] : ['indisposable'],
             ],
         ];
     }
