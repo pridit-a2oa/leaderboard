@@ -3,9 +3,12 @@ import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
-import VueDevTools from 'vite-plugin-vue-devtools';
+import vueDevTools from 'vite-plugin-vue-devtools';
 
 export default defineConfig({
+    devtools: {
+        apply: 'serve',
+    },
     plugins: [
         laravel({
             input: ['resources/js/app.js'],
@@ -25,7 +28,7 @@ export default defineConfig({
                 },
             },
         }),
-        VueDevTools({
+        vueDevTools({
             appendTo: 'resources/js/app.js',
         }),
     ],
