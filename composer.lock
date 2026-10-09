@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64b2e35be23ce4adf0ccf47ad1aaeb81",
+    "content-hash": "bde081c1f7cdb89ed4d7ee6e384ffe0d",
     "packages": [
         {
             "name": "brick/math",
@@ -1541,16 +1541,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v11.8.0",
+            "version": "v11.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "ca47a917425f733666a0d426b1ff6aea866dd1b1"
+                "reference": "07a6255b0cf2420426a80fd0e58a96b44afbfd40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/ca47a917425f733666a0d426b1ff6aea866dd1b1",
-                "reference": "ca47a917425f733666a0d426b1ff6aea866dd1b1",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/07a6255b0cf2420426a80fd0e58a96b44afbfd40",
+                "reference": "07a6255b0cf2420426a80fd0e58a96b44afbfd40",
                 "shasum": ""
             },
             "require": {
@@ -1618,7 +1618,7 @@
                 "issues": "https://github.com/laravel/scout/issues",
                 "source": "https://github.com/laravel/scout"
             },
-            "time": "2026-09-22T14:45:06+00:00"
+            "time": "2026-10-06T14:26:28+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -12788,16 +12788,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70"
+                "reference": "8a163706bbcac613733dba03f51e13b5eb1bb819"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/2ccb7c2e821038c03a3e6e1700c570c158c55f70",
-                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/8a163706bbcac613733dba03f51e13b5eb1bb819",
+                "reference": "8a163706bbcac613733dba03f51e13b5eb1bb819",
                 "shasum": ""
             },
             "require": {
@@ -12848,9 +12848,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/2.4.1"
+                "source": "https://github.com/webmozarts/assert/tree/2.5.0"
             },
-            "time": "2026-06-15T15:31:57+00:00"
+            "time": "2026-10-05T23:14:19+00:00"
         }
     ],
     "aliases": [],
