@@ -76,7 +76,7 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
 # Run npm install to satisfy build requirements
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 # Build app
 RUN npm run build
