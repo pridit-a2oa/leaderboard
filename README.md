@@ -1,4 +1,4 @@
-<img width="1280" height="640" alt="Leaderboard" src="https://github.com/user-attachments/assets/5943dad0-a10a-4bba-82aa-e737bcbf2291" />
+<img width="1280" height="640" alt="Leaderboard" src="https://github.com/user-attachments/assets/adcb41d8-ca09-4b3c-8a2a-827bfefef20d" />
 
 # Leaderboard
 
