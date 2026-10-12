@@ -1,12 +1,14 @@
 name: Build Image
 
 on:
-  push:
-    branches:
-      - production
+  workflow_run:
+    workflows: ["Tests"]
+    types: [completed]
+    branches: [production]
 
 jobs:
   build-image:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
