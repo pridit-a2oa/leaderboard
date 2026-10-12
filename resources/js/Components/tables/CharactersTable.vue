@@ -14,6 +14,7 @@ import {
     faHeart,
     faMinus,
     faTrophy,
+    faUpDown,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     FontAwesomeIcon,
@@ -92,7 +93,12 @@ const filterCharacter = (character) => {
                 <th class="hidden md:table-cell"></th>
                 <th class="w-0"></th>
                 <th class="w-0">Rank</th>
-                <th class="hidden w-0 md:table-cell"></th>
+                <th class="hidden w-0 md:table-cell">
+                    <FontAwesomeIcon
+                        :icon="faUpDown"
+                        size="sm"
+                    ></FontAwesomeIcon>
+                </th>
             </tr>
         </thead>
 
