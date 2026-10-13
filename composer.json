@@ -12,8 +12,8 @@
         "php": "^8.4",
         "creativeorange/gravatar": "^1.0.26",
         "inertiajs/inertia-laravel": "^3.5.1",
-        "laravel/framework": "^12.69.3",
-        "laravel/prompts": "^0.3.25",
+        "laravel/framework": "^12.70.0",
+        "laravel/prompts": "^0.3.26",
         "laravel/sanctum": "^4.3.3",
         "laravel/scout": "^11.9.0",
         "laravel/tinker": "^3.0.2",
@@ -22,7 +22,7 @@
         "protonemedia/laravel-verify-new-email": "^1.13",
         "spatie/laravel-permission": "^8.3.0",
         "spatie/laravel-webhook-client": "^3.7.0",
-        "tightenco/ziggy": "^2.6.4",
+        "tightenco/ziggy": "^2.6.5",
         "xpaw/steam-openid": "^4.0.0"
     },
     "require-dev": {
