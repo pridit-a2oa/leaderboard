@@ -13,7 +13,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
-        "@inertiajs/vue3": "^3.8.0",
+        "@inertiajs/vue3": "^3.9.1",
         "@tailwindcss/postcss": "^4.3.3",
         "@tailwindcss/vite": "^4.3.3",
         "@vitejs/devtools": "^0.7.6",
