@@ -29,6 +29,10 @@
     scrollbar-color: unset;
 }
 
+.vue-apexcharts {
+    @apply mt-2 !min-h-0;
+}
+
 .container {
     max-width: 615px;
     min-width: 320px;
