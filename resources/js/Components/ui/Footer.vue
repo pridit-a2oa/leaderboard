@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-    <footer class="footer bg-base-200">
+    <footer class="fixed bottom-0 footer bg-base-200">
         <div
             class="xs:px-0 container mx-auto flex flex-col items-center gap-y-4 py-4 text-neutral-300 md:flex-row"
         >

@@ -43,8 +43,8 @@ const settings = ref([
 </script>
 
 <template>
-    <div class="flex">
-        <div>
+    <div class="grid grid-cols-[auto_1fr] items-start">
+        <div class="sticky top-[1rem]">
             <div
                 v-if="$page.props.auth.role.name === 'admin'"
                 role="tablist"
@@ -153,7 +153,7 @@ const settings = ref([
             <AdminMenu v-if="tab.value === 'admin'" />
         </div>
 
-        <div class="ml-4 w-full text-neutral-300">
+        <div class="ml-4 text-neutral-300">
             <div class="mb-4 flex items-center">
                 <h2 class="grow">{{ heading }}</h2>
 
