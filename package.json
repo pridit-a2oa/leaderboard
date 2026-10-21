@@ -37,7 +37,7 @@
         "typescript": "^7.0.2",
         "vite": "^8.3.4",
         "vite-plugin-vue-devtools": "^9.0.0-rc.1",
-        "vue": "^3.5.43"
+        "vue": "^3.5.44"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^7.3.1",
