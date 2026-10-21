@@ -1,4 +1,4 @@
-FROM node:26-alpine3.23
+FROM node:26-alpine3.24
 
 # Set the application variables
 ENV APP_NAME=Leaderboard
@@ -62,9 +62,6 @@ RUN chmod -R 644 /etc/crontabs/laravel
 
 # Make sure files/folders needed by the processes are accessable when they run under the laravel user
 RUN chown -R laravel:laravel /var/www/html /run /var/lib/nginx /var/log/nginx
-
-# Create symlink for php
-RUN ln -s /usr/bin/php85 /usr/bin/php
 
 # Add application
 COPY --chown=laravel . /var/www/html/
