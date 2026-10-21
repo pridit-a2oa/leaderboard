@@ -16,7 +16,7 @@
         "@inertiajs/vue3": "^3.9.1",
         "@tailwindcss/postcss": "^4.3.3",
         "@tailwindcss/vite": "^4.3.3",
-        "@vitejs/devtools": "^0.7.6",
+        "@vitejs/devtools": "^0.8.0",
         "@vitejs/plugin-vue": "^6.0.10",
         "@vue/server-renderer": "^3.5.44",
         "autoprefixer": "^10.6.1",
