@@ -85,15 +85,15 @@ const filterCharacter = (character) => {
 </script>
 
 <template>
-    <BaseTable dir="rtl">
+    <BaseTable class="table-pin-rows -mt-3" dir="rtl">
         <thead>
-            <tr class="select-none [&>th]:pt-0 [&>th]:pb-2">
+            <tr class="select-none [&>th]:pb-2">
                 <th class="w-0 text-right">Score</th>
                 <th></th>
                 <th class="hidden md:table-cell"></th>
                 <th class="w-0"></th>
                 <th class="w-0">Rank</th>
-                <th class="hidden w-0 md:table-cell">
+                <th class="hidden w-0 text-center md:table-cell">
                     <FontAwesomeIcon
                         :icon="faUpDown"
                         size="sm"

@@ -23,7 +23,7 @@ const settings = ref([
 <template>
     <ul
         v-if="$page.props.auth.role.name === 'admin'"
-        class="menu mt-4 w-44 gap-1 rounded-md bg-base-200"
+        class="menu mt-4 gap-1 rounded-md bg-base-200"
     >
         <li v-for="setting in settings" class="capitalize">
             <Link

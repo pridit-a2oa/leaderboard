@@ -2,11 +2,11 @@
 import { AdminMenu } from '@/Components/features/cms';
 import { SuffixText } from '@/Components/text';
 import {
+    faBoxOpen,
     faCircle,
     faCircleUser,
     faPersonRifle,
     faPlug,
-    faStar,
     faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -38,13 +38,20 @@ const settings = ref([
     { type: 'account', icon: faCircleUser, disabled: false },
     { type: 'characters', icon: faPersonRifle, disabled: false },
     { type: 'connections', icon: faPlug, disabled: false },
-    { type: 'extras', icon: faStar, disabled: false },
+    {
+        type: 'extras',
+        label: 'Extra Features',
+        icon: faBoxOpen,
+        disabled: false,
+    },
 ]);
 </script>
 
 <template>
-    <div class="grid grid-cols-[auto_1fr] items-start">
-        <div class="sticky top-[1rem]">
+    <div
+        class="grid grid-cols-1 content-start items-start md:grid-cols-[180px_1fr] [&_h2]:max-md:text-center"
+    >
+        <div class="top-[2rem] pb-4 md:sticky md:pb-0 [&>ul]:min-w-full">
             <div
                 v-if="$page.props.auth.role.name === 'admin'"
                 role="tablist"
@@ -70,7 +77,7 @@ const settings = ref([
             </div>
 
             <template v-if="tab.value === 'user'">
-                <ul class="menu w-44 gap-1 rounded-lg bg-base-200">
+                <ul class="menu gap-1 rounded-lg bg-base-200">
                     <li
                         v-for="setting in settings"
                         class="group/parent capitalize"
@@ -123,7 +130,7 @@ const settings = ref([
                             </FontAwesomeLayers>
 
                             <span class="truncate">
-                                {{ setting.type }}
+                                {{ setting.label ?? setting.type }}
                             </span>
 
                             <SuffixText
@@ -131,9 +138,7 @@ const settings = ref([
                             />
                         </Link>
                     </li>
-                </ul>
 
-                <ul class="menu mt-4 w-44 rounded-md bg-base-200">
                     <li>
                         <Link
                             class="pl-2 !text-error hover:bg-highlight"
@@ -153,8 +158,8 @@ const settings = ref([
             <AdminMenu v-if="tab.value === 'admin'" />
         </div>
 
-        <div class="ml-4 text-neutral-300">
-            <div class="mb-4 flex items-center">
+        <div class="text-neutral-300 md:ml-4">
+            <div class="mb-4 flex">
                 <h2 class="grow">{{ heading }}</h2>
 
                 <slot name="header"></slot>

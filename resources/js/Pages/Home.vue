@@ -64,7 +64,7 @@ defineProps({
         "
         class="mt-2 text-center text-sm font-light text-neutral-400"
     >
-        <span>
+        <span class="px-2">
             (minimum score of
             <span class="font-bold tabular-nums">{{ minScore }}</span>
             required to be eligible for ranking)</span

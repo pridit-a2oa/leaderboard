@@ -6,6 +6,8 @@
 }
 
 @theme {
+    --breakpoint-xs: 386px;
+
     --color-gold: #d4af37;
     --color-silver: #c0c0c0;
     --color-bronze: #cd7f32;

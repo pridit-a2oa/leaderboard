@@ -3,13 +3,15 @@ import { Banner, Breadcrumbs, Footer } from '@/Components/ui';
 </script>
 
 <template>
-    <div class="flex h-screen flex-col">
+    <div class="flex h-dvh flex-col [&>*]:[scrollbar-gutter:stable_both-edges]">
         <Banner />
 
         <Breadcrumbs />
 
-        <main class="container mx-auto mb-auto grid gap-5 py-8">
-            <slot />
+        <main class="flex-1 overflow-y-auto" scroll-region>
+            <div class="container mx-auto grid gap-5 py-8">
+                <slot />
+            </div>
         </main>
 
         <Footer />

@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 <template>
     <div
-        class="grid items-center gap-3 md:grid-cols-[auto_auto_auto_1fr] md:justify-start"
+        class="grid grid-cols-[repeat(3,max-content)_1fr] items-center gap-3 max-md:grid-cols-[1fr_1fr]"
     >
         <ButtonLink href="https://dsc.gg/pridit">
             <FontAwesomeIcon
@@ -41,7 +41,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
         <Link
             v-else
-            class="hidden justify-self-end pr-0.5 select-none md:inline-grid"
+            class="select-none max-md:mx-auto md:justify-self-end"
             :href="route('login')"
             data-test="login"
         >

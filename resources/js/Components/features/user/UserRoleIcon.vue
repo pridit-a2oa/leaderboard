@@ -21,7 +21,7 @@ const path = {
 
 <template>
     <div
-        class="indicator-item cursor-default"
+        class="max-xs:hidden indicator-item cursor-default"
         :title="
             ($page.props.auth.role.name === 'supporter' &&
                 'Thanks for being a supporter!') ||

@@ -14,7 +14,9 @@ const icon = {
 
 <template>
     <div v-if="$page.props.name" class="flex bg-base-300 text-sm">
-        <div class="xs:px-0 container mx-auto breadcrumbs py-3 select-none">
+        <div
+            class="xs:px-0 container mx-auto breadcrumbs py-3 select-none max-md:w-auto max-md:!min-w-auto"
+        >
             <ul>
                 <li>
                     <Link class="underlined-link" :href="route('home')">
