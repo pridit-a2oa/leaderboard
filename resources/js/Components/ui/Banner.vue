@@ -3,7 +3,7 @@
         <div class="navbar justify-center bg-base-200 text-neutral-300">
             <h1 class="text-xl">
                 <Link
-                    class="inline-flex items-center py-4 select-none"
+                    class="flex flex-col items-center py-4 text-center select-none max-xs:gap-y-3 xs:flex-row"
                     :class="{
                         'pointer-events-none':
                             $page.props.ziggy.location === route('home') &&
@@ -18,7 +18,7 @@
                     "
                 >
                     <picture
-                        class="mr-4 h-10 w-10 rounded-full bg-base-100 select-none"
+                        class="h-10 w-10 rounded-full bg-base-100 select-none xs:mr-4"
                     >
                         <source type="image/webp" srcset="/images/logo.webp" />
                         <img src="/images/logo.png" alt="Logo" loading="lazy" />

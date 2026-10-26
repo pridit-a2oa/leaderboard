@@ -75,9 +75,11 @@ import { Head } from '@inertiajs/vue3';
                         }}</span>
                     </td>
 
-                    <td class="text-right">
+                    <td
+                        class="flex place-content-end items-end gap-y-4 text-right max-xs:flex-col"
+                    >
                         <div
-                            class="tooltip tooltip-bottom tooltip-secondary before:!w-[12rem]"
+                            class="tooltip tooltip-top tooltip-secondary before:!w-[11rem]"
                             data-tip="Toggle whether this character is anonymized publicly"
                         >
                             <AnonymiseBadge
@@ -87,8 +89,8 @@ import { Head } from '@inertiajs/vue3';
                         </div>
 
                         <div
-                            class="tooltip tooltip-bottom ml-3 tooltip-warning before:!w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
-                            data-tip="Unlink this character from your account&#10;(can be relinked at any time)"
+                            class="tooltip tooltip-top ml-3 tooltip-warning before:!w-[12rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            data-tip="Unlink this character from your account&#10;(can be relinked)"
                         >
                             <UnlinkBadge :id="character.id" />
                         </div>
@@ -99,7 +101,7 @@ import { Head } from '@inertiajs/vue3';
                                     $page.props.auth.role.name,
                                 ) && character.statistics_count > 0
                             "
-                            class="tooltip tooltip-bottom ml-3 tooltip-error before:!w-[11rem] before:whitespace-pre-line before:content-[attr(data-tip)]"
+                            class="tooltip tooltip-top ml-3 tooltip-error before:!w-[11rem] before:whitespace-pre-line before:!text-black before:content-[attr(data-tip)]"
                             data-tip="Reset statistics for this character&#10;(cannot be reversed)"
                         >
                             <ResetBadge :id="character.id" />

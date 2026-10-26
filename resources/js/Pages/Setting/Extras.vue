@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Head, usePage } from '@inertiajs/vue3';
 
 const extras = [
-    'Supporter <span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[12rem]" data-tip="Applies to one linked character with the highest score (and most recently active)">badge</span>',
+    'Supporter <span class="underlined-rich tooltip tooltip-right tooltip-secondary before:!w-[12rem]" data-tip="Applies to one linked character with the highest score (and most recently active)">badge</span>',
     'Multiple character linking',
-    `<span class="underlined-rich tooltip tooltip-bottom tooltip-secondary before:!w-[14rem]" data-tip="${usePage().props.statistics}">Statistics</span> tracking (per character)`,
+    `<span class="underlined-rich tooltip tooltip-right tooltip-secondary before:!w-[14rem]" data-tip="${usePage().props.statistics}">Statistics</span> tracking (per character)`,
 ];
 
 const icon = {
@@ -19,9 +19,9 @@ const icon = {
 </script>
 
 <template>
-    <Head title="Settings &dash; Extras" />
+    <Head title="Settings &dash; Extra Features" />
 
-    <UserSettings heading="Extras">
+    <UserSettings heading="Extra Features">
         <a
             v-if="$page.props.auth.role.name === 'member'"
             href="https://ko-fi.com/pridit"

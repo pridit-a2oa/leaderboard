@@ -9,12 +9,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 <template>
     <div
-        class="alert hidden rounded-lg !border-base-200 !bg-base-200 py-4 tracking-wide md:grid"
+        class="alert grid place-items-center rounded-lg !border-base-200 !bg-base-200 py-4"
         role="alert"
     >
         <RewardIcon :user="$page.props.auth.user" />
 
-        <div class="m-auto text-sm">
+        <div class="text-sm max-md:text-justify">
             <div class="dropdown dropdown-hover" role="link" tabindex="0">
                 <span class="underlined-rich">Link</span>
 

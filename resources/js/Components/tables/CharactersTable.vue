@@ -85,15 +85,15 @@ const filterCharacter = (character) => {
 </script>
 
 <template>
-    <BaseTable dir="rtl">
+    <BaseTable class="table-pin-rows -mt-3" dir="rtl">
         <thead>
-            <tr class="select-none [&>th]:pt-0 [&>th]:pb-2">
+            <tr class="select-none [&>th]:pb-2">
                 <th class="w-0 text-right">Score</th>
+                <th class="max-2xs:hidden"></th>
                 <th></th>
-                <th class="hidden md:table-cell"></th>
-                <th class="w-0"></th>
+                <th class="w-0 max-xs:hidden"></th>
                 <th class="w-0">Rank</th>
-                <th class="hidden w-0 md:table-cell">
+                <th class="hidden w-0 text-center md:table-cell">
                     <FontAwesomeIcon
                         :icon="faUpDown"
                         size="sm"
@@ -132,73 +132,76 @@ const filterCharacter = (character) => {
                         {{ character.formatted_score ?? '&dash;' }}
                     </td>
 
-                    <td class="hidden w-10 md:table-cell">
-                        <a
-                            v-if="
-                                character.id64 &&
-                                ($page.props.auth.user === null ||
-                                    $page.props.auth.user.connections.find(
-                                        (e) =>
-                                            e.pivot.identifier !==
-                                            character.id64,
-                                    ))
-                            "
-                            :href="`https://steamcommunity.com/profiles/${character.id64}`"
-                            target="_blank"
-                        >
-                            <FontAwesomeIcon
-                                class="!align-middle text-neutral-400 opacity-30 transition ease-in-out hover:opacity-100"
-                                :icon="faSteam"
-                                size="xl"
-                                title="Steam Community Profile"
-                            />
-                        </a>
+                    <td class="max-2xs:hidden">
+                        <div class="inline-grid grid-flow-col">
+                            <a
+                                v-if="
+                                    character.id64 &&
+                                    ($page.props.auth.user === null ||
+                                        $page.props.auth.user.connections.find(
+                                            (e) =>
+                                                e.pivot.identifier !==
+                                                character.id64,
+                                        ))
+                                "
+                                :href="`https://steamcommunity.com/profiles/${character.id64}`"
+                                target="_blank"
+                            >
+                                <FontAwesomeIcon
+                                    class="!align-middle text-neutral-400 opacity-30 transition ease-in-out hover:opacity-100"
+                                    :icon="faSteam"
+                                    size="xl"
+                                    title="Steam Community Profile"
+                                />
+                            </a>
 
-                        <template
-                            v-if="
-                                $page.props.auth.user !== null &&
-                                $page.props.auth.user.connections.some(
-                                    (e) =>
-                                        e.pivot.identifier === character.id64,
-                                )
-                            "
-                        >
-                            <Link
+                            <template
                                 v-if="
                                     $page.props.auth.user !== null &&
-                                    $page.props.auth.user.characters.some(
-                                        (e) => e.id === character.id,
+                                    $page.props.auth.user.connections.some(
+                                        (e) =>
+                                            e.pivot.identifier ===
+                                            character.id64,
                                     )
                                 "
-                                class="badge badge-soft badge-outline badge-sm font-light uppercase badge-primary select-none"
-                                :href="route('user.setting.characters')"
                             >
-                                You
-                            </Link>
-
-                            <template v-else>
                                 <Link
                                     v-if="
-                                        $page.props.auth.role.name ===
-                                            'member' &&
-                                        $page.props.auth.user.characters
-                                            .length > 0
+                                        $page.props.auth.user !== null &&
+                                        $page.props.auth.user.characters.some(
+                                            (e) => e.id === character.id,
+                                        )
                                     "
-                                    dir="ltr"
-                                    class="badge gap-1.5 badge-soft badge-outline badge-sm font-light uppercase badge-error select-none"
-                                    :href="route('user.setting.extras')"
-                                    data-test="link"
+                                    class="badge badge-soft badge-outline badge-sm font-light uppercase badge-primary select-none"
+                                    :href="route('user.setting.characters')"
                                 >
-                                    Link
+                                    You
                                 </Link>
 
-                                <LinkBadge
-                                    v-else
-                                    :id="character.id"
-                                    data-test="link"
-                                />
+                                <template v-else>
+                                    <Link
+                                        v-if="
+                                            $page.props.auth.role.name ===
+                                                'member' &&
+                                            $page.props.auth.user.characters
+                                                .length > 0
+                                        "
+                                        dir="ltr"
+                                        class="badge gap-1.5 badge-soft badge-outline badge-sm font-light uppercase badge-error select-none"
+                                        :href="route('user.setting.extras')"
+                                        data-test="link"
+                                    >
+                                        Link
+                                    </Link>
+
+                                    <LinkBadge
+                                        v-else
+                                        :id="character.id"
+                                        data-test="link"
+                                    />
+                                </template>
                             </template>
-                        </template>
+                        </div>
                     </td>
 
                     <td
@@ -259,16 +262,18 @@ const filterCharacter = (character) => {
                             </span>
                         </span>
 
-                        <span
-                            class="mt-0.5 w-max text-xs font-light text-neutral-600 select-none"
-                            title="Last active"
-                            >{{
-                                character.formatted_last_seen_at ?? 'n/a'
-                            }}</span
-                        >
+                        <span class="truncate text-neutral-600">
+                            <span
+                                class="mt-0.5 w-max text-xs font-light select-none"
+                                title="Last active"
+                                >{{
+                                    character.formatted_last_seen_at ?? 'n/a'
+                                }}</span
+                            >
+                        </span>
                     </td>
 
-                    <td dir="ltr" class="px-1.5">
+                    <td dir="ltr" class="px-1.5 max-xs:hidden">
                         <div
                             v-if="!character.is_hidden"
                             class="indicator align-middle"
@@ -371,7 +376,7 @@ const filterCharacter = (character) => {
                         key === open
                     "
                 >
-                    <td class="bg-base-100 p-0 pl-2" colspan="3">
+                    <td class="bg-base-100 p-0 pl-2" colspan="4">
                         <StatisticsTable
                             :statistics="character.relations.statistics"
                         />

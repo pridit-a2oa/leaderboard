@@ -6,6 +6,9 @@
 }
 
 @theme {
+    --breakpoint-2xs: 20rem;
+    --breakpoint-xs: 30rem;
+
     --color-gold: #d4af37;
     --color-silver: #c0c0c0;
     --color-bronze: #cd7f32;
@@ -35,7 +38,7 @@
 
 .container {
     max-width: 615px;
-    min-width: 320px;
+    min-width: 210px;
 
     @media (width <= 767px) {
         max-width: 387px;
