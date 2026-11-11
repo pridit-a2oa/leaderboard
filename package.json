@@ -19,7 +19,7 @@
         "@vitejs/devtools": "^0.8.0",
         "@vitejs/plugin-vue": "^6.0.10",
         "@vue/server-renderer": "^3.5.44",
-        "autoprefixer": "^10.6.1",
+        "autoprefixer": "^10.6.2",
         "axios": "^1.21.0",
         "concurrently": "^10.0.6",
         "daisyui": "^5.7.50",
