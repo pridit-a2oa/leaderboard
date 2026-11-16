@@ -66,7 +66,7 @@ class SteamAvatars extends Command
                             ), [
                                 'character' => $character->id,
                                 'new' => $player['avatarmedium'],
-                                'old' => $character->getPrevious()['avatar_url'] ?? null
+                                'old' => $character->getPrevious()['avatar_url'] ?? null,
                             ]);
                         }
                     });
