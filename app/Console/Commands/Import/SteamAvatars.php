@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SteamAvatars extends Command
 {
@@ -53,9 +54,22 @@ class SteamAvatars extends Command
                 }
 
                 Character::where('id64', $player['steamid'])
-                    ->update([
-                        'avatar_url' => $player['avatarmedium'],
-                    ]);
+                    ->each(function ($character) use ($player) {
+                        $character->fill(
+                            ['avatar_url' => $player['avatarmedium']]
+                        )->save();
+
+                        if ($character->wasChanged('avatar_url')) {
+                            Log::info(sprintf(
+                                '[%s] Updated avatar',
+                                $this->getName()
+                            ), [
+                                'character' => $character->id,
+                                'new' => $player['avatarmedium'],
+                                'old' => $character->getPrevious()['avatar_url'] ?? null
+                            ]);
+                        }
+                    });
             });
         });
     }
