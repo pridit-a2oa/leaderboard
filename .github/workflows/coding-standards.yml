@@ -1,10 +1,13 @@
 name: Coding Standards
 
-on: [push]
+on: push
 
 jobs:
   linting:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     strategy:
       fail-fast: true
@@ -12,19 +15,19 @@ jobs:
         php: [8.5]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
           tools: pint
 
-      - name: Run Pint
+      - name: Run pint
         run: pint
 
-      - name: Commit linted files
-        uses: stefanzweifel/git-auto-commit-action@v7
+      - uses: stefanzweifel/git-auto-commit-action@v7
