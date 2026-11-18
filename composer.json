@@ -12,8 +12,8 @@
         "php": "^8.4",
         "creativeorange/gravatar": "^1.0.26",
         "inertiajs/inertia-laravel": "^3.7.0",
-        "laravel/framework": "^12.70.0",
-        "laravel/prompts": "^0.3.26",
+        "laravel/framework": "^12.73.0",
+        "laravel/prompts": "^0.3.27",
         "laravel/sanctum": "^4.5.0",
         "laravel/scout": "^11.10.0",
         "laravel/tinker": "^3.2.0",
@@ -37,7 +37,7 @@
         "pestphp/pest": "^4.7.8",
         "pestphp/pest-plugin-browser": "^4.3.1",
         "pestphp/pest-plugin-laravel": "^4.1",
-        "spatie/laravel-ignition": "^2.12"
+        "spatie/laravel-ignition": "^2.12.1"
     },
     "autoload": {
         "psr-4": {
