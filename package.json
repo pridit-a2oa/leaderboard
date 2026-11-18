@@ -15,7 +15,7 @@
         "@eslint/js": "^10.0.1",
         "@inertiajs/vue3": "^3.9.1",
         "@tailwindcss/postcss": "^4.3.3",
-        "@tailwindcss/vite": "^4.3.3",
+        "@tailwindcss/vite": "^4.3.5",
         "@vitejs/devtools": "^0.8.0",
         "@vitejs/plugin-vue": "^6.0.10",
         "@vue/server-renderer": "^3.5.44",
