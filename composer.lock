@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21bc8747c3c250770d461d2cc4be8ebc",
+    "content-hash": "03b6c48935e2ba29d5f727d3b1ed7198",
     "packages": [
         {
             "name": "brick/math",
@@ -3135,24 +3135,24 @@
         },
         {
             "name": "protonemedia/laravel-verify-new-email",
-            "version": "v1.13.0",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protonemedia/laravel-verify-new-email.git",
-                "reference": "530db50934fe8c7771483af2dcfbbf9b764b23fc"
+                "reference": "d4720d24235ddeda8296767f3253d95c239db3bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protonemedia/laravel-verify-new-email/zipball/530db50934fe8c7771483af2dcfbbf9b764b23fc",
-                "reference": "530db50934fe8c7771483af2dcfbbf9b764b23fc",
+                "url": "https://api.github.com/repos/protonemedia/laravel-verify-new-email/zipball/d4720d24235ddeda8296767f3253d95c239db3bf",
+                "reference": "d4720d24235ddeda8296767f3253d95c239db3bf",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^10.0|^11.0|^12.0",
-                "php": "^8.2|^8.3|^8.4"
+                "illuminate/support": "^12.0|^13.0",
+                "php": "^8.3|^8.4|^8.5|^8.6"
             },
             "require-dev": {
-                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "orchestra/testbench": "^10.0|^11.0",
                 "phpunit/phpunit": "^10.4|^11.5.3"
             },
             "type": "library",
@@ -3187,7 +3187,7 @@
             ],
             "support": {
                 "issues": "https://github.com/protonemedia/laravel-verify-new-email/issues",
-                "source": "https://github.com/protonemedia/laravel-verify-new-email/tree/v1.13.0"
+                "source": "https://github.com/protonemedia/laravel-verify-new-email/tree/v1.14.0"
             },
             "funding": [
                 {
@@ -3195,7 +3195,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-01T19:31:34+00:00"
+            "time": "2026-11-21T13:07:44+00:00"
         },
         {
             "name": "psr/clock",
